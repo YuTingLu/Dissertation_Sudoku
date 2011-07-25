@@ -2,6 +2,9 @@
 
 \documentclass[11pt]{report}
 
+\usepackage{sudoku}
+
+
 \begin{document}
 
 \title{Sudoku Patterns}
@@ -10,6 +13,8 @@
 \maketitle
 
 \tableofcontents
+
+
 
 \chapter{Introduction}
 \label{cha:Introduction}
@@ -38,6 +43,21 @@ For ``classical Sudoku'' puzzles we have the following additonal rules:
 \item A Sudoku puzzle must have at least one solution (no unsolvable puzzles are normally considered).
 \item And in fact, a Sudoku puzzle must have a unique solution (no multiple solutions are normally allowed).
 \end{enumerate}
+An example:
+\setlength\sudokusize{7cm}
+
+\begin{sudoku}
+  |2|5| | |3| |9| |1|.
+  | |1| | | |4| | | |.
+  |4| |7| | | |2| |8|.
+  | | |5|2| | | | | |.
+  | | | | |9|8|1| | |.
+  | |4| | | |3| | | |.
+  | | | |3|6| | |7|2|.
+  | |7| | | | | | |3|.
+  |9| |3| | | |6| |4|.
+\end{sudoku}
+
 
 
 \section{Literature}
