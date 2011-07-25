@@ -1,2 +1,7 @@
 *~
 auto
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
