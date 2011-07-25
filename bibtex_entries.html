@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Entry Types</TITLE>
+<META NAME="description" CONTENT="Entry Types">
+<META NAME="keywords" CONTENT="btxdoc">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="btxdoc.css">
+</HEAD>
+<BODY  LANG="EN">
+ <A NAME="tex2html73" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="http://cbl.leeds.ac.uk/nikos/figs/next_motif.gif"></A> <A NAME="tex2html71" HREF="node5.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="http://cbl.leeds.ac.uk/nikos/figs/up_motif.gif"></A> <A NAME="tex2html65" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="http://cbl.leeds.ac.uk/nikos/figs/previous_motif.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html74" HREF="node7.html">Fields</A>
+<B>Up:</B> <A NAME="tex2html72" HREF="node5.html">The Entries</A>
+<B> Previous:</B> <A NAME="tex2html66" HREF="node5.html">The Entries</A>
+<BR> <P>
+<H2><A NAME="SECTION00031000000000000000">Entry Types</A></H2>
+<P>
+When entering a reference in the database, the first thing to decide
+is what type of entry it is.  No fixed classification scheme can be
+complete, but BibTeX provides enough entry types to handle almost
+any reference reasonably well.
+<P>
+References to different types of publications contain different
+information; a reference to a journal article might include the volume
+and number of the journal, which is usually not meaningful for a book.
+Therefore, database entries of different types have different fields.
+For each entry type, the fields are divided into three classes:
+<DL ><DT><STRONG>required</STRONG>
+<DD>
+Omitting the field will produce a warning message
+and, rarely, a badly formatted bibliography entry.
+If the required information is not meaningful,
+you are using the wrong entry type.
+However, if the required information is meaningful
+but, say, already included is some other field,
+simply ignore the warning.
+<P>
+<DT><STRONG>optional</STRONG>
+<DD>
+The field's information will be used if present,
+but can be omitted without causing any formatting problems.
+You should include the optional field if it will help the reader.
+<P>
+<DT><STRONG>ignored</STRONG>
+<DD>
+The field is ignored.
+BibTeX ignores any field that is not required or optional, so you can include
+any fields you want in a <TT>bib</TT> file entry.  It's a good idea
+to put all relevant information about
+a reference in its <TT>bib</TT> file entry--even information that
+may never appear in the bibliography.  For example, if you want to
+keep an abstract of a paper in a computer file, put it in an <TT>
+abstract</TT> field in the paper's <TT>bib</TT> file entry.  The
+<TT>bib</TT> file is likely to be as good a place as any for the
+abstract, and it is possible to design a bibliography style for
+printing selected abstracts.
+Note: Misspelling a field name will
+result in its being ignored,
+so watch out for typos
+(especially for optional fields,
+since BibTeX won't warn you when those are missing).
+<P>
+ </DL>
+<P>
+The following are the standard entry types, along with their required
+and optional fields, that are used by the standard bibliography styles.
+The fields within each class (required or optional)
+are listed in order of occurrence in the output,
+except that a few entry types may perturb the order slightly,
+depending on what fields are missing.
+These entry types are similar to those adapted by Brian Reid
+from the classification scheme of van&nbsp;Leunen&nbsp;[<A HREF="#vanleunen"></A>]
+for use in the <EM>Scribe</EM> system.
+The meanings of the individual fields are explained in the next section.
+Some nonstandard bibliography styles may ignore some optional fields
+in creating the reference.
+Remember that, when used in the <TT>bib</TT>
+file, the entry-type name is preceded by an <TT>@</TT> character.
+<P>
+<DL >
+<P>
+<DT><STRONG>article</STRONG>
+<DD> An article from a journal or magazine.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>journal</TT>,
+<TT>year</TT>.
+Optional fields: <TT>volume</TT>, <TT>number</TT>,
+<TT>pages</TT>, <TT>month</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>book</STRONG>
+<DD> A book with an explicit publisher.
+Required fields: <TT>author</TT> or <TT>editor</TT>,
+<TT>title</TT>, <TT>publisher</TT>, <TT>year</TT>.
+Optional fields: <TT>volume</TT> or <TT>number</TT>, <TT>series</TT>,
+<TT>address</TT>, <TT>edition</TT>, <TT>month</TT>,
+<TT>note</TT>.
+<P>
+<DT><STRONG>booklet</STRONG>
+<DD> A work that is printed and bound,
+but without a named publisher or sponsoring institution.
+Required field: <TT>title</TT>.
+Optional fields: <TT>author</TT>, <TT>howpublished</TT>,
+<TT>address</TT>, <TT>month</TT>, <TT>year</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>conference</STRONG>
+<DD> The same as <TT>INPROCEEDINGS</TT>,
+included for <EM>Scribe</EM> compatibility.
+<P>
+<DT><STRONG>inbook</STRONG>
+<DD> A part of a book,
+which may be a chapter (or section or whatever) and/or a range of pages.
+Required fields: <TT>author</TT> or <TT>editor</TT>, <TT>title</TT>,
+<TT>chapter</TT> and/or <TT>pages</TT>, <TT>publisher</TT>,
+<TT>year</TT>.
+Optional fields: <TT>volume</TT> or <TT>number</TT>, <TT>series</TT>,
+<TT>type</TT>, <TT>address</TT>,
+<TT>edition</TT>, <TT>month</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>incollection</STRONG>
+<DD> A part of a book having its own title.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>booktitle</TT>,
+<TT>publisher</TT>, <TT>year</TT>.
+Optional fields: <TT>editor</TT>, <TT>volume</TT> or <TT>number</TT>,
+<TT>series</TT>, <TT>type</TT>, <TT>chapter</TT>, <TT>pages</TT>,
+<TT>address</TT>, <TT>edition</TT>, <TT>month</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>inproceedings</STRONG>
+<DD> An article in a conference proceedings.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>booktitle</TT>,
+<TT>year</TT>.
+Optional fields: <TT>editor</TT>, <TT>volume</TT> or <TT>number</TT>,
+<TT>series</TT>, <TT>pages</TT>, <TT>address</TT>, <TT>month</TT>,
+<TT>organization</TT>, <TT>publisher</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>manual</STRONG>
+<DD> Technical documentation.  Required field: <TT>title</TT>.
+Optional fields: <TT>author</TT>, <TT>organization</TT>,
+<TT>address</TT>, <TT>edition</TT>, <TT>month</TT>, <TT>year</TT>,
+<TT>note</TT>.
+<P>
+<DT><STRONG>mastersthesis</STRONG>
+<DD> A Master's thesis.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>school</TT>,
+<TT>year</TT>.
+Optional fields: <TT>type</TT>, <TT>address</TT>, <TT>month</TT>,
+<TT>note</TT>.
+<P>
+<DT><STRONG>misc</STRONG>
+<DD> Use this type when nothing else fits.
+Required fields: none.
+Optional fields: <TT>author</TT>, <TT>title</TT>, <TT>howpublished</TT>,
+<TT>month</TT>, <TT>year</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>phdthesis</STRONG>
+<DD> A PhD thesis.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>school</TT>,
+<TT>year</TT>.
+Optional fields: <TT>type</TT>, <TT>address</TT>, <TT>month</TT>,
+<TT>note</TT>.
+<P>
+<DT><STRONG>proceedings</STRONG>
+<DD> The proceedings of a conference.
+Required fields: <TT>title</TT>, <TT>year</TT>.
+Optional fields: <TT>editor</TT>, <TT>volume</TT> or <TT>number</TT>,
+<TT>series</TT>, <TT>address</TT>, <TT>month</TT>,
+<TT>organization</TT>, <TT>publisher</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>techreport</STRONG>
+<DD> A report published by a school or other institution,
+usually numbered within a series.
+Required fields: <TT>author</TT>,
+<TT>title</TT>, <TT>institution</TT>, <TT>year</TT>.
+Optional fields: <TT>type</TT>, <TT>number</TT>, <TT>address</TT>,
+<TT>month</TT>, <TT>note</TT>.
+<P>
+<DT><STRONG>unpublished</STRONG>
+<DD> A document having an author and title,
+but not formally published.
+Required fields: <TT>author</TT>, <TT>title</TT>, <TT>note</TT>.
+Optional fields: <TT>month</TT>, <TT>year</TT>.
+<P>
+ </DL>
+<P>
+In addition to the fields listed above, each entry type also has an
+optional <TT>key</TT> field, used in some styles
+for alphabetizing, for cross referencing,
+or for forming a <code>\bibitem</code> label.
+You should include a <TT>key</TT> field for any entry whose
+``author'' information is missing;
+the ``author'' information is usually the <TT>author</TT> field,
+but for some entry types it can be the <TT>editor</TT>
+or even the <TT>organization</TT> field
+(Section&nbsp;<A HREF="node8.html#oddsandends">4</A> describes this in more detail).
+Do not confuse the <TT>key</TT> field with the key that appears in the
+<code>\cite</code> command and at the beginning of the database entry;
+this field is named ``key'' only for compatibility with <I>Scribe</I>.
+<P>
+<HR><A NAME="tex2html73" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="http://cbl.leeds.ac.uk/nikos/figs/next_motif.gif"></A> <A NAME="tex2html71" HREF="node5.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="http://cbl.leeds.ac.uk/nikos/figs/up_motif.gif"></A> <A NAME="tex2html65" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="http://cbl.leeds.ac.uk/nikos/figs/previous_motif.gif"></A>   <BR>
+<B> Next:</B> <A NAME="tex2html74" HREF="node7.html">Fields</A>
+<B>Up:</B> <A NAME="tex2html72" HREF="node5.html">The Entries</A>
+<B> Previous:</B> <A NAME="tex2html66" HREF="node5.html">The Entries</A>
+<P><ADDRESS>
+<I>Antonio Resende <BR>
+Sun Feb 23 17:11:28 GMT 1997</I>
+</ADDRESS>
+</BODY>
+</HTML>
