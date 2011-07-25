@@ -23,16 +23,27 @@ In this dissertation, the goal to achieve is to experience the time of applying 
 \section{What is Sudoku?}
 \label{sec:whatissudoku}
 
-Sudoku is a puzzle which contains N (N is equal to nxn) number of nxn sub-grids to compose to a Sudoku puzzle for digits to be filled in rows, columns and the blocks. Each digit has a unique number selected from 1 to 9 and not repeated in the same row, column or the block.
-And to find the unique solution of the puzzle,  ~\cite{Berthier2007Sudoku}.
-The classical Sudoku has these rules applied.
+Sudoku uses an $N \times N$ matrix, where $N = n \cdot n$, and for standard Sudoku we have $n = 3$, thus $N = 9$. Each entry (``cell'') contains a number in $\{1, \dots, N\}$, or it might be empty, that is, to be filled out. A completed Sudoku puzzle must fulfil the following additional requirements:
 \begin{enumerate}
-\item Number from 1 to 9 has to appear at least once in a row, a column, and a block.
-\item Number from 1 to 9 has to appear at most once in a row, a column, and a block.
-\item All the grids have to be no empty left in the end.
-\item All Sudoku puzzles must have a solution.
-\item Every Sudoku puzzle has a unique solution only.
+\item In every row and in every column every number occurs only (exactly) once.
+\item The same is true for the ``blocks'':
+  \begin{enumerate}
+  \item The whole matrix is sub-divided into $N$ blocks.
+  \item Each block is an $n \times n$ matrix.
+  \end{enumerate}
+  Now in each block every number has also to occur (exactly) once.
 \end{enumerate}
+For ``classical Sudoku'' puzzles we have the following additonal rules:
+\begin{enumerate}
+\item A Sudoku puzzle must have at least one solution (no unsolvable puzzles are normally considered).
+\item And in fact, a Sudoku puzzle must have a unique solution (no multiple solutions are normally allowed).
+\end{enumerate}
+
+
+\section{Literature}
+\label{sec:introLiterature}
+
+\cite{Berthier2007Sudoku} XXX
 
 
 \section{Relationship between rows, columns, and blocks}
