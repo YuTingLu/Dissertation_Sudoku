@@ -44,8 +44,24 @@ For ``classical Sudoku'' puzzles we have the following additonal rules:
 \item And in fact, a Sudoku puzzle must have a unique solution (no multiple solutions are normally allowed).
 \end{enumerate}
 An example:
-\setlength\sudokusize{7cm}
 
+\setlength\sudokusize{8cm}
+\begin{figure}
+\begin{sudoku}
+ |2|5| | |3| |9| |1|.
+ | |1| | | |4| | | |.
+ |4| |7| | | |2| |8|.
+ | | |5|2| | | | | |.
+ | | | | |9|8|1| | |.
+ | |4| | | |3| | | |.
+ | | | |3|6| | |7|2|.
+ | |7| | | | | | |3|.
+ |9| |3| | | |6| |4|.
+\end{sudoku}
+\caption{Sudoku Problem}
+\end{figure}
+
+\begin{figure}
 \begin{sudoku}
   |2|5|8|7|3|6|9|4|1|.
   |6|1|9|8|2|4|3|5|7|.
@@ -57,6 +73,10 @@ An example:
   |5|7|6|1|4|2|8|9|3|.
   |9|2|3|5|8|7|6|1|4|.
 \end{sudoku}
+\caption{Sudoku Solution}
+\end{figure}
+
+
 
 
 
@@ -64,7 +84,6 @@ An example:
 \label{sec:introLiterature}
 
 \cite{Berthier2007Sudoku} XXX
-
 
 \section{Relationship between rows, columns, and blocks}
 \label{sec:Relationship}
