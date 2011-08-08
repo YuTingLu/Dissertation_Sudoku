@@ -1,13 +1,13 @@
 *~
 auto
-*.aux
-*.bbl
-*.blg
-*.dvi
-*.log
-*.toc
+Dissertation.aux
+Dissertation.bbl
+Dissertation.blg
+Dissertation.dvi
+Dissertation.log
+Dissertation.toc
+Dissertation.pdf
 sudoku-package
-*.pdf
 *.gz
 .directory
 
