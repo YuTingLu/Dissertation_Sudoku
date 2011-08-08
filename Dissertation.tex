@@ -4,6 +4,17 @@
 
 \usepackage{sudoku}
 
+\newcommand{\cell}[9]{%
+  \scriptsize
+  \setlength{\tabcolsep}{1pt}
+  \renewcommand{\arraystretch}{0.5}
+  \hspace{-0.6em}
+  \begin{tabular}{ccc}
+    #1 & #2 & #3\\
+    #4 & #5 & #6\\
+    #7 & #8 & #9
+  \end{tabular}
+}
 
 \begin{document}
 
@@ -123,7 +134,21 @@ could be re-permutated to get an extended one.
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
 
-
+Notations relating to a specific instance: XXX explaining sub-matrices XXX
+\begin{sudoku}
+\label{p48}
+   |1|2|
+   {\cell 78912{}{}34 }
+   | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | |.
+   | | | | | | | | | {\cell 123456789} |.
+\end{sudoku}
 
 
 
