@@ -7,3 +7,7 @@ auto
 *.log
 *.toc
 sudoku-package
+*.pdf
+*.gz
+.directory
+
