@@ -131,26 +131,27 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
-\begin{tabular}{ | r| r| r | }
-\hline
+  \begin{tabular}{ | r| r| r | }
+  \hline
   {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \hline
   {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 \\ \hline
   {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-\hline
-\end{tabular}
-\caption{Example for Blocks}
+  \hline
+  \end{tabular}
+  \caption{Example for Blocks}
 \end{table}
 
 \begin{table}
+  \centering
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
-\begin{tabular}{ | r| r| r | r| r| r| r| r| r| }
-\hline
-  {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-\hline
-\end{tabular}
-\caption{Example for Columns}
+  \begin{tabular}{ | r| r| r | r| r| r| r| r| r| }
+  \hline
+  {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
+  \hline
+  \end{tabular}
+  \caption{Example for Columns}
 \end{table}
 
 \begin{table}
@@ -173,6 +174,7 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
 \end{tabular}
 \caption{Example for Rows}
 \end{table}
+
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
 
