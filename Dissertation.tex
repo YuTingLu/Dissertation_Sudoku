@@ -176,6 +176,19 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
 \end{table}
 
 
+when the candidate must be eliminated after rules applied, then this specific candidate must remove simultaneously from three representations.
+\begin{enumerate}
+  \item eliminate n from rc-cell (r, c) in the standard rc-representation,
+  \item eliminate c from rn-cell (r, n) in the rn-representation,
+  \item eliminate r from cn-cell (c, n) in the cn-representation;
+\end{enumerate}
+As same, when a certain value has to insert to cell, update has to be done simultaneously in all three representations.
+\begin{enumerate}
+  \item insert n as the value of rc-cell (r, c) in the standard rc-representation,
+  \item insert c as the value of rn-cell (r, n) in the rn-representation,
+  \item insert r as the value of cn-cell (c, n) in the cn-representation.
+\end{enumerate}
+
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
 
 Notations relating to a specific instance: XXX explaining sub-matrices XXX
