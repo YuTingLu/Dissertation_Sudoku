@@ -96,6 +96,18 @@ An example:
 \section{Literature}
 \label{sec:introLiterature}
 
+Systematic procedure for solving a puzzle:
+\begin{tabbing}
+Loop Until \= a solution is found (or until it is proven there can be no solution) \\
+\> Do until \= a rule applies  effectively \\
+\> \> Take the first rule not yet tried in the list \\
+\> \> Do until \= its conditions pattern effectively maps to the cell \\
+\> \> \> Try all possible mappings of the conditions pattern \\
+\> \> End do\\
+\> End do\\
+\> Apply rule on selected matching pattern \\
+End loop\\
+\end{tabbing}
 All the cells of Sudoku puzzle could be re-permutated in sequence to form an extended Sudoku board with the original one.
 
 New representations of a puzzle :
