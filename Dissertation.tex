@@ -3,6 +3,7 @@
 \documentclass[11pt]{report}
 
 \usepackage{sudoku}
+\usepackage{amsmath}
 
 \newcommand{\cell}[9]{%
   \scriptsize
@@ -235,7 +236,9 @@ Naked single and hidden single are the basic methods of Candidates Elimination T
 \section{Naked Single}
 \label{sec:Naked Single}
 
-Naked single is the easiest method that user could put whose hands on with. The situation to apply naked single, firstly, all the possible candidates would be pencilmarked in all the empty cells. After the work is done for all the cells. Look into the puzzle, find if there are any cells has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
+Naked single is the easiest method that could be used to play sudoku puzzle. The situation to apply naked single is, firstly, find out all the possible candidates and pencilmark the possible candidates in all the possible cells. After the work is done for all the cells. Look into the puzzle, find if there are any cells has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
+
+The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candidate(n, r, c) => value(n, r, c)\}\]
 
 \begin{figure}
 \begin{sudoku}
