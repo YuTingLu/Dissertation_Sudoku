@@ -486,15 +486,14 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 
 \section{Swordfish}
 \label{sec:Swordfish}
-Swordfish is an extended approach for X-wing which has really rare opportunity to apply on. It is used when, there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
+Swordfish is similar approach which extended from X-wing technique, but has really rare opportunity to be applied on. The concept is like the X-Wing, a value in one position will forced the other in the same row or same column not to have the same value filled in. Will have two possibilities could be fulfilled eventually. Nevertheless, at the moment, could only help on making decision to eliminate candidates in other cells in the same columns and rows. It is used, when there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
 \begin{description}
   \item $r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,$
   \item $r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,$
   \item $r_{3}\ has\ c_{3}\ and\ c_{1}\ among\ its\ candidates,$
   \item $and\ non\ of\ r_{1},\ r_{2}\, and\ r_{3}\ has\ other\ candidates\ in\ c_{1},\ c_{2},\ and\ c_{3}.$
 \end{description}
-All the candidates for specific number n are occurred in only three specific columns, thus, all candidates for number n which not in these three columns could be eliminated immediately. Each defined rows could have two or three candidates for specific number n.
-
+All the candidates for specific number n are occurred in only three specific columns, thus, all candidates for number n which not in these three columns could be eliminated immediately. Each defined rows could have two or three candidates for specific number n.\\
 The formula of swordfish is
 \[ \forall n \forall 3 \neq r_{1} r_{2} r_{3}\ \forall 3 \neq c_{1} c_{2} c_{3}\]
 \begin{figure}
