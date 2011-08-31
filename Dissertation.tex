@@ -345,10 +345,11 @@ In the Figures 2.4 shown above, candidates 2, 3, 5, and 9 appear commonly in 4 c
 Hidden single does not show the solution obviously like what naked single does (showing one candidate only in the cell). It is a skill to find a unique specific digit to write in only if the player looks closely. However, it sometimes replaced by Cross-Hatching which could be even more easily applied to find the answer without the pencilmarks step. 
 
 There are 3 formulas in Hidden Single, which are in row, in column,and in block, respectively.
-\[ \forall r  \forall n\  \{ \exists !c \  candidate(n, r, c) => value(n, r, c)\}\]
-\[ \forall c  \forall n\  \{ \exists !r \  candidate(n, r, c) => value(n, r, c)\}\]
-\[ \forall b  \forall n\  \{ \exists !s \  candidate[n, b,s] => value[n, b, s]\}\]
-
+\begin{description}
+  \item $ \forall r  \forall n\  \{ \exists !c \  candidate(n, r, c) => value(n, r, c)\}$
+  \item $ \forall c  \forall n\  \{ \exists !r \  candidate(n, r, c) => value(n, r, c)\}$
+  \item $ \forall b  \forall n\  \{ \exists !s \  candidate[n, b,s] => value[n, b, s]\}$
+\end{description}
 \begin{figure}
 \begin{sudoku}
 \label{hiddensingle}
@@ -449,10 +450,10 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
 
 In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ whom are consecutive in opposite angle. To apply X-Wing on, there are only one solution will be the correct choice between two mutually exclusive possibilities for candidate 6 to fit in, either has candidate 6 to be filled in 
-\begin{enumerate}
+\begin{description}
   \item $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
   \item or in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
-\end{enumerate}
+\end{description}
 If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, non of them could be decided. the only thing could be done is to eliminate candidate number 4, 6, and 9 in any cells which in the same row or same column as $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$.
 \begin{sudoku}
 \label{xwing}
@@ -486,10 +487,12 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 \section{Swordfish}
 \label{sec:Swordfish}
 Swordfish is an extended approach for X-wing which has really rare opportunity to apply on. It is used when, there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
-\[r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,\]
-\[r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,\]
-\[r_{3}\ has\ c_{3}\ and\ c_{1}\ among\ its\ candidates,\]
-\[and\ non\ of\ r_{1},\ r_{2}\, and\ r_{3}\ has\ other\ candidates\ in\ c_{1},\ c_{2},\ and\ c_{3}.\]
+\begin{description}
+  \item $r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,$
+  \item $r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,$
+  \item $r_{3}\ has\ c_{3}\ and\ c_{1}\ among\ its\ candidates,$
+  \item $and\ non\ of\ r_{1},\ r_{2}\, and\ r_{3}\ has\ other\ candidates\ in\ c_{1},\ c_{2},\ and\ c_{3}.$
+\end{description}
 All the candidates for specific number n are occurred in only three specific columns, thus, all candidates for number n which not in these three columns could be eliminated immediately. Each defined rows could have two or three candidates for specific number n.
 
 The formula of swordfish is
