@@ -475,8 +475,15 @@ For example here, two green X represent 2 given candidates in the parallel colum
 
 \section{Swordfish}
 \label{sec:Swordfish}
-Swordfish is an extended approach for X-wing which has really rare opportunity to apply on. It uses when all candidates for specific digit X are occurred in only three columns, all candidates for digit X not in these three columns could be eliminated. Each defined rows could have 2 or 3 candidates for specific digit X.
+Swordfish is an extended approach for X-wing which has really rare opportunity to apply on. It is used when, there are three different columns, c1, c2, c3, three different rows, r1, r2, r3 and a number n in a situation like :
+\[r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,\]
+\[r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,\]
+\[r_{3}\ has\ c_{3}\ and\ c_{1}\ among\ its\ candidates,\]
+\[and\ non\ of\ r_{1},\ r_{2}\, and\ r_{3}\ has\ other\ candidates\ in\ c_{1},\ c_{2},\ and\ c_{3}.\]
+All the candidates for specific number n are occurred in only three specific columns, thus, all candidates for number n which not in these 3 columns could be eliminated immediately. Each defined rows could have 2 or 3 candidates for specific number n.
 
+The formula of swordfish is
+\[ \forall n \forall 3 \neq r_{1} r_{2} r_{3}\ \forall 3 \neq c_{1} c_{2} c_{3}\]
 \begin{figure}
 \begin{sudoku}
 \label{swordfish}
