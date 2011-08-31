@@ -448,7 +448,7 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 \end{sudoku}
 The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
 
-In the figure below, Number 6 is the common candidates in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$,
+In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ whom are consecutive in opposite angle. To apply X-Wing on, there are only one solution will be the correct choice between two mutually exclusive possibilities for candidate 6 to fit in, either has candidate 6 fill in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$, or in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
 \begin{sudoku}
 \label{xwing}
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
