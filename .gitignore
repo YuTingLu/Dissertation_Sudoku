@@ -7,6 +7,8 @@ Dissertation.dvi
 Dissertation.log
 Dissertation.toc
 Dissertation.pdf
+Sudoku.log
+amasmath.sty.txt
 sudoku-package
 *.gz
 .directory
