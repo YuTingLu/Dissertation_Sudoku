@@ -112,12 +112,12 @@ End loop\\
 All the cells of Sudoku puzzle could be re-permutated in sequence to form an extended Sudoku board with the original one.
 
 New representations of a puzzle :
-\begin{enumerate}
+\begin{description}
   \item number n is in rc-cell (r, c),
   \item column c is in rn-cell (r, n),
   \item row r is in cn-cell (c, n),
   \item square s is in bn-cell (b, n) - where (r, c) = [b, s].
-\end{enumerate}
+\end{description}
 
 example:
 
@@ -199,27 +199,28 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
 
 
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
-\begin{enumerate}
+\begin{description}
   \item row will be abbreviate to r or row.
   \item column will be abbreviate to c or col.
   \item block will be abbreviate to b, or blk.
-\end{enumerate}
-
+\end{description}
 when the candidate must be eliminated after rules applied, then this specific candidate must remove simultaneously from three representations.
-\begin{enumerate}
+\begin{description}
   \item eliminate n from rc-cell (r, c) in the standard rc-representation,
   \item eliminate c from rn-cell (r, n) in the rn-representation,
   \item eliminate r from cn-cell (c, n) in the cn-representation;
-\end{enumerate}
+\end{description}
 As same, when a certain value has to insert to cell, update has to be done simultaneously in all three representations.
-\begin{enumerate}
+\begin{description}
   \item insert n as the value of rc-cell (r, c) in the standard rc-representation,
   \item insert c as the value of rn-cell (r, n) in the rn-representation,
   \item insert r as the value of cn-cell (c, n) in the cn-representation.
-\end{enumerate}
-\[ \forall r\ means\ "for\ all\ row\ r",\]
-\[ \forall c\ means\ "for\ all\ column\ c",\]
-\[ \exists n\ always\ means\ "there\ exists\ a\ number\ n".\]
+\end{description}
+\begin{description}
+  \item $\forall r\ means\ "for\ all\ row\ r",$
+  \item $\forall c\ means\ "for\ all\ column\ c",$
+  \item $\exists n\ always\ means\ "there\ exists\ a\ number\ n".$
+\end{description}
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
 
