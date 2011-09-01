@@ -134,8 +134,8 @@ could be re-permuted to get an extended one.
 To begin introducing the techniques for solving Sudoku, there are few basic notions that have to be defined and declared.
 A Sudoku problem which has the format like the matrix below is called a  ``puzzle'' here.
 
+\begin{figure}
 \begin{sudoku}
-\label{p48}
    |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
    |{\cell {}2{}{}{}{}{}8{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
    |{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}89}|7|{\cell 1{}{}{}{}{}{}8{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
@@ -146,6 +146,8 @@ A Sudoku problem which has the format like the matrix below is called a  ``puzzl
    |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
    |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
+\label{p48}
+\end{figure}
 
 In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
 
@@ -252,7 +254,6 @@ The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candid
 
 \begin{figure}
 \begin{sudoku}
-\label{nakedsingle}
    |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
    |{\cell {}2{}{}{}{}{}8{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
    |{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}89}|7|{\cell 1{}{}{}{}{}{}8{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
@@ -263,6 +264,7 @@ The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candid
    |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
    |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
+\label{nakedsingle}
 \caption{Example in Naked Single}
 \end{figure}
 
@@ -282,7 +284,6 @@ XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ bloc
 
 \begin{figure}
 \begin{sudoku}
-\label{nakedpair}
    |{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}789}|{\cell {}2{}45{}{}89}|{\cell {}234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell {}{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|1|{\cell {}{}3{}45{}9}|.
   |1|3|6|9|5|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}2{}{}{}{}7{}{}}|4|.
   |{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}7{}9}|{\cell {}2{}45{}{}{}9}|{\cell 1234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell 1{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}3{}{}6{}{}9}|8|.
@@ -294,7 +295,9 @@ XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ bloc
   |{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
 \end{sudoku}
 \caption{Example in Naked Pair}
+\label{nakedpair}
 \end{figure}
+
 In the Figure XXX which is shown above, candidates 5 and 6 which highlighted by yellow colour ??? are the only two candidates in these two cells, which is formed a naked pair. A naked pair here could help to eliminate the impossibilities for candidates 5 and 6 in other related rows, columns, and block. So those numbers which highlighted in pink will be removed from the cells after applying this skill.
 
 
@@ -304,7 +307,6 @@ It is in the situation whilst three cells all in the same row, same column, or s
 
 \begin{figure}
 \begin{sudoku}
-\label{nakedtriplet}
 |2|4|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
 |5|9|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
 |{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}67{}{}}|{\cell 1{}3{}{}678{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
@@ -315,9 +317,13 @@ It is in the situation whilst three cells all in the same row, same column, or s
 |6|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}34{}{}78{}}|{\cell {}2{}4{}{}78{}}|5|1|{\cell {}2{}4{}{}{}{}{}}|{\cell {}{}{}{}{}{}78{}}|9|.
 |9|{\cell 1{}{}{}{}{}7{}{}}|{\cell 1{}{}45{}78{}}|{\cell {}2{}4{}{}78{}}|6|{\cell {}{}{}4{}{}78{}}|{\cell {}2{}4{}{}{}{}{}}|3|{\cell {}{}{}{}5{}{}8{}}|.
 \end{sudoku}
+\label{nakedtriplet}
 \caption{Example in Naked Triplet}
 \end{figure}
+
 For example, candidates 6, 7 and 8 are the common number which appears in the cells which has these three candidates highlighted in yellow colour ???. Hence, the inference is those cells have candidates 6, 7 and 8 marked in pink could erase these candidates, because they are not longer possible to be the answer to fill in.
+
+
 
 \section{Naked Quad}
 \label{sec:Naked Quad}
@@ -325,7 +331,6 @@ It is in the situation while four cells in the same row, same column, or same bl
 
 \begin{figure}
 \begin{sudoku}
-\label{nakedquad}
 |{\cell 1{}{}{}5{}{}{}{}}|9|4|{\cell 1{}{}{}5{}7{}{}}|3|6|2|{\cell 1{}{}{}{}{}78{}}|{\cell 1{}{}{}{}{}{}8{}}|.
 |{\cell 12{}{}{}6{}{}{}}|7|{\cell 12{}{}{}6{}8{}}|{\cell 12{}{}{}{}{}{}9}|{\cell 12{}{}{}{}{}{}9}|{\cell {}{}{}{}{}{}{}89}|4|3|5|.
 |{\cell 12{}{}5{}{}{}{}}|3|{\cell 12{}{}5{}{}8{}}|4|{\cell 12{}{}{}{}7{}{}}|{\cell {}{}{}{}5{}{}8{}}|{\cell {}{}{}{}67{}{}{}}|{\cell 1{}{}{}{}67{}9}|{\cell 1{}{}{}{}{}{}{}9}|.
@@ -336,8 +341,10 @@ It is in the situation while four cells in the same row, same column, or same bl
 |{\cell {}2{}{}{}6{}{}9}|{\cell 1{}{}{}56{}{}{}}|7|{\cell 1{}{}{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|4|3|{\cell 12{}{}56{}8{}}|{\cell 12{}{}{}{}{}8{}}|.
 |{\cell {}{}34{}6{}{}9}|{\cell 1{}{}456{}{}{}}|{\cell {}{}3{}{}6{}{}9}|{\cell 1{}3{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|2|{\cell {}{}{}{}{}6{}8{}}|{\cell 1{}{}{}56{}8{}}|7|.
 \end{sudoku}
+\label{nakedquad}
 \caption{Example in Naked Quad}
 \end{figure}
+
 In the Figure XXX shown above, candidates 2, 3, 5, and 9 appear commonly in 4 cells in the same block. Consequently, candidates 5 and 9 which marked in pink will face to be removed because they will not be possible to be used in these cells anymore according to the inference made before. 
 
 \section{Hidden Single}
@@ -350,9 +357,9 @@ There are 3 formulas in Hidden Single, which are in row, in column,and in block,
   \item $ \forall c  \forall n\  \{ \exists !r \  candidate(n, r, c) => value(n, r, c)\}$
   \item $ \forall b  \forall n\  \{ \exists !s \  candidate[n, b,s] => value[n, b, s]\}$
 \end{itemize}
+
 \begin{figure}
 \begin{sudoku}
-\label{hiddensingle}
 |{\cell {}23{}{}{}{}8{}}|{\cell {}234{}{}78{}}|{\cell {}{}34{}{}78{}}|{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}{}7{}{}}|{\cell 123{}{}{}78{}}|5|{\cell 12{}4{}6789}|{\cell 123{}{}678{}}|.
 |1|6|{\cell {}{}345{}78{}}|9|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}234{}{}78{}}|{\cell {}2{}4{}{}78{}}|{\cell {}23{}{}{}78{}}|.
 |{\cell {}23{}5{}{}8{}}|{\cell {}23{}5{}78{}}|9|{\cell {}{}{}{}5{}78{}}|6|4|{\cell {}23{}{}{}78{}}|{\cell 12{}{}{}{}78{}}|{\cell 123{}{}{}78{}}|.
@@ -363,8 +370,10 @@ There are 3 formulas in Hidden Single, which are in row, in column,and in block,
 |{\cell {}{}{}{}{}6{}89}|1|{\cell {}{}{}4{}6{}8{}}|2|5|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}4{}678{}}|3|{\cell {}{}{}{}{}678{}}|.
 |7|{\cell {}{}345{}{}8{}}|{\cell {}{}3456{}8{}}|1|{\cell {}{}34{}{}{}{}{}}|{\cell {}{}3{}{}6{}{}{}}|{\cell {}2{}4{}6{}8{}}|{\cell {}2{}4{}6{}8{}}|9|.
 \end{sudoku}
+\label{hiddensingle}
 \caption{Example in Hidden Single}
 \end{figure}
+
 In this case, they are four possibilities could be filled into this highlighted cell. Nevertheless, if look carefully, candidate 4 is the only number that appears once only in this block. Hence, candidate 4 is the answer for this cell undoubtedly.
 Actually, this cell could be solved by using either hidden single or Cross-Hatching. Looking at candidate 4 by using Cross-Hatching, all the possibilities of candidate 4 in the middle block here has only one cell left after crossing out the impossibility according to the rule that the candidate could only be used once in each row, column and the block.
 
@@ -375,7 +384,6 @@ The definition for Hidden Pair is, that 2 possible candidates are only restricte
 
 \begin{figure}
 \begin{sudoku}
-\label{hiddenpair}
 |{\cell {}234{}{}{}89}|{\cell {}{}345{}{}89}|7|{\cell {}23{}5{}{}{}9}|6|1|{\cell {}{}{}45{}{}{}9}|{\cell {}2{}{}{}{}{}89}|{\cell {}2{}4{}{}{}89}|.
 |{\cell {}234{}{}{}{}9}|{\cell {}{}345{}{}{}9}|{\cell {}{}345{}{}{}9}|{\cell {}23{}5{}{}{}9}|{\cell {}2{}{}5{}{}{}9}|8|{\cell 1{}{}45{}7{}9}|6|{\cell 12{}4{}{}7{}9}|.
 |1|{\cell {}{}{}{}5{}{}89}|6|{\cell {}2{}{}5{}{}{}9}|7|4|{\cell {}{}{}{}5{}{}{}9}|{\cell {}2{}{}{}{}{}89}|3|.
@@ -386,8 +394,10 @@ The definition for Hidden Pair is, that 2 possible candidates are only restricte
 |6|{\cell {}{}3{}{}{}{}{}9}|2|1|8|5|{\cell {}{}3{}{}{}7{}9}|4|{\cell {}{}{}{}{}{}7{}9}|.
 |5|7|{\cell 1{}3{}{}{}{}{}{}}|6|4|9|2|{\cell 1{}3{}{}{}{}8{}}|{\cell 1{}{}{}{}{}{}8{}}|.
 \end{sudoku}
+\label{hiddenpair}
 \caption{Example in Hidden Pair}
 \end{figure}
+
 For instance, the figure is given above. Candidates 1 and 7 which marked in yellow colour ??? are restricted to two cells only. To put it briefly, digit number 1 and 7 could only possibly be placed in these two cells only. So the possibilities of the rest (shaded in pink) in the cells will be crossed out.
 
 
@@ -414,7 +424,6 @@ This is the circumstance which has four digits candidate found to be restricted 
 
 \begin{figure}
 \begin{sudoku}
-\label{hiddenquad}
 |6|3|2|1|4|5|9|7|8|.
 |8|1|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}3{}{}6{}{}{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}56{}{}{}}|{\cell {}23{}5{}{}{}{}}|4|.
 |{\cell {}{}{}{}5{}{}{}9}|4|{\cell {}{}{}{}5{}7{}9}|{\cell {}{}3{}{}6{}{}{}}|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}56{}{}{}}|1|{\cell {}23{}56{}{}{}}|.
@@ -425,6 +434,7 @@ This is the circumstance which has four digits candidate found to be restricted 
 |7|5|3|4|1|6|{\cell {}2{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}8{}}|9|.
 |2|9|6|7|3|8|{\cell 1{}{}{}5{}{}{}{}}|4|{\cell 1{}{}{}5{}{}{}{}}|.
 \end{sudoku}
+\label{hiddenquad}
 \caption{Example in Hidden Quad}
 \end{figure}
 
@@ -436,7 +446,6 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 
 \begin{figure}
 \begin{sudoku}
-\label{xwingmodel}
    | |*| | | | | |*| |.
    |*|X|*|*|*|*|*|X|*|.
    | |*| | | | | |*| |.
@@ -447,6 +456,9 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
    |*|X|*|*|*|*|*|X|*|.
    | |*| | | | | |*| |.
 \end{sudoku}
+\label{xwingmodel}
+\end{figure}
+
 The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
 
 In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ whom are consecutive in opposite angle. To apply X-Wing on, there are only one solution will be the correct choice between two mutually exclusive possibilities for candidate 6 to fit in, either has candidate 6 to be filled in 
@@ -455,8 +467,9 @@ In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{
   \item or in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
 \end{description}
 If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate number 4, 6, and 9 in any cells which in the same row or same column as $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$.
+
+\begin{figure}
 \begin{sudoku}
-\label{xwing}
 |{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
 |*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|*|*|*|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|.
 |{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}*|{\cell {}{}{}{}{}{}{}{}{}}|.
@@ -467,6 +480,7 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 |*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
 |{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
 \end{sudoku}
+\label{xwing}
 \caption{Example in X-wing}
 \end{figure}
 
@@ -498,7 +512,6 @@ The formula of swordfish is
 \[ \forall n \forall 3 \neq r_{1} r_{2} r_{3}\ \forall 3 \neq c_{1} c_{2} c_{3}\]
 \begin{figure}
 \begin{sudoku}
-\label{swordfish}
    | |*| | |*| | |*| |.
    | |X| | |X| | |X| |.
    | |*| | |*| | |*| |.
@@ -509,12 +522,12 @@ The formula of swordfish is
    | |X| | |X| | |X| |.
    | |*| | |*| | |*| |.
 \end{sudoku}
+\label{swordfish}
 \caption{Swordfish: 3 rows in 3 columns}
 \end{figure}
 
 \begin{figure}
 \begin{sudoku}
-\label{swordfish}
    | |*| | |*| | |*| |.
    | | | | |X| | |X| |.
    | |*| | |*| | |*| |.
@@ -525,6 +538,7 @@ The formula of swordfish is
    | |X| | | | | |X| |.
    | |*| | |*| | |*| |.
 \end{sudoku}
+\label{swordfish}
 \caption{Swordfish: 2 rows in 3 columns}
 \end{figure}
 
@@ -537,7 +551,6 @@ Briefly, the digit which is being concentrated on is only occurred in the same r
 
 \begin{figure}
 \begin{sudoku}
-\label{intersectionremoval}
 |2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
 |1|4|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}56{}{}9}|2|{\cell {}{}{}{}567{}9}|{\cell {}{}{}{}{}67{}9}|8|3|.
 |{\cell {}{}{}{}{}67{}9}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}4{}6{}{}9}|1|{\cell {}{}{}4{}6789}|5|{\cell {}2{}4{}67{}{}}|{\cell {}2{}{}{}67{}9}|.
@@ -548,8 +561,10 @@ Briefly, the digit which is being concentrated on is only occurred in the same r
 |{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
 |{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
 \end{sudoku}
+\label{intersectionremoval}
 \caption{Example in Intersection Removal}
 \end{figure}
+
 For example, candidate 4 (marked in yellow ???) has appeared twice in the same column of the top right block. Therefore, all candidate 4 occurrences (marked in pink) in the linked column will be removed.
 
 
