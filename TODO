@@ -19,6 +19,17 @@ The notion of "puzzle" is not useful for more detailed investigations.
 Instead, as discussed "annotated Sudoku instances" need to be discussed.
 Roles operate exactly on these annotated instances.
 
+Every cell consists of a partitioning of {1,...,9} into two
+blocks, the "possible" numbers (the "candidates"), and the
+"impossible" numbers ("excluced").
+Thus a cell is precisely this:
+  ({1,2.3},{4,5,6,7,8,9})
+(first possible, then excluded).
+The annotated instance is in 9x9 matrix, every entry of this matrix
+is such a partitioning.
+
+A rule just moves certain numbers from "possible" to "excluded".
+
 
 4) All references to figures must use labels!
 Find out how to define labels, and use them (a lot!).
