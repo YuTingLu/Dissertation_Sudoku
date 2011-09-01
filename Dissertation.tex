@@ -306,7 +306,7 @@ XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ bloc
 \label{nakedpairb4}
 \end{figure}
 
-Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) has two possibilities to be filled in as an answer. In the Figure \ref{nakedpairb4} which is shown, candidates 5 and 6 are the only two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which has only two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as Figure \ref{nakedpairaf}. 
+Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) both have \textbf{only} two same possibilities to be filled in as an answer. In the Figure \ref{nakedpairb4} which is shown, candidates 5 and 6 are the \textbf{only} two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which each has \textbf{only} two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as Figure \ref{nakedpairaf}. 
 
 \begin{figure}
 \begin{sudoku}
@@ -326,7 +326,8 @@ Naked pair is in the situation which two cells which shared a unit (such like a 
 
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
-It is in the situation whilst three cells all in the same row, same column, or same block and have common three possibilities in these three cells. Thus, the result that could be inferred is, those related rows, columns, and the block could remove the candidates which has same the possibilities in as these three cells.
+
+It is in the situation whilst three specific cells which are all in the same unit (a row, a column, or a block) and have \textbf{only} three same candidate possibilities in these three cells. Thus, the result that could be inferred is, those related rows, columns, and the block could remove the candidates which has same the possibilities in as these three cells.
 
 \begin{figure}
 \begin{sudoku}
