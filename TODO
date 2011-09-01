@@ -22,3 +22,11 @@ Roles operate exactly on these annotated instances.
 
 4) All references to figures must use labels!
 Find out how to define labels, and use them (a lot!).
+
+
+5) Precise information on examples needed
+
+Obviously, the concerned cells etc. in examples must be precisely stated
+in the caption! Additionally, one could also boldface them.
+However, no highlighting by colour (this is a usage-nightmare)!
+
