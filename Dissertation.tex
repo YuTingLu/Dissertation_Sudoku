@@ -301,12 +301,27 @@ XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ bloc
   |6|4|1|{\cell {}2{}{}5{}{}8{}}|{\cell {}2{}{}{}{}{}89}|{\cell {}{}{}{}5{}{}{}9}|3|{\cell {}{}{}{}{}{}{}89}|7|.
   |{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
 \end{sudoku}
-\caption{Example in Naked Pair}
-\label{nakedpair}
+\caption{Example in Naked Pair - Before}
+\label{nakedpairb4}
 \end{figure}
 
-In the Figure XXX which is shown above, candidates 5 and 6 which highlighted by yellow colour ??? are the only two candidates in these two cells, which is formed a naked pair. A naked pair here could help to eliminate the impossibilities for candidates 5 and 6 in other related rows, columns, and block. So those numbers which highlighted in pink will be removed from the cells after applying this skill.
+Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) has two possibilities to be filled in as an answer. In the Figure \ref{nakedpair} which is shown, candidates 5 and 6 are the only two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which has only two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as figure \ref{nakedpairaf}. 
 
+\begin{figure}
+\begin{sudoku}
+   |{\cell {}2{}4{}{}{}{}9}|{\cell {}2{}{}{}{}789}|{\cell {}2{}4{}{}{}89}|{\cell {}234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell {}{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|1|{\cell {}{}3{}4{}{}9}|.
+  |1|3|6|9|5|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}2{}{}{}{}7{}{}}|4|.
+  |{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}7{}9}|{\cell {}2{}45{}{}{}9}|{\cell 1234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell 1{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}3{}{}6{}{}9}|8|.
+   |{\cell {}2{}45{}{}{}{}}|{\cell {}2{}{}5{}{}{}{}}|{\cell {}2345{}{}{}{}}|{\cell 1{}345{}78{}}|{\cell {}{}34{}78{}}|6|9|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
+  |7|1|{\cell {}{}345{}{}{}9}|{\cell {}{}345{}{}{}{}}|{\cell {}{}34{}{}{}{}9}|2|8|{\cell {}{}34{}6{}{}{}}|{\cell {}{}3{}56{}{}{}}|.
+  |8|6|{\cell {}2345{}{}{}9}|{\cell 1{}345{}7{}{}}|{\cell {}{}34{}{}7{}9}|{\cell 1{}345{}7{}9}|{\cell 12{}4{}{}7{}{}}|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
+  |3|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}45{}78{}}|1|{\cell {}{}{}45{}7{}9}|{\cell {}{}{}4{}{}{}{}{}}|{\cell {}{}{}4{}6{}89}|2|.
+  |6|4|1|{\cell {}2{}{}5{}{}8{}}|{\cell {}2{}{}{}{}{}89}|{\cell {}{}{}{}5{}{}{}9}|3|{\cell {}{}{}{}{}{}{}89}|7|.
+  |{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
+\end{sudoku}
+\caption{Example in Naked Pair - Before}
+\label{nakedpairaf}
+\end{figure}
 
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
