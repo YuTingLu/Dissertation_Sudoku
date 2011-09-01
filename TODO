@@ -7,10 +7,43 @@ URGENTLY this needs to be extended, with at least 20 serious
 references, and further popular literature references and web pages.
 
 
-2) The three different spaces
+2) The three or four different spaces
 
 This is a central concept of the book, and needs to be discussed and
 defined.
+
+The annotated instance has the "rc-view" build-in.
+
+Now the "rn-view" yields the same type of matrix,
+a 9x9 matrix, where every entry is a partitioning of {1,...,9}
+However the interpretation is different: For example if we call
+the matrix M, which is the cn-view of the annotated instance A,
+and we have M_{1,1} = ({1,2,5},{3,4,6,7,8,9}), then this means
+that the possible columns for number 1 and row 1 are 1,2,5,
+while the other columns have been excluded.
+This is equivalent to that e.g. A_{1,1} we have 1 included,
+in A_{1,2} we have 1 included, in A_{1,3} we have 1 excluded, and so on.
+
+A and M contain the same information, only viewed differently!
+RN_{1,1} = ({1,2,5},{3,4,6,7,8,9}).
+
+There should be a fully explained example, fully filled out, with
+the three matrices.
+
+There is now a fourth "dimension", the block-view:
+Blocks are numbered 1-9 (top to bottom, left to right),
+and the cells inside a block are also numbers 1-9.
+So now r resp. c can be replaced by "b" (for block).
+This yields a fourth view, the "bn" view.
+
+So the example should have actually 4 matrices.
+
+Regarding notations: perhaps "RN" instead of "M".
+So we would have A=RC, RN, CN.
+That is, we would have three matrices, and above we write
+
+Inside the four views, what does it mean to speak of "rows" and "columns"?
+Of "numbers"?? Of "boxes"???
 
 
 3) Annotated Sudoku instances
@@ -50,3 +83,30 @@ a specific label is supplied for each entry. Otherwise use
 
 
 7) Standardisation of all notions and notations!
+
+
+8) Formulation of the rules:
+
+In general, a rule has as inputs certain annotated instances,
+and as output a transformed annotated instance, where at least
+one candidate became a non-candidate (and only such moves are
+allowed (no backtracking), and every such move is correct).
+
+
+9) Naked single
+
+Exists in four forms.
+Is just a "clean-up" rule.
+
+Let's say a cell is "fixed", if only one candidate is left.
+Now for a fixed cell, all the other cells in the row, column, and box
+must have that number excluded.
+
+Now it seems that this rule can be applied for all the four views!?
+Here the above rule would take "cell", "row", "column", "number", "box"
+just for the *matrix*, independent of the view.
+
+The general question is about the "symmetry": Can we just formulate
+the rules abstractly for annotated instances, as matrices, and then
+apply these rules without modification of the four views?!?
+Compare Chapter 1 in the book.
