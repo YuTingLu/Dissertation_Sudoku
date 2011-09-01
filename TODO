@@ -47,3 +47,6 @@ However, no highlighting by colour (this is a usage-nightmare)!
 \begin{description}\end{description} is only to be used in case
 a specific label is supplied for each entry. Otherwise use
 "itemize" or "enumerate".
+
+
+7) Standardisation of all notions and notations!
