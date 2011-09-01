@@ -149,10 +149,11 @@ A Sudoku problem which has the format like the matrix below is called a  ``puzzl
 
 In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
 
-\begin{table}
+\begin{table}[h!]
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
+  \begin{center}
   \begin{tabular}{ | r| r| r | }
   \hline
   {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \hline
@@ -160,41 +161,45 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
   \hline
   \end{tabular}
+  \end{center}
   \caption{Example for Blocks}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
   \centering
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
+  \begin{center}
   \begin{tabular}{ | r| r| r | r| r| r| r| r| r| }
   \hline
   {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
   \hline
   \end{tabular}
+  \end{center}
   \caption{Example for Columns}
 \end{table}
 
-\begin{table}
+\begin{table}[h!]
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
-
-\begin{tabular}{ | r| }
-\hline
-  {\cell {}{}{}{}{}6{}{}9} \\ \hline
-  {\cell {}{}{}{}{}6{}8{}}\\ \hline
-   1 \\ \hline
-  {\cell {}2{}{}56{}8{}} \\ \hline
-  {\cell {}2{}{}5{}789} \\ \hline
-  3 \\  \hline
-  {\cell {}{}{}{}5{}7{}9} \\ \hline
-  4 \\ \hline
- {\cell {}{}{}{}{}6{}{}9} \\
-\hline
-\end{tabular}
-\caption{Example for Rows}
+  \begin{center}
+  \begin{tabular}{ | r| }
+  \hline
+    {\cell {}{}{}{}{}6{}{}9} \\ \hline
+    {\cell {}{}{}{}{}6{}8{}}\\ \hline
+    1 \\ \hline
+    {\cell {}2{}{}56{}8{}} \\ \hline
+    {\cell {}2{}{}5{}789} \\ \hline
+    3 \\  \hline
+    {\cell {}{}{}{}5{}7{}9} \\ \hline
+    4 \\ \hline
+   {\cell {}{}{}{}{}6{}{}9} \\
+  \hline
+  \end{tabular}
+  \end{center}
+  \caption{Example for Rows}
 \end{table}
 
 
