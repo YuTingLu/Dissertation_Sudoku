@@ -109,9 +109,7 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 \> Apply rule on selected matching pattern \\
 End loop\\
 \end{tabbing}
-All the cells of Sudoku puzzle could be re-permutated in sequence to form an extended Sudoku board with the original one.
-
-New representations of a puzzle :
+All the cells of Sudoku puzzle could be re-permutated in sequence to form an extended Sudoku board with the original one. New representations of a puzzle:
 \begin{description}
   \item number n is in rc-cell (r, c),
   \item column c is in rn-cell (r, n),
@@ -119,11 +117,7 @@ New representations of a puzzle :
   \item square s is in bn-cell (b, n) - where (r, c) = [b, s].
 \end{description}
 
-example:
-
-could be re-permutated to get an extended one.
-
-\cite{Berthier2007Sudoku} XXX
+\cite{Berthier2007Sudoku} The Hidden Logic of Sudoku
 
 
 
@@ -146,9 +140,10 @@ A Sudoku problem which has the format like the matrix below is called a  ``puzzl
    |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
    |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-
 In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
-
+\begin{figure}
+  \centering
+  \subfigure
 \begin{table}[h!]
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
@@ -164,7 +159,7 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \end{center}
   \caption{Example for Blocks}
 \end{table}
-
+  \subfloat
 \begin{table}[h!]
   \centering
   \setlength{\tabcolsep}{2.5pt}
@@ -179,7 +174,7 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \end{center}
   \caption{Example for Columns}
 \end{table}
-
+  \subfloat
 \begin{table}[h!]
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.6}
@@ -201,8 +196,7 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \end{center}
   \caption{Example for Rows}
 \end{table}
-
-
+\end{figure}
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
 \begin{description}
   \item row will be abbreviate to r or row.
@@ -228,7 +222,6 @@ As same, when a certain value has to insert to cell, update has to be done simul
 \end{description}
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
-
 Notations relating to a specific instance: XXX explaining sub-matrices XXX
 
 
