@@ -30,3 +30,9 @@ Obviously, the concerned cells etc. in examples must be precisely stated
 in the caption! Additionally, one could also boldface them.
 However, no highlighting by colour (this is a usage-nightmare)!
 
+
+6) Misuse of environment "description"
+
+\begin{description}\end{description} is only to be used in case
+a specific label is supplied for each entry. Otherwise use
+"itemize" or "enumerate".
