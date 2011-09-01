@@ -208,28 +208,28 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
 
 
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
-\begin{description}
+\begin{enumerate}
   \item r or row will be the abbreviation for row,
   \item c or col will be the abbreviation for column,
   \item b or blk will be the abbreviation for block.
-\end{description}
+\end{enumerate}
 when the candidate must be eliminated after rules applied, then this specific candidate must remove simultaneously from three representations.
-\begin{description}
+\begin{enumerate}
   \item eliminate n from rc-cell (r, c) in the standard rc-representation,
   \item eliminate c from rn-cell (r, n) in the rn-representation,
   \item eliminate r from cn-cell (c, n) in the cn-representation;
-\end{description}
+\end{enumerate}
 As same, when a certain value has to insert to cell, update has to be done simultaneously in all three representations.
-\begin{description}
+\begin{enumerate}
   \item insert n as the value of rc-cell (r, c) in the standard rc-representation,
   \item insert c as the value of rn-cell (r, n) in the rn-representation,
   \item insert r as the value of cn-cell (c, n) in the cn-representation.
-\end{description}
-\begin{description}
+\end{enumerate}
+\begin{enumerate}
   \item $\forall r\ means\ "for\ all\ row\ r",$
   \item $\forall c\ means\ "for\ all\ column\ c",$
   \item $\exists n\ always\ means\ "there\ exists\ a\ number\ n".$
-\end{description}
+\end{enumerate}
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
 Notations relating to a specific instance: XXX explaining sub-matrices XXX
@@ -469,10 +469,10 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
 
 In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ whom are consecutive in opposite angle. To apply X-Wing on, there are only one solution will be the correct choice between two mutually exclusive possibilities for candidate 6 to fit in, either has candidate 6 to be filled in 
-\begin{description}
+\begin{enumerate}
   \item $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
   \item or in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
-\end{description}
+\end{enumerate}
 If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate number 4, 6, and 9 in any cells which in the same row or same column as $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$.
 
 \begin{figure}
@@ -508,12 +508,12 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 \section{Swordfish}
 \label{sec:Swordfish}
 Swordfish is similar approach which extended from X-wing technique, but has really rare opportunity to be applied on. The concept is like the X-Wing, a value in one position will forced the other in the same row or same column not to have the same value filled in. Will have two possibilities could be fulfilled eventually. Nevertheless, at the moment, could only help on making decision to eliminate candidates in other cells in the same columns and rows. It is used, when there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
-\begin{description}
+\begin{enumerate}
   \item $r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,$
   \item $r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,$
   \item $r_{3}\ has\ c_{3}\ and\ c_{1}\ among\ its\ candidates,$
   \item $and\ non\ of\ r_{1},\ r_{2}\, and\ r_{3}\ has\ other\ candidates\ in\ c_{1},\ c_{2},\ and\ c_{3}.$
-\end{description}
+\end{enumerate}
 All the candidates for specific number n are occurred in only three specific columns, thus, all candidates for number n which not in these three columns could be eliminated immediately. Each defined rows could have two or three candidates for specific number n.\\
 The formula of swordfish is
 \[ \forall n \forall 3 \neq r_{1} r_{2} r_{3}\ \forall 3 \neq c_{1} c_{2} c_{3}\]
