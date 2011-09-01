@@ -109,19 +109,18 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 \> Apply rule on selected matching pattern \\
 End loop\\
 \end{tabbing}
+
 All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one.
 
-New representations of a puzzle :
+New representations of a puzzle:
 \begin{enumerate}
-  \item number n is in rc-cell (r, c),
-  \item column c is in rn-cell (r, n),
-  \item row r is in cn-cell (c, n),
-  \item square s is in bn-cell (b, n) - where (r, c) = [b, s].
+\item number n is in rc-cell (r, c),
+\item column c is in rn-cell (r, n),
+\item row r is in cn-cell (c, n),
+\item square s is in bn-cell (b, n) - where (r, c) = [b, s].
 \end{enumerate}
 
-example:
-
-could be re-permuted to get an extended one.
+example: XXX could be re-permuted to get an extended one.
 
 \cite{Berthier2007Sudoku} XXX
 
@@ -131,8 +130,66 @@ could be re-permuted to get an extended one.
 
 \section{Basic notions and notations}
 \label{sec:basicnotnotat}
+
 To begin introducing the techniques for solving Sudoku, there are few basic notions that have to be defined and declared.
 A Sudoku problem which has the format like the matrix below is called a  ``puzzle'' here.
+
+In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
+
+\begin{table}
+  \setlength{\tabcolsep}{2.5pt}
+  \renewcommand{\arraystretch}{1.6}
+  \hspace{1em}
+  \begin{center}
+  \begin{tabular}{|c| c| c| c| }
+  \hline
+   & $c_{1}$ & $c_{2}$ & $c_{3}$ \\ \hline
+  $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \hline
+  $r_{2}$ & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 \\ \hline
+  $r_{3}$ & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
+  \hline
+  \end{tabular}
+  \end{center}
+  \caption{Example for Blocks}
+\end{table}
+
+\begin{table}
+  \centering
+  \setlength{\tabcolsep}{2.5pt}
+  \renewcommand{\arraystretch}{1.6}
+  \hspace{1em}
+  \begin{center}
+  \begin{tabular}{ | c| c| c| c| c| c| c| c| c| }
+  \hline
+  $c_{1}$ & $c_{2}$ & $c_{3}$ & $c_{4}$ & $c_{5}$ & $c_{6}$ & $c_{7}$ & $c_{8}$ & $c_{9}$ \\ \hline
+  {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
+  \hline
+  \end{tabular}
+  \end{center}
+  \caption{Example for Columns}
+\end{table}
+
+\begin{table}
+  \setlength{\tabcolsep}{2.5pt}
+  \renewcommand{\arraystretch}{1.6}
+  \hspace{1em}
+  \begin{center}
+  \begin{tabular}{ | c| c| }
+  \hline
+   $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} \\ \hline
+   $r_{2}$ & {\cell {}{}{}{}{}6{}8{}}\\ \hline
+   $r_{3}$ & 1 \\ \hline
+   $r_{4}$ & {\cell {}2{}{}56{}8{}} \\ \hline
+   $r_{5}$ & {\cell {}2{}{}5{}789} \\ \hline
+   $r_{6}$ & 3 \\  \hline
+   $r_{7}$ & {\cell {}{}{}{}5{}7{}9} \\ \hline
+   $r_{8}$ &  4 \\ \hline
+   $r_{9}$ & {\cell {}{}{}{}{}6{}{}9} \\
+  \hline
+  \end{tabular}
+  \end{center}
+  \caption{Example for Rows}
+\end{table}
 
 \begin{figure}
 \begin{sudoku}
@@ -149,82 +206,32 @@ A Sudoku problem which has the format like the matrix below is called a  ``puzzl
 \label{p48}
 \end{figure}
 
-In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
-
-\begin{table}
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
-  \begin{tabular}{ | r| r| r | }
-  \hline
-  {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \hline
-  {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 \\ \hline
-  {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-  \hline
-  \end{tabular}
-  \caption{Example for Blocks}
-\end{table}
-
-\begin{table}
-  \centering
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
-  \begin{tabular}{ | r| r| r | r| r| r| r| r| r| }
-  \hline
-  {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-  \hline
-  \end{tabular}
-  \caption{Example for Columns}
-\end{table}
-
-\begin{table}
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
-
-\begin{tabular}{ | r| }
-\hline
-  {\cell {}{}{}{}{}6{}{}9} \\ \hline
-  {\cell {}{}{}{}{}6{}8{}}\\ \hline
-   1 \\ \hline
-  {\cell {}2{}{}56{}8{}} \\ \hline
-  {\cell {}2{}{}5{}789} \\ \hline
-  3 \\  \hline
-  {\cell {}{}{}{}5{}7{}9} \\ \hline
-  4 \\ \hline
- {\cell {}{}{}{}{}6{}{}9} \\
-\hline
-\end{tabular}
-\caption{Example for Rows}
-\end{table}
-
 
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
-\begin{enumerate}
-  \item row will be abbreviate to r or row.
-  \item column will be abbreviate to c or col.
-  \item block will be abbreviate to b, or blk.
-\end{enumerate}
-
+\begin{description}
+  \item r or row will be the abbreviation for row,
+  \item c or col will be the abbreviation for column,
+  \item b or blk will be the abbreviation for block.
+\end{description}
 when the candidate must be eliminated after rules applied, then this specific candidate must remove simultaneously from three representations.
-\begin{enumerate}
+\begin{description}
   \item eliminate n from rc-cell (r, c) in the standard rc-representation,
   \item eliminate c from rn-cell (r, n) in the rn-representation,
   \item eliminate r from cn-cell (c, n) in the cn-representation;
-\end{enumerate}
+\end{description}
 As same, when a certain value has to insert to cell, update has to be done simultaneously in all three representations.
-\begin{enumerate}
+\begin{description}
   \item insert n as the value of rc-cell (r, c) in the standard rc-representation,
   \item insert c as the value of rn-cell (r, n) in the rn-representation,
   \item insert r as the value of cn-cell (c, n) in the cn-representation.
-\end{enumerate}
-\[ \forall r\ means\ "for\ all\ row\ r",\]
-\[ \forall c\ means\ "for\ all\ column\ c",\]
-\[ \exists n\ always\ means\ "there\ exists\ a\ number\ n".\]
+\end{description}
+\begin{description}
+  \item $\forall r\ means\ "for\ all\ row\ r",$
+  \item $\forall c\ means\ "for\ all\ column\ c",$
+  \item $\exists n\ always\ means\ "there\ exists\ a\ number\ n".$
+\end{description}
 
 XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
-
 Notations relating to a specific instance: XXX explaining sub-matrices XXX
 
 
@@ -248,7 +255,7 @@ Naked single and hidden single are the basic methods of Candidates Elimination T
 \section{Naked Single}
 \label{sec:Naked Single}
 
-Naked single is the easiest method that could be used to play sudoku puzzle. The situation to apply naked single is, firstly, find out all the possible candidates and pencilmark the possible candidates in all the possible cells. After the work is done for all the cells. Look into the puzzle, find if there are any cells has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
+Naked single is the easiest method that could be used to play sudoku puzzle. The situation to apply naked single is, firstly, find out all the possible candidates and pencilmark the possible candidates in all the possible cells. After the work is done for all the cells. Look into the puzzle to find if there is any cell has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
 
 The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candidate(n, r, c) => value(n, r, c)\}\]
 
