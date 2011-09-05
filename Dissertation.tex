@@ -5,6 +5,7 @@
 \usepackage{sudoku}
 \usepackage{amsmath}
 \usepackage{colortbl}
+\usepackage{multirow}
 
 \newcommand{\cell}[9]{%
   \scriptsize
@@ -73,7 +74,8 @@ An example:
  | |7| | | | | | |3|.
  |9| |3| | | |6| |4|.
 \end{sudoku}
-\caption{Sudoku Problem}
+\label{sudokuEx}
+\caption{An Example for Sudoku Problem}
 \end{figure}
 
 \begin{figure}
@@ -88,7 +90,7 @@ An example:
   |5|7|6|1|4|2|8|9|3|.
   |9|2|3|5|8|7|6|1|4|.
 \end{sudoku}
-\caption{Sudoku Solution}
+\caption{The Solution for Sudoku Exmple: Figure \ref{sudokuEx}}
 \end{figure}
 
 
@@ -111,8 +113,25 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 
-All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one.
+All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. A Sudoku instance is generally in row-column view, which has $N$ row(s) $\times$ $N$ column(s) cell(s) in the instance, and the $N \times N$ cells separate into $N$ blocks which order in sequence is 
 
+\begin{table}
+\centering
+\begin{tabular}{ c| c c c| c c c| c c c|}
+  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
+   $r_{1}$ & & & & & & & & &\\
+   $\vdots$ & & $b_{1}$ & & & $b_{2}$ & & & $b_{3}$ &\\
+   $\vdots$ & & & & & & & & &\\ \cline{2-10}
+   $\vdots$ & & & & & & & & &\\
+   $\vdots$ & & $\dots$ & & & $\dots$ & & & $\dots$ &\\
+   $\vdots$ & & & & & & & & &\\ \cline{2-10}
+   $\vdots$ & & & & & & & & &\\
+   $\vdots$ & & $b_{n-2}$ & & & $b_{n-1}$ & & & $b_{n}$ &\\
+   $r_{n}$ & & & & & & & & &\\ \cline{2-10}
+\end{tabular}
+\caption{An Example to show relationship between rows, columns, and blocks.}
+\end{table}
+  
 New representations of a puzzle:
 \begin{itemize}
 \item number n is in rc-cell (r, c),
