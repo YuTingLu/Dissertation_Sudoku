@@ -113,7 +113,7 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 
-All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. A Sudoku instance is generally in row-column view, which has $N$ row(s) $\times$ $N$ column(s) cell(s) in the instance, and the $N \times N$ cells separate into $N$ blocks which order in sequence is 
+All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (row(s) $\times$ column(s)) cell(s) in the instance. Every single cell has its own coordinate which has formated as $(x, y)$. In row-column view here x-coordinate means $row$, and so y-coordinate means $column$. Thus the location of the cell could be represented as (r, c). In addition, all the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Each block here consists $N = n \times n$ cells, so block $b_{1}$ is defined to be composed of $n \times n$ cells. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$) .
 
 \begin{table}
 \centering
@@ -129,6 +129,7 @@ All the cells of Sudoku puzzle could be re-permuted in sequence to form an exten
    $\vdots$ & & $b_{n-2}$ & & & $b_{n-1}$ & & & $b_{n}$ &\\
    $r_{n}$ & & & & & & & & &\\ \cline{2-10}
 \end{tabular}
+\label{blockOrder}
 \caption{An Example to show relationship between rows, columns, and blocks.}
 \end{table}
   
