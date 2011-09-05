@@ -113,7 +113,7 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 
-All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (row(s) $\times$ column(s)) cell(s) in the instance. Every single cell has its own coordinate which has formated as $(x, y)$. In row-column view here x-coordinate means $row$, and so y-coordinate means $column$. Thus the location of the cell could be represented as (r, c). In addition, all the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Each block here consists $N = n \times n$ cells, so block $b_{1}$ is defined to be composed of $n \times n$ cells. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$) .
+All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (row(s) $\times$ column(s)) cell(s) in the instance. Every single cell has its own coordinate which has formated as $(x, y)$. In row-column view here x-coordinate means $row$, and so y-coordinate means $column$. Thus the location of the cell could be represented as (r, c). In addition, all the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Every block consists $N = n \times n$ cells, the cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are indicated to the specific cell of a block. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$) .
 
 \begin{table}
 \centering
@@ -132,7 +132,25 @@ All the cells of Sudoku puzzle could be re-permuted in sequence to form an exten
 \label{blockOrder}
 \caption{An Example to show relationship between rows, columns, and blocks.}
 \end{table}
-  
+
+\begin{table}
+\centering
+\begin{tabular}{ c| c c c| c c c| c c c|}
+  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
+   $r_{1}$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+\end{tabular}
+\label{Square}
+\caption{Squares in the blocks.}
+\end{table}
+
 New representations of a puzzle:
 \begin{itemize}
 \item number n is in rc-cell (r, c),
@@ -158,17 +176,14 @@ A Sudoku problem which has the format like the matrix below is called a  ``puzzl
 In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which is highlighted by the bold lines, and has $N (n \times n)$ sub-matrix (called ``cells'') in each block. Every cell has 9 possibilities could have candidate (or digit) $\{1, \dots, N\}$ filled in. As the figure shown above, users could have all the possibilities pencil-mark as same as the figure does to begin with techniques apply. To put in short, every block has $N$ cells in it, and there are $N$ blocks consisted in a puzzle. In the puzzle, there are totally $N \times N$ cells equally separate into $N$ blocks, columns(vertically), and rows (horizontally).
 
 \begin{table}
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
+  \setlength{\tabcolsep}{2pt}
+  \renewcommand{\arraystretch}{2}
   \begin{center}
-  \begin{tabular}{|c| c| c| c| }
-  \hline
-   & $c_{1}$ & $c_{2}$ & $c_{3}$ \\ \hline
-  $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \hline
-  $r_{2}$ & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 \\ \hline
-  $r_{3}$ & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-  \hline
+  \begin{tabular}{c| c| c| c| }
+  \multicolumn{1}{c}{} & \multicolumn{1}{c}{$c_{1}$} &  \multicolumn{1}{c}{$c_{2}$}  &  \multicolumn{1}{c}{$c_{3}$}  \\ \cline{2-4}
+  $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 \\ \cline{2-4}
+  $r_{2}$ & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 \\ \cline{2-4}
+  $r_{3}$ & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-4}
   \end{tabular}
   \end{center}
   \caption{Example for Blocks}
@@ -176,38 +191,32 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
 
 \begin{table}
   \centering
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{2}
   \begin{center}
-  \begin{tabular}{| c| c| c| c| c| c| c| c| c| c| }
-  \hline
-  & $c_{1}$ & $c_{2}$ & $c_{3}$ & $c_{4}$ & $c_{5}$ & $c_{6}$ & $c_{7}$ & $c_{8}$ & $c_{9}$ \\ \hline
-  $r_{n}$ & {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-  \hline
+  \begin{tabular}{ c| c| c| c| c| c| c| c| c| c| }
+   \multicolumn{1}{c}{} &  \multicolumn{1}{c}{$c_{1}$}  &  \multicolumn{1}{c}{ $c_{2}$} &  \multicolumn{1}{c}{ $c_{3}$} &  \multicolumn{1}{c}{$c_{4}$}  &  \multicolumn{1}{c}{$c_{5}$}  & \multicolumn{1}{c}{$c_{6}$}  &  \multicolumn{1}{c}{ $c_{7}$} &  \multicolumn{1}{c}{$c_{8}$}  &  \multicolumn{1}{c}{$c_{9}$}  \\ \cline{2-10}
+  $r_{n}$ & {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-10}
   \end{tabular}
   \end{center}
   \caption{Example for Columns}
 \end{table}
 
 \begin{table}
-  \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.6}
-  \hspace{1em}
+  \setlength{\tabcolsep}{2pt}
+  \renewcommand{\arraystretch}{2}
   \begin{center}
-  \begin{tabular}{ | c| c| }
-  \hline
-   & $c_{n}$ \\ \hline
-   $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} \\ \hline
-   $r_{2}$ & {\cell {}{}{}{}{}6{}8{}}\\ \hline
-   $r_{3}$ & 1 \\ \hline
-   $r_{4}$ & {\cell {}2{}{}56{}8{}} \\ \hline
-   $r_{5}$ & {\cell {}2{}{}5{}789} \\ \hline
-   $r_{6}$ & 3 \\  \hline
-   $r_{7}$ & {\cell {}{}{}{}5{}7{}9} \\ \hline
-   $r_{8}$ &  4 \\ \hline
-   $r_{9}$ & {\cell {}{}{}{}{}6{}{}9} \\
-  \hline
+  \begin{tabular}{ c| c| }
+    \multicolumn{1}{c}{} &  \multicolumn{1}{c}{ $c_{n}$} \\ \cline{2-2}
+   $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-2}
+   $r_{2}$ & {\cell {}{}{}{}{}6{}8{}}\\ \cline{2-2}
+   $r_{3}$ & 1 \\ \cline{2-2}
+   $r_{4}$ & {\cell {}2{}{}56{}8{}} \\ \cline{2-2}
+   $r_{5}$ & {\cell {}2{}{}5{}789} \\ \cline{2-2}
+   $r_{6}$ & 3 \\  \cline{2-2}
+   $r_{7}$ & {\cell {}{}{}{}5{}7{}9} \\ \cline{2-2}
+   $r_{8}$ &  4 \\ \cline{2-2}
+   $r_{9}$ & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-2}
   \end{tabular}
   \end{center}
   \caption{Example for Rows}
