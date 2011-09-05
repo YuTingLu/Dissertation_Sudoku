@@ -160,10 +160,10 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \renewcommand{\arraystretch}{1.6}
   \hspace{1em}
   \begin{center}
-  \begin{tabular}{ | c| c| c| c| c| c| c| c| c| }
+  \begin{tabular}{| c| c| c| c| c| c| c| c| c| c| }
   \hline
-  $c_{1}$ & $c_{2}$ & $c_{3}$ & $c_{4}$ & $c_{5}$ & $c_{6}$ & $c_{7}$ & $c_{8}$ & $c_{9}$ \\ \hline
-  {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
+  & $c_{1}$ & $c_{2}$ & $c_{3}$ & $c_{4}$ & $c_{5}$ & $c_{6}$ & $c_{7}$ & $c_{8}$ & $c_{9}$ \\ \hline
+  $r_{n}$ & {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
   \hline
   \end{tabular}
   \end{center}
@@ -177,6 +177,7 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
   \begin{center}
   \begin{tabular}{ | c| c| }
   \hline
+   & $c_{n}$ \\ \hline
    $r_{1}$ & {\cell {}{}{}{}{}6{}{}9} \\ \hline
    $r_{2}$ & {\cell {}{}{}{}{}6{}8{}}\\ \hline
    $r_{3}$ & 1 \\ \hline
