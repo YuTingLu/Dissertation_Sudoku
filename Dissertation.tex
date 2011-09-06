@@ -113,44 +113,6 @@ Loop Until \= a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 
-All the cells of Sudoku puzzle could be re-permuted in sequence to form an extended Sudoku board with the original one. In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (row(s) $\times$ column(s)) cell(s) in the instance. Every single cell has its own coordinate which has formated as $(x, y)$. In row-column view here x-coordinate means $row$, and so y-coordinate means $column$. Thus the location of the cell could be represented as (r, c). In addition, all the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Every block consists $N = n \times n$ cells, the cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are indicated to the specific cell of a block. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. [b, s] indicates the corresponding location for (r, c).
-
-\begin{table}
-\centering
-\begin{tabular}{ c| c c c| c c c| c c c|}
-  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
-   $r_{1}$ & & & & & & & & &\\
-   $\vdots$ & & $b_{1}$ & & & $b_{2}$ & & & $b_{3}$ &\\
-   $\vdots$ & & & & & & & & &\\ \cline{2-10}
-   $\vdots$ & & & & & & & & &\\
-   $\vdots$ & & $\dots$ & & & $\dots$ & & & $\dots$ &\\
-   $\vdots$ & & & & & & & & &\\ \cline{2-10}
-   $\vdots$ & & & & & & & & &\\
-   $\vdots$ & & $b_{n-2}$ & & & $b_{n-1}$ & & & $b_{n}$ &\\
-   $r_{n}$ & & & & & & & & &\\ \cline{2-10}
-\end{tabular}
-\label{blockOrder}
-\caption{An Example to show relationship between rows, columns, and blocks.}
-\end{table}
-
-\begin{table}
-\centering
-\begin{tabular}{ c| c c c| c c c| c c c|}
-  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
-   $r_{1}$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-\end{tabular}
-\label{Square}
-\caption{Squares in the blocks.}
-\end{table}
-
 New representations of a puzzle:
 \begin{itemize}
 \item number n is in rc-cell (r, c),
@@ -234,9 +196,53 @@ In Sudoku, each puzzle is divided into $N$ portions (called  ``blocks'') which i
    |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
    |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
+\label{rcExample}
 \caption{Example puzzle in rc-view which is the general instance.}
 \end{figure}
 
+\subsection{Different  perspectives}
+
+In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (number of rows $\times$ number of columns) cell(s) in an instance. Every cell has its own coordinate which formats to $(r,\ c)$. Within row-column view, coordinate r means $row$, and so coordinate c means $column$. Thus, the coordinate to locate the cell will be represented as $(r,\ c)$ in the article. Nevertheless, to represent the possible candidates for a specific cell which will be represented as $(r,\  c) = (possible\ candidates,\ impossible\ candidates)$. Number of $N$ is always the sum of number of both possible and impossible candidates and the candidates in both possible ad impossible can not be apart from numbers ${1 \dots 9}$ and can not have any candidate repeated. For example, assume $N$ here is $9$, to show the candidates for cell $(r_{3},\ c_{4})$ in Figure \ref{rcExample} is  $(r_{3},\ c_{4}) = ((1, 6, 8, 9), (2, 3, 4, 5, 7))$, which means in this cell, candidates 2, 3,4, 5, 7 are already excluded from possible candidates, the 4 candidates left are the possibilities. To have another example in the same figure, $(r_{1},\ c_{6}) = ((8), (1, 2, 3, 4, 5, 6, 7, 9))$, which means 8 is the only candidate for cell $(r_{1},\ c_{6})$, once the candidate for this cell has been confirmed and filled out, then the equation will be updated to $(r_{1},\ c_{6}) = 8$ like the cell $(r_{2},\ c_{4})$ which has an equation $(r_{2},\ c_{4}) = 5$. Notice that the candidates in the cell are the values for cell in row-column view.
+
+Aside from the row-column instance, there are also different perspectives such like row-number view, column-number view, and  block-number view which can be formed by re-permuting an general sudoku instance. As introduced, a row-column view is consist of two elements which are row and column based, from this knowing, the elements to make up row-number view are row and number, and so as column-number view and block-number view.
+
+In addition, all the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Every block consists $N = n \times n$ cells, the cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are indicated to the specific cell of a block. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. [b, s] indicates the corresponding location for (r, c).
+
+\begin{table}
+\centering
+\begin{tabular}{ c| c c c| c c c| c c c|}
+  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
+   $r_{1}$ & & & & & & & & &\\
+   $\vdots$ & & $b_{1}$ & & & $b_{2}$ & & & $b_{3}$ &\\
+   $\vdots$ & & & & & & & & &\\ \cline{2-10}
+   $\vdots$ & & & & & & & & &\\
+   $\vdots$ & & $\dots$ & & & $\dots$ & & & $\dots$ &\\
+   $\vdots$ & & & & & & & & &\\ \cline{2-10}
+   $\vdots$ & & & & & & & & &\\
+   $\vdots$ & & $b_{n-2}$ & & & $b_{n-1}$ & & & $b_{n}$ &\\
+   $r_{n}$ & & & & & & & & &\\ \cline{2-10}
+\end{tabular}
+\label{blockOrder}
+\caption{An Example to show relationship between rows, columns, and blocks.}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{ c| c c c| c c c| c c c|}
+  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
+   $r_{1}$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+\end{tabular}
+\label{Square}
+\caption{Squares in the blocks.}
+\end{table}
 XXX In rn-view, the value in the cell is the possible number XXX
 \begin{figure}
 \begin{sudoku}
