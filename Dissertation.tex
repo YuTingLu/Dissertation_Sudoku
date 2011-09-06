@@ -134,9 +134,9 @@ example: XXX could be re-permuted to get an extended one.
 
 Before introducing the techniques for solving Sudoku, there are few basic notions that have to be defined at first. A Sudoku problem, is an instance which has a format looks like a matrix that made of three different kind of units, $N$ horizontal lines (called ``row''), $N$ vertical lines (called ``columns'') and also $N$ portions which has exactly square shape(called ``blocks''). For convenience, we call this instance ``puzzle'' in the article. Blocks are highlighted by the bold lines to have a clear view in the puzzle , and each block has $N (n \times n)$ sub-matrix (called ``cells'') in each. Every cell has $N$ possible digits(called ``candidates'') $\{1, \dots, N\}$ to be filled into the cell. To put in short, a puzzle consist of $N$ rows, columns and $N$ cells in every blocks. All the cells have $N$ candidates awaiting to be excluded or already been found.
 
-The way how the puzzle sequencing its three different units and the cells is basic on two principles, left to right from top to the bottom. In the puzzle, rows are counted from ${1 \dots 9}$ and sequenced from top to the bottom in the puzzle. Columns do another way round, which are sequenced from the left to the right. Blocks are a bit complicated, which use both two principles, ${1 \dots 3}$ at the top, ${4 \dots 6}$ at the medium and ${7 \dots 9}$ at the bottom, and all ordered from the left to the right. Thus, the coordinate representation for a cell is $(r_{n}, c_{n})$. The way how the cells order is like what blocks do.  
+The way how the puzzle sequencing its three different units and the cells is basic on two principles, left to right from top to the bottom. In the puzzle, rows are counted from ${1 \dots 9}$ and sequenced from top to the bottom in the puzzle. Columns do another way round, which are sequenced from the left to the right. Blocks are a bit complicated, which use both two principles, ${1 \dots 3}$ at the top, ${4 \dots 6}$ at the medium and ${7 \dots 9}$ at the bottom, and all ordered from the left to the right. Thus, the coordinate representation for a cell is $(r_{n}, c_{n})$. The way how the cells order is like what blocks do.
 
-XXX First of all, there is a must-do task that helps any techniques application called {``pencil-mark''}to be done first of all according the puzzle already had. XXX
+To begin the technique, there is a must-do task that helps any techniques application called {``pencil-mark''} to be done first of all according the puzzle already had.
 
 \begin{table}
 \setlength{\tabcolsep}{2pt}
@@ -559,12 +559,14 @@ Basically, it is evolved from hidden single and hidden pair. The definition is 3
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.6}
 \hspace{1em}
+\begin{center}
 \begin{tabular}{ | r| r| r| r| r| r| r| r| r | }
 \hline
 \label{hiddentriplet}
 {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 &{\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
 \hline
 \end{tabular}
+\end{center}
 \caption{Example in Hidden Triplet}
 \end{table}
 
