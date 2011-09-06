@@ -555,7 +555,8 @@ For instance, in the Figure {hiddenPair}. Candidates $n_{1}$ and $n_{7}$ in $(r_
 
 \section{Hidden Triplet}
 \label{sec:Hidden Triplet}
-Basically, it is evolved from hidden single and hidden pair. The definition is 3 possible candidates are restricting to 3 cells in a row, a column, or a block only.
+Basically, it is evolved from hidden single and hidden pair. The prerequisite is three of all the possible candidates in the cell are only happened in only three cells in one unit (either row, column, or block).
+
 \begin{table}
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.6}
@@ -563,14 +564,15 @@ Basically, it is evolved from hidden single and hidden pair. The definition is 3
 \begin{center}
 \begin{tabular}{ | r| r| r| r| r| r| r| r| r | }
 \hline
-\label{hiddentriplet}
 {\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 &{\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
 \hline
 \end{tabular}
 \end{center}
+\label{hiddentriplet}
 \caption{Example in Hidden Triplet}
 \end{table}
 
+In the Table \ref{hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
 
 \section{Hidden Quad}
 \label{sec:Hidden Quad}
