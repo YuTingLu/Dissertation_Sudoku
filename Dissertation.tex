@@ -138,8 +138,6 @@ The way how the puzzle sequencing its three different units and the cells is bas
 
 XXX First of all, there is a must-do task that helps any techniques application called  \textbf{``pencil-mark''}to be done first of all according the puzzle already had. XXX
 
-All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Every block consists $N = n \times n$ cells, the cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are indicated to the specific cell of a block. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. [b, s] indicates the corresponding location for (r, c).
-
 \begin{table}
   \setlength{\tabcolsep}{2pt}
   \renewcommand{\arraystretch}{2}
@@ -204,24 +202,6 @@ All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) w
 \end{tabular}
 \label{blockOrder}
 \caption{An Example to show relationship between rows, columns, and blocks.}
-\end{table}
-
-\begin{table}
-\centering
-\begin{tabular}{ c| c c c| c c c| c c c|}
-  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
-   $r_{1}$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
-   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
-   $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
-\end{tabular}
-\label{Square}
-\caption{Squares in the blocks.}
 \end{table}
 
 \begin{figure}
@@ -294,6 +274,27 @@ Figure \ref{rnWhole} is the complete rn-view example after re-permutation from r
 \end{sudoku}
 \caption{Example puzzle in cn-view.}
 \end{figure}
+
+
+All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. Every block consists $N = n \times n$ cells, the cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are indicated to the specific cell of a block. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. [b, s] indicates the corresponding location for (r, c).
+
+\begin{table}
+\centering
+\begin{tabular}{ c| c c c| c c c| c c c|}
+  \multicolumn{1}{c}{} & $c_{1}$ &  $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$\dots$} & $\dots$ & $\dots$ & \multicolumn{1}{c}{$b_{n}$}\\ \cline{2-10}
+   $r_{1}$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $\vdots$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+   $\vdots$ & $s_{1}$ &  $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$ & $s_{1}$ & $s_{2}$ & $s_{3}$\\
+   $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ & $s_{5}$ & $s_{6}$\\
+   $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
+\end{tabular}
+\label{Square}
+\caption{Squares in the blocks.}
+\end{table}
 
 \begin{figure}
 \begin{sudoku}
