@@ -134,7 +134,7 @@ example: XXX could be re-permuted to get an extended one.
 
 Before introducing the techniques for solving Sudoku, there are few basic notions that have to be defined at first. A Sudoku problem, is an instance which has a format looks like a matrix that made of three different kind of units, $N$ horizontal lines (called \textbf{``row''}), $N$ vertical lines (called \textbf{``columns''}) and also $N$ portions which has exactly square shape(called  \textbf{``blocks''}). For convenience, we call this instance, \textbf{``puzzle''} in the article. Blocks are highlighted by the bold lines to have a clear view in the puzzle , and each block has $N (n \times n)$ sub-matrix (called \textbf{``cells''}) in each. Every cell has $N$ possible digits(called \textbf{``candidates''}) $\{1, \dots, N\}$ to be filled into the cell. To put in short, a puzzle consist of $N$ rows, columns and $N$ cells in every blocks. All the cells have $N$ candidates awaiting to be excluded or already been found.
 
-The way how the puzzle sequencing its three different units and the cells is basic on two principles, left to right from top to the bottom. In the puzzle, rows are counted from ${1 \dots 9}$ and sequenced from top to the bottom in the puzzle. Columns do another way round, which are sequenced from the left to the right. Blocks are a bit complicated, which use both two principles, ${1 \dots 3}$ at the top, ${4 \dots 6}$ at the medium and ${7 \dots 9}$ at the bottom, and all ordered from the left to the right.
+The way how the puzzle sequencing its three different units and the cells is basic on two principles, left to right from top to the bottom. In the puzzle, rows are counted from ${1 \dots 9}$ and sequenced from top to the bottom in the puzzle. Columns do another way round, which are sequenced from the left to the right. Blocks are a bit complicated, which use both two principles, ${1 \dots 3}$ at the top, ${4 \dots 6}$ at the medium and ${7 \dots 9}$ at the bottom, and all ordered from the left to the right. Thus, the coordinate representation for a cell is $(r_{n}, c_{n})$. The way how the cells order is like what blocks do.  
 
 XXX First of all, there is a must-do task that helps any techniques application called  \textbf{``pencil-mark''}to be done first of all according the puzzle already had. XXX
 
@@ -162,7 +162,7 @@ XXX First of all, there is a must-do task that helps any techniques application 
   $r_{n}$ & {\cell {}{}{}{}{}6{}{}9} & {\cell {}{}{}{}{}6{}8{}} & 1 & {\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-10}
   \end{tabular}
   \end{center}
-  \caption{Example for Columns}
+  \caption{Example for Column}
 \end{table}
 
 \begin{table}
@@ -182,9 +182,20 @@ XXX First of all, there is a must-do task that helps any techniques application 
    $r_{9}$ & {\cell {}{}{}{}{}6{}{}9} \\ \cline{2-2}
   \end{tabular}
   \end{center}
-  \caption{Example for Rows}
+  \caption{Example for Row}
 \end{table}
 
+\begin{table}
+  \setlength{\tabcolsep}{2pt}
+  \renewcommand{\arraystretch}{2}
+  \begin{center}
+  \begin{tabular}{c| c| }
+  \multicolumn{1}{c}{} & \multicolumn{1}{c}{$c_{1}$}\\ \cline{2-2}
+  $r_{1}$ & {\cell 123456789}\\ \cline{2-2}
+  \end{tabular}
+  \end{center}
+  \caption{Example for Cell}
+\end{table}
 
 \begin{table}
 \centering
@@ -203,6 +214,8 @@ XXX First of all, there is a must-do task that helps any techniques application 
 \label{blockOrder}
 \caption{An Example to show relationship between rows, columns, and blocks.}
 \end{table}
+
+
 
 \begin{figure}
 \begin{sudoku}
