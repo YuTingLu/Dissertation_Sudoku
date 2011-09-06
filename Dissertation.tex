@@ -531,7 +531,7 @@ Actually, this cell could be solved by using either hidden single or Cross-Hatch
 
 \section{Hidden Pair}
 \label{sec:Hidden Pair}
-The definition for Hidden Pair is, that 2 possible candidates are only restricted to 2 cells in a common row, a common column, or a common block. 
+The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in one unit (either row, column, or block). If the condition is hold, then all other candidates in these two cells could be excluded surely. 
 
 \begin{figure}
 \begin{sudoku}
@@ -546,10 +546,11 @@ The definition for Hidden Pair is, that 2 possible candidates are only restricte
 |5|7|{\cell 1{}3{}{}{}{}{}{}}|6|4|9|2|{\cell 1{}3{}{}{}{}8{}}|{\cell 1{}{}{}{}{}{}8{}}|.
 \end{sudoku}
 \label{hiddenpair}
+\label{hiddenPair}
 \caption{Example in Hidden Pair}
 \end{figure}
 
-For instance, the figure is given above. Candidates 1 and 7 which marked in yellow colour ??? are restricted to two cells only. To put it briefly, digit number 1 and 7 could only possibly be placed in these two cells only. So the possibilities of the rest (shaded in pink) in the cells will be crossed out.
+For instance, in the Figure {hiddenPair}. Candidates $n_{1}$ and $n_{7}$ in $(r_{2},\ c_{7})$ are restricted to these two cells only. Once the prerequisite is satisfied, then the all other cells who has either candidates $n_{1}$ and $n_{7}$ in the cell could have these candidates cross out from these two cells.
 
 
 \section{Hidden Triplet}
