@@ -93,7 +93,7 @@ An example:
   |5|7|6|1|4|2|8|9|3|.
   |9|2|3|5|8|7|6|1|4|.
 \end{sudoku}
-\caption{The solution for the Sudoku instance given in Figure \ref{sudokuEx}}
+\caption{The solution for the Sudoku problem given in Figure \ref{sudokuEx}}
 \label{fig:solutionsudokuEx}
 \end{figure}
 
@@ -146,15 +146,37 @@ First we define the concrete ``problems'' we want to tackle, for example Figure 
 
 A \textit{Sudoku instance} is an $N \times N$ matrix (that is, having $N$ rows (horizontal lines) and $N$ columns (vertical lines)). The entries of such a matrix are called \textit{cells} in this context. We use indices as usual for matrices; so for example the cell $(1,7)$ (first row, seventh column) in instance Figure \ref{sudokuEx} carries number $9$.
 
-There are two further conditions on a Sudoku instances:
+There are two further conditions on a Sudoku instance:
 \begin{enumerate}
 \item The cells are either \emph{empty} or one of $1, \dots, 9$.
-\item the instance has \emph{exactly one solution}.
+\item The instance has \emph{exactly one solution} (it is a ``proper'' instance).
 \end{enumerate}
 
-It remains to specify what a ``solution'' is. The solution for the instance Figure \ref{sudokuEx} is given in Figure \ref{fig:solutionsudokuEx}.
+It remains to specify what a ``solution'' is. The solution for the instance Figure \ref{sudokuEx} is given in Figure \ref{fig:solutionsudokuEx}. We see that a \textit{solution} is the same type of matrix, with the empty cells being filled in. More precisely:
+\begin{enumerate}
+\item Exactly the empty cells have been filled in, with numbers in $1,\dots,9$ (nothing else has been changed).
+\item In every row and in every column every number from $1,\dots,9$ occurs exactly once (that is, we have a \emph{Latin square}).
+\item In every ``block'' (or ``box'') also every number from $1,\dots,9$ occurs exactly once.
+\end{enumerate}
 
-$N$ portions which has exactly square shape(called ``blocks''). For convenience, we call this instance ``puzzle'' in the article. Blocks are highlighted by the bold lines to have a clear view in the puzzle , and each block has $N (n \times n)$ sub-matrix (called ``cells'') in each.
+The matrix is subdivided into $N$ \textit{blocks}, as indicated in Figures \ref{sudokuEx}, \ref{fig:solutionsudokuEx}. These blocks are numbered from $1$ to $9$, from top to bottom and left to right. Each block is itself a $n \times x$ matrix containing $n \cdot n = N$ cells; see Figure \ref{fig:exampleblock}.
+
+\begin{figure}
+\begin{sudoku}
+ | | | | | | | | | |.
+ | |{\LARGE 1}| | |{\LARGE 2}| | |{\LARGE 3}| |.
+ | | | | | | | | | |.
+ | | | | | | | | | |.
+ | |{\LARGE 4}| | |{\LARGE 5}| | |{\LARGE 6}| |.
+ | | | | | | | | | |.
+ | | | | | | | | | |.
+ | |{\LARGE 7}| | |{\LARGE 8}| | |{\LARGE 9}| |.
+ | | | | | | | | | |.
+\end{sudoku}
+\caption{The 9 blocks (``boxes'') in a Sudoku instance}
+\label{fig:exampleblock}
+\end{figure}
+
 
 
 \section{Annotated instances}
