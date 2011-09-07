@@ -77,7 +77,7 @@ An example:
  | |7| | | | | | |3|.
  |9| |3| | | |6| |4|.
 \end{sudoku}
-\caption{An Example for Sudoku Problem}
+\caption{An example for a Sudoku problem}
 \label{sudokuEx}
 \end{figure}
 
@@ -93,7 +93,8 @@ An example:
   |5|7|6|1|4|2|8|9|3|.
   |9|2|3|5|8|7|6|1|4|.
 \end{sudoku}
-\caption{The Solution for Sudoku Exmple: Figure \ref{sudokuEx}}
+\caption{The solution for the Sudoku instance given in Figure \ref{sudokuEx}}
+\label{fig:solutionsudokuEx}
 \end{figure}
 
 
@@ -132,10 +133,34 @@ example: XXX could be re-permuted to get an extended one.
 
 
 
-\section{Basic notions and notations}
-\label{sec:basicnotnotat}
+\chapter{Basic notions and notations}
+\label{cha:basicnotnotat}
 
-Before introducing the techniques for solving Sudoku, there are few basic notions that have to be defined at first. A Sudoku problem, is an instance which has a format looks like a matrix that made of three different kind of units, $N$ horizontal lines (called ``row''), $N$ vertical lines (called ``columns'') and also $N$ portions which has exactly square shape(called ``blocks''). For convenience, we call this instance ``puzzle'' in the article. Blocks are highlighted by the bold lines to have a clear view in the puzzle , and each block has $N (n \times n)$ sub-matrix (called ``cells'') in each. Every cell has $N$ possible digits(called ``candidates'') $\{1, \dots, N\}$ to be filled into the cell. To put in short, a puzzle consist of $N$ rows, columns and $N$ cells in every blocks. All the cells have $N$ candidates awaiting to be excluded or already been found.
+Before introducing the techniques for solving Sudoku, there are basic notions that have to be defined.
+
+First we define the concrete ``problems'' we want to tackle, for example Figure \ref{sudokuEx}. Actually, we prefer not to speak of ``problem'', since in computer science this typically means a ``general problem'' (like ``how to solve Sudokus''). We also do not want to talk about ``puzzle'', since this is a rather fuzzy term. But we use the standard terminology of computer science, which speaks about ``general problems'' and their ``instances''.
+
+
+\section{Sudoku instances and their solutions}
+\label{sec:Sudokuinstances}
+
+A \textit{Sudoku instance} is an $N \times N$ matrix (that is, having $N$ rows (horizontal lines) and $N$ columns (vertical lines)). The entries of such a matrix are called \textit{cells} in this context. We use indices as usual for matrices; so for example the cell $(1,7)$ (first row, seventh column) in instance Figure \ref{sudokuEx} carries number $9$.
+
+There are two further conditions on a Sudoku instances:
+\begin{enumerate}
+\item The cells are either \emph{empty} or one of $1, \dots, 9$.
+\item the instance has \emph{exactly one solution}.
+\end{enumerate}
+
+It remains to specify what a ``solution'' is. The solution for the instance Figure \ref{sudokuEx} is given in Figure \ref{fig:solutionsudokuEx}.
+
+$N$ portions which has exactly square shape(called ``blocks''). For convenience, we call this instance ``puzzle'' in the article. Blocks are highlighted by the bold lines to have a clear view in the puzzle , and each block has $N (n \times n)$ sub-matrix (called ``cells'') in each.
+
+
+\section{Annotated instances}
+\label{sec:Annotatedinstances}
+
+Every cell has $N$ possible digits(called ``candidates'') $\{1, \dots, N\}$ to be filled into the cell. To put in short, a puzzle consist of $N$ rows, columns and $N$ cells in every blocks. All the cells have $N$ candidates awaiting to be excluded or already been found.
 
 The way how the puzzle sequencing its three different units and the cells is basic on two principles, left to right from top to the bottom. In the puzzle, rows are counted from ${1 \dots 9}$ and sequenced from top to the bottom in the puzzle. Columns do another way round, which are sequenced from the left to the right. Blocks are a bit complicated, which use both two principles, ${1 \dots 3}$ at the top, ${4 \dots 6}$ at the middle and ${7 \dots 9}$ at the bottom, and all ordered from the left to the right. Thus, the coordinate representation for a cell is $(r_{n}, c_{n})$. The way how the cells order is like what blocks do.
 
@@ -234,7 +259,11 @@ $r_{n}$ & & & & & & & & &\\ \cline{2-10}
 \label{fig:rcWhole}
 \end{figure}
 
-\subsection{Different  perspectives}
+
+
+\section{Different  perspectives}
+\label{sec:Differentperspectives}
+
 In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (number of rows $\times$ number of columns) cell(s) in an instance. Every cell has its own coordinate which formats to $(r,\ c)$. Within row-column view, coordinate r means $row$, and so coordinate c means $column$. Thus, the coordinate to locate the cell will be represented as $(r,\ c)$ in the article. Nevertheless, to represent the possible candidates(numbers or $n$) for a specific cell which will be represented as $(r,\  c) = (possible\ candidates,\ impossible\ candidates)$ or $(r,\  c) = candidates(n)$. Number of $N$ is always the sum of number of both possible and impossible candidates and the candidates in both possible ad impossible can not be apart from numbers ${1 \dots 9}$ and can not have any candidate repeated. For example, assume $N$ here is $9$, to show the candidates for cell $(r_{3},\ c_{4})$ in Figure \ref{fig:rcWhole} is  $(r_{3},\ c_{4}) = ((1, 6, 8, 9), (2, 3, 4, 5, 7))$, which means in this cell, candidates 2, 3,4, 5, 7 are already excluded from possible candidates, the 4 candidates left are the possibilities. To have another example in the same figure, $(r_{1},\ c_{6}) = ((8), (1, 2, 3, 4, 5, 6, 7, 9))$, which means 8 is the only candidate for cell $(r_{1},\ c_{6})$, once the candidate for this cell has been confirmed and filled out, then the equation will be updated to $(r_{1},\ c_{6}) = 8$ like the cell $(r_{2},\ c_{4})$ which has an equation $(r_{2},\ c_{4}) = 5$. Notice that the candidates in the cell are the values for cell in row-column view.
 
 Aside from the row-column instance, there are also different perspectives such like row-number view, column-number view, and  block-number view which can be formed by re-permuting an general sudoku instance. As introduced, a row-column view is consist of two elements which are row and column based, from this knowing, the elements to make up row-number view are row and number, and so as column-number view and block-number view. 
