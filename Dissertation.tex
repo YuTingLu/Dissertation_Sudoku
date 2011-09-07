@@ -251,7 +251,7 @@ $r_{n}$ & 3 & {\cell {}{}{}45{}{}{}{}} & 6 & 8  & {\cell {}{}{}45{}7{}{}} & {\ce
 \label{tab:rncolumn}
 \end{table}
 
-Figure \ref{fig:rnWhole} is the complete rn-view example after re-permutation from rc-view Figure \ref{fig:rcWhole}.
+Figure \ref{fig:rnWhole} is the complete rn-view example after re-permutation from rc-view. Figure \ref{fig:cnview} is an extended view made of column and number (called cn-view).
 \begin{figure}
 \begin{sudoku}
 |1|4|{\cell {}23{}{}{}{}8{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}5{}{}{}{}}|{\cell {}{}3{}{}{}{}{}{}}|{\cell {}{}3{}5678{}}|{\cell {}{}{}{}5{}78{}}|.
@@ -282,8 +282,8 @@ Figure \ref{fig:rnWhole} is the complete rn-view example after re-permutation fr
 |{\cell {}23{}56{}{}{}}|{\cell {}23{}{}{}78{}}|{\cell {}{}3{}{}{}7{}{}}|1|9|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}23{}567{}{}}|4|.
 \end{sudoku}
 \caption{Example puzzle in cn-view.}
+\label{fig:cnview}
 \end{figure}
-
 
 In the block-number view, the coordinate for all the cells are marked in the different way. All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{tab:blockOrder} shown. The cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are the definition which specially indicated to the specific cell of a block. Every block in the puzzle consists $N = n \times n$ squares. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ at the bottom-right which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{tab:Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. And every [b, s] coordinate is indicated to one (r, c). For example we have a $(r_{5},\ c_{9})$ which is a (r, c) coordinate here, to find out the corresponding [b, s] coordinate, firstly look at r-coordinate, $r_{5}$ is at the middle part in vertical, and the c-coordinate $c_{9}$ is at the right part in horizontal. Hence, $(r_{5},\ c_{9})$ is in block $b_{6}$. In block $b_{6}$,  $r_{5}$ corresponds to square $s_{4},\  s_{5},\  s_{6}$ and  $c_{9}$ corresponds to square  $s_{3},\  s_{6},\  s_{9}$. Thus, $s_{6}$ is the one both $r_{5}$ and $c_{9}$ corresponds to. Hence, [$b_{6},\  s_{6}$ = $(r_{5},\ c_{9})$.
 
@@ -319,6 +319,7 @@ $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & 
 |5|{\cell 1{}34{}67{}{}}|{\cell {}{}3{}{}{}{}8{}}|{\cell 1{}{}4{}{}{}{}{}}|9|2|{\cell 1{}34{}67{}{}}|{\cell 1{}3{}{}{}78{}}|{\cell 1{}{}{}{}{}78{}}.
 \end{sudoku}
 \caption{Example puzzle in bn-view.}
+\label{fig:bnview}
 \end{figure}
 
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
