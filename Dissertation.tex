@@ -74,8 +74,8 @@ An example:
  | |7| | | | | | |3|.
  |9| |3| | | |6| |4|.
 \end{sudoku}
-\label{sudokuEx}
 \caption{An Example for Sudoku Problem}
+\label{sudokuEx}
 \end{figure}
 
 \begin{figure}
@@ -209,8 +209,8 @@ $\vdots$ & & & & & & & & &\\
 $\vdots$ & & $b_{n-2}$ & & & $b_{n-1}$ & & & $b_{n}$ &\\
 $r_{n}$ & & & & & & & & &\\ \cline{2-10}
 \end{tabular}
-\label{blockOrder}
 \caption{An Example to show relationship between rows, columns, and blocks.}
+\label{tab:blockOrder}
 \end{table}
 
 
@@ -227,17 +227,16 @@ $r_{n}$ & & & & & & & & &\\ \cline{2-10}
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\label{rcExample}
 \caption{Example puzzle in rc-view which is the general instance.}
-\label{rcWhole}
+\label{fig:rcWhole}
 \end{figure}
 
 \subsection{Different  perspectives}
-In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (number of rows $\times$ number of columns) cell(s) in an instance. Every cell has its own coordinate which formats to $(r,\ c)$. Within row-column view, coordinate r means $row$, and so coordinate c means $column$. Thus, the coordinate to locate the cell will be represented as $(r,\ c)$ in the article. Nevertheless, to represent the possible candidates(numbers or $n$) for a specific cell which will be represented as $(r,\  c) = (possible\ candidates,\ impossible\ candidates)$ or $(r,\  c) = candidates(n)$. Number of $N$ is always the sum of number of both possible and impossible candidates and the candidates in both possible ad impossible can not be apart from numbers ${1 \dots 9}$ and can not have any candidate repeated. For example, assume $N$ here is $9$, to show the candidates for cell $(r_{3},\ c_{4})$ in Figure \ref{rcExample} is  $(r_{3},\ c_{4}) = ((1, 6, 8, 9), (2, 3, 4, 5, 7))$, which means in this cell, candidates 2, 3,4, 5, 7 are already excluded from possible candidates, the 4 candidates left are the possibilities. To have another example in the same figure, $(r_{1},\ c_{6}) = ((8), (1, 2, 3, 4, 5, 6, 7, 9))$, which means 8 is the only candidate for cell $(r_{1},\ c_{6})$, once the candidate for this cell has been confirmed and filled out, then the equation will be updated to $(r_{1},\ c_{6}) = 8$ like the cell $(r_{2},\ c_{4})$ which has an equation $(r_{2},\ c_{4}) = 5$. Notice that the candidates in the cell are the values for cell in row-column view.
+In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (number of rows $\times$ number of columns) cell(s) in an instance. Every cell has its own coordinate which formats to $(r,\ c)$. Within row-column view, coordinate r means $row$, and so coordinate c means $column$. Thus, the coordinate to locate the cell will be represented as $(r,\ c)$ in the article. Nevertheless, to represent the possible candidates(numbers or $n$) for a specific cell which will be represented as $(r,\  c) = (possible\ candidates,\ impossible\ candidates)$ or $(r,\  c) = candidates(n)$. Number of $N$ is always the sum of number of both possible and impossible candidates and the candidates in both possible ad impossible can not be apart from numbers ${1 \dots 9}$ and can not have any candidate repeated. For example, assume $N$ here is $9$, to show the candidates for cell $(r_{3},\ c_{4})$ in Figure \ref{fig:rcWhole} is  $(r_{3},\ c_{4}) = ((1, 6, 8, 9), (2, 3, 4, 5, 7))$, which means in this cell, candidates 2, 3,4, 5, 7 are already excluded from possible candidates, the 4 candidates left are the possibilities. To have another example in the same figure, $(r_{1},\ c_{6}) = ((8), (1, 2, 3, 4, 5, 6, 7, 9))$, which means 8 is the only candidate for cell $(r_{1},\ c_{6})$, once the candidate for this cell has been confirmed and filled out, then the equation will be updated to $(r_{1},\ c_{6}) = 8$ like the cell $(r_{2},\ c_{4})$ which has an equation $(r_{2},\ c_{4}) = 5$. Notice that the candidates in the cell are the values for cell in row-column view.
 
 Aside from the row-column instance, there are also different perspectives such like row-number view, column-number view, and  block-number view which can be formed by re-permuting an general sudoku instance. As introduced, a row-column view is consist of two elements which are row and column based, from this knowing, the elements to make up row-number view are row and number, and so as column-number view and block-number view. 
 
-To re-permute the rc-view instance into rn-view, element $c$ is exchanged with element $n$, thus, the equation will be rewritten as following $(r,\ c) = n \Rightarrow (r,\ n) = c$. Likewise, the equation of cn-view will be $(c,\ n) = r$. In the rn-view, the value in the cell is to display all possibilities of the specific number could be appeared in those columns. Table \ref{rccolumn} is the example for a row in rc-view, and the Table \ref{rncolumn} is the row after it has been re-permuted. In the Table \ref{rccolumn}, $(r_{n}, c_{n})$ expresses that one of one or more possible candidates could be the value for this cell. In the Table \ref{rncolumn}, $(r_{n}, n_{n})$ show one candidate could have it appeared in one or more column $c_{n}$. For instance, $(r_{n}, n_{1})$ shows that $n_{1}$ could only be in $c_{3}$. In addition, $(r_{n}, n_{2})$ shows that $n_{2}$ are the candidate which is possible be in $c_{4}$ or $c_{5}$. 
+To re-permute the rc-view instance into rn-view, element $c$ is exchanged with element $n$, thus, the equation will be rewritten as following $(r,\ c) = n \Rightarrow (r,\ n) = c$. Likewise, the equation of cn-view will be $(c,\ n) = r$. In the rn-view, the value in the cell is to display all possibilities of the specific number could be appeared in those columns. Table \ref{tab:rccolumn} is the example for a row in rc-view, and the Table \ref{tab:rncolumn} is the row after it has been re-permuted. In the Table \ref{tab:rccolumn}, $(r_{n}, c_{n})$ expresses that one of one or more possible candidates could be the value for this cell. In the Table \ref{tab:rncolumn}, $(r_{n}, n_{n})$ show one candidate could have it appeared in one or more column $c_{n}$. For instance, $(r_{n}, n_{1})$ shows that $n_{1}$ could only be in $c_{3}$. In addition, $(r_{n}, n_{2})$ shows that $n_{2}$ are the candidate which is possible be in $c_{4}$ or $c_{5}$. 
 
 \begin{table}
 \setlength{\tabcolsep}{3pt}
@@ -248,11 +247,11 @@ To re-permute the rc-view instance into rn-view, element $c$ is exchanged with e
 $r_{n}$ & 3 & {\cell {}{}{}45{}{}{}{}} & 6 & 8  & {\cell {}{}{}45{}7{}{}} & {\cell 12{}4{}{}{}{}9} & {\cell {}{}{}{}5{}7{}{}} & {\cell {}2{}45{}{}{}{}} & {\cell 1{}{}{}5{}7{}9} \\ \cline{2-10}
 \end{tabular}
 \end{center}
-\label{rncolumn}
 \caption{One row example after re-permutation from rc-view to rn-view}
+\label{tab:rncolumn}
 \end{table}
 
-Figure \ref{rnWhole} is the complete rn-view example after re-permutation from rc-view Figure \ref{rcWhole}.
+Figure \ref{fig:rnWhole} is the complete rn-view example after re-permutation from rc-view Figure \ref{fig:rcWhole}.
 \begin{figure}
 \begin{sudoku}
 |1|4|{\cell {}23{}{}{}{}8{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}5{}{}{}{}}|{\cell {}{}3{}{}{}{}{}{}}|{\cell {}{}3{}5678{}}|{\cell {}{}{}{}5{}78{}}|.
@@ -266,7 +265,7 @@ Figure \ref{rnWhole} is the complete rn-view example after re-permutation from r
 |{\cell {}{}3{}{}{}{}{}{}}| {\cell {}2{}{}5{}7{}{}}|{\cell {}23{}{}{}{}8{}}|1|9|6|{\cell {}{}34{}{}7{}{}}| {\cell {}{}{}45{}78{}}|{\cell {}{}3{}{}{}78{}}|.
 \end{sudoku}
 \caption{Example puzzle in rn-view.}
-\label{rnWhole}
+\label{fig:rnWhole}
 \end{figure}
 
 
@@ -286,7 +285,7 @@ Figure \ref{rnWhole} is the complete rn-view example after re-permutation from r
 \end{figure}
 
 
-In the block-number view, the coordinate for all the cells are marked in the different way. All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{blockOrder} shown. The cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are the definition which specially indicated to the specific cell of a block. Every block in the puzzle consists $N = n \times n$ squares. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ at the bottom-right which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. And every [b, s] coordinate is indicated to one (r, c). 
+In the block-number view, the coordinate for all the cells are marked in the different way. All the $N \times N$ cells are separated into $N$ blocks ($b_{1} \dots b_{n}$) which arranged in order from the block at top-left to the one at bottom-right ($r_{n}$ ,$c_{n}$) as what the table \ref{tab:blockOrder} shown. The cells in the blocks will be called as ``squares'' to be distinguished from general cells. Cells are the definition for general, the squares are the definition which specially indicated to the specific cell of a block. Every block in the puzzle consists $N = n \times n$ squares. For instance, assume $N$ is $9$ and $n$ is $3$ , the block $b_{1}$ is composed of ($r_{1}$ ,$c_{1}$), ($r_{1}$ ,$c_{2}$), ($r_{1}$ ,$c_{3}$), ($r_{2}$ ,$c_{1}$), ($r_{2}$ ,$c_{2}$), ($r_{2}$ ,$c_{3}$), ($r_{3}$ ,$c_{1}$), ($r_{3}$ ,$c_{2}$), and ($r_{3}$ ,$c_{3}$), for block $b_{9}$ at the bottom-right which is composed of ($r_{n-2}$ ,$c_{n-2}$), ($r_{n-2}$ ,$c_{n-1}$), ($r_{n-2}$ ,$c_{n}$), ($r_{n-1}$ ,$c_{n-2}$), ($r_{n-1}$ ,$c_{n-1}$), ($r_{n-1}$ ,$c_{n}$), ($r_{n}$ ,$c_{n-2}$), ($r_{n}$ ,$c_{n-1}$), and ($r_{n}$ ,$c_{n}$). In the Table \ref{tab:Square}, each block is consisted of 9 squares which represented in order from left to right, from top to bottom, from $s_{1}\dots s_{9}$, use block and square as coordinates, we can have another representation: [b, s]. And every [b, s] coordinate is indicated to one (r, c). 
 
 \begin{table}
 \begin{center}
@@ -303,8 +302,8 @@ $\vdots$ & $s_{4}$ & $s_{5}$ & $s_{6}$ & $s_{4}$ & $s_{5}$ & $s_{6}$ &  $s_{4}$ 
 $r_{n}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$ & $s_{7}$ & $s_{8}$ & $s_{9}$\\ \cline{2-10}
 \end{tabular}
 \end{center}
-\label{Square}
 \caption{Squares in the blocks.}
+\label{tab:Square}
 \end{table}
 
 \begin{figure}
@@ -386,11 +385,11 @@ The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candid
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\label{nakedsingle}
 \caption{Example in Naked Single}
+\label{fig:nakedsingle}
 \end{figure}
 
-In the Figure \ref{nakedsingle}, candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ is obviously the only one possibility to fill into that two cells, thus this puzzle could be simply started completing these two cells.
+In the Figure \ref{fig:nakedsingle}, candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ is obviously the only one possibility to fill into that two cells, thus this puzzle could be simply started completing these two cells.
 
 XXX if a cell-matrix contains only one candidate, then the formely empty cell can be filled with this candidate XXX
 
@@ -417,10 +416,10 @@ XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ bloc
 |{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
 \end{sudoku}
 \caption{Example in Naked Pair - Before}
-\label{nakedpairb4}
+\label{fig:nakedpairb4}
 \end{figure}
 
-Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) both have \textbf{only} two same possibilities to be filled in as an answer. In the Figure \ref{nakedpairb4} which is shown, candidates 5 and 6 are the \textbf{only} two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which each has \textbf{only} two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as Figure \ref{nakedpairaf}. 
+Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) both have \textbf{only} two same possibilities to be filled in as an answer. In the Figure \ref{fig:nakedpairb4} which is shown, candidates 5 and 6 are the \textbf{only} two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which each has \textbf{only} two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as Figure \ref{fig:nakedpairaf}. 
 
 \begin{figure}
 \begin{sudoku}
@@ -435,7 +434,7 @@ Naked pair is in the situation which two cells which shared a unit (such like a 
 |{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
 \end{sudoku}
 \caption{Example in Naked Pair - After}
-\label{nakedpairaf}
+\label{fig:nakedpairaf}
 \end{figure}
 
 \section{Naked Triplet}
@@ -455,10 +454,10 @@ It is in the situation whilst three specific cells which are all in the same uni
 |6|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}34{}{}78{}}|{\cell {}2{}4{}{}78{}}|5|1|{\cell {}2{}4{}{}{}{}{}}|{\cell {}{}{}{}{}{}78{}}|9|.
 |9|{\cell 1{}{}{}{}{}7{}{}}|{\cell 1{}{}45{}78{}}|{\cell {}2{}4{}{}78{}}|6|{\cell {}{}{}4{}{}78{}}|{\cell {}2{}4{}{}{}{}{}}|3|{\cell {}{}{}{}5{}{}8{}}|.
 \end{sudoku}
-\label{nakedtripletb4}
 \caption{Example in Naked Triplet - Before}
+\label{fig:nakedtripletb4}
 \end{figure}
-In the Figure{nakedtripletb4}, candidates 6, 7 and 8 are the only common number which appears in the cells $(r_{1},\ c_{3})$, $(r_{2},\ c_{3})$, and $(r_{5},\ c_{3})$ which has shared the same unit (column) here. Hence, the inference to make is those cells who also have candidates 6, 7 and 8 in the same unit (column $c_{3}$) could have these three candidates erased, because they are not longer possible to be the answer to be filled in. The consequence after elimination is the Figure{nakedtripletaf}.
+In the Figure{fig:nakedtripletb4}, candidates 6, 7 and 8 are the only common number which appears in the cells $(r_{1},\ c_{3})$, $(r_{2},\ c_{3})$, and $(r_{5},\ c_{3})$ which has shared the same unit (column) here. Hence, the inference to make is those cells who also have candidates 6, 7 and 8 in the same unit (column $c_{3}$) could have these three candidates erased, because they are not longer possible to be the answer to be filled in. The consequence after elimination is the Figure{fig:nakedtripletaf}.
 
 \begin{figure}
 \begin{sudoku}
@@ -472,8 +471,8 @@ In the Figure{nakedtripletb4}, candidates 6, 7 and 8 are the only common number 
 |6|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}34{}{}78{}}|{\cell {}2{}4{}{}78{}}|5|1|{\cell {}2{}4{}{}{}{}{}}|{\cell {}{}{}{}{}{}78{}}|9|.
 |9|{\cell 1{}{}{}{}{}7{}{}}|{\cell 1{}{}45{}78{}}|{\cell {}2{}4{}{}78{}}|6|{\cell {}{}{}4{}{}78{}}|{\cell {}2{}4{}{}{}{}{}}|3|{\cell {}{}{}{}5{}{}8{}}|.
 \end{sudoku}
-\label{nakedtripletaf}
 \caption{Example in Naked Triplet - After}
+\label{fig:nakedtripletaf}
 \end{figure}
 
 \section{Naked Quad}
@@ -492,11 +491,11 @@ It is in the situation while four cells in the same row, same column, or same bl
 |{\cell {}2{}{}{}6{}{}9}|{\cell 1{}{}{}56{}{}{}}|7|{\cell 1{}{}{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|4|3|{\cell 12{}{}56{}8{}}|{\cell 12{}{}{}{}{}8{}}|.
 |{\cell {}{}34{}6{}{}9}|{\cell 1{}{}456{}{}{}}|{\cell {}{}3{}{}6{}{}9}|{\cell 1{}3{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|2|{\cell {}{}{}{}{}6{}8{}}|{\cell 1{}{}{}56{}8{}}|7|.
 \end{sudoku}
-\label{nakedquad}
 \caption{Example in Naked Quad}
+\label{fig:nakedquad}
 \end{figure}
 
-In the Figure XXX shown above, candidates 2, 3, 5, and 9 appear commonly in 4 cells in the same block. Consequently, candidates 5 and 9 which marked in pink will face to be removed because they will not be possible to be used in these cells anymore according to the inference made before. 
+In the Figure ~\ref{fig:nakedquad}, in block $b_{5}$, cell $(r_{5},\ c_{5})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells in one block ($b_{5}$). Consequently, candidates $n_{5}$ and $n_{9}$ in other cells in the block $b_{5}$ will be excluded because these two candidates will not longer possible to be used in the cells anymore according to the inference has been made before. 
 
 \section{Hidden Single}
 \label{sec:Hidden Single}
@@ -521,7 +520,7 @@ There are 3 formulas in Hidden Single, which are in row, in column,and in block,
 |{\cell {}{}{}{}{}6{}89}|1|{\cell {}{}{}4{}6{}8{}}|2|5|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}4{}678{}}|3|{\cell {}{}{}{}{}678{}}|.
 |7|{\cell {}{}345{}{}8{}}|{\cell {}{}3456{}8{}}|1|{\cell {}{}34{}{}{}{}{}}|{\cell {}{}3{}{}6{}{}{}}|{\cell {}2{}4{}6{}8{}}|{\cell {}2{}4{}6{}8{}}|9|.
 \end{sudoku}
-\label{hiddensingle}
+\label{fig:hiddensingle}
 \caption{Example in Hidden Single}
 \end{figure}
 
@@ -545,12 +544,11 @@ The prerequisite for Hidden Pair is, that two of all the possible candidates are
 |6|{\cell {}{}3{}{}{}{}{}9}|2|1|8|5|{\cell {}{}3{}{}{}7{}9}|4|{\cell {}{}{}{}{}{}7{}9}|.
 |5|7|{\cell 1{}3{}{}{}{}{}{}}|6|4|9|2|{\cell 1{}3{}{}{}{}8{}}|{\cell 1{}{}{}{}{}{}8{}}|.
 \end{sudoku}
-\label{hiddenpair}
-\label{hiddenPair}
 \caption{Example in Hidden Pair}
+\label{fig:hiddenPair}
 \end{figure}
 
-For instance, in the Figure {hiddenPair}. Candidates $n_{1}$ and $n_{7}$ in $(r_{2},\ c_{7})$ are restricted to these two cells only. Once the prerequisite is satisfied, then the all other cells who has either candidates $n_{1}$ and $n_{7}$ in the cell could have these candidates cross out from these two cells.
+For instance, in the Figure {fig:hiddenPair}. Candidates $n_{1}$ and $n_{7}$ in $(r_{2},\ c_{7})$ are restricted to these two cells only. Once the prerequisite is satisfied, then the all other cells who has either candidates $n_{1}$ and $n_{7}$ in the cell could have these candidates cross out from these two cells.
 
 
 \section{Hidden Triplet}
@@ -568,11 +566,11 @@ Basically, it is evolved from hidden single and hidden pair. The prerequisite is
 \hline
 \end{tabular}
 \end{center}
-\label{hiddentriplet}
 \caption{Example in Hidden Triplet}
+\label{tab:hiddentriplet}
 \end{table}
 
-In the Table \ref{hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
+In the Table \ref{tab:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
 
 \section{Hidden Quad}
 \label{sec:Hidden Quad}
@@ -590,8 +588,8 @@ This is the circumstance which has four digits candidate found to be restricted 
 |7|5|3|4|1|6|{\cell {}2{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}8{}}|9|.
 |2|9|6|7|3|8|{\cell 1{}{}{}5{}{}{}{}}|4|{\cell 1{}{}{}5{}{}{}{}}|.
 \end{sudoku}
-\label{hiddenquad}
 \caption{Example in Hidden Quad}
+\label{fig:hiddenquad}
 \end{figure}
 
 In the example here, candidates 1, 4, 6 and 7 are the only 4 possibilities could still stay in these four cells, all the others will no longer existed after this technique has applied.
@@ -612,7 +610,7 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 |*|X|*|*|*|*|*|X|*|.
 | |*| | | | | |*| |.
 \end{sudoku}
-\label{xwingmodel}
+\label{fig:xwingmodel}
 \end{figure}
 
 The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
@@ -636,8 +634,8 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 |*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
 |{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
 \end{sudoku}
-\label{xwing}
 \caption{Example in X-wing}
+\label{fig:xwing}
 \end{figure}
 
 
@@ -678,8 +676,8 @@ The formula of swordfish is
 | |X| | |X| | |X| |.
 | |*| | |*| | |*| |.
 \end{sudoku}
-\label{swordfish}
 \caption{Swordfish: 3 rows in 3 columns}
+\label{fig:swordfish33}
 \end{figure}
 
 \begin{figure}
@@ -694,8 +692,8 @@ The formula of swordfish is
 | |X| | | | | |X| |.
 | |*| | |*| | |*| |.
 \end{sudoku}
-\label{swordfish}
 \caption{Swordfish: 2 rows in 3 columns}
+\label{fig:swordfish23}
 \end{figure}
 
 
@@ -720,11 +718,11 @@ If the first prerequisite is tenable, then the specific candidate could be exclu
 |{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
 |{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
 \end{sudoku}
-\label{intersectionremoval}
 \caption{Example in Intersection Removal}
+\label{fig:intersectionremoval}
 \end{figure}
 
-For example, candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
+For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
 
 
 \chapter{Conclusion}
