@@ -161,7 +161,7 @@ It remains to specify what a ``solution'' is. The solution for the instance Figu
 
 The matrix is subdivided into $N$ \textit{blocks}, as indicated in Figures \ref{sudokuEx}, \ref{fig:solutionsudokuEx}. These blocks are numbered from $1$ to $9$, from top to bottom and left to right. Each block is itself a $n \times x$ matrix containing $n \cdot n = N$ cells; see Figure \ref{fig:exampleblock}.
 
-\begin{figure}
+\begin{figure}[h]
 \begin{sudoku}
  |{\makebox[0pt]{\hspace{-1em}\large r1\raisebox{5ex}[0ex]{\hspace{1.5em}c1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c3}}}| | | | | | |.
  |{\makebox[0pt]{\hspace{-2.25em}\large r2}}|{\LARGE b1}| | |{\LARGE b2}| | |{\LARGE b3}| |.
@@ -194,7 +194,7 @@ In general, a Sudoku instance is in the row-column view (rc-view), which has $N 
 
 
 
-\begin{figure}
+\begin{figure}[h]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
 |{\cell {}2{}{}{}{}{}8{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
