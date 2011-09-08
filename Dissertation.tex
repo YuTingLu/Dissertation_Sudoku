@@ -262,11 +262,42 @@ Having the notion of annotated instances at hand, we can now say what a ``rule''
 \chapter{Exploiting symmetries by using different views}
 \label{cha:exploitingsymm}
 
+
+\section{The general idea}
+\label{sec:diffviewsidea}
+
+In an annotated instance we can find $4$ ``dimensions'':
+\begin{enumerate}
+\item rows (``r'')
+\item columns (``c'')
+\item numbers (the content of the cells; ``n'')
+\item blocks (``b'').
+\end{enumerate}
+We are now introducing four ``views'' on an annotated instance:
+\begin{enumerate}
+\item ``rc-view''
+\item ``rn-view''
+\item ``cn-view''
+\item ``bn-view''.
+\end{enumerate}
+The rc-view (``row-column view'') is our standard point of view: the rows and columns of the matrix are the rows and the columns of the (annotated) instance, and the entries refer to the possible (or impossible) numbers for that cell. The other three views allow us to derive new rules from old rules, by just changing the perspective:
+\begin{center}
+  The starting observation is that rows, columns, numbers and blocks are all numbers $1,\dots,N$ --- so perhaps they can change role?!
+\end{center}
+
+
+
+
 \section{Different  perspectives}
 \label{sec:Differentperspectives}
 
+XXX needs to be rewritten XXX
 
-Aside from the row-column instance, there are also different perspectives such like row-number view, column-number view, and  block-number view which can be formed by re-permuting an general sudoku instance. As introduced, a row-column view is consist of two elements which are row and column based, from this knowing, the elements to make up row-number view are row and number, and so as column-number view and block-number view. 
+XXX Also here the one running example from the previous chapter should be used XXX
+
+XXX the equations below are just not meaningful, and shall be written for example as ``$(r_i,n_j) \mapsto (C,E)$'', that is, we use \emph{mappings} XXX
+
+XXX ``$n$'' is not to be used as index, since it stands for ``number'' XXX
 
 To re-permute the rc-view instance into rn-view, element $c$ is exchanged with element $n$, thus, the equation will be rewritten as following $(r,\ c) = n \Rightarrow (r,\ n) = c$. Likewise, the equation of cn-view will be $(c,\ n) = r$. In the rn-view, the value in the cell is to display all possibilities of the specific number could be appeared in those columns. Table \ref{tab:rccolumn} is the example for a row in rc-view, and the Table \ref{tab:rncolumn} is the row after it has been re-permuted. In the Table \ref{tab:rccolumn}, $(r_{n}, c_{n})$ expresses that one of one or more possible candidates could be the value for this cell. In the Table \ref{tab:rncolumn}, $(r_{n}, n_{n})$ show one candidate could have it appeared in one or more column $c_{n}$. For instance, $(r_{n}, n_{1})$ shows that $n_{1}$ could only be in $c_{3}$. In addition, $(r_{n}, n_{2})$ shows that $n_{2}$ are the candidate which is possible be in $c_{4}$ or $c_{5}$. 
 
