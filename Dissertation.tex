@@ -194,7 +194,7 @@ We are considering in this report only techniques for arriving at a solution whi
 \item For a proper annotation the (unique) solution must always be an element of the candidates (i.e., excluding candidates must always be right).
 \end{itemize}
 
-In Figure \ref{fig:rcWhole} we have annotated the example from Figure \ref{sudokuEx}. For example, the annotation for cell $(3,4)$ is $(\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})$, which means that candidates $2,3,4,5,7$ are already excluded from possible candidates, and only $4$ candidates are left. We see that in the figures we only show the candidates. To have another example, the annotation of cell $(1,6)$ is $(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$, and thus here only one candidate is left --- which must be the solution for this cell. For the purpose of visualising the solution process, once only one candidate is left, we don't write out the solution as one big number for that cell; see Figure \ref{fig:rcWholeupdated} for the updated visualisation (with two cells simplified).
+In Figure \ref{fig:rcWhole} we have annotated the example from Figure \ref{sudokuEx}. For example, the annotation for cell $(3,4)$ is $(\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})$, which means that candidates $2,3,4,5,7$ are already excluded from possible candidates, and only $4$ candidates are left. We see that in the figures we only show the candidates. To have another example, the annotation of cell $(1,6)$ is $(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$, and thus here only one candidate is left --- which must be the solution for this cell. For the purpose of visualising the solution process, once only one candidate is left, we just write out the solution as one big number for that cell; see Figure \ref{fig:rcWholeupdated} for the updated visualisation (with two cells simplified).
 
 However for the systematic treatment we only use the annotated instances:
 \begin{enumerate}
@@ -239,6 +239,23 @@ However for the systematic treatment we only use the annotated instances:
 \caption{The annotated instance of Figure \ref{fig:rcWhole}, with completed visualisation (!!! must be updated after changing to the unique example !!!)}
 \label{fig:rcWholeupdated}
 \end{figure}
+
+
+
+\section{On the nature of ``Sudoku rules''}
+\label{sec:naturesudokurules}
+
+Having the notion of annotated instances at hand, we can now say what a ``rule'' is:
+\begin{itemize}
+\item A \textbf{Sudoku rule} is a partial map, mapping certain annotated instances $A$ to annotated instances $A'$ for those $A$ in the \emph{domain} of the rule, such that:
+  \begin{itemize}
+  \item For some cells certain candidates have been excluded.
+  \item No other type of change takes places (that is, we only exclude candidates, while excluded candidates never get included again).
+  \item These changes are corrected, that is, the (unique) solution is still possible.
+  \item At least one cell has been changed (something happened).
+  \end{itemize}
+\end{itemize}
+
 
 
 
