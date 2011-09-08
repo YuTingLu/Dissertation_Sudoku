@@ -305,9 +305,9 @@ To re-permute the rc-view instance into rn-view, element $c$ is exchanged with e
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
-\begin{tabular}{ c| c| c| c| c| c| c| c| c| c| }
+\begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
 \multicolumn{1}{c}{} &  \multicolumn{1}{c}{$n_{1}$}  &  \multicolumn{1}{c}{ $n_{2}$} &  \multicolumn{1}{c}{ $n_{3}$} &  \multicolumn{1}{c}{$n_{4}$}  &  \multicolumn{1}{c}{$n_{5}$}  & \multicolumn{1}{c}{$n_{6}$}  &  \multicolumn{1}{c}{ $n_{7}$} &  \multicolumn{1}{c}{$n_{8}$}  &  \multicolumn{1}{c}{$n_{9}$}  \\ \cline{2-10}
-$r_{n}$ & 3 & {\cell {}{}{}45{}{}{}{}} & 6 & 8  & {\cell {}{}{}45{}7{}{}} & {\cell 12{}4{}{}{}{}9} & {\cell {}{}{}{}5{}7{}{}} & {\cell {}2{}45{}{}{}{}} & {\cell 1{}{}{}5{}7{}9} \\ \cline{2-10}
+$r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9  & {\cell {}2{}{}{}{}7{}{}} & {\cell {}23{}5{}{}{}{}} & {\cell {}{}3{}{}{}{}{}{}} & {\cell {}{}3{}5678{}} & {\cell {}{}{}{}5{}78{}} \\ \cline{2-10}
 \end{tabular}
 \end{center}
 \caption{One row example after re-permutation from rc-view to rn-view}
