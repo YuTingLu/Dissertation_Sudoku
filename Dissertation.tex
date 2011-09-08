@@ -185,15 +185,26 @@ The matrix is subdivided into $N$ \textit{blocks}, as indicated in Figures \ref{
 \section{Annotated instances}
 \label{sec:Annotatedinstances}
 
-Every cell has $N$ possible digits(called ``candidates'') $\{1, \dots, N\}$ to be filled into the cell. To put in short, a puzzle consist of $N$ rows, columns and $N$ cells in every blocks. All the cells have $N$ candidates awaiting to be excluded or already been found.
+We now know what the input of our intended solution procedure is, namely a Sudoku instances, and what the output shall be, namely a solution, which is defined as all empty cells filled in according to the rules. This is based on $N \times N$ matrices, where the entries are either numbers from $1,\dots,9$, or an indicator ``empty'' (which could be handled by carrying the value $0$).
 
+We are considering in this report only techniques for arriving at a solution which do not backtrack, but which proceed in applications of ``rules'', where each such application makes clear progress towards the solution. These rules are based on the common techniques of ``pencil-marking'' the empty cells, writing down in each cell the candidates according to ``current knowledge'': more and more candidates are excluded, based on sound reasoning, until only one candidate is left, and the cell is solved. So we need to move from Sudoku instances (as defined in Section \ref{sec:Sudokuinstances}) to \textbf{annotated Sudoku instances}:
+\begin{itemize}
+\item Now each cell carries a partition of $\set{1,\dots,n}$ into two subsets, the \emph{possible candidates} and the \emph{excluded candidates}.
+\item This is denoted by a pair $(P,E)$ with $P, E \subseteq \set{1,\dots,N}$, where $P \cap E = \emptyset$ and $P \cup E = \set{1,\dots,N}$ (``P'' for ``possible'' and ``E'' for ``excluded'').
+\item For a proper annotation the (unique) solution must always be an element of the candidates (i.e., excluding candidates must always be right).
+\end{itemize}
 
-To begin the technique, there is a must-do task that helps any techniques application called {``pencil-mark''} to be done first of all according the puzzle already had.
+In Figure \ref{fig:rcWhole} we have annotated the example from Figure \ref{sudokuEx}. For example, the annotation for cell $(3,4)$ is $(\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})$, which means that candidates $2,3,4,5,7$ are already excluded from possible candidates, and only $4$ candidates are left. We see that in the figures we only show the candidates. To have another example, the annotation of cell $(1,6)$ is $(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$, and thus here only one candidate is left --- which must be the solution for this cell. For the purpose of visualising the solution process, once only one candidate is left, we don't write out the solution as one big number for that cell; see Figure \ref{fig:rcWholeupdated} for the updated visualisation (with two cells simplified).
 
-In general, a Sudoku instance is in the row-column view (rc-view), which has $N \times N$  (number of rows $\times$ number of columns) cell(s) in an instance. Every cell has its own coordinate which formats to $(r,\ c)$. Within row-column view, coordinate r means $row$, and so coordinate c means $column$. Thus, the coordinate to locate the cell will be represented as $(r,\ c)$ in the article. Nevertheless, to represent the possible candidates(numbers or $n$) for a specific cell which will be represented as $(r,\  c) = (possible\ candidates,\ impossible\ candidates)$ or $(r,\  c) = candidates(n)$. Number of $N$ is always the sum of number of both possible and impossible candidates and the candidates in both possible ad impossible can not be apart from numbers ${1 \dots 9}$ and can not have any candidate repeated. For example, to show the candidates for cell $(r_{3},\ c_{4})$ in Figure \ref{fig:rcWhole} is  $(r_{3},\ c_{4}) = (\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})$, which means in this cell, candidates $2, 3,4,5,7$ are already excluded from possible candidates, the 4 candidates left are the possibilities. To have another example in the same figure, $(r_{1},\ c_{6}) = (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$, which means 8 is the only candidate for cell $(r_{1},\ c_{6})$, once the candidate for this cell has been confirmed and filled out, then the equation will be updated to $(r_{1},\ c_{6}) = 8$ like the cell $(r_{2},\ c_{4})$ which has an equation $(r_{2},\ c_{4}) = 5$. Notice that the candidates in the cell are the values for cell in row-column view.
-
-
-
+However for the systematic treatment we only use the annotated instances:
+\begin{enumerate}
+\item An instance is transformed into an annotated instance by
+  \begin{itemize}
+  \item translating cells with filled-in value $v$ as $(\set{v}, \set{1,\dots,N} \setminus \set{v})$,
+  \item and translating empty cells as $(\set{1,\dots,N},\emptyset)$.
+  \end{itemize}
+\item The solution is reached once every cell is of the form $(\set{v}, \set{1,\dots,N} \setminus \set{v})$, that is, exactly one candidate is left for each cell.
+\end{enumerate}
 
 
 
@@ -209,9 +220,26 @@ In general, a Sudoku instance is in the row-column view (rc-view), which has $N 
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example puzzle in rc-view which is the general instance.}
+\caption{Annotated Sudoku instance (??? this must be the same instance as before!!!)}
 \label{fig:rcWhole}
 \end{figure}
+
+\begin{figure}[h]
+\begin{sudoku}
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|8|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
+|{\cell {}2{}{}{}{}{}8{}}|9|8|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}89}|7|{\cell 1{}{}{}{}{}{}8{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}8{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}78{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}78{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}8{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}8{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}78{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
+\end{sudoku}
+\caption{The annotated instance of Figure \ref{fig:rcWhole}, with completed visualisation (!!! must be updated after changing to the unique example !!!)}
+\label{fig:rcWholeupdated}
+\end{figure}
+
 
 
 
