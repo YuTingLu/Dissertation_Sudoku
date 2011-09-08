@@ -301,7 +301,7 @@ XXX ``$n$'' is not to be used as index, since it stands for ``number'' XXX
 
 To re-permute the rc-view instance into rn-view, element $c$ is exchanged with element $n$, thus, the equation will be rewritten as following $(r,\ c) = n \Rightarrow (r,\ n) = c$. Likewise, the equation of cn-view will be $(c,\ n) = r$. In the rn-view, the value in the cell is to display all possibilities of the specific number could be appeared in those columns. Table \ref{tab:rccolumn} is the example for a row in rc-view, and the Table \ref{tab:rncolumn} is the row after it has been re-permuted. In the Table \ref{tab:rccolumn}, $(r_{n}, c_{n})$ expresses that one of one or more possible candidates could be the value for this cell. In the Table \ref{tab:rncolumn}, $(r_{n}, n_{n})$ show one candidate could have it appeared in one or more column $c_{n}$. For instance, $(r_{n}, n_{1})$ shows that $n_{1}$ could only be in $c_{3}$. In addition, $(r_{n}, n_{2})$ shows that $n_{2}$ are the candidate which is possible be in $c_{4}$ or $c_{5}$. 
 
-\begin{table}
+\begin{figure}
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -310,9 +310,9 @@ To re-permute the rc-view instance into rn-view, element $c$ is exchanged with e
 $r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9  & {\cell {}2{}{}{}{}7{}{}} & {\cell {}23{}5{}{}{}{}} & {\cell {}{}3{}{}{}{}{}{}} & {\cell {}{}3{}5678{}} & {\cell {}{}{}{}5{}78{}} \\ \cline{2-10}
 \end{tabular}
 \end{center}
-\caption{One row example after re-permutation from rc-view to rn-view}
+\caption{A change process from row $r_{1}$ of Figure \ref{fig:rcWhole} in rc-view to rn-view.}
 \label{tab:rncolumn}
-\end{table}
+\end{figure}
 
 Figure \ref{fig:rnWhole} is the complete rn-view example after re-permutation from rc-view. Figure \ref{fig:cnview} is an extended view made of column and number (called cn-view).
 \begin{figure}
