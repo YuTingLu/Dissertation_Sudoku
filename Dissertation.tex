@@ -421,15 +421,7 @@ In the block-number view, we have known that cells separated into $N$ blocks $b_
 \end{figure}
 
 The coordinate of rc-view is $(r, c)$ indicates the numbers to its position in (row, column) but does not mention anything about which block it locates. In the bn-view, the information it is given is that square could contain which numbers in the block which marked as $[b, n]$. The equation for this change is $(r, c) = n \mapsto [b, n] = s$. The shape of this will be shaped from a block to a row. In block $b_{1}$ (Figure \ref{fig:blockex}), 
-\begin{itemize}
-\item number $n_{1}$ is in square $s_{1}$, thus $[b_{1},\ n_{1}] = s_{1}$
-\item $n_{2}$ could possibly appeared in square $s_{4}$ and $s_{7}$, thus $[b_{1},\ n_{2}] = s_{4} and s_{7}$
-\item $n_{3}$ could possibly appeared in square $s_{2}$, $s_{3}$,  $s_{7}$ and $s_{9}$, thus $[b_{1},\ n_{3}] = s_{2}, s_{3}, s_{7} and s_{9}$
-\item $n_{4}$ is in square $s_{8}$, thus $[b_{1},\ n_{4}] = s_{8}$
-\item $n_{5}$ could possibly appeared in square $s_{2}$, $s_{}$, thus $[b_{1},\ n_{5}] = s_{2} and s_{7}$
-\item and so on.
-\end{itemize}
-Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnview}.
+
 
 \begin{figure}[h]
 \setlength{\tabcolsep}{3pt}
@@ -446,6 +438,16 @@ $r_{3}$ &{\cell {}23{}56{}8{}}&\LARGE 4 & {\cell {}{}3{}{}6{}8{}}\\ \cline{2-4}
 \label{fig:blockex}
 \end{figure}
 
+
+\begin{itemize}
+\item number $n_{1}$ is in square $s_{1}$, thus $[b_{1},\ n_{1}] = s_{1}$
+\item $n_{2}$ could possibly appeared in square $s_{4}$ and $s_{7}$, thus $[b_{1},\ n_{2}] = s_{4} and s_{7}$
+\item $n_{3}$ could possibly appeared in square $s_{2}$, $s_{3}$,  $s_{7}$ and $s_{9}$, thus $[b_{1},\ n_{3}] = s_{2}, s_{3}, s_{7} and s_{9}$
+\item $n_{4}$ is in square $s_{8}$, thus $[b_{1},\ n_{4}] = s_{8}$
+\item $n_{5}$ could possibly appeared in square $s_{2}$, $s_{}$, thus $[b_{1},\ n_{5}] = s_{2} and s_{7}$
+\item and so on.
+\end{itemize}
+Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnview}.
 
 \begin{figure}[h]
 \setlength{\tabcolsep}{3pt}
@@ -478,6 +480,11 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 \label{fig:bnview}
 \end{figure}
 
+\section{Updating the instances}
+\label{sec:Updatingtheinstances}
+
+
+As we said, these four views are all aim to help to eliminate more impossible candidates. The changes that must have made are 
 To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
 \begin{enumerate}
 \item r or row will be the abbreviation for row,
@@ -502,13 +509,6 @@ As same, when a certain value has to insert to cell, update has to be done simul
 \item $\exists n\ always\ means\ "there\ exists\ a\ number\ n".$
 \end{enumerate}
 
-XXX how to speak about a ``Sudoku problem''; as in the book, with additional explanations and examples XXX
-Notations relating to a specific instance: XXX explaining sub-matrices XXX
-
-
-
-
-
 
 
 
@@ -523,8 +523,9 @@ Generally, most of the Sudoku problem which is classified to easy level could be
 Naked single and hidden single are the basic methods of Candidates Elimination Techniques mostly used to start the game. When the harder puzzle comes, the techniques: naked pair, hidden pair, naked triplet, hidden triplet, naked quad or even hidden quad techniques will involves in solving the puzzle. Usually the general puzzles could be deal by the techniques introduced lately. X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish are rare used only if the infrequent problem of high level difficulty appears. 
 
 
+
 \section{Naked Single}
-\label{sec:Naked Single}
+\label{sec:Nakedsingle}
 
 Naked single is the easiest method that could be used to play sudoku puzzle. The situation to apply naked single is, firstly, find out all the possible candidates and pencilmark the possible candidates in all the possible cells. After the work is done for all the cells. Look into the puzzle to find if there is any cell has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
 
