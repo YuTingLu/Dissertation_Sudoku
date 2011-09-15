@@ -298,9 +298,9 @@ XXX the equations below are just not meaningful, and shall be written for exampl
 XXX ``$n$'' is not to be used as index, since it stands for ``number'' XXX
 
 
-To have different perspectives for an instance is aim to help the elimination. Basically, to have an instance built in all different views at the beginning is a time consuming, generate could be made if solving process is blocked somehow. An instance in different perspective might able to provide a solvable instance to find out one or more possible solution to sort out the puzzle. 
+To have different perspectives for an instance is aim to help further elimination for finding solution for each cell in the instance. An instance in different perspective might able to provide a solvable instance to find out one or more possible solution to sort out the puzzle. However, actually, to have an instance built in all different views at the very beginning is said as a time consuming. Thus, to be more efficient, building extended instance in other views will only be made if the instance is blocked to be continued somehow.
 
-The four views that we have introduced are
+To be familiar with the four views that we have introduced above:
 \begin{enumerate}
 \item ``rc-view'' - standard on x-axis(row) and y-axis(column)
 \item ``rn-view'' - standard on x-axis(row) and y-axis(number)
@@ -308,7 +308,7 @@ The four views that we have introduced are
 \item ``bn-view'' - standard on x-axis(block) and y-axis(number).
 \end{enumerate}
 
-Each view gives corresponding informations to each cell on its x-y axes. For example, row-column view has ``row'' as x-axis, ``number'' as y-axis. This view gives corresponding columns information for eah cell in the instance.
+Each view gives corresponding informations to each cell on its x-y axes. For example, row-column view has ``row'' as x-axis, ``number'' as y-axis. This view gives corresponding columns information for each cell in the instance.
 
 To build an annotated instance in rn-view below the standard instance. Figure \ref{fig:rccolumn} is an one row example in  rn-view. In the Figure \ref{fig:rccolumn}, each cell contains all and the only number $n$ in column $c$. The procedure to build a rn-veiw example is firstly in order to find out number $n$ could possibly occur in which column $c$, and fill all the possible column into the cell for which number $n$ secondly. 
 For exmple, in the Figure \ref{fig:rnprocess},
