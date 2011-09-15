@@ -483,34 +483,27 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 \section{Updating the instances}
 \label{sec:Updatingtheinstances}
 
-
-As we said, these four views are all aim to help to eliminate more impossible candidates. The changes that must have made are 
-To be prepared for starting Sudoku techniques understanding, there are few things that needed to be known.
+Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips to follow:
 \begin{enumerate}
-\item r or row will be the abbreviation for row,
-\item c or col will be the abbreviation for column,
-\item b or blk will be the abbreviation for block.
-\end{enumerate}
-when the candidate must be eliminated after rules applied, then this specific candidate must remove simultaneously from three representations.
-\begin{enumerate}
-\item eliminate n from rc-cell (r, c) in the standard rc-representation,
-\item eliminate c from rn-cell (r, n) in the rn-representation,
-\item eliminate r from cn-cell (c, n) in the cn-representation;
-\end{enumerate}
-As same, when a certain value has to insert to cell, update has to be done simultaneously in all three representations.
-\begin{enumerate}
-\item insert n as the value of rc-cell (r, c) in the standard rc-representation,
-\item insert c as the value of rn-cell (r, n) in the rn-representation,
-\item insert r as the value of cn-cell (c, n) in the cn-representation.
-\end{enumerate}
-\begin{enumerate}
-\item $\forall r\ means\ "for\ all\ row\ r",$
-\item $\forall c\ means\ "for\ all\ column\ c",$
-\item $\exists n\ always\ means\ "there\ exists\ a\ number\ n".$
+\item Elimination,
+\item and assertion.
 \end{enumerate}
 
+The specific candidate which has been confirmed to fill in a cell must be eliminated and asserted simultaneously from all the views after rules applied.
+\begin{itemize}
+\item eliminate n from rc-cell (r, c) in the standard instance
+\item eliminate c from rn-cell (r, n) in the rc-view instance
+\item eliminate r from cn-cell (c, n) in the cn-view instance;
 
+and also,
+\item assert n as the value of rc-cell (r, c) in the standard instance
+\item assert c as the value of rn-cell (r, n) in the rc-view instance
+\item assert r as the value of cn-cell (c, n) in the cn-view instance.
+\end{itemize}
 
+The update will be made in the unit (row, column, and the block) which related to the cell which has a candidate filled in.
+
+Noticed that the updated will be silent different in bn-view, both elimination and assertion will be only made in the related row.
 
 \chapter{Techniques for solving Sudoku}
 \label{sec:Techniques}
