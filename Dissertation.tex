@@ -291,15 +291,19 @@ The rc-view (``row-column view'') is our standard point of view: the rows and co
 \section{Different  perspectives}
 \label{sec:Differentperspectives}
 
-XXX needs to be rewritten XXX
-
 XXX Also here the one running example from the previous chapter should be used XXX
 
 XXX the equations below are just not meaningful, and shall be written for example as ``$(r_i,n_j) \mapsto (C,E)$'', that is, we use \emph{mappings} XXX
 
 XXX ``$n$'' is not to be used as index, since it stands for ``number'' XXX
 
-To re-permute the rc-view instance into rn-view, element $c$ is exchanged with element $n$, thus, the equation will be rewritten as following $(r,\ c) = n \Rightarrow (r,\ n) = c$. Likewise, the equation of cn-view will be $(c,\ n) = r$. In the rn-view, the value in the cell is to display all possibilities of the specific number could be appeared in those columns. Table \ref{tab:rccolumn} is the example for a row in rc-view, and the Table \ref{tab:rncolumn} is the row after it has been re-permuted. In the Table \ref{tab:rccolumn}, $(r_{n}, c_{n})$ expresses that one of one or more possible candidates could be the value for this cell. In the Table \ref{tab:rncolumn}, $(r_{n}, n_{n})$ show one candidate could have it appeared in one or more column $c_{n}$. For instance, $(r_{n}, n_{1})$ shows that $n_{1}$ could only be in $c_{3}$. In addition, $(r_{n}, n_{2})$ shows that $n_{2}$ are the candidate which is possible be in $c_{4}$ or $c_{5}$. 
+
+To have different perspectives for an instance is aim to help the elimination. If we are blocked to have an instance solved, an instance in  different perspective might able to give a solvable one to find out one or even more solution to have the puzzle solved. Basically, to have an instance generated in all different is a time consuming, generate could be made if solving process is blocked somehow.
+
+A row-column view gives information about the relationship between candidates and row-column. In addition, row-number view gives same information but in different perspective which shows the relationship between column and row-number.
+Either rc-view, rn-ciew, cn-view or bs-view, they are all giving the same information but just in the different perspective.
+
+To generate an annotated instance in rn-view, 
 
 \begin{figure}
 \setlength{\tabcolsep}{3pt}
