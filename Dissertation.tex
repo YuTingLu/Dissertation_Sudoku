@@ -114,21 +114,23 @@ An example is given with Figure \ref{sudokuEx}, while for the solution see Figur
 \section{Literature}
 \label{sec:introLiterature}
 
-Sudoku is special kind of Latin SquareLatin square\cite{WikiLatinSquare} which is an $n \times n$ matrices which filled with $n$ symbols but the same symbol will only occur once in each same row and column. Latin square was firstly named by \emph{Leonhard Euler} \footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} because he used Latin characters as symbols.
-\cite{Delahay2006Science}
+Sudoku is special kind of Latin SquareLatin square\cite{WikiLatinSquare} which is an $N \times N$ matrices which filled with $N$ symbols but the same symbol will only occur once in each same row and column. Latin square was firstly named by \emph{Leonhard Euler} \footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} because he used Latin characters as symbols\cite{Delahay2006Science}. Common Sudoku puzzle that we see in the newspaper, magazine or the internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block.
 
-Systematic procedure for solving a puzzle:
+To solve the Sudoku puzzle through the computer, we can have a Systematic procedure generated which is:
+
+
 \begin{tabbing}
-Loop Until \= a solution is found (or until it is proven there can be no solution) \\
-\> Do until \= a rule applies  effectively \\
-\> \> Take the first rule not yet tried in the list \\
-\> \> Do until \= its conditions pattern effectively maps to the cell \\
-\> \> \> Try all possible mappings of the conditions pattern \\
-\> \> End do\\
-\> End do\\
-\> Apply rule on selected matching pattern \\
+Loop Until \= a solution is found (or until it is proven there can be no solution)\\
+\>Do until \= a rule applies  effectively \\
+\>\>Take the first rule not yet tried in the list \\
+\>\>Do until \= its conditions pattern effectively maps to the cell \\
+\>\>\>Try all possible mappings of the conditions pattern \\
+\>\>End do\\
+\>End do\\
+\>Apply rule on selected matching pattern \\
 End loop\\
 \end{tabbing}
+\cite{Berthier2007Sudoku}
 
 New representations of a puzzle:
 \begin{itemize}
@@ -138,9 +140,8 @@ New representations of a puzzle:
 \item square s is in bn-cell (b, n) - where (r, c) = [b, s].
 \end{itemize}
 
-example: XXX could be re-permuted to get an extended one.
 
-\cite{Berthier2007Sudoku} XXX
+\cite{Berthier2007Sudoku}
 
 
 
