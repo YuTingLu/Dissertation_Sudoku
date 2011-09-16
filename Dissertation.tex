@@ -114,34 +114,23 @@ An example is given with Figure \ref{sudokuEx}, while for the solution see Figur
 \section{Literature}
 \label{sec:introLiterature}
 
-Sudoku is special kind of Latin SquareLatin square\cite{WikiLatinSquare} which is an $N \times N$ matrices which filled with $N$ symbols but the same symbol will only occur once in each same row and column. Latin square was firstly named by \emph{Leonhard Euler} \footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} because he used Latin characters as symbols\cite{Delahay2006Science}. Common Sudoku puzzle that we see in the newspaper, magazine or the internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block.
+Sudoku is special kind of Latin Square\cite{website:LatinSquare} which is an $N \times N$ matrices which filled with $N$ symbols but the same symbol will only occur once in each same row and column. Latin square was firstly named by \emph{Leonhard Euler} \footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} because he used Latin characters as symbols\cite{Delahay2006Science}. Common Sudoku puzzle that we see in the newspaper, magazine or the internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However, they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block. A formal Sudoku puzzle for play is a $N \times N$ matrices with some cells have already filled in with number between $1,\ \dots ,\ 9$ and does not have any number duplicated occurs in the same row, same column or same block. When a Sudoku puzzle has been given, then the next step to be done is make it annotated to generate an annotated instance to begin the rules apply.
 
-To solve the Sudoku puzzle through the computer, we can have a Systematic procedure generated which is:
-
-
+To puzzle a Sudoku problem, many people asked ``How do you solve it?'', ``How many are there?'', or ``How do you construct the Sudoku puzzle?''. In the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}'', it expounds a set of resolution about the rules for solving Sudoku puzzle, and the terms to utilise these rules. In fact, there are non-specific restriction about the priority of the rules use, the rules is just used when the situation is matched to the rule terms. A systematic procedure to solve the Sudoku puzzle is:
+\begin{quote}
 \begin{tabbing}
-Loop Until \= a solution is found (or until it is proven there can be no solution)\\
-\>Do until \= a rule applies  effectively \\
+Loop \=Until  a solution is found (or until it is proven there can be no solution)\\
+\>Do \=until a rule applies  effectively \\
 \>\>Take the first rule not yet tried in the list \\
-\>\>Do until \= its conditions pattern effectively maps to the cell \\
+\>\>Do \=until its conditions pattern effectively maps to the cell \\
 \>\>\>Try all possible mappings of the conditions pattern \\
 \>\>End do\\
 \>End do\\
-\>Apply rule on selected matching pattern \\
-End loop\\
+\>Apply rule on selected matching pattern\\
+End loop \` \cite[24]{Berthier2007Sudoku}\\
 \end{tabbing}
-\cite{Berthier2007Sudoku}
+\end{quote}
 
-New representations of a puzzle:
-\begin{itemize}
-\item number n is in rc-cell (r, c),
-\item column c is in rn-cell (r, n),
-\item row r is in cn-cell (c, n),
-\item square s is in bn-cell (b, n) - where (r, c) = [b, s].
-\end{itemize}
-
-
-\cite{Berthier2007Sudoku}
 
 
 
