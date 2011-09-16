@@ -485,26 +485,45 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 
 Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips to follow:
 \begin{enumerate}
-\item Elimination,
-\item and assertion.
+\item Assertion,
+\item and elimination.
 \end{enumerate}
 
 The specific candidate which has been confirmed to fill in a cell must be eliminated and asserted simultaneously from all the views after rules applied.
 \begin{itemize}
-\item eliminate n from rc-cell (r, c) in the standard instance
-\item eliminate c from rn-cell (r, n) in the rc-view instance
-\item eliminate r from cn-cell (c, n) in the cn-view instance;
-
-and also,
 \item assert n as the value of rc-cell (r, c) in the standard instance
 \item assert c as the value of rn-cell (r, n) in the rc-view instance
-\item assert r as the value of cn-cell (c, n) in the cn-view instance.
+\item assert r as the value of cn-cell (c, n) in the cn-view instance;
+For example, in the Figure \ref{fig:rcWhole}, $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ are both confirmed to be have candidate 8 inserted. So the updated instance after the insertion is Figure \ref{fig:rcWholeupdated}. 
+and also,
+\item eliminate n from rc-cell (r, c) in the standard instance
+\item eliminate c from rn-cell (r, n) in the rc-view instance
+\item eliminate r from cn-cell (c, n) in the cn-view instance.
 \end{itemize}
+
+\begin{figure}[h]
+\begin{sudoku}
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}{}{}}|.
+|{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
+\end{sudoku}
+\caption{Updated after 8 eliminated from the same unit from Figure \ref{fig:rcWholeupdated}}
+\label{fig:rceliminate}
+\end{figure}
+
 
 The update will be made in the unit (row, column, and the block) which related to the cell which has a candidate filled in.
 
 Noticed that the updated will be silent different in bn-view, both elimination and assertion in bn-view will be only made in the related row.
-For instance, in Figure \ref{fig:bnview}, in $b_{7}$, $[b_{7},\ n_{1}]$ has only one possibility 9 for the cell and $[b_{7},\ n_{6}]$ has only 4 for the cell. Once the action is confirmed this two number 4 and 9 will be asserted into these two cells, and other cells in $b_{7}$ have to have 4 and 9 eliminated. 
+For instance, in Figure \ref{fig:bnview}, in block $b_{7}$, $[b_{7},\ n_{1}]$ has only one possibility 9 for the cell and $[b_{7},\ n_{6}]$ has only 4 for the cell. Once the action is confirmed this two number 4 and 9 will be asserted into these two cells, and other cells in $b_{7}$ have to have 4 and 9 eliminated.
+
+
 
 
 
