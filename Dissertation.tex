@@ -632,25 +632,26 @@ The first two prerequisites above could be mixed and matched with the last one, 
 
 \section{Hidden Pair}
 \label{sec:Hidden Pair}
-The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in one unit (either row, column, or block). If the condition is hold, then all other candidates in these two cells could be excluded surely. 
+The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in a shared unit (a row, a column, or a block). Once the prerequisite is satisfied, all other candidates in these two cells could be excluded surely. 
+For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{5})$ and $(r_{3},\ c_{4})$ do not have only two candidates $n_{6}$ and $n_{9}$ in the cells only, but candidates $n_{6}$ and $n_{9}$ are restricted to these two cells only. Hence, the prerequisite is satisfied, thus all candidates expect $n_{6}$ and $n_{9}$ could all be excluded from these two cells.
 
 \begin{figure}[h]
 \begin{sudoku}
-|{\cell {}234{}{}{}89}|{\cell {}{}345{}{}89}|7|{\cell {}23{}5{}{}{}9}|6|1|{\cell {}{}{}45{}{}{}9}|{\cell {}2{}{}{}{}{}89}|{\cell {}2{}4{}{}{}89}|.
-|{\cell {}234{}{}{}{}9}|{\cell {}{}345{}{}{}9}|{\cell {}{}345{}{}{}9}|{\cell {}23{}5{}{}{}9}|{\cell {}2{}{}5{}{}{}9}|8|{\cell 1{}{}45{}7{}9}|6|{\cell 12{}4{}{}7{}9}|.
-|1|{\cell {}{}{}{}5{}{}89}|6|{\cell {}2{}{}5{}{}{}9}|7|4|{\cell {}{}{}{}5{}{}{}9}|{\cell {}2{}{}{}{}{}89}|3|.
-|{\cell {}{}{}4{}{}7{}9}|2|{\cell 1{}{}45{}{}{}9}|{\cell {}{}{}45{}{}{}9}|{\cell {}{}{}{}5{}{}{}9}|3|8|{\cell 1{}{}{}{}{}7{}9}|6|.
-|{\cell {}{}34{}{}789}|{\cell 1{}3456{}89}|{\cell 1{}345{}{}{}9}|{\cell {}2{}45{}{}89}|{\cell {}2{}{}5{}{}{}9}|{\cell {}{}{}{}{}67{}{}}|{\cell 1{}34{}{}{}{}9}|{\cell 123{}{}{}7{}9}|{\cell 12{}4{}{}{}{}9}|.
-|{\cell {}{}34{}{}789}|{\cell {}{}34{}6{}89}|{\cell {}{}34{}{}{}{}9}|{\cell {}2{}4{}{}{}89}|1|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}34{}{}{}{}9}|5|{\cell {}2{}4{}{}{}{}9}|.
-|{\cell {}{}{}4{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}9}|8|7|3|2|6|{\cell 1{}{}{}{}{}{}{}9}|5|.
-|6|{\cell {}{}3{}{}{}{}{}9}|2|1|8|5|{\cell {}{}3{}{}{}7{}9}|4|{\cell {}{}{}{}{}{}7{}9}|.
-|5|7|{\cell 1{}3{}{}{}{}{}{}}|6|4|9|2|{\cell 1{}3{}{}{}{}8{}}|{\cell 1{}{}{}{}{}{}8{}}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}4{\underline 5}{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell {\underline 1}{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
 \caption{Example in Hidden Pair}
 \label{fig:hiddenPair}
 \end{figure}
 
-For instance, in the Figure {fig:hiddenPair}. Candidates $n_{1}$ and $n_{7}$ in $(r_{2},\ c_{7})$ are restricted to these two cells only. Once the prerequisite is satisfied, then the all other cells who has either candidates $n_{1}$ and $n_{7}$ in the cell could have these candidates cross out from these two cells.
+
 
 
 
