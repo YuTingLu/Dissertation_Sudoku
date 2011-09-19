@@ -668,36 +668,61 @@ By this technique, other cells in the same row, column, or the same block could 
 
 \begin{figure}[h]
 \begin{sudoku}
-|2|4|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
-|5|9|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}{}{}{}{}{\textbf 7}{\textbf 8}{}}|{\cell 1{}3{}{}67{}{}}|{\cell 1{}3{}{}678{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
-|3|5|2|1|4|6|8|9|7|.
-|4|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|3|8|9|5|1|2|.
-|1|8|9|5|7|2|6|4|3|.
-|{\cell {}{}{}{}{}{}78{}}|2|{\cell {}{}{}45{}78{}}|{\cell {}{}{}4{}{}78{}}|9|3|1|{\cell {}{}{}{}{}378{}}|{\cell {}{}{}{}56{}8{}}|.
-|6|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}34{}{}78{}}|{\cell {}2{}4{}{}78{}}|5|1|{\cell {}2{}4{}{}{}{}{}}|{\cell {}{}{}{}{}{}78{}}|9|.
-|9|{\cell 1{}{}{}{}{}7{}{}}|{\cell 1{}{}45{}78{}}|{\cell {}2{}4{}{}78{}}|6|{\cell {}{}{}4{}{}78{}}|{\cell {}2{}4{}{}{}{}{}}|3|{\cell {}{}{}{}5{}{}8{}}|.
+|1|{\cell {}{}{\textbf 3}{}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}{\textbf 3}{}{\textbf{5}}{\textbf 6}{}{}{}}|4|{\cell {}{}{\textbf 3}{}{}{\textbf 6}{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
 \caption{Example in Naked Triplet - Before}
 \label{fig:nakedtripletb4}
 \end{figure}
-In the Figure \ref{fig:nakedtripletb4}, candidates 6, 7 and 8 are the common three number which appears in the cells $(r_{1},\ c_{3})$, $(r_{2},\ c_{3})$, and $(r_{5},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidates 6, 7 and 8 in a shared unit (column $c_{3}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
+In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ are the common three number which appears in the cells $(r_{1},\ c_{2})$, $(r_{3},\ c_{1})$, and $(r_{3},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidate $n_{3}$, $n_{5}$ and $n_{6}$ in a shared unit (block $b_{1}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
 
 \begin{figure}[h]
 \begin{sudoku}
-|2|4|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
-|5|9|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}{}{}{}{}{\textbf 7}{\textbf 8}{}}|{\cell 1{}3{}{}{\sout 6}{\sout 7}{}{}}|{\cell 1{}3{}{}{\sout  6}{\sout 7}{\sout 8}{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
-|3|5|2|1|4|6|8|9|7|.
-|4|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|3|8|9|5|1|2|.
-|1|8|9|5|7|2|6|4|3|.
-|{\cell {}{}{}{}{}{}78{}}|2|{\cell {}{}{}45{}78{}}|{\cell {}{}{}4{}{}78{}}|9|3|1|{\cell {}{}{}{}{}378{}}|{\cell {}{}{}{}56{}8{}}|.
-|6|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}34{}{}78{}}|{\cell {}2{}4{}{}78{}}|5|1|{\cell {}2{}4{}{}{}{}{}}|{\cell {}{}{}{}{}{}78{}}|9|.
-|9|{\cell 1{}{}{}{}{}7{}{}}|{\cell 1{}{}45{}78{}}|{\cell {}2{}4{}{}78{}}|6|{\cell {}{}{}4{}{}78{}}|{\cell {}2{}4{}{}{}{}{}}|3|{\cell {}{}{}{}5{}{}8{}}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}{\sout 3}{}{}{\sout 6}7{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
 \caption{Example in Naked Triplet - After}
 \label{fig:nakedtripletaf}
 \end{figure}
+
+
+\section{Hidden Triplet}
+\label{sec:Hidden Triplet}
+Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
+
+\begin{figure}[h]
+\begin{sudoku}
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
+\end{sudoku}
+\caption{Example in Hidden Triplet}
+\label{fig:hiddentriplet}
+\end{figure}
+
+In the block $b_{5}$ of Figure \ref{fig:hiddentriplet}, candidate $n_{5}$, $n_{6}$, and $n_{8}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
+
+
 
 \section{Naked Quad}
 \label{sec:Naked Quad}
@@ -721,32 +746,6 @@ It is in the situation while four cells in a row, a column, or a block are havin
 
 
 
-
-
-
-
-
-
-\section{Hidden Triplet}
-\label{sec:Hidden Triplet}
-Basically, it is evolved from hidden single and hidden pair. The prerequisite is three of all the possible candidates in the cell are only happened in only three cells in one unit (either row, column, or block).
-
-\begin{figure}
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.6}
-\hspace{1em}
-\begin{center}
-\begin{tabular}{ | r| r| r| r| r| r| r| r| r | }
-\hline
-{\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & 1 &{\cell {}2{}{}56{}8{}}  & {\cell {}2{}{}5{}789} & 3 & {\cell {}{}{}{}5{}7{}9} & 4 & {\cell {}{}{}{}{}6{}{}9} \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Example in Hidden Triplet}
-\label{fig:hiddentriplet}
-\end{figure}
-
-In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
 
 \section{Hidden Quad}
 \label{sec:Hidden Quad}
