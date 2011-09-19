@@ -561,6 +561,38 @@ Naked single is always the first rule to apply at start. The prerequisite of it 
 \label{fig:nakedsingle}
 \end{figure}
 
+\section{Hidden Single}
+\label{sec:Hidden Single}
+Hidden single does not show the solution obviously like what naked single does (showing one candidate only in the cell). It is a skill to find a unique specific digit to write in only if the player looks closely. However, it sometimes replaced by Cross-Hatching which could be even more easily applied to find the answer without the pencilmarks step. 
+
+There are 3 formulas in Hidden Single, which are in row, in column,and in block, respectively.
+\begin{itemize}
+\item $ \forall r  \forall n\  \{ \exists !c \  candidate(n, r, c) => value(n, r, c)\}$
+\item $ \forall c  \forall n\  \{ \exists !r \  candidate(n, r, c) => value(n, r, c)\}$
+\item $ \forall b  \forall n\  \{ \exists !s \  candidate[n, b,s] => value[n, b, s]\}$
+\end{itemize}
+
+\begin{figure}[h]
+\begin{sudoku}
+|{\cell {}23{}{}{}{}8{}}|{\cell {}234{}{}78{}}|{\cell {}{}34{}{}78{}}|{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}{}7{}{}}|{\cell 123{}{}{}78{}}|5|{\cell 12{}4{}6789}|{\cell 123{}{}678{}}|.
+|1|6|{\cell {}{}345{}78{}}|9|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}234{}{}78{}}|{\cell {}2{}4{}{}78{}}|{\cell {}23{}{}{}78{}}|.
+|{\cell {}23{}5{}{}8{}}|{\cell {}23{}5{}78{}}|9|{\cell {}{}{}{}5{}78{}}|6|4|{\cell {}23{}{}{}78{}}|{\cell 12{}{}{}{}78{}}|{\cell 123{}{}{}78{}}|.
+|{\cell {}23{}56{}89}|{\cell {}23{}5{}789}|{\cell 1{}3{}5678{}}|{\cell {}{}{}{}5678{}}|{\cell 1{}{}{}{}{}7{}9}|{\cell 1{}{}{}5678{}}|{\cell {}23{}{}6789}|{\cell {}2{}{}{}6789}|4|.
+|4|{\cell {}{}3{}5{}789}|{\cell {}{}3{}5678{}}|{\cell {}{}{}{}5678{}}|2|{\cell {}{}{}{}5678{}}|1|{\cell {}{}{}{}{}6789}|{\cell {}{}3{}{}678{}}|.
+|{\cell {}2{}{}{}6{}89}|{\cell {}2{}{}{}{}789}|{\cell 1{}{}{}{}678{}}|3|{\cell 1{}{}4{}{}7{}9}|{\cell 1{}{}{}{}678{}}|{\cell {}2{}{}{}678{}}|5|{\cell {}2{}{}{}678{}}|.
+|{\cell {}{}3{}56{}{}{}}|{\cell {}{}345{}{}{}{}}|2|{\cell {}{}{}4{}67{}{}}|8|9|{\cell {}{}{}4{}67{}{}}|{\cell 1{}{}4{}67{}{}}|{\cell 1{}{}{}567{}{}}|.
+|{\cell {}{}{}{}{}6{}89}|1|{\cell {}{}{}4{}6{}8{}}|2|5|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}4{}678{}}|3|{\cell {}{}{}{}{}678{}}|.
+|7|{\cell {}{}345{}{}8{}}|{\cell {}{}3456{}8{}}|1|{\cell {}{}34{}{}{}{}{}}|{\cell {}{}3{}{}6{}{}{}}|{\cell {}2{}4{}6{}8{}}|{\cell {}2{}4{}6{}8{}}|9|.
+\end{sudoku}
+\label{fig:hiddensingle}
+\caption{Example in Hidden Single}
+\end{figure}
+
+In this case, they are four possibilities could be filled into this highlighted cell. Nevertheless, if look carefully, candidate 4 is the only number that appears once only in this block. Hence, candidate 4 is the answer for this cell undoubtedly.
+Actually, this cell could be solved by using either hidden single or Cross-Hatching. Looking at candidate 4 by using Cross-Hatching, all the possibilities of candidate 4 in the middle block here has only one cell left after crossing out the impossibility according to the rule that the candidate could only be used once in each row, column and the block.
+
+
+
 \section{Naked Pair}
 \label{sec:Naked Pair}
 
@@ -671,35 +703,7 @@ It is in the situation while four cells in a row, a column, or a block are havin
 
 
 
-\section{Hidden Single}
-\label{sec:Hidden Single}
-Hidden single does not show the solution obviously like what naked single does (showing one candidate only in the cell). It is a skill to find a unique specific digit to write in only if the player looks closely. However, it sometimes replaced by Cross-Hatching which could be even more easily applied to find the answer without the pencilmarks step. 
 
-There are 3 formulas in Hidden Single, which are in row, in column,and in block, respectively.
-\begin{itemize}
-\item $ \forall r  \forall n\  \{ \exists !c \  candidate(n, r, c) => value(n, r, c)\}$
-\item $ \forall c  \forall n\  \{ \exists !r \  candidate(n, r, c) => value(n, r, c)\}$
-\item $ \forall b  \forall n\  \{ \exists !s \  candidate[n, b,s] => value[n, b, s]\}$
-\end{itemize}
-
-\begin{figure}[h]
-\begin{sudoku}
-|{\cell {}23{}{}{}{}8{}}|{\cell {}234{}{}78{}}|{\cell {}{}34{}{}78{}}|{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}{}7{}{}}|{\cell 123{}{}{}78{}}|5|{\cell 12{}4{}6789}|{\cell 123{}{}678{}}|.
-|1|6|{\cell {}{}345{}78{}}|9|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}234{}{}78{}}|{\cell {}2{}4{}{}78{}}|{\cell {}23{}{}{}78{}}|.
-|{\cell {}23{}5{}{}8{}}|{\cell {}23{}5{}78{}}|9|{\cell {}{}{}{}5{}78{}}|6|4|{\cell {}23{}{}{}78{}}|{\cell 12{}{}{}{}78{}}|{\cell 123{}{}{}78{}}|.
-|{\cell {}23{}56{}89}|{\cell {}23{}5{}789}|{\cell 1{}3{}5678{}}|{\cell {}{}{}{}5678{}}|{\cell 1{}{}{}{}{}7{}9}|{\cell 1{}{}{}5678{}}|{\cell {}23{}{}6789}|{\cell {}2{}{}{}6789}|4|.
-|4|{\cell {}{}3{}5{}789}|{\cell {}{}3{}5678{}}|{\cell {}{}{}{}5678{}}|2|{\cell {}{}{}{}5678{}}|1|{\cell {}{}{}{}{}6789}|{\cell {}{}3{}{}678{}}|.
-|{\cell {}2{}{}{}6{}89}|{\cell {}2{}{}{}{}789}|{\cell 1{}{}{}{}678{}}|3|{\cell 1{}{}4{}{}7{}9}|{\cell 1{}{}{}{}678{}}|{\cell {}2{}{}{}678{}}|5|{\cell {}2{}{}{}678{}}|.
-|{\cell {}{}3{}56{}{}{}}|{\cell {}{}345{}{}{}{}}|2|{\cell {}{}{}4{}67{}{}}|8|9|{\cell {}{}{}4{}67{}{}}|{\cell 1{}{}4{}67{}{}}|{\cell 1{}{}{}567{}{}}|.
-|{\cell {}{}{}{}{}6{}89}|1|{\cell {}{}{}4{}6{}8{}}|2|5|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}4{}678{}}|3|{\cell {}{}{}{}{}678{}}|.
-|7|{\cell {}{}345{}{}8{}}|{\cell {}{}3456{}8{}}|1|{\cell {}{}34{}{}{}{}{}}|{\cell {}{}3{}{}6{}{}{}}|{\cell {}2{}4{}6{}8{}}|{\cell {}2{}4{}6{}8{}}|9|.
-\end{sudoku}
-\label{fig:hiddensingle}
-\caption{Example in Hidden Single}
-\end{figure}
-
-In this case, they are four possibilities could be filled into this highlighted cell. Nevertheless, if look carefully, candidate 4 is the only number that appears once only in this block. Hence, candidate 4 is the answer for this cell undoubtedly.
-Actually, this cell could be solved by using either hidden single or Cross-Hatching. Looking at candidate 4 by using Cross-Hatching, all the possibilities of candidate 4 in the middle block here has only one cell left after crossing out the impossibility according to the rule that the candidate could only be used once in each row, column and the block.
 
 
 \section{Hidden Pair}
