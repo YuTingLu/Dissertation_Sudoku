@@ -13,6 +13,7 @@ amsmath.sty.txt
 colortbl.sty.txt
 multirow.sty
 a4.sty
+ulem.sty
 sudoku-package
 *.gz
 .directory

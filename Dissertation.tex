@@ -9,6 +9,7 @@
 \usepackage{amsmath}
 \usepackage{colortbl}
 \usepackage{multirow}
+\usepackage{ulem}
 
 \setlength\sudokusize{8cm}
 \newcommand{\cell}[9]{%
@@ -531,9 +532,8 @@ For instance, in Figure \ref{fig:bnview}, in block $b_{7}$, $[b_{7},\ n_{1}]$ ha
 \chapter{Techniques for solving Sudoku}
 \label{sec:Techniques}
 
-Sudoku problems have classified into different level according to its difficulties. To solve the puzzles, there are loads of techniques could be used to support user to solve Sudoku puzzles in different level of difficulties.
-These techniques are usually divided into two main parts, one is called “Direct Elimination Technique”, and the other is named “Candidates Elimination Techniques".
-Direct Elimination Technique is an approach could be easily applied without any pencilmarks written on. It eliminates the impossibilities through analysing the existing numbers given in the question step by step. It is the most common and easy way to cope the puzzles, but it will work insufficiently if the harder question has been encountered. 
+Sudoku problems have classified into different level according to its difficulties. To solve the puzzles, there are loads of techniques could be used to support user to solve Sudoku puzzles in different level of difficulties. These techniques are usually divided into two main parts, one is called “Direct Elimination Technique”, and the other is named “Candidates Elimination Techniques".
+Direct Elimination Technique is an approach could be easily applied which does not required to have an annotated instance. It eliminates the impossibilities through analysing the existing numbers given in the question step by step. It is the most common and easy way to cope the puzzles, but it will work insufficiently if the harder question has been encountered. 
 Consequently, Candidates Elimination Techniques are provided to solve harder question. To apply this skill to deal Sudoku question, pencilmarks are mostly needed to be written in all the cells at the first stage. It is a step to write all the possibilities in all the awaiting cells. Pencilmarks will help with skills applied to eliminate all the impossibilities till the last unique digit is sure for players to fill the right digit in.
 Generally, most of the Sudoku problem which is classified to easy level could be solved by applying naked single and hidden single skill if the Direct Elimination Technique is inapplicable. According to the Degree of difficulty, more and more Candidates Elimination Techniques will need to be applied jointly to figure out the solution. 
 Naked single and hidden single are the basic methods of Candidates Elimination Techniques mostly used to start the game. When the harder puzzle comes, the techniques: naked pair, hidden pair, naked triplet, hidden triplet, naked quad or even hidden quad techniques will involves in solving the puzzle. Usually the general puzzles could be deal by the techniques introduced lately. X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish are rare used only if the infrequent problem of high level difficulty appears. 
@@ -543,19 +543,17 @@ Naked single and hidden single are the basic methods of Candidates Elimination T
 \section{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is the easiest method that could be used to play sudoku puzzle. The situation to apply naked single is, firstly, find out all the possible candidates and pencilmark the possible candidates in all the possible cells. After the work is done for all the cells. Look into the puzzle to find if there is any cell has one possibility only. If so, then, yes it is the situation what we called ``Naked Single'', and candidate found is the only solution to fill into the specific cell of the puzzle.
-
-The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candidate(n, r, c) => value(n, r, c)\}\]
+Naked single is always the first rule to apply at start. The prerequisite of it is ``there is a cell only has only one candidate possibly to be filled in''. And a modification of the instance after we have found a cell which tally with the prerequisite is eliminating candidate in all other cells which shared a unit with the cell. Figure \ref{fig:rcWhole} is an instance which has two cells are obviously matched to the prerequisite. Candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ it the only one possibility to fill into both cells, thus, the this instance will be updated to Figure \ref{fig:nakedsingle}. Candidate 8 has been filled into both cells, and this candidate will cross out from other cells which shared a row, column or block with $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$.
 
 \begin{figure}[h]
 \begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
-|{\cell {}2{}{}{}{}{}8{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
-|{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}89}|7|{\cell 1{}{}{}{}{}{}8{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
-|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}8{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}78{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
-|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}78{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
-|9|7|{\cell {}{}34{}6{}8{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}8{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
-|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}78{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{\sout 8}{}}|2|{\cell {}{}{}{}{}6{}{\sout 8}9}|{\textbf 8}|{\cell {}{}{}{}5{}{}{\sout 8}9}|{\cell {}{}3{}{}{}{}{\sout 8}9}|4|.
+|{\cell {}2{}{}{}{}{}{\sout 8}{}}|9|{\textbf 8}|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|{\cell {}23{}56{}{\sout 8}{}}|4|{\cell {}{}3{}{}6{}{\sout 8}{}}|{\cell 1{}{}{}{}6{}{\sout 8}9}|7|{\cell 1{}{}{}{}{}{}{\sout 8}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{\sout 8}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{\sout 8}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{\sout 8}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{\sout 8}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{\sout 8}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{\sout 8}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
@@ -563,49 +561,45 @@ The formula of Naked Single is \[ \forall r  \forall c\  \{ \exists !n \  candid
 \label{fig:nakedsingle}
 \end{figure}
 
-In the Figure \ref{fig:nakedsingle}, candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ is obviously the only one possibility to fill into that two cells, thus this puzzle could be simply started completing these two cells.
-
-XXX if a cell-matrix contains only one candidate, then the formely empty cell can be filled with this candidate XXX
-
-??? what to do with row/column/block constraints? are the applied automatically ???
-
-
 \section{Naked Pair}
 \label{sec:Naked Pair}
 
-Naked Pair is defined in the situation that two cells have two same candidate digits and no others in both two specific cells which exactly in the same unit (same row, same column, or same block). By applying this technique, elimination might be possible to be made if any cell shared the same unit as that two specific cells and to have the same candidates excluded in the cell.
+Naked Pair could hold when any of these three prerequisites hold, which are, 
+\begin{itemize}
+\item in a row: two cells happen to shared a row and have only two candidate left in the cells.
+\item in a column: two cells happen to shared a column and have only two candidate left in the cells.
+\item or in a block: two cells happen to shared a row and have only two candidate left in the cells.
+\end{itemize}
+The first two prerequisites above could be mixed and matched with the last one, such like two cells have shared a block and also a column or two cells have shared a block and also a row. When one prerequisite has been matched, then all other cells shared the same row, column, or block could have these two candidates excluded. Because the situation told that these two candidates could only be used in these two cells, and no longer able to be used for others. For example, in the instance Figure \ref{fig:nakedpairb4} which is shown, candidates 2 and 3 are the \textbf{only} two candidates left in the cell $(r_{7},\ c_{2})$ and $(r_{9},\ c_{2})$ which happened to be in a column and also a block, it tells that 2 or 3 could only be used in these cells, no longer for others in the same column or same block. Thus, candidates 2 and 3 will be excluded in this column and the block which $(r_{7},\ c_{2})$ and $(r_{9},\ c_{2})$ are both in to a consequence like Figure \ref{fig:nakedpairaf}. 
 
-XXX we are in a ``situation'' where two cells in a row resp.\ column resp.\ block have (exactly) two candidates left, and these two candidates coincide, then these two candidates are not candidates for the other cells in the row resp.\ column. XXX
 
 \begin{figure}[h]
 \begin{sudoku}
-|{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}789}|{\cell {}2{}45{}{}89}|{\cell {}234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell {}{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|1|{\cell {}{}3{}45{}9}|.
-|1|3|6|9|5|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}2{}{}{}{}7{}{}}|4|.
-|{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}7{}9}|{\cell {}2{}45{}{}{}9}|{\cell 1234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell 1{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}3{}{}6{}{}9}|8|.
-|{\cell {}2{}45{}{}{}{}}|{\cell {}2{}{}5{}{}{}{}}|{\cell {}2345{}{}{}{}}|{\cell 1{}345{}78{}}|{\cell {}{}34{}78{}}|6|9|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
-|7|1|{\cell {}{}345{}{}{}9}|{\cell {}{}345{}{}{}{}}|{\cell {}{}34{}{}{}{}9}|2|8|{\cell {}{}34{}6{}{}{}}|{\cell {}{}3{}56{}{}{}}|.
-|8|6|{\cell {}2345{}{}{}9}|{\cell 1{}345{}7{}{}}|{\cell {}{}34{}{}7{}9}|{\cell 1{}345{}7{}9}|{\cell 12{}45{}7{}{}}|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
-|3|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}45{}78{}}|1|{\cell {}{}{}45{}7{}9}|{\cell {}{}{}4{}6{}{}{}}|{\cell {}{}{}4{}6{}89}|2|.
-|6|4|1|{\cell {}2{}{}5{}{}8{}}|{\cell {}2{}{}{}{}{}89}|{\cell {}{}{}{}5{}{}{}9}|3|{\cell {}{}{}{}{}{}{}89}|7|.
-|{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|{\cell {}23{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
 \caption{Example in Naked Pair - Before}
 \label{fig:nakedpairb4}
 \end{figure}
 
-Naked pair is in the situation which two cells which shared a unit (such like a row, a column, or a block) both have \textbf{only} two same possibilities to be filled in as an answer. In the Figure \ref{fig:nakedpairb4} which is shown, candidates 5 and 6 are the \textbf{only} two possible candidates in the cell $(r_{1},\ c_{7})$ and $(r_{3},\ c_{7})$. This move is to help eliminating the impossibilities candidates 5 and 6 in other cells which shared a unit (a row, a column, or a block) as that two cells which each has \textbf{only} two same candidates in each. After the move, those cells which in the same unit will have candidates 5 and 6 excluded which has a result as Figure \ref{fig:nakedpairaf}. 
-
 \begin{figure}[h]
 \begin{sudoku}
-|{\cell {}2{}4{}{}{}{}9}|{\cell {}2{}{}{}{}789}|{\cell {}2{}4{}{}{}89}|{\cell {}234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell {}{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|1|{\cell {}{}3{}4{}{}9}|.
-|1|3|6|9|5|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}2{}{}{}{}7{}{}}|4|.
-|{\cell {}2{}45{}{}{}9}|{\cell {}2{}{}5{}7{}9}|{\cell {}2{}45{}{}{}9}|{\cell 1234{}{}7{}{}}|{\cell {}234{}67{}{}}|{\cell 1{}34{}{}7{}{}}|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}3{}{}6{}{}9}|8|.
-|{\cell {}2{}45{}{}{}{}}|{\cell {}2{}{}5{}{}{}{}}|{\cell {}2345{}{}{}{}}|{\cell 1{}345{}78{}}|{\cell {}{}34{}78{}}|6|9|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
-|7|1|{\cell {}{}345{}{}{}9}|{\cell {}{}345{}{}{}{}}|{\cell {}{}34{}{}{}{}9}|2|8|{\cell {}{}34{}6{}{}{}}|{\cell {}{}3{}56{}{}{}}|.
-|8|6|{\cell {}2345{}{}{}9}|{\cell 1{}345{}7{}{}}|{\cell {}{}34{}{}7{}9}|{\cell 1{}345{}7{}9}|{\cell 12{}4{}{}7{}{}}|{\cell {}234{}{}7{}{}}|{\cell 1{}3{}5{}{}{}{}}|.
-|3|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}{}45{}78{}}|1|{\cell {}{}{}45{}7{}9}|{\cell {}{}{}4{}{}{}{}{}}|{\cell {}{}{}4{}6{}89}|2|.
-|6|4|1|{\cell {}2{}{}5{}{}8{}}|{\cell {}2{}{}{}{}{}89}|{\cell {}{}{}{}5{}{}{}9}|3|{\cell {}{}{}{}{}{}{}89}|7|.
-|{\cell {}2{}{}{}{}{}{}9}|{\cell {}2{}{}{}{}{}89}|7|6|{\cell {}234{}{}{}89}|{\cell {}{}34{}{}{}{}9}|{\cell 1{}{}4{}{}{}{}{}}|5|{\cell 1{}{}{}{}{}{}{}9}|.
+|1|{\cell {}{}{\sout 3}{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|{\cell {}23{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}{\sout 2}{\sout 3}{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}{\sout 3}{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{\sout 2}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}{\sout 3}{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
 \caption{Example in Naked Pair - After}
 \label{fig:nakedpairaf}
@@ -614,13 +608,19 @@ Naked pair is in the situation which two cells which shared a unit (such like a 
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
 
-It is in the situation whilst three specific cells which are all in the same unit (a row, a column, or a block) and must have three common candidate possibilities and no others in these three cells. And an elimination for excluding these three candidates from other cells shared same unit (a row, a column, or a block) as these three cells could be made.
+Naked Triplet could hold when any of these three prerequisites hold, which are, 
+\begin{itemize}
+\item in a row: three cells happen to shared a row and have common three candidate left in the cells.
+\item in a column: three cells happen to shared a column and have common three candidate left in the cells.
+\item or in a block: three cells happen to shared a row and have common three candidate left in the cells.
+\end{itemize}
+By this technique, other cells in the same row, column, or the same block could safely have these three candidates excluded expect three cells which have these candidates. 
 
 \begin{figure}[h]
 \begin{sudoku}
-|2|4|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
-|5|9|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}67{}{}}|{\cell 1{}3{}{}678{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
+|2|4|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
+|5|9|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}{}{}{}{}{\textbf 7}{\textbf 8}{}}|{\cell 1{}3{}{}67{}{}}|{\cell 1{}3{}{}678{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
 |3|5|2|1|4|6|8|9|7|.
 |4|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|3|8|9|5|1|2|.
 |1|8|9|5|7|2|6|4|3|.
@@ -631,13 +631,13 @@ It is in the situation whilst three specific cells which are all in the same uni
 \caption{Example in Naked Triplet - Before}
 \label{fig:nakedtripletb4}
 \end{figure}
-In the Figure{fig:nakedtripletb4}, candidates 6, 7 and 8 are the only common number which appears in the cells $(r_{1},\ c_{3})$, $(r_{2},\ c_{3})$, and $(r_{5},\ c_{3})$ which has shared the same unit (column) here. Hence, the inference to make is those cells who also have candidates 6, 7 and 8 in the same unit (column $c_{3}$) could have these three candidates erased, because they are not longer possible to be the answer to be filled in. The consequence after elimination is the Figure{fig:nakedtripletaf}.
+In the Figure \ref{fig:nakedtripletb4}, candidates 6, 7 and 8 are the common three number which appears in the cells $(r_{1},\ c_{3})$, $(r_{2},\ c_{3})$, and $(r_{5},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidates 6, 7 and 8 in a shared unit (column $c_{3}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
 
 \begin{figure}[h]
 \begin{sudoku}
-|2|4|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
-|5|9|{\cell {}{}{}{}{}678{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}{}{}{}{}78{}}|{\cell 1{}3{}{}67{}{}}|{\cell 1{}3{}{}678{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
+|2|4|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|1|.
+|5|9|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{\textbf 8}{}}|{\cell {}{}{}4{}678{}}|1|{\cell {}{}{}4{}{}78{}}|3|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}{}{}{}{}{\textbf 7}{\textbf 8}{}}|{\cell 1{}3{}{}{\sout 6}{\sout 7}{}{}}|{\cell 1{}3{}{}{\sout  6}{\sout 7}{\sout 8}{}}|{\cell {}{}{}{}{}6789}|2|{\cell {}{}{}{}5{}78{}}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}56{}8{}}|4|.
 |3|5|2|1|4|6|8|9|7|.
 |4|{\cell {}{}{}{}{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|3|8|9|5|1|2|.
 |1|8|9|5|7|2|6|4|3|.
@@ -897,7 +897,6 @@ If the first prerequisite is tenable, then the specific candidate could be exclu
 \end{figure}
 
 For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
-
 
 \chapter{Conclusion}
 \label{sec:Conclusion}
