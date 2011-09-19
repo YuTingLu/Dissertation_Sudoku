@@ -703,24 +703,22 @@ In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ 
 \section{Hidden Triplet}
 \label{sec:Hidden Triplet}
 Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
+In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (in boldface font) are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
 
 \begin{figure}[h]
-\begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
-|2|9|8|5|4|3|6| 7|1|.
-|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
-|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
-|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
-|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
-|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
-|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
-\end{sudoku}
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.6}
+\hspace{1em}
+\begin{center}
+\begin{tabular}{{|>{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }}
+\hline
+{\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & \LARGE 1 &{\cell {}{\textbf 2}{}{}{\textbf 5}6{}8{}}  & {\cell {}{\textbf 2}{}{}{\textbf 5}{}{\textbf 7}89} & \LARGE 3 & {\cell {}{}{}{}{\textbf 5}{}{\textbf 7}{}9} & \LARGE 4 & {\cell {}{}{}{}{}6{}{}9} \\
+\hline
+\end{tabular}
+\end{center}
 \caption{Example in Hidden Triplet}
 \label{fig:hiddentriplet}
 \end{figure}
-
-In the block $b_{5}$ of Figure \ref{fig:hiddentriplet}, candidate $n_{5}$, $n_{6}$, and $n_{8}$, are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could the be eliminated from these three cells.
 
 
 
@@ -749,16 +747,18 @@ It is in the situation while four cells in a row, a column, or a block are havin
 
 \section{Hidden Quad}
 \label{sec:Hidden Quad}
-This is the circumstance which has four digits candidate found to be restricted to specific 4 cells which has equal symmetry. Then other possibilities digits in these four cells should be removed afterwards. It is aims to help player to eliminate impossibilities in the cells by hidden quad skill. 
+This is a rare circumstance which has four candidates only found in four cells in a unit and each cell has at least two of these candidates appear in the cell. Then all other candidates in these four cells would be excluded afterwards as soon as the situation is found. 
+In the Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$, $n_{6}$ and $n_{7}$ are the only 4 candidates appear in these four cells $(r_{4}, c_{7})$,  $(r_{4}, c_{9})$,  $(r_{6}, c_{7})$ and $(r_{7}, c_{9})$, thus, all other candidates in these four cells will no longer needed.
+
 
 \begin{figure}
 \begin{sudoku}
 |6|3|2|1|4|5|9|7|8|.
 |8|1|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}3{}{}6{}{}{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}56{}{}{}}|{\cell {}23{}5{}{}{}{}}|4|.
 |{\cell {}{}{}{}5{}{}{}9}|4|{\cell {}{}{}{}5{}7{}9}|{\cell {}{}3{}{}6{}{}{}}|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}56{}{}{}}|1|{\cell {}23{}56{}{}{}}|.
-|{\cell {}{}3{}{}{}{}{}9}|{\cell {}2{}{}{}{}7{}{}}|{\cell {}{}{}4{}{}{}{}9}|8|5|{\cell 1{}3{}{}{}{}{}{}}|{\cell 12{}4{}67{}{}}|{\cell {}2{}{}{}{}{}{}9}|{\cell 12{}{}{}67{}{}}|.
+|{\cell {}{}3{}{}{}{}{}9}|{\cell {}2{}{}{}{}7{}{}}|{\cell {}{}{}4{}{}{}{}9}|8|5|{\cell 1{}3{}{}{}{}{}{}}|{\cell {\textbf 1}2{}{\textbf 4}{}{\textbf 6}{\textbf 7}{}{}}|{\cell {}2{}{}{}{}{}{}9}|{\cell {\textbf 1}2{}{}{}{\textbf 6}{\textbf 7}{}{}}|.
 |1|6|{\cell {}{}{}{}5{}{}89}|2|7|4|{\cell {}{}3{}5{}{}8{}}|{\cell {}{}3{}5{}{}89}|{\cell {}{}3{}5{}{}{}{}}|.
-|{\cell {}{}3{}5{}{}{}{}}|{\cell {}2{}{}{}{}7{}{}}|{\cell {}{}{}45{}{}8{}}|9|6|{\cell 1{}3{}{}{}{}{}{}}|{\cell 12{}45{}78{}}|{\cell {}2{}{}5{}{}8{}}|{\cell 12{}{}5{}7{}{}}|.
+|{\cell {}{}3{}5{}{}{}{}}|{\cell {}2{}{}{}{}7{}{}}|{\cell {}{}{}45{}{}8{}}|9|6|{\cell 1{}3{}{}{}{}{}{}}|{\cell {\textbf 1}2{}{\textbf 4}5{}{\textbf 7}8{}}|{\cell {}2{}{}5{}{}8{}}|{\cell {\textbf 1}2{}{}5{}{\textbf 7}{}{}}|.
 |4|8|1|5|2|9|{\cell {}{}3{}{}{}7{}{}}|6|{\cell {}{}3{}{}{}7{}{}}|.
 |7|5|3|4|1|6|{\cell {}2{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}8{}}|9|.
 |2|9|6|7|3|8|{\cell 1{}{}{}5{}{}{}{}}|4|{\cell 1{}{}{}5{}{}{}{}}|.
@@ -767,7 +767,9 @@ This is the circumstance which has four digits candidate found to be restricted 
 \label{fig:hiddenquad}
 \end{figure}
 
-In the example here, candidates 1, 4, 6 and 7 are the only 4 possibilities could still stay in these four cells, all the others will no longer existed after this technique has applied.
+
+
+
 
 \section{X-wing}
 \label{sec:X-wing}
