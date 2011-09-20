@@ -15,6 +15,7 @@ multirow.sty
 a4.sty
 ulem.sty
 sudoku-package
+subfig
 *.gz
 .directory
 
