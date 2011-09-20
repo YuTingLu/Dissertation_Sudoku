@@ -775,7 +775,7 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 
 \section{X-wing}
 \label{sec:X-wing}
-It is an advanced technique to apply on when 4 cells are fully symmetric and have 2 candidates for a given digit in the symmetric cells of parallel rows. All other candidates for that digit from these 2 columns could be eliminated. On the other hand, all other candidates for that digit from these 2 rows could be removed if the situation is reversed.
+An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
 
 \begin{figure}
 \begin{sudoku}
@@ -789,17 +789,22 @@ It is an advanced technique to apply on when 4 cells are fully symmetric and hav
 |*|X|*|*|*|*|*|X|*|.
 | |*| | | | | |*| |.
 \end{sudoku}
+\caption{Pattern in X-wing}
 \label{fig:xwingmodel}
 \end{figure}
 
-The figure above is the condition look which x-wing techniques consider could be applied for helping eliminating impossible candidates from cells. Those 4 cells which has symbol X in represents the cells to be considered, and symbol * represents the cell is in the same column, or same row. 
-
-In the figure below, candidate 6 is the common number in $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ whom are consecutive in opposite angle. To apply X-Wing on, there are only one solution will be the correct choice between two mutually exclusive possibilities for candidate 6 to fit in, either has candidate 6 to be filled in 
+Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situation:
 \begin{enumerate}
-\item $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
-\item or in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
+\item Two cells in both two rows and columns
+\item and a matching candidate ``X''  is appeared in all four cells.
 \end{enumerate}
-If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate number 4, 6, and 9 in any cells which in the same row or same column as $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$.
+
+In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
+\begin{enumerate}
+\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
+\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
+\end{enumerate}
+If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
 
 \begin{figure}
 \begin{sudoku}
@@ -821,10 +826,72 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 
 \section{XY-wing}
 \label{sec:XY-wing}
+That has to be applied when two prerequisites are satisfied:
+\begin{enumerate}
+\item three different cells not in a same unit has different combination from two of three candidates  X, Y, and Z,
+\item and two consecutive cells shared a unit (row, column, or block).
+\end{enumerate}
+If the condition is satisfied, then the cell at the intersect point between two of these three different cells which could have the candidate that two cells both have eliminated.
+In the figure \ref{fig:xywing}, in the cell $(r_{1}, c_{1})$, $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$, they are happened to have three candidates $n_{2}$, $n_{3}$ and $n_{7}$ only and a different combination in each. Thus, assume:
+\begin{description}
+\item $X = 2,\ Y = 3,\ and\ Z = 7$,
+\item $(r_{1}, c_{1})$ has XY (candidate $n_{2}$ and $n_{3}$),
+\item $(r_{1}, c_{8})$ has YZ (candidate $n_{3}$ and $n_{7}$),
+\item $(r_{8}, c_{1})$ has XZ (candidate $n_{2}$ and $n_{7}$).
+\end{description}
+Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$ which both have candidate $n_{7}$. Thus, if cell $(r_{8}, c_{8})$ also have the same candidate, it could have this removed then.
+
+\begin{figure}[h]
+\begin{sudoku}
+|{\cell {}{\textbf 2}{\textbf 3}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{\textbf 3}{}{}{}{\textbf 7}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{\textbf 2}{}{}{}{}{\textbf 7}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell 1{}{}{}{}{}{\sout 7}8{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+\end{sudoku}
+\caption{Example in XY-wing}
+\label{fig:xywing}
+\end{figure}
+
 
 
 \section{XYZ-wing}
 \label{sec:XYZ-wing}
+
+Which is pretty similar to XY-wing, but the only difference is, there is a cell specially has three candidates. So the conditions to be hold are:
+\begin{enumerate}
+\item three different cells not in a same unit ,
+\item and two consecutive cells shared a unit (row, column, or block),
+\item the cell which share two different units with another cell must have all three candidates XYZ in the cell,
+\item two cells have different combination XY(for the cell in the same column or row with the cell has XYZ), and YZ(for the cell in the same block with the cell has XYZ) from candidates  X,Y, and Z (Y is the candidate that three cells all have).
+\end{enumerate}
+If all the conditions above are satisfied, then the cell
+\begin{enumerate}
+\item which shared a block with two consecutive cells that one has candidate XYZ, and another has candidate YZ,
+\item and also in the same column or row with two consecutive cells that one has candidate XYZ, and another has candidate XY
+\end{enumerate}
+could than have candidate Y removed from the cell.
+
+In the Figure \ref{fig:xyzwing}, 
+\begin{figure}[h]
+\begin{sudoku}
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{\textbf 6}{}{}{\textbf 9}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|1|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{}{\textbf 9}}|{\cell {}{}{}{}{}{\textbf 6}{\textbf 7}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}5{}7{}9}|3|{\cell {}{}{}45{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|2|{\cell {}{}{}4{}{\sout 6}7{}{}}|8|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+\end{sudoku}
+\caption{Example in XYZ-wing}
+\label{fig:xyzwing}
+\end{figure}
 
 
 \section{WXYZ-wing}
