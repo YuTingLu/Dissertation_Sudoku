@@ -114,13 +114,19 @@ An example is given with Figure \ref{sudokuEx}, while for the solution see Figur
 
 \section{Literature}
 \label{sec:introLiterature}
+ 
+To study Sudoku, the basic introduction about what is Sudoku and the history of Sudoku is the first topic to understand.When we have enough background about the background, then we can start to dig in-depth about the popular topics: ``Math of Sudoku'', ``How to generate a Sudoku puzzle?'' and ``Solving Sudoku''.
 
+\subsection{Backgound}
+\label{sec:background}
 To get started on Sudoku, the origin and the fundamental mathematic of is have to be studied beforehand. Sudoku is special kind of Latin Square\cite{website:LatinSquare}. Latin square was developed by \it{Leonhard Euler} \rm in 18th century\footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} which is an $N \times N$ matrices which is standard on a principle: ``All the candidates from 1, \dots , 9 can exact appear once in the unit''. It was named Latin square because the Latin characters are used as symbols to fill into the cells\cite{Delahay2006Science} when it has been developed firstly. Nevertheless, integers could also be used to replace Latin characters. Later on, in 19th, there is a magazine company called ``Dell Magazines'' publish a number puzzle ``Number Place'' with a $9 \times 9$ square grid using Euler's perspective. At that time, it was not that popular till few years later a Japaness puzzle company Nikoli introduced this number puzzle with a new name called ``Sudoku'' again.
 
 Common Sudoku puzzle that we see in the newspaper, magazine or the Internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However, they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block. A formal Sudoku puzzle is a $N \times N$ matrices with some cells have already filled in with number between $1,\ \dots ,\ 9$ and does not have any number duplicated occurs in a unit. When a Sudoku puzzle has been given, then the next step to be done is make it annotated to generate an annotated instance to begin the rules apply.
 
-At first the number of Latin squares is $5524751496156892842531225600 \approx 5.525 \times 10^{27}$, but later in the published article ``Enumerating possible Sudoku grids\cite{FelgenhaueJarvis2005Enumerating}'', \it{Bertram Felgenhauer and Frazer Jarvis} \rm claims that there are $6670903752021072936960 \approx 6.671 \times 10^{21}$ valid Sudoku grids.
+At first the number of Latin squares is $5524751496156892842531225600 \approx 5.525 \times 10^{27}$, but later in the published article ``Enumerating possible Sudoku grids\cite{Jarvis2005Enumerating}'', \it{Bertram Felgenhauer and Frazer Jarvis} \rm claims that there are $6670903752021072936960 \approx 6.671 \times 10^{21}$ valid Sudoku grids.
 
+\subsection{Solving Sudoku}
+\label{sec:solvingsudoku}
 To puzzle a Sudoku problem, many people asked ``How do you solve it?'', ``How many are there?'', or ``How do you construct the Sudoku puzzle?''. In the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}'', \it{Denis Berthier} \rm expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilize them. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. A systematic procedure is:
 \begin{quote}
 \begin{tabbing}
