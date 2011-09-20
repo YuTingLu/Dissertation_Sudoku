@@ -833,12 +833,12 @@ That has to be applied when two prerequisites are satisfied:
 \end{enumerate}
 If the condition is satisfied, then the cell at the intersect point between two of these three different cells which could have the candidate that two cells both have eliminated.
 In the figure \ref{fig:xywing}, in the cell $(r_{1}, c_{1})$, $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$, they are happened to have three candidates $n_{2}$, $n_{3}$ and $n_{7}$ only and a different combination in each. Thus, assume:
-\begin{description}
-\item $X = 2,\ Y = 3,\ and\ Z = 7$,
+\begin{itemize}
+\item $X = n_{2},\ Y = n_{3},\ and\ Z = n_{7}$,
 \item $(r_{1}, c_{1})$ has XY (candidate $n_{2}$ and $n_{3}$),
 \item $(r_{1}, c_{8})$ has YZ (candidate $n_{3}$ and $n_{7}$),
 \item $(r_{8}, c_{1})$ has XZ (candidate $n_{2}$ and $n_{7}$).
-\end{description}
+\end{itemize}
 Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$ which both have candidate $n_{7}$. Thus, if cell $(r_{8}, c_{8})$ also have the same candidate, it could have this removed then.
 
 \begin{figure}[h]
@@ -864,7 +864,7 @@ Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ an
 
 Which is pretty similar to XY-wing, but the only difference is, there is a cell specially has three candidates. So the conditions to be hold are:
 \begin{enumerate}
-\item three different cells not in a same unit ,
+\item three different cells not all in a same unit ,
 \item and two consecutive cells shared a unit (row, column, or block),
 \item the cell which share two different units with another cell must have all three candidates XYZ in the cell,
 \item two cells have different combination XY(for the cell in the same column or row with the cell has XYZ), and YZ(for the cell in the same block with the cell has XYZ) from candidates  X,Y, and Z (Y is the candidate that three cells all have).
@@ -876,7 +876,14 @@ If all the conditions above are satisfied, then the cell
 \end{enumerate}
 could than have candidate Y removed from the cell.
 
-In the Figure \ref{fig:xyzwing}, 
+In the Figure \ref{fig:xyzwing}, assume:
+\begin{itemize}
+\item $X = n_{9},\ Y = n_{6},\ and\ Z = n_{7}$,
+\item $(r_{2}, c_{5})$ has XY (candidate $n_{9}$ and $n_{6}$),
+\item $(r_{4}, c_{5})$ has XYZ (candidate $n_{9}$,  $n_{6}$ and $n_{7}$),
+\item $(r_{2}, c_{6})$ has YZ (candidate $n_{6}$ and $n_{7}$).
+\end{itemize}
+There is a cell  $(r_{6}, c_{5})$ shared a block with both $(r_{4}, c_{5})$ and $(r_{2}, c_{6})$, and also shared a column with both $(r_{4}, c_{5})$ and $(r_{2}, c_{5})$ has the same candidate Y = $n_{6}$) with all of these three cells could now have Y removed from it.
 \begin{figure}[h]
 \begin{sudoku}
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
@@ -896,11 +903,46 @@ In the Figure \ref{fig:xyzwing},
 
 \section{WXYZ-wing}
 \label{sec:WXYZ-wing}
+It is an advanced technique rather than the techniques introduced above. The prerequisites of this techniques are:
+\begin{enumerate}
+\item four different cells not in a same unit but have a common candidate Z,
+\item three cells have candidate XZ, YZ, WZ, and one cell has WXYZ,
+\item the cell which has WZ and the one has WXYZ have to be in a block,
+\item and the rest of the cells have to be in a same column or row with the one has candidate WXYZ.
+\end{enumerate}
+As soon as the prerequisites are hold, the cell which has shared a block also a column (or row) with the cell which has candidate WXYZ could have candidate Z excluded.
+In the Figure \ref{fig:wxyzwing}, assume that:
+\begin{itemize}
+\item $W= n_{2}, X = n_{4},\ Y = n_{6},\ and\ Z = n_{5}$,
+\item $(r_{1}, c_{8})$ has WXYZ (candidate $n_{2}$, $n_{4}$, $n_{6}$ and $n_{5}$),
+\item $(r_{1}, c_{9})$ has WZ (candidate $n_{2}$ and $n_{5}$),
+\item $(r_{6}, c_{8})$ has XZ (candidate $n_{4}$ and $n_{5}$),
+\item $(r_{7}, c_{8})$ has YZ (candidate $n_{6}$ and $n_{5}$).
+\end{itemize}
+Four cells all hae a common candidate $n_{5}$, and other conditions are all hold, then we can have this candidate excluded from the cell $(r_{2}, c_{8})$ ($(r_{3}, c_{8})$ does not have candidate $n_{5}$, so no change is needed).
+
+\begin{figure}[h]
+\begin{sudoku}
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{\textbf 2}{}{\textbf 4}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{\textbf 2}{}{}{\textbf 5}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}3{}{\sout 5}{}7{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}34{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{\textbf 4}{\textbf 5}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
+\end{sudoku}
+\caption{Example in WXYZ-wing}
+\label{fig:wxyzwing}
+\end{figure}
+
+
 
 
 \section{Swordfish}
 \label{sec:Swordfish}
-Swordfish is similar approach which extended from X-wing technique, but has really rare opportunity to be applied on. The concept is like the X-Wing, a value in one position will forced the other in the same row or same column not to have the same value filled in. Will have two possibilities could be fulfilled eventually. Nevertheless, at the moment, could only help on making decision to eliminate candidates in other cells in the same columns and rows. It is used, when there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
+Swordfish is similar approach which extended from X-wing technique, but rarer to be seen. The concept is like the X-Wing, a value in one position will forced the other in the same row or same column not to have the same value filled in. Will have two possibilities could be fulfilled eventually. Nevertheless, at the moment, could only help on making decision to eliminate candidates in other cells in the same columns and rows. It is used, when there are three different columns, $c_{1}, c_{2}, c_{3}$, three different rows, $r_{1}, r_{2}, r_{3}$ and a number n in a situation like :
 \begin{enumerate}
 \item $r_{1}\ has\ c_{1}\ and\ c_{2}\ among\ its\ candidates,$
 \item $r_{2}\ has\ c_{2}\ and\ c_{3}\ among\ its\ candidates,$
