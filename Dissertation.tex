@@ -119,7 +119,7 @@ To study Sudoku, the basic introduction about what is Sudoku and the history of 
 
 \subsection{Backgound}
 \label{sec:background}
-To get started on Sudoku, the origin and the fundamental mathematic of is have to be studied beforehand. Sudoku is special kind of Latin Square\cite{website:LatinSquare}. Latin square was developed by \it{Leonhard Euler} \rm in 18th century\footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} which is an $N \times N$ matrices which is standard on a principle: ``All the candidates from 1, \dots , 9 can exact appear once in the unit''. It was named Latin square because the Latin characters are used as symbols to fill into the cells\cite{Delahay2006Science} when it has been developed firstly. Nevertheless, integers could also be used to replace Latin characters. Later on, in 19th, there is a magazine company called ``Dell Magazines'' publish a number puzzle ``Number Place'' with a $9 \times 9$ square grid using Euler's perspective. At that time, it was not that popular till few years later a Japaness puzzle company Nikoli introduced this number puzzle with a new name called ``Sudoku'' again.
+To get started on Sudoku, the origin and the fundamental mathematic of is have to be studied beforehand. Sudoku is special kind of Latin Square\cite{website:LatinSquare}. Latin square was developed by \textit{Leonhard Euler} in 18th century\footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{WikiLeonhardEuler}} which is an $N \times N$ matrices which is standard on a principle: ``All the candidates from 1, \dots , 9 can exact appear once in the unit''. It was named Latin square because the Latin characters are used as symbols to fill into the cells\cite{Delahay2006Science} when it has been developed firstly. Nevertheless, integers could also be used to replace Latin characters. Later on, in 19th, there is a magazine company called ``Dell Magazines'' publish a number puzzle ``Number Place'' with a $9 \times 9$ square grid using Euler's perspective. At that time, it was not that popular till few years later a Japaness puzzle company Nikoli introduced this number puzzle with a new name called ``Sudoku'' again.
 
 Common Sudoku puzzle that we see in the newspaper, magazine or the Internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However, they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block. A formal Sudoku puzzle is a $N \times N$ matrices with some cells have already filled in with number between $1,\ \dots ,\ 9$ and does not have any number duplicated occurs in a unit. When a Sudoku puzzle has been given, then the next step to be done is make it annotated to generate an annotated instance to begin the rules apply.
 
@@ -133,7 +133,8 @@ The number of valid Sudoku grids has been determined in \cite{FelgenhauerJarvis2
 
 \subsection{Solving Sudoku}
 \label{sec:solvingsudoku}
-To puzzle a Sudoku problem, \it{Denis Berthier} \rm expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilize them in the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}''. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. A systematic procedure is:
+
+To puzzle a Sudoku problem, \textit{Denis Berthier} expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilize them in the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}''. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. A systematic procedure is (from \cite{Berthier2007Sudoku}, Page 24):
 \begin{quote}
 \begin{tabbing}
 Loop \=Until  a solution is found (or until it is proven there can be no solution)\\
@@ -144,7 +145,7 @@ Loop \=Until  a solution is found (or until it is proven there can be no solutio
 \>\>End do\\
 \>End do\\
 \>Apply rule on selected matching pattern\\
-End loop \` \cite[24]{Berthier2007Sudoku}\\
+End loop\\
 \end{tabbing}
 \end{quote}
 
