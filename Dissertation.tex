@@ -300,13 +300,6 @@ The starting observation is that rows, columns, numbers and blocks are all numbe
 \section{Different  perspectives}
 \label{sec:Differentperspectives}
 
-XXX Also here the one running example from the previous chapter should be used XXX
-
-XXX the equations below are just not meaningful, and shall be written for example as ``$(r_i,n_j) \mapsto (C,E)$'', that is, we use \emph{mappings} XXX
-
-XXX ``$n$'' is not to be used as index, since it stands for ``number'' XXX
-
-
 To have different perspectives for an instance is aim to help further elimination for finding solution for each cell in the instance. An instance in different perspective might able to provide a solvable instance to find out one or more possible solution to sort out the puzzle. However, actually, to have an instance built in all different views at the very beginning is said as a time consuming. Thus, to be more efficient, building extended instance in other views will only be made if the instance is unfortunate blocked to be continued somehow.
 
 To be familiar with the four views standard for that we have introduced above:
@@ -565,7 +558,7 @@ Naked single is always the first rule to apply at start. The prerequisite of it 
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Naked Single}
+\caption{Example in naked single}
 \label{fig:nakedsingle}
 \end{figure}
 
@@ -585,7 +578,7 @@ Hidden single is under a situation which has one candidate could only be used in
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell {\underline 1}{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Hidden Single}
+\caption{Example in hidden single}
 \label{fig:hiddensingle}
 \end{figure}
 
@@ -617,7 +610,7 @@ The first two prerequisites above could be mixed and matched with the last one, 
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Naked Pair - Before}
+\caption{Example in haked pair - before}
 \label{fig:nakedpairb4}
 \end{figure}
 
@@ -633,7 +626,7 @@ The first two prerequisites above could be mixed and matched with the last one, 
 |{\cell {}{\sout 2}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}{\sout 3}{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Naked Pair - After}
+\caption{Example in naked pair - after}
 \label{fig:nakedpairaf}
 \end{figure}
 
@@ -655,7 +648,7 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell {\underline 1}{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Hidden Pair}
+\caption{Example in hidden pair}
 \label{fig:hiddenPair}
 \end{figure}
 
@@ -686,7 +679,7 @@ By this technique, other cells in the same row, column, or the same block could 
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Naked Triplet - Before}
+\caption{Example in naked triplet - before}
 \label{fig:nakedtripletb4}
 \end{figure}
 In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ are the common three number which appears in the cells $(r_{1},\ c_{2})$, $(r_{3},\ c_{1})$, and $(r_{3},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidate $n_{3}$, $n_{5}$ and $n_{6}$ in a shared unit (block $b_{1}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
@@ -703,7 +696,7 @@ In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ 
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in Naked Triplet - After}
+\caption{Example in naked triplet - after}
 \label{fig:nakedtripletaf}
 \end{figure}
 
@@ -724,7 +717,7 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 \hline
 \end{tabular}
 \end{center}
-\caption{Example in Hidden Triplet}
+\caption{Example in hidden triplet}
 \label{fig:hiddentriplet}
 \end{figure}
 
@@ -746,7 +739,7 @@ It is in the situation while four cells in a row, a column, or a block are havin
 |{\cell {}2{}{}{}6{}{}9}|{\cell 1{}{}{}56{}{}{}}|7|{\cell 1{}{}{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|4|3|{\cell 12{}{}56{}8{}}|{\cell 12{}{}{}{}{}8{}}|.
 |{\cell {}{}34{}6{}{}9}|{\cell 1{}{}456{}{}{}}|{\cell {}{}3{}{}6{}{}9}|{\cell 1{}3{}{}6{}{}9}|{\cell 1{}{}{}{}6{}89}|2|{\cell {}{}{}{}{}6{}8{}}|{\cell 1{}{}{}56{}8{}}|7|.
 \end{sudoku}
-\caption{Example in Naked Quad}
+\caption{Example in naked quad}
 \label{fig:nakedquad}
 \end{figure}
 
@@ -771,7 +764,7 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 |7|5|3|4|1|6|{\cell {}2{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}8{}}|9|.
 |2|9|6|7|3|8|{\cell 1{}{}{}5{}{}{}{}}|4|{\cell 1{}{}{}5{}{}{}{}}|.
 \end{sudoku}
-\caption{Example in Hidden Quad}
+\caption{Example in hidden quad}
 \label{fig:hiddenquad}
 \end{figure}
 
@@ -1016,7 +1009,7 @@ If the first prerequisite is tenable, then the specific candidate could be exclu
 |{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
 |{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
 \end{sudoku}
-\caption{Example in Intersection Removal}
+\caption{Example in intersection removal}
 \label{fig:intersectionremoval}
 \end{figure}
 
