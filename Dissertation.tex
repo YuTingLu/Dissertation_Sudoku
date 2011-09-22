@@ -134,7 +134,7 @@ The number of valid Sudoku grids has been determined in \cite{FelgenhauerJarvis2
 \subsection{Solving Sudoku}
 \label{sec:solvingsudoku}
 
-To puzzle a Sudoku problem, \textit{Denis Berthier} expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilize them in the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}''. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. A systematic procedure is (from \cite{Berthier2007Sudoku}, Page 24):
+To puzzle a Sudoku problem, \emph{Denis Berthier} expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilize them in the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}''. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. A systematic procedure is (from \cite{Berthier2007Sudoku}, Page 24):
 \begin{quote}
 \begin{tabbing}
 Loop \=Until  a solution is found (or until it is proven there can be no solution)\\
@@ -148,8 +148,10 @@ Loop \=Until  a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 \end{quote}
+In a system to find the solution automatically, a loop will keep looping to find the most suitable rule which could match the mapping of the cells left, and apply the rule to either get one or more candidate asserted or eliminated till the whole Sudoku puzzle has solved.
 
-and the book also issue a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are introduced in the book (\cite{Berthier2007Sudoku}, Page 41). No matter which representation (expect block-number view is slightly different) the Sudoku puzzle is displayed in, the informations given are always same information among three factors: row, column, and candidate (number). In fact, three representations are compressed from six different mix-match results as Figure \ref{fig:mixmatch}.
+\emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). No matter which representation (expect block-number view is slightly different) that the Sudoku puzzle is displayed in, the information given is always same among three factors: row, column, and candidate (number). In fact, three representations which mixed and matched by the factors are compressed from six mix-match as Figure \ref{fig:mixmatch}.
+
 \begin{figure}[h]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
