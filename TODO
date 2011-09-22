@@ -128,3 +128,7 @@ http://en.wikibooks.org/wiki/LaTeX/Bibliography\_Management
 
 
 12) Use proper language!! Use "annotated instances" where appropriate.
+
+
+13) No reference to {fig:rnWhole}?? Check for all figures that they are
+properly placed and referenced.
