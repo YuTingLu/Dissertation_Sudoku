@@ -46,7 +46,7 @@ Inside the four views, what does it mean to speak of "rows" and "columns"?
 Of "numbers"?? Of "boxes"???
 
 
-3) Annotated Sudoku instances
+3) Annotated Sudoku instances --Done
 
 The notion of "puzzle" is not useful for more detailed investigations.
 Instead, as discussed "annotated Sudoku instances" need to be discussed.
@@ -68,21 +68,21 @@ A rule just moves certain numbers from "possible" to "excluded".
 Find out how to define labels, and use them (a lot!).
 
 
-5) Precise information on examples needed
+5) Precise information on examples needed --Done
 
 Obviously, the concerned cells etc. in examples must be precisely stated
 in the caption! Additionally, one could also boldface them.
 However, no highlighting by colour (this is a usage-nightmare)!
 
 
-6) Misuse of environment "description"
+6) Misuse of environment "description" --Done
 
 \begin{description}\end{description} is only to be used in case
 a specific label is supplied for each entry. Otherwise use
 "itemize" or "enumerate".
 
 
-7) Standardisation of all notions and notations!
+7) Standardisation of all notions and notations! --Done
 
 
 8) Formulation of the rules:
@@ -112,7 +112,7 @@ apply these rules without modification of the four views?!?
 Compare Chapter 1 in the book.
 
 
-10) Bibtex
+10) Bibtex -- Format has adjusted.
 
 See
 http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
