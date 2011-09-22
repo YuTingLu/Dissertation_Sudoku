@@ -149,7 +149,21 @@ End loop\\
 \end{tabbing}
 \end{quote}
 
-
+and the book also issue a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are introduced in the book (\cite{Berthier2007Sudoku}, Page 41). No matter which representation (expect block-number view is slightly different) the Sudoku puzzle is displayed in, the informations given are always same information among three factors: row, column, and candidate (number). In fact, three representations are compressed from six different mix-match results as Figure \ref{fig:mixmatch}.
+\begin{figure}[h]
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{ >{\centering\arraybackslash}m{0.6in}|| >{\centering\arraybackslash}m{1.2in}|| >{\centering\arraybackslash}m{1.2in}|| >{\centering\arraybackslash}m{1.2in}||}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{row} & \multicolumn{1}{c}{column} & \multicolumn{1}{c}{number}\\ \cline{2-4}
+row & X & row-column & row-number\\ \cline{2-4}
+column & column-row \cellcolor[gray]{.8}& X& column- number\\ \cline{2-4}
+number & number-row \cellcolor[gray]{.8}& number-column \cellcolor[gray]{.8}& X\\ \cline{2-4}
+\end{tabular}
+\end{center}
+\caption{Mix-match among row, column, and number}
+\label{fig:mixmatch}
+\end{figure}
 
 \chapter{Basic notions and notations}
 \label{cha:basicnotnotat}
