@@ -148,7 +148,7 @@ Loop \=Until  a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 \end{quote}
-In a system to find the solution automatically, a loop will keep looping to find the most suitable rule which could match the mapping of the cells left, and apply the rule to either get one or more candidate asserted or eliminated till the whole Sudoku puzzle has solved.
+In a system to find the solution automatically, a loop will keep looping to find the most suitable rule which could match the mapping of the cells left, and apply the rule to either get one or more candidate asserted or eliminated till the whole Sudoku puzzle has solved or the puzzle has proven that it has no solution.
 
 \emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). No matter which representation (expect block-number view is slightly different) that the Sudoku puzzle is displayed in, the information given is always same among three factors: row, column, and candidate (number). In fact, three representations which mixed and matched by the factors are compressed from six mix-match as Figure \ref{fig:mixmatch}.
 
