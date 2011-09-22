@@ -334,6 +334,26 @@ Having the notion of annotated instances at hand, we can now say what a ``rule''
 \end{itemize}
 
 
+\subsection{Updating the annotated instances I}
+\label{sec:UpdatingtheinstancesI}
+
+XXX this is just some highlighting, plus application of the MOST BASIC RULE XXX just looking for the ``asserted'' fields, and removing their numbers from their rows, columns, blocks XXX
+
+Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips ??? to follow:
+\begin{enumerate}
+\item Assertion, ??? just highlighting
+\item and elimination. ??? happens later!
+\end{enumerate}
+
+NAKED SINGLE XXX
+
+The update will be made in the unit (row, column, and the block) which related to the cell which has a candidate filled in.
+
+Noticed that the updated will be silent different in bn-view, both elimination and assertion in bn-view will be only made in the related row.
+For instance, in Figure \ref{fig:bnview}, in block $b_{7}$, $[b_{7},\ n_{1}]$ has only one possibility 9 for the cell and $[b_{7},\ n_{6}]$ has only 4 for the cell. Once the action is confirmed this two number 4 and 9 will be asserted into these two cells, and other cells in $b_{7}$ have to have 4 and 9 eliminated.
+
+
+
 
 \chapter{Exploiting symmetries by using different views}
 \label{cha:exploitingsymm}
@@ -549,14 +569,33 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 \label{fig:bnview}
 \end{figure}
 
-\section{Updating the instances}
-\label{sec:Updatingtheinstances}
 
-Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips to follow:
-\begin{enumerate}
-\item Assertion,
-\item and elimination.
-\end{enumerate}
+
+\section{Updating the annotated instances II}
+\label{sec:UpdatingtheinstancesII}
+
+XXX continuation of Subsection \ref{sec:UpdatingtheinstancesI}, but \emph{now} applying the other threes views and explaining them XXX explaining their meaning (again), explaining why it can be done, and what, for the basic rule (``Naked single'' in variation) XXX
+
+XXX also needed: an example that this adds power! XXX
+
+
+\subsection{Rn-View}
+\label{sec:basicrulern}
+
+XXX
+
+\subsection{Cn-View}
+\label{sec:basicrulecn}
+
+XXX
+
+
+\subsection{Bn-View}
+\label{sec:basicruleBn}
+
+XXX
+
+
 
 The specific candidate which has been confirmed to fill in a cell must be eliminated and asserted simultaneously from all the views after rules applied.
 \begin{itemize}
@@ -565,7 +604,7 @@ The specific candidate which has been confirmed to fill in a cell must be elimin
 \item assert r as the value of cn-cell (c, n) in the cn-view instance;
 For example, in the Figure \ref{fig:rcWhole}, $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ are both confirmed to be have candidate 8 inserted. So the updated instance after the insertion is Figure \ref{fig:rcWholeupdated}. 
 and also,
-\item eliminate n from rc-cell (r, c) in the standard instance
+\item eliminate n from rc-cell (r, c) in the standard instance ???
 \item eliminate c from rn-cell (r, n) in the rc-view instance
 \item eliminate r from cn-cell (c, n) in the cn-view instance.
 \end{itemize}
@@ -585,12 +624,6 @@ and also,
 \caption{Updated after 8 eliminated from the same unit from Figure \ref{fig:rcWholeupdated}}
 \label{fig:rceliminate}
 \end{figure}
-
-
-The update will be made in the unit (row, column, and the block) which related to the cell which has a candidate filled in.
-
-Noticed that the updated will be silent different in bn-view, both elimination and assertion in bn-view will be only made in the related row.
-For instance, in Figure \ref{fig:bnview}, in block $b_{7}$, $[b_{7},\ n_{1}]$ has only one possibility 9 for the cell and $[b_{7},\ n_{6}]$ has only 4 for the cell. Once the action is confirmed this two number 4 and 9 will be asserted into these two cells, and other cells in $b_{7}$ have to have 4 and 9 eliminated.
 
 
 
