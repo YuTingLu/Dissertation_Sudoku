@@ -324,7 +324,7 @@ For an annotated instance $A$ we write $A_{i,j}$ for the content of cell $(i,j)$
 
 Having the notion of annotated instances at hand, we can now say what a ``rule'' is:
 \begin{itemize}
-\item A \textbf{Sudoku rule} is a partial map, mapping certain annotated instances $A$ to annotated instances $A'$ for those $A$ in the \emph{domain} of the rule, such that:
+\item A  is a partial map, mapping certain annotated instances $A$ to annotated instances $A'$ for those $A$ in the \emph{domain} of the rule, such that:
   \begin{itemize}
   \item For some cells certain candidates have been excluded.
   \item No other type of change takes places (that is, we only exclude candidates, while excluded candidates never get included again).
@@ -338,6 +338,18 @@ Having the notion of annotated instances at hand, we can now say what a ``rule''
 \label{sec:UpdatingtheinstancesI}
 
 XXX this is just some highlighting, plus application of the MOST BASIC RULE XXX just looking for the ``asserted'' fields, and removing their numbers from their rows, columns, blocks XXX
+
+If a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded for some cells. When a cell $(i,j)$ in a mapped annotated instance $A'$ has one or more candidates excluded (assume excluded candidate is $e$), the annotation for it has to be rewritten, because the candidate $e$ is no longer possible to be filled to the cell $A'\ (i,j)$. The updated annotation for the cell $A'\ (i,j)$ in an annotated instance $A'$ will be rewritten as:
+\begin{itemize}
+\item $A'\ (i,j)$ = ($\set{e \notin P}, \set {e \in E})$ (``P'' for ``possible'' and ``E'' for ``excluded'' candidate).
+\item all the cells shared a row with $A'\ (i,j)$ have candidate $e$ excluded.
+\item all the cells shared a column with $A'\ (i,j)$ have candidate $e$ excluded.
+\item all the cells shared a block with $A'\ (i,j)$ have candidate $e$ excluded.
+\end{itemize} 
+
+For exmple, in the Figure \ref{fig:rcWhole}
+
+
 
 Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips ??? to follow:
 \begin{enumerate}
