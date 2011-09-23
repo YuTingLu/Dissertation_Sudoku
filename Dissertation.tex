@@ -77,7 +77,7 @@ For ``classical Sudoku'' puzzles we have the following additional rules:
 \end{enumerate}
 An example is given with Figure \ref{sudokuEx}, while for the solution see Figure \ref{fig:solutionsudokuEx}.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
  |1| | |2| | | | |4|.
  | |9| |5| |3|6|7| |.
@@ -93,7 +93,7 @@ An example is given with Figure \ref{sudokuEx}, while for the solution see Figur
 \label{sudokuEx}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
   |1|5|7|2|6|8|9|3|4|.
   |2|9|8|5|4|3|6|7|1|.
@@ -177,7 +177,7 @@ There are many rules exist to be applied flexibly to solve the Sudoku puzzle amo
 
 \emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). No matter which representation (expect block-number view is slightly different) that the Sudoku puzzle is displayed in, the information given is always same among three factors: row, column, and candidate (number). In fact, three representations which mixed and matched by the factors are compressed from six mix-match as Figure \ref{fig:mixmatch}.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -240,7 +240,7 @@ It remains to specify what a ``solution'' is. The solution for the instance Figu
 
 The matrix is subdivided into $N$ \textit{blocks}, as indicated in Figures \ref{sudokuEx}, \ref{fig:solutionsudokuEx}. These blocks are numbered from $1$ to $9$, from top to bottom and left to right. Each block is itself a $n \times n$ matrix containing $n \cdot n = N$ cells; see Figure \ref{fig:exampleblock}.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
  |{\makebox[0pt]{\hspace{-1em}\large r1\raisebox{5ex}[0ex]{\hspace{1.5em}c1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c3}}}| {\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c4}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c5}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c6}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c7}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c8}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c9}}}|.
  |{\makebox[0pt]{\hspace{-2.25em}\large r2}}|{\LARGE b1}| | |{\LARGE b2}| | |{\LARGE b3}| |.
@@ -285,7 +285,7 @@ However for the systematic treatment we only use the annotated instances:
 For an annotated instance $A$ we write $A_{i,j}$ for the content of cell $(i,j)$, just using matrix notation; for $A$ as in Figure \ref{fig:rcWhole} for example we have $A_{3,4} = (\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})$.
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
 |{\cell {}2{}{}{}{}{}8{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
@@ -301,7 +301,7 @@ For an annotated instance $A$ we write $A_{i,j}$ for the content of cell $(i,j)$
 \label{fig:rcWhole}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|8|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
 |{\cell {}2{}{}{}{}{}8{}}|9|8|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
@@ -410,7 +410,7 @@ For example, in the Figure \ref{fig:rnprocess},
 
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -423,7 +423,7 @@ $r_{1}$ &\LARGE 1 &{\cell {}{}3{}56{}{}{}} & {\cell {}{}3{}{}678{}} & \LARGE 2 &
 \label{fig:rccolumn}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -436,7 +436,7 @@ $r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9 & {\cell {}2{}{
 \label{fig:rnprocess}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -450,7 +450,7 @@ $r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9  & {\cell {}2{}
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|4|{\cell {}23{}{}{}{}8{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}5{}{}{}{}}|{\cell {}{}3{}{}{}{}{}{}}|{\cell {}{}3{}5678{}}|{\cell {}{}{}{}5{}78{}}|.
 |{\cell {}{}{}{}{}{}{}{}9}|{\cell 1{}{}{}{}{}{}{}9}|6|{\cell {}{}{}{}5{}{}{}{}}|4|7| 8|{\cell 1{}3{}5{}{}{}9}|2|.
@@ -475,7 +475,7 @@ For example, in the Figure \ref{fig:cnWhole},
 \item and the rest may be deduced by analogy.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell 12{}{}{}{}78{}}|{\cell {}{}34{}{}7{}{}}|9|{\cell {}{}3{}5{}{}{}{}}|{\cell {}{}345{}{}8{}}|{\cell {}{}{}{}{}{}78{}}|{\cell {}{}345{}{}{}{}}|6|.
 |4|{\cell {}{}{}{}{}{}7{}9}|{\cell 1{}{}{}{}{}7{}9}|3|{\cell 1{}{}{}5{}{}{}{}}|{\cell 1{}{}{}5{}{}{}{}}|6|8|2|.
@@ -493,7 +493,7 @@ For example, in the Figure \ref{fig:cnWhole},
 
 In the block-number view, we have known that cells separated into $N$ blocks $b_{1},\ \dots ,\ b_{n}$ which are arranged from left to right, from top to bottom in Figure \ref{fig:exampleblock}. Every block has 9 cells (called ``squares'' $s$) which has it ordered as blocks do. 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
  |{\makebox[0pt]{\hspace{-1em}\large b1\raisebox{5ex}[0ex]{\hspace{1.5em}n1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n3}}}| {\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n4}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n5}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n6}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n7}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n8}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n9}}}|.
  |{\makebox[0pt]{\hspace{-2.25em}\large b2}}| | | | | | | | |.
@@ -512,7 +512,7 @@ In the block-number view, we have known that cells separated into $N$ blocks $b_
 The coordinate of rc-view is $(r, c)$ indicates the numbers to its position in (row, column) but does not mention anything about which block it locates. In the bn-view, the information it is given is that square could contain which numbers in the block which marked as $[b, n]$. The equation for this change is $(r, c) = n \mapsto [b, n] = s$. The shape of this will be shaped from a block to a row. In block $b_{1}$ (Figure \ref{fig:blockex}), 
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -538,7 +538,7 @@ $r_{3}$ &{\cell {}23{}56{}8{}}&\LARGE 4 & {\cell {}{}3{}{}6{}8{}}\\ \cline{2-4}
 \end{itemize}
 Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnview}.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
@@ -553,7 +553,7 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}{}4{}{}7{}{}}|{\cell {}23{}{}{}7{}9}|8|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}{}{}7{}9}|{\cell {}{}3{}{}{}{}{}{}}|{\cell {}{}34{}67{}9}|5|.
 |{\cell {}{}{}{}{}{}7{}9}|1|6|{\cell {}{}{}{}5{}{}{}{}}|4|{\cell {}2{}{}{}{}7{}{}}|8|{\cell {}23{}5{}{}89}|{\cell {}2{}{}{}{}7{}{}}|.
@@ -609,7 +609,7 @@ and also,
 \item eliminate r from cn-cell (c, n) in the cn-view instance.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}{}{}}|.
@@ -646,7 +646,7 @@ Naked single and hidden single are the basic methods of Candidates Elimination T
 
 Naked single is always the first rule to apply at start. The prerequisite of it is ``there is a cell only has only one candidate possibly to be filled in''. And a modification of the instance after we have found a cell which tally with the prerequisite is eliminating candidate in all other cells which shared a unit with the cell. Figure \ref{fig:rcWhole} is an instance which has two cells are obviously matched to the prerequisite. Candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ it the only one possibility to fill into both cells, thus, the this instance will be updated to Figure \ref{fig:nakedsingle}. Candidate 8 has been filled into both cells, and this candidate will cross out from other cells which shared a row, column or block with $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{\sout 8}{}}|2|{\cell {}{}{}{}{}6{}{\sout 8}9}|{\textbf 8}|{\cell {}{}{}{}5{}{}{\sout 8}9}|{\cell {}{}3{}{}{}{}{\sout 8}9}|4|.
 |{\cell {}2{}{}{}{}{}{\sout 8}{}}|9|{\textbf 8}|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
@@ -668,7 +668,7 @@ Hidden single is under a situation which has one candidate could only be used in
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}6{\underline 7}{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
@@ -700,7 +700,7 @@ Naked Pair could hold when any of these three prerequisites hold, which are,
 The first two prerequisites above could be mixed and matched with the last one, such like two cells have shared a block and also a column or two cells have shared a block and also a row. When one prerequisite has been matched, then all other cells shared the same row, column, or block could have these two candidates excluded. Because the situation told that these two candidates could only be used in these two cells, and no longer able to be used for others. For example, in the instance Figure \ref{fig:nakedpairb4} which is shown, candidates 2 and 3 are the \textbf{only} two candidates left in the cell $(r_{7},\ c_{2})$ and $(r_{9},\ c_{2})$ which happened to be in a column and also a block, it tells that 2 or 3 could only be used in these cells, no longer for others in the same column or same block. Thus, candidates 2 and 3 will be excluded in this column and the block which $(r_{7},\ c_{2})$ and $(r_{9},\ c_{2})$ are both in to a consequence like Figure \ref{fig:nakedpairaf}. 
 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
@@ -716,7 +716,7 @@ The first two prerequisites above could be mixed and matched with the last one, 
 \label{fig:nakedpairb4}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}{\sout 3}{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |{\cell {}2{}{}{}{}{}{}{}}|9|8|5|{\cell {}{}{}4{}{}{}{}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
@@ -738,7 +738,7 @@ The first two prerequisites above could be mixed and matched with the last one, 
 The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in a shared unit (a row, a column, or a block). Once the prerequisite is satisfied, all other candidates in these two cells could be excluded surely. 
 For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{5})$ and $(r_{3},\ c_{4})$ do not have only two candidates $n_{6}$ and $n_{9}$ in the cells only, but candidates $n_{6}$ and $n_{9}$ are restricted to these two cells only. Hence, the prerequisite is satisfied, thus all candidates expect $n_{6}$ and $n_{9}$ could all be excluded from these two cells.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
@@ -769,7 +769,7 @@ Naked Triplet could hold when any of these three prerequisites hold, which are,
 \end{itemize}
 By this technique, other cells in the same row, column, or the same block could safely have these three candidates excluded expect three cells which have these candidates. 
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}{\textbf 3}{}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
@@ -786,7 +786,7 @@ By this technique, other cells in the same row, column, or the same block could 
 \end{figure}
 In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ are the common three number which appears in the cells $(r_{1},\ c_{2})$, $(r_{3},\ c_{1})$, and $(r_{3},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidate $n_{3}$, $n_{5}$ and $n_{6}$ in a shared unit (block $b_{1}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}{\sout 3}{}{}{\sout 6}7{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
@@ -808,7 +808,7 @@ In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ 
 Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
 In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (in boldface font) are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.6}
 \hspace{1em}
@@ -829,7 +829,7 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 \label{sec:Naked Quad}
 It is in the situation while four cells in a row, a column, or a block are having common four candidate digits left in the cells. If the prerequisite is existed, then it will bring an updated instance which has no these four candidates in other cells which shared a same unit anymore. Figure ~\ref{fig:nakedquad} is an instance which in naked quad situation, in the block $b_{5}$, cell $(r_{5},\ c_{6})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have 4 different candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells. Consequently, candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ in other cells in the block $b_{5}$ will be excluded (Figure because these four candidates will not longer possible to be used in other cells anymore.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |{\cell 1{}{}{}5{}{}{}{}}|9|4|{\cell 1{}{}{}5{}7{}{}}|3|6|2|{\cell 1{}{}{}{}{}78{}}|{\cell 1{}{}{}{}{}{}8{}}|.
 |{\cell 12{}{}{}6{}{}{}}|7|{\cell 12{}{}{}6{}8{}}|{\cell 12{}{}{}{}{}{}9}|{\cell 12{}{}{}{}{}{}9}|{\cell {}{}{}{}{}{}{}89}|4|3|5|.
@@ -854,7 +854,7 @@ This is a rare circumstance which has four candidates only found in four cells i
 In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$, $n_{6}$ and $n_{7}$ (in boldface font) are the only 4 candidates appear in these four cells $(r_{4}, c_{7})$,  $(r_{4}, c_{9})$,  $(r_{6}, c_{7})$ and $(r_{7}, c_{9})$, thus, all other candidates in these four cells will no longer needed.
 
 
-\begin{figure}
+\begin{figure}[htbp]
 \begin{sudoku}
 |6|3|2|1|4|5|9|7|8|.
 |8|1|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}3{}{}6{}{}{}}|9|{\cell {}2{}{}{}{}7{}{}}|{\cell {}23{}56{}{}{}}|{\cell {}23{}5{}{}{}{}}|4|.
@@ -942,7 +942,7 @@ In the figure \ref{fig:xywing}, in the cell $(r_{1}, c_{1})$, $(r_{1}, c_{8})$ a
 \end{itemize}
 Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$ which both have candidate $n_{7}$. Thus, if cell $(r_{8}, c_{8})$ also have the same candidate, it could have this removed then.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |{\cell {}{\textbf 2}{\textbf 3}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{\textbf 3}{}{}{}{\textbf 7}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
@@ -985,7 +985,7 @@ In the Figure \ref{fig:xyzwing}, assume:
 \item $(r_{2}, c_{6})$ has YZ (candidate $n_{6}$ and $n_{7}$).
 \end{itemize}
 There is a cell  $(r_{6}, c_{5})$ shared a block with both $(r_{4}, c_{5})$ and $(r_{2}, c_{6})$, and also shared a column with both $(r_{4}, c_{5})$ and $(r_{2}, c_{5})$ has the same candidate Y = $n_{6}$) with all of these three cells could now have Y removed from it.
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{\textbf 6}{}{}{\textbf 9}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
@@ -1022,7 +1022,7 @@ In the Figure \ref{fig:wxyzwing}, assume that:
 \end{itemize}
 Four cells all hae a common candidate $n_{5}$, and other conditions are all hold, then we can have this candidate excluded from the cell $(r_{2}, c_{8})$ ($(r_{3}, c_{8})$ does not have candidate $n_{5}$, so no change is needed).
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \begin{sudoku}
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{\textbf 2}{}{\textbf 4}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{\textbf 2}{}{}{\textbf 5}{}{}{}{}}|.
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}3{}{\sout 5}{}7{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
@@ -1056,7 +1056,7 @@ Swordfish is an approach extended from X-wing technique, but rarer to be seen. T
 \end{enumerate}
 If there is one candidate in three rows only appears in particular three columns, then exclude this candidate from other cells in these three columns. In contrast, if one candidate in three columns only appears in particular three rows, then the candidate will be removed from other cells in these three rows.
 
-\begin{figure}
+\begin{figure}[htbp]
 \begin{sudoku}
 | |{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large $c_{J}$}}}| | |{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large $c_{Q}$}}}| | |{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large $c_{K}$}}}| |.
  |{\makebox[0pt]{\hspace{-2.25em}\large $r_{X}$}}|X| | |X| | |*| |.
@@ -1074,7 +1074,7 @@ If there is one candidate in three rows only appears in particular three columns
 
 In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5})$, $(r_{3}, c_{7})$, $r_{6}, c_{})$, $r_{6}, c_{5})$, $r_{8}, c_{5})$, $r_{8}, c_{7})$ and $r_{8}, c_{8})$, it satisfied the the conditions of Swordfish, and also match the rule ``one candidate in three rows only appears in particular three columns'', thus an exclusion will be made to kick candidate $n_{6}$ out from other cells in the  $r_{3},\ r_{6}\, and\ r_{8}$.
 
-\begin{figure}
+\begin{figure}[htbp]
 \begin{sudoku}
  |{\makebox[0pt]{\hspace{-1em}\large r1\raisebox{5ex}[0ex]{\hspace{1.5em}c1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c3}}}| {\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c4}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c5}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c6}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c7}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c8}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large c9}}}|.
  |{\makebox[0pt]{\hspace{-2.25em}\large r2}}| | | | | | | | |.
@@ -1099,7 +1099,7 @@ Sometimes, advanced techniques is needed to be used on supporting more difficult
 \end{enumerate}
 If the first prerequisite is tenable, then the specific candidate could be excluded from all other cells in the same row or column. And if the second prerequisite is tenable, the the specific candidate could be excluded from all other cells in the same block. 
 
-\begin{figure}
+\begin{figure}[htbp]
 \begin{sudoku}
 |2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
 |1|4|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}56{}{}9}|2|{\cell {}{}{}{}567{}9}|{\cell {}{}{}{}{}67{}9}|8|3|.
