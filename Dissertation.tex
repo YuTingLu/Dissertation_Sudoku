@@ -377,7 +377,8 @@ In an annotated instance we can find $4$ ``dimensions'':
 \item rows (``r'')
 \item columns (``c'')
 \item numbers (the content of the cells; ``n'')
-\item blocks (``b'').
+\item blocks (``b'')
+\item squares(``s'').
 \end{enumerate}
 We are now introducing four ``views'' on an annotated instance:
 \begin{enumerate}
@@ -440,6 +441,8 @@ Four different views:
 \label{fig:rnView}
 \end{figure}
 
+
+
 \begin{figure}[htbp]
 \begin{sudoku}
 |{\makebox[0pt]{\hspace{-1em}\large c1\raisebox{5ex}[0ex]{\hspace{2em}\large n1}}1}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n2}}{\cell 12{}{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n3}}{\cell {}{}34{}{}7{}{}}}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n4}}9}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n5}}{\cell {}{}3{}5{}{}{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n6}}{\cell {}{}345{}{}8{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n7}}{\cell {}{}{}{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n8}}{\cell {}{}345{}{}{}{}}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large n9}}6}|.
@@ -474,8 +477,28 @@ Four different views:
 \label{fig:bnView}
 \end{figure}
 
+Each view gives different information for the view to provide various point of views. The information given in an rc-view (standard) annotated instance is, possible and excluded candidates for each cell (row, column) which is written as:
+\begin{displaymath}
+A'\ (row,\ column) =\ (\set{{P}ossible\ candidates}, \set{{E}xcluded\ candidates})
+\end{displaymath}
+In an annotated instance in rn-view (see Figure \ref{fig:rnView}), the information contained in each cell $A'\ (row,\ number)$ is, the cell has a number of one row could possibly appeared in such ``possible columns'' and not in the ``excluded columns''. The equation for the cell (row, number) is written as:
+\begin{displaymath}
+A'\ (row,\ number) =\ (\set{{P}ossible\ columns}, \set{{E}xcluded\ columns})
+\end{displaymath}
+Suppose we take a cell $A'\ (7,\ 4)$ in Figure \ref{fig:rnView}, the equation for cell $A'\ (7,\ 4)$ is written as $A'\ (7,\ 4) =\ (\set{4, 6, 7}, \set{1, 2, 3, 5, 8, 9} )$, number $4$ for row $7$ could only occur in possible columns 4, 6, and 7, the rest of columns are excluded from the possibilities.
 
-Each view gives its corresponding informations to each cell on its corresponding x-y axes. For example, row-column view has ``row'' as x-axis, ``number'' as y-axis. This view gives corresponding columns information for each cell in the instance. In fact, rc-view could be build in cr-view only have x-y axes exchanged, but there are no different in between, because both are giving the same information. From this analogy, we learn that rn-view could be nr-view and so on. The reason why we have only four views is to make it easier and clear. No matter the view is re-built from, they will all go to one result.
+In an annotated instance in cn-view (see Figure \ref{fig:cnView}), the information contained in each cell $A'\ (column,\ number)$ is, the cell has a number of one column could possibly appeared in such ``possible rows'' and not in the ``excluded rows''. The equation for the cell (column, number) is written as:
+\begin{displaymath}
+A'\ (column,\ number) =\ (\set{{P}ossible\ rows}, \set{{E}xcluded\ rows})
+\end{displaymath}
+Suppose we take a cell $A'\ (5,\ 6)$ in Figure \ref{fig:cnView}, the equation for cell $A'\ (5,\ 6)$ is written as $A'\ (5,\ 6) =\ (\set{1, 4, 5, 6}, \set{2, 3, 7, 8, 9} )$, number $6$ for row $5$ could only occur in possible rows 1, 4, 5, and 6, the rest of rows are excluded from the possibilities.
+
+And in an annotated instance in bn-view (see Figure \ref{fig:bnView}), the information contained in each cell $A'\ (block,\ number)$ is, the cell has a number of one block could possibly appeared in such ``possible squares of the block'' in an standard instance in rc-view. The equation for the cell (block, number) is written as:
+\begin{displaymath}
+A'\ (block,\ number) =\ (\set{{P}ossible\ squares\ of\ a\ block}, \set{{E}xcluded\ squares\ of\ a\ block}
+\end{displaymath}
+Suppose we take a cell $A'\ (6,\ 6)$ in Figure \ref{fig:bnView}, the equation for cell $A'\ (6,\ 6)$ is written as $A'\ (6,\ 6) =\ (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8} )$, number $9$ for block $6$ could only occur in possible squares 6 and 9 of block $6$ in the standard rc-view instance (see Figure \ref{fig:rcView}), the rest of squares are excluded from the possibilities for block $6$.
+
 
 To build an annotated instance in rn-view below the standard instance. Figure \ref{fig:rccolumn} is an one row example in rn-view. In the Figure \ref{fig:rccolumn}, each cell contains all and the only number $n$ in column $c$. The procedure to build a rn-view example is firstly in order to find out number $n$ could possibly occur in which column $c$, and fill all the possible column into the cell for which number $n$ secondly. 
 For example, in the Figure \ref{fig:rnprocess},
