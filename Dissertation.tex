@@ -401,11 +401,28 @@ An annotated Sudoku instance (see \ref{sec:Annotatedinstances}) was defined in a
 
 Four different views:
 \begin{enumerate}
-\item ``rc-view''  - the rows and columns of the matrix are the rows and the columns of the annotated instance.
-\item ``rn-view'' (see Figure \ref{fig:rnWhole}) - the rows and numbers of the matrix are the rows and the columns of the annotated instance
-\item ``cn-view'' (see Figure \ref{fig:cnWhole}) - the columns and numbers of the matrix are the rows and the columns of the annotated instance
-\item ``bn-view'' (see Figure \ref{fig:bnview}) - the blocks and numbers of the matrix are the rows and the columns of the annotated instance
+\item ``rc-view'' (see Figure \ref{fig:rcView}) - the rows and columns of the matrix are the rows and the columns of the annotated instance.
+\item ``rn-view'' (see Figure \ref{fig:rnView}) - the rows and numbers of the matrix are the rows and the columns of the annotated instance
+\item ``cn-view'' (see Figure \ref{fig:cnView}) - the columns and numbers of the matrix are the rows and the columns of the annotated instance
+\item ``bn-view'' (see Figure \ref{fig:bnView}) - the blocks and numbers of the matrix are the rows and the columns of the annotated instance
 \end{enumerate}
+
+\begin{figure}[htbp]
+\begin{sudoku}
+ |{\makebox[0pt]{\hspace{-1em}\large r1\raisebox{5ex}[0ex]{\hspace{2em}\large c1}}1}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large c2}}{\cell {}{}3{}56{}{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large c3}}{\cell {}{}3{}{}678{}}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large c4}}2}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large c5}}{\cell {}{}{}{}{}6{}89}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large c6}}8}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large c7}}{\cell {}{}{}{}5{}{}89}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large c8}}{\cell {}{}3{}{}{}{}89}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large c9}}4}|.
+ |{\makebox[0pt]{\hspace{-2.25em}\large r2}{\cell {}2{}{}{}{}{}8{}}}|9|8|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+ |{\makebox[0pt]{\hspace{-2.25em}\large r3}{\cell {}23{}56{}8{}}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}{\sout 8}9}|7|{\cell 1{}{}{}{}{}{}{\sout 8}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+ |{\makebox[0pt]{\hspace{-2.25em}\large r4}{\cell {}{}3{}{}6{}8{}}}|1|{\cell {}{}34{}6{}8{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{\sout 8}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+ |{\makebox[0pt]{\hspace{-2.25em}\large r5}{\cell {}{}{}{}56{}8{}}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{\sout 8}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+ |{\makebox[0pt]{\hspace{-2.5em}\large r6}9}|7|{\cell {}{}34{}6{}8{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{\sout 8}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+ |{\makebox[0pt]{\hspace{-2em}\large r7}{\cell {}23{}{}{}7{}{}}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{\sout 8}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+ |{\makebox[0pt]{\hspace{-2em}\large r8}{\cell {}2{}{}{}67{}{}}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+ |{\makebox[0pt]{\hspace{-2.5em}\large r9}4}| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
+\end{sudoku}
+\caption{An annotated instance in rc-view.}
+\label{fig:rcView}
+\end{figure}
+
 
 \begin{figure}[htbp]
 \begin{sudoku}
@@ -420,7 +437,7 @@ Four different views:
 |{\makebox[0pt]{\hspace{-2em}\large r9}{\cell {}{}3{}{}{}{}{}{}}}| {\cell {}2{}{}5{}7{}{}}|{\cell {}23{}{}{}{}8{}}|1|9|6|{\cell {}{}34{}{}7{}{}}| {\cell {}{}{}45{}78{}}|{\cell {}{}3{}{}{}78{}}|.
 \end{sudoku}
 \caption{An annotated instance in rn-view.}
-\label{fig:rnWhole}
+\label{fig:rnView}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -436,7 +453,7 @@ Four different views:
 |{\makebox[0pt]{\hspace{-2em}\large c9}{\cell {}23{}56{}{}{}}}|{\cell {}23{}{}{}78{}}|{\cell {}{}3{}{}{}7{}{}}|1|9|{\cell {}{}{}{}56{}{}{}}|{\cell {}{}{}{}5{}{}89}|{\cell {}23{}567{}{}}|4|.
 \end{sudoku}
 \caption{An annotated instance in cn-view.}
-\label{fig:cnWhole}
+\label{fig:cnView}
 \end{figure}
 
 
@@ -454,7 +471,7 @@ Four different views:
 |{\makebox[0pt]{\hspace{-2.5em}\large b9}5}|{\cell 1{}34{}67{}{}}|{\cell {}{}3{}{}{}{}8{}}|{\cell 1{}{}4{}{}{}{}{}}|9|2|{\cell 1{}34{}67{}{}}|{\cell 1{}3{}{}{}78{}}|{\cell 1{}{}{}{}{}78{}}.
 \end{sudoku}
 \caption{An annotated instance in bn-view.}
-\label{fig:bnview}
+\label{fig:bnView}
 \end{figure}
 
 
@@ -514,8 +531,8 @@ $r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9  & {\cell {}2{}
 
 
 
-Figure \ref{fig:cnWhole} is the complete cn-view example which built from rn-view. This gives informations that one specific number with one or more row that it could possible fill in.
-For example, in the Figure \ref{fig:cnWhole},
+Figure \ref{fig:cnView} is the complete cn-view example which built from rn-view. This gives informations that one specific number with one or more row that it could possible fill in.
+For example, in the Figure \ref{fig:cnView},
 \begin{itemize}
 \item $(c_{1}, n_{1})$ indicates that row $r_{1}$ could only possible to have number $n_{1}$ filled in
 \item $(c_{1}, n_{2})$ indicates that row $r_{1}$, column $c_{2}$, column $c_{7}$ and column $c_{8}$ are all having possibilities to have number $n_{2}$ filled in
@@ -568,7 +585,7 @@ $r_{3}$ &{\cell {}23{}56{}8{}}&\LARGE 4 & {\cell {}{}3{}{}6{}8{}}\\ \cline{2-4}
 \item $n_{5}$ could possibly appeared in square $s_{2}$, $s_{}$, thus $[b_{1},\ n_{5}] = s_{2} and s_{7}$
 \item and so on.
 \end{itemize}
-Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnview}.
+Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnView}.
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
