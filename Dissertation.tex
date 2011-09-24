@@ -487,6 +487,7 @@ A'\ (row,\ number) =\ (\set{{P}ossible\ columns}, \set{{E}xcluded\ columns})
 \end{displaymath}
 Suppose we take a cell $A'\ (7,\ 4)$ in Figure \ref{fig:rnView}, the equation for cell $A'\ (7,\ 4)$ is written as $A'\ (7,\ 4) =\ (\set{4, 6, 7}, \set{1, 2, 3, 5, 8, 9} )$, number $4$ for row $7$ could only occur in possible columns 4, 6, and 7, the rest of columns are excluded from the possibilities.
 
+
 In an annotated instance in cn-view (see Figure \ref{fig:cnView}), the information contained in each cell $A'\ (column,\ number)$ is, the cell has a number of one column could possibly appeared in such ``possible rows'' and not in the ``excluded rows''. The equation for the cell (column, number) is written as:
 \begin{displaymath}
 A'\ (column,\ number) =\ (\set{{P}ossible\ rows}, \set{{E}xcluded\ rows})
@@ -500,7 +501,7 @@ A'\ (block,\ number) =\ (\set{{P}ossible\ squares\ of\ a\ block}, \set{{E}xclude
 Suppose we take a cell $A'\ (6,\ 6)$ in Figure \ref{fig:bnView}, the equation for cell $A'\ (6,\ 6)$ is written as $A'\ (6,\ 6) =\ (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8} )$, number $9$ for block $6$ could only occur in possible squares 6 and 9 of block $6$ in the standard rc-view instance (see Figure \ref{fig:rcView}), the rest of squares are excluded from the possibilities for block $6$.
 
 
-To build an annotated instance in rn-view below the standard instance. Figure \ref{fig:rccolumn} is an one row example in rn-view. In the Figure \ref{fig:rccolumn}, each cell contains all and the only number $n$ in column $c$. The procedure to build a rn-view example is firstly in order to find out number $n$ could possibly occur in which column $c$, and fill all the possible column into the cell for which number $n$ secondly. 
+To have an annotated instance built in other views based on an standard annotated instance in rc-view, here are the explanation for the process.below the standard instance. Figure \ref{fig:rccolumn} is an one row example in rn-view. In the Figure \ref{fig:rccolumn}, each cell contains all and the only number $n$ in column $c$. The procedure to build a rn-view example is firstly in order to find out number $n$ could possibly occur in which column $c$, and fill all the possible column into the cell for which number $n$ secondly. 
 For example, in the Figure \ref{fig:rnprocess},
 \begin{itemize}
 \item $(r_{1}, n_{1})$ indicates that column $c_{1}$ could only possible to have number $n_{1}$ filled in
