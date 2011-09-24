@@ -303,13 +303,13 @@ For an annotated instance $A$ we write $A_{i,j}$ for the content of cell $(i,j)$
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}678{}}|2|{\cell {}{}{}{}{}6{}89}|8|{\cell {}{}{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|4|.
-|{\cell {}2{}{}{}{}{}8{}}|9|8|5|{\cell {}{}{}4{}{}{}8{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
-|{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}89}|7|{\cell 1{}{}{}{}{}{}8{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
-|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}8{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}78{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
-|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}78{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
-|9|7|{\cell {}{}34{}6{}8{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}8{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
-|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}78{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{\sout 8}{}}|2|{\cell {}{}{}{}{}6{}{\sout 8}9}|8|{\cell {}{}{}{}5{}{}{\sout 8}9}|{\cell {}{}3{}{}{}{}{\sout 8}9}|4|.
+|{\cell {}2{}{}{}{}{}8{}}|9|8|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|{\cell {}23{}56{}8{}}|4|{\cell {}{}3{}{}6{}8{}}|{\cell 1{}{}{}{}6{}{\sout 8}9}|7|{\cell 1{}{}{}{}{}{}{\sout 8}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}8{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{\sout 8}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{\sout 8}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}8{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{\sout 8}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell 1{}{}{}{}6{}8{}}|.
+|{\cell {}23{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{\sout 8}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
 |{\cell {}2{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
@@ -337,34 +337,32 @@ Having the notion of annotated instances at hand, we can now say what a ``rule''
 \subsection{Updating the annotated instances I}
 \label{sec:UpdatingtheinstancesI}
 
-XXX this is just some highlighting, plus application of the MOST BASIC RULE XXX just looking for the ``asserted'' fields, and removing their numbers from their rows, columns, blocks XXX
-
-If a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded for some cells. When a cell $(i,j)$ in a mapped annotated instance $A'$ has one or more candidates excluded (assume excluded candidate is $e$), the annotation for it has to be rewritten, because the candidate $e$ is no longer possible to be filled to the cell $A'\ (i,j)$. The updated annotation for the cell $A'\ (i,j)$ in an annotated instance $A'$ will be rewritten as:
+When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded from some cells. If any of the cells in a mapped annotated instance $A'$ has an annotation like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a column, or a block with the cell $A'\ (i,j)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
-\item $A'\ (i,j)$ = ($\set{e \notin P}, \set {e \in E})$ (``P'' for ``possible'' and ``E'' for ``excluded'' candidate).
-\item all the cells shared a row with $A'\ (i,j)$ have candidate $e$ excluded.
-\item all the cells shared a column with $A'\ (i,j)$ have candidate $e$ excluded.
-\item all the cells shared a block with $A'\ (i,j)$ have candidate $e$ excluded.
+\item all the cells shared a row with $A'\ (i,j)$ have candidate $v$ excluded.
+\item all the cells shared a column with $A'\ (i,j)$ have candidate $v$ excluded.
+\item all the cells shared a block with $A'\ (i,j)$ have candidate $v$ excluded.
 \end{itemize} 
 
-For exmple, in the Figure \ref{fig:rcWhole}
-
-
-
-Before we start to discuss about the techniques for solving Sudoku in chapter \ref{sec:Techniques}, there are few things we have to know. The instance has to be updated every time when it changes, to update the instance, there are two tips ??? to follow:
-\begin{enumerate}
-\item Assertion, ??? just highlighting
-\item and elimination. ??? happens later!
-\end{enumerate}
-
-NAKED SINGLE XXX
-
-The update will be made in the unit (row, column, and the block) which related to the cell which has a candidate filled in.
-
-Noticed that the updated will be silent different in bn-view, both elimination and assertion in bn-view will be only made in the related row.
-For instance, in Figure \ref{fig:bnview}, in block $b_{7}$, $[b_{7},\ n_{1}]$ has only one possibility 9 for the cell and $[b_{7},\ n_{6}]$ has only 4 for the cell. Once the action is confirmed this two number 4 and 9 will be asserted into these two cells, and other cells in $b_{7}$ have to have 4 and 9 eliminated.
-
-
+From the Figure \ref{fig:rcWholeupdated}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, a column, or a block with $A'\ (1,6)$, that is candidate $v$ has to be excluded from the row, column, and block. The examples are given for each situation:
+\begin{itemize}
+\item $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8}) \Rightarrow v = 8$
+\item Shared a ``row'': $A'\ (1,3)$ has candidate $v$ and shared a row as $A'\ (1,6)$
+\begin{itemize}
+\item $A'\ (1,3) =\ (\set{3, 6, 7, 8}, \set{1, 2, 4, 5, 9})\ \Rightarrow$
+\item  $A'\ (1,3) =\ (\set{3, 6, 7}\setminus \set{8}, \set{1, 2, 4, 5, 8, 9})$.
+\end{itemize}
+\item Shared a ``column'': $A'\ (3,6)$ has candidate $v$ and shared a row as $A'\ (1,6)$
+\begin{itemize}
+\item $A'\ (3,6) =\ (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\ \Rightarrow$
+\item $A'\ (3,6) =\ (\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9})$.
+\end{itemize}
+\item Shared a row: $A'\ (2,5)$ has candidate $v$ and shared a row as $A'\ (1,6)$
+\begin{itemize}
+\item $A'\ (2,5) =\ (\set{4, 8}, \set{1, 2, 3, 5, 6, 7, 9})\ \Rightarrow$
+\item $A'\ (2,5) =\ (\set{4, 8}\setminus \set{8}, \set{1, 2, 3, 5, 6, 7, 8, 9})$.
+\end{itemize}
+\end{itemize}
 
 
 \chapter{Exploiting symmetries by using different views}
