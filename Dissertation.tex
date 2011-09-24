@@ -377,9 +377,29 @@ In an annotated instance we can find $4$ ``dimensions'':
 \item rows (``r'')
 \item columns (``c'')
 \item numbers (the content of the cells; ``n'')
-\item blocks (``b'')
+\item blocks (``b'').
+\begin{itemize}
 \item squares(``s'').
+\end{itemize}
 \end{enumerate}
+We have introduced ``blocks'' in section \ref{sec:Sudokuinstances} which is the matrix subdivided in to $N$ blocks and these blocks are numbered from 1 to 9, from top to bottom and left to right. Here comes a new element ``square'', which is, a block subdivided into $N$ squares, and theses squares are numbered from 1to 9, from top to bottom and left to right (see Figure \ref{fig:squres}). 
+
+\begin{figure}[htbp]
+\begin{sudoku}
+ |{\makebox[0pt]{\hspace{-1em}\large b1\raisebox{5ex}[0ex]{\hspace{1.5em}n1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n3}}}| {\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n4}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n5}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n6}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n7}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n8}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n9}}}|.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b2}}| | | | | | | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b3}}| | | | | | | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b4}}| | |{\LARGE s1}|{\LARGE s2}|{\LARGE s3}| | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b5}}| | |{\LARGE s4}|{\LARGE s5}|{\LARGE s6}| | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b6}}| | |{\LARGE s7}|{\LARGE s8}|{\LARGE s9}| | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b7}}| | | | | | | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b8}}| | | | | | | | |.
+ |{\makebox[0pt]{\hspace{-2.25em}\large b9}}| | | | | | | | |.
+\end{sudoku}
+\caption{The 9 squares in a block}
+\label{fig:squres}
+\end{figure}
+
 We are now introducing four ``views'' on an annotated instance:
 \begin{enumerate}
 \item ``rc-view''
@@ -564,23 +584,7 @@ For example, in the Figure \ref{fig:cnView},
 \end{itemize}
 
 
-In the block-number view, we have known that cells separated into $N$ blocks $b_{1},\ \dots ,\ b_{n}$ which are arranged from left to right, from top to bottom in Figure \ref{fig:exampleblock}. Every block has 9 cells (called ``squares'' $s$) which has it ordered as blocks do. 
 
-\begin{figure}[htbp]
-\begin{sudoku}
- |{\makebox[0pt]{\hspace{-1em}\large b1\raisebox{5ex}[0ex]{\hspace{1.5em}n1}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n2}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n3}}}| {\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n4}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n5}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n6}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n7}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n8}}}|{\makebox[0pt]{\raisebox{5ex}{\hspace{0em}\large n9}}}|.
- |{\makebox[0pt]{\hspace{-2.25em}\large b2}}| | | | | | | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b3}}| | | | | | | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b4}}| | |{\LARGE s1}|{\LARGE s2}|{\LARGE s3}| | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b5}}| | |{\LARGE s4}|{\LARGE s5}|{\LARGE s6}| | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b6}}| | |{\LARGE s7}|{\LARGE s8}|{\LARGE s9}| | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b7}}| | | | | | | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b8}}| | | | | | | | |.
- |{\makebox[0pt]{\hspace{-2.25em}\large b9}}| | | | | | | | |.
-\end{sudoku}
-\caption{How the cells number in blocks}
-\label{fig:squres}
-\end{figure}
 
 The coordinate of rc-view is $(r, c)$ indicates the numbers to its position in (row, column) but does not mention anything about which block it locates. In the bn-view, the information it is given is that square could contain which numbers in the block which marked as $[b, n]$. The equation for this change is $(r, c) = n \mapsto [b, n] = s$. The shape of this will be shaped from a block to a row. In block $b_{1}$ (Figure \ref{fig:blockex}), 
 
