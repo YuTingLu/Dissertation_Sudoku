@@ -342,6 +342,7 @@ When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokur
 \item all the cells shared a row with $A'\ (i,j)$ have candidate $v$ excluded.
 \item all the cells shared a column with $A'\ (i,j)$ have candidate $v$ excluded.
 \item all the cells shared a block with $A'\ (i,j)$ have candidate $v$ excluded.
+\item highlight the candidate $v$ in cell $A'\ (i,j)$.
 \end{itemize} 
 
 From the Figure \ref{fig:rcWholeupdated}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, a column, or a block with $A'\ (1,6)$, that is candidate $v$ has to be excluded from the row, column, and block. The examples are given for each situation:
