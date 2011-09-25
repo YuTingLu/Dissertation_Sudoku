@@ -866,7 +866,7 @@ In the rc-view, if there is a cell has only one candidate $v$ possible to filled
 \item all the cells shared a block with $A'\ (row, coulmn)$ have candidate $v$ excluded.
 \item highlight the candidate $v$ in cell $A'\ (row, coulmn)$.
 \end{itemize}
-In the Figure \ref{fig:rcWhole}, we find cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
+In the Figure \ref{fig:rcWhole}, we find a cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
 
 What if a cell has only one column $v$ possible to filled in to the cell $A'\ (row, number,)$, then
 \begin{itemize}
@@ -874,7 +874,7 @@ What if a cell has only one column $v$ possible to filled in to the cell $A'\ (r
 \item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
 \item highlight the column $v$ in cell $A'\ (row, number)$.
 \end{itemize}
-In the Figure \ref{fig:rcView}, we find cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcUpdate}.
+Suppose we find a cell $A'\ (1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
 
 What if a cell has only one row $v$ possible to filled in to the cell $A'\ (column, number,)$, then
 
@@ -883,14 +883,14 @@ What if a cell has only one row $v$ possible to filled in to the cell $A'\ (colu
 \item all the cells shared a number with $A'\ (column, number)$ have row $v$ excluded.
 \item highlight the row $v$ in cell $A'\ (column, number)$.
 \end{itemize}
+We now find a cell $A'\ (8, 4)$ in cn-view (see Figure \ref{fig:cnView}) is matched to the situation of naked single for cn-view. Thus, we have an updated annotated instance - Figure \ref{fig:cnUpdate}.
 
 And what if a cell has only one square $v$ possible to filled in to the cell $A'\ (block, number,)$, then
 \begin{itemize}
 \item all the cells shared a block with $A'\ (block, number)$ have square $v$ excluded.
 \item highlight the square $v$ in cell $A'\ (block, number)$.
 \end{itemize}
-
-
+In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matched to the situation of naked single for bn-view. Thus, we have an updated annotated instance - Figure \ref{fig:bnUpdate}.
 
 
 \subsection{Hidden Single}
