@@ -465,7 +465,7 @@ Four different views:
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|{\makebox[0pt]{\hspace{-1em}\large c1\raisebox{5ex}[0ex]{\hspace{2em}\large n1}}1}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n2}}{\cell 12{}{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n3}}{\cell {}{}34{}{}7{}{}}}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n4}}9}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n5}}{\cell {}{}3{}5{}{}{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n6}}{\cell {}{}345{}{}8{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n7}}{\cell {}{}{}{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n8}}{\cell {}{}345{}{}{}{}}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large n9}}6}|.
+|{\makebox[0pt]{\hspace{-1em}\large c1\raisebox{5ex}[0ex]{\hspace{2em}\large n1}}1}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n2}}{\cell {}23{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n3}}{\cell {}{}34{}{}7{}{}}}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n4}}9}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n5}}{\cell {}{}3{}5{}{}{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n6}}{\cell {}{}345{}{}8{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n7}}{\cell {}{}{}{}{}{}78{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n8}}{\cell {}{}345{}{}{}{}}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large n9}}6}|.
 |{\makebox[0pt]{\hspace{-2em}\large c2}4}|{\cell {}{}{}{}{}{}7{}9}|{\cell 1{}{}{}{}{}7{}9}|3|{\cell 1{}{}{}5{}{}{}{}}|{\cell 1{}{}{}5{}{}{}{}}|6|8|2|.
 |{\makebox[0pt]{\hspace{-2em}\large c3}{\cell {}{}{}{}{}{}{}{}9}}|5|{\cell 1{}34{}67{}9}|{\cell {}{}{}4{}6{}{}{}}|8|{\cell 1{}34{}6{}{}{}}|{\cell 1{}{}{}{}{}7{}9}|{\cell 1234{}6{}{}{}}|{\cell {}{}{}{}{}{}7{}9}|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c4}{\cell {}{}3{}{}6{}{}{}}}|1|8|{\cell {}{}{}4567{}{}}|2|{\cell {}{}3456{}{}{}}|{\cell {}{}{}45{}7{}9}|{\cell {}{}34567{}9}|{\cell {}{}3{}5{}{}{}{}}|.
@@ -501,6 +501,8 @@ Each view gives different information for the view to provide various point of v
 \begin{displaymath}
 A'\ (row,\ column) =\ (\set{{P}ossible\ candidates}, \set{{E}xcluded\ candidates})
 \end{displaymath}
+
+
 In an annotated instance in rn-view (see Figure \ref{fig:rnView}), the information contained in each cell $A'\ (row,\ number)$ is, the cell has a number of one row could possibly appeared in such ``possible columns'' and not in the ``excluded columns''. The equation for the cell (row, number) is written as:
 \begin{displaymath}
 A'\ (row,\ number) =\ (\set{{P}ossible\ columns}, \set{{E}xcluded\ columns})
@@ -521,16 +523,7 @@ A'\ (block,\ number) =\ (\set{{P}ossible\ squares\ of\ a\ block}, \set{{E}xclude
 Suppose we take a cell $A'\ (6,\ 6)$ in Figure \ref{fig:bnView}, the equation for cell $A'\ (6,\ 6)$ is written as $A'\ (6,\ 6) =\ (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8} )$, number $9$ for block $6$ could only occur in possible squares 6 and 9 of block $6$ in the standard rc-view instance (see Figure \ref{fig:rcView}), the rest of squares are excluded from the possibilities for block $6$.
 
 
-To have an annotated instance built in other views based on an standard annotated instance in rc-view, here are the explanation for the process.below the standard instance. Figure \ref{fig:rccolumn} is an one row example in rn-view. In the Figure \ref{fig:rccolumn}, each cell contains all and the only number $n$ in column $c$. The procedure to build a rn-view example is firstly in order to find out number $n$ could possibly occur in which column $c$, and fill all the possible column into the cell for which number $n$ secondly. 
-For example, in the Figure \ref{fig:rnprocess},
-\begin{itemize}
-\item $(r_{1}, n_{1})$ indicates that column $c_{1}$ could only possible to have number $n_{1}$ filled in
-\item $(r_{1}, n_{2})$ indicates that column $c_{4}$ could only possible to have number $n_{2}$ filled in
-\item $(r_{1}, n_{3})$ indicates that column $c_{2}$, column $c_{3}$ and column $c_{8}$ are all having possibilities to have number $n_{3}$ filled in
-\item and the rest may be deduced by analogy.
-\end{itemize}
-
-
+To have an annotated instance built in other views based on an standard annotated instance in rc-view, here are the examples for the process. Figure \ref{fig:rccolumn} is a row taken from the figure \ref{fig:rcView}. In the rc-view (see Figure \ref{fig:rccolumn}), the number in each cel simply represent the known value $v$ or the candidates for the cell. However, in the rn-view (see Figure \ref{fig:rncolumn}), the numbers in each cell will represent the known column or the candidate columns for the cell.
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
@@ -541,79 +534,140 @@ For example, in the Figure \ref{fig:rnprocess},
 $r_{1}$ &\LARGE 1 &{\cell {}{}3{}56{}{}{}} & {\cell {}{}3{}{}678{}} & \LARGE 2 &{\cell {}{}{}{}{}6{}89}& {\cell {}{}{}{}{}{}{}8{}} &{\cell {}{}{}{}5{}{}89} & {\cell {}{}3{}{}{}{}89} & \LARGE 4\\ \cline{2-10}
 \end{tabular}
 \end{center}
-\caption{A row of Figure \ref{fig:rcWhole} in rc-view.}
+\caption{A row from Figure \ref{fig:rcWhole} in rc-view.}
 \label{fig:rccolumn}
 \end{figure}
 
-\begin{figure}[htbp]
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{2}
+\begin{table}
 \begin{center}
-\begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
-\multicolumn{1}{c}{} & \multicolumn{1}{c}{$n_{1}$} & \multicolumn{1}{c}{ $n_{2}$} & \multicolumn{1}{c}{ $n_{3}$} & \multicolumn{1}{c}{$n_{4}$} & \multicolumn{1}{c}{$n_{5}$} & \multicolumn{1}{c}{$n_{6}$} & \multicolumn{1}{c}{ $n_{7}$} & \multicolumn{1}{c}{$n_{8}$} & \multicolumn{1}{c}{$n_{9}$}\\ \cline{2-10}
-$r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9 & {\cell {}2{}{}{}{}7{}{}} & \dots & \dots & \dots & \dots\\ \cline{2-10}
-\end{tabular}
+  \begin{tabular}{|p{7cm}|p{7cm}|}
+    \hline
+    \textbf{r1 in the rc-view} & \textbf{r1 in the rn-view} \\ \hline
+    filled-in value 1 only occur in $(r1,\ c1)$ & $(r1,\ n1)$ contains only c1\\ \hline
+    filled-in value 2 only occur in $(r1,\ c4)$ & $(r1,\ n2)$ contains only c4 \\ \hline
+    candidate 3 occur in $(r1,\ c2)$,  $(r1,\ c3)$, and $(r1,\ c8)$ & $(r1,\ n3)$ contains c2, c3, and c8 \\ \hline
+    filled-in value 4 only occur in $(r1,\ c9)$ & $(r1,\ n4)$ contains only c9 \\ \hline
+    candidate 5 occur in $(r1,\ c2)$ and $(r1,\ c7)$ & $(r1,\ n5)$ contains c2, and c7 \\ \hline
+    candidate 6 occur in $(r1,\ c2)$,  $(r1,\ c3)$, and $(r1,\ c5)$ & $(r1,\ n6)$ contains c2, c3, and c5 \\ \hline
+    candidate 7 occur in $(r1,\ c3)$ & $(r1,\ n7)$ contains only c3 \\ \hline
+    candidate 8 occur in $(r1,\ c3)$,  $(r1,\ c5)$,  $(r1,\ c6)$,  $(r1,\ c7)$, and $(r1,\ c8)$ & $(r1,\ n8)$ contains only c3, c5, c6, c7 and c8 \\ \hline
+    candidate 9 occur in $(r1,\ c5)$, $(r1,\ c7)$, and  $(r1,\ c8)$ & $(r1,\ n9)$ contains only c5, c7, and c8 \\ \hline
+  \end{tabular}
 \end{center}
-\caption{building process from rc-view to rn-view.}
-\label{fig:rnprocess}
-\end{figure}
+\caption{The information of r1 in both rc-view and rn-view}
+\label{tab:rcandrn}
+\end{table}
+
+The Table \ref{tab:rcandrn} is the information analysis from number 1 to 9 of r1 in both rc-view and rn-view. As the analysis from the table, we gain the equations for the cells below to get a row built in rn-view (see Figure \ref{fig:rncolumn}):
+\begin{itemize}
+\item $(r1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(r1,\ n2)\ =\ (\set{4}, \set{1, 2, 3, 5, 6, 7, 8, 9})$
+\item $(r1,\ n3)\ =\ (\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})$
+\item $(r1,\ n4)\ =\ (\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
+\item $(r1,\ n5)\ =\ (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
+\item $(r1,\ n6)\ =\ (\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})$
+\item $(r1,\ n7)\ =\ (\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
+\item $(r1,\ n8)\ =\ (\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})$
+\item $(r1,\ n9)\ =\ (\set{5, 7, 8}, \set{1, 2, 3, 4, 6, 9})$
+\end{itemize}
+
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{2} 
 \begin{center}
 \begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
 \multicolumn{1}{c}{} &  \multicolumn{1}{c}{$n_{1}$}  &  \multicolumn{1}{c}{ $n_{2}$} &  \multicolumn{1}{c}{ $n_{3}$} &  \multicolumn{1}{c}{$n_{4}$}  &  \multicolumn{1}{c}{$n_{5}$}  & \multicolumn{1}{c}{$n_{6}$}  &  \multicolumn{1}{c}{ $n_{7}$} &  \multicolumn{1}{c}{$n_{8}$}  &  \multicolumn{1}{c}{$n_{9}$}  \\ \cline{2-10}
 $r_{1}$ &\LARGE 1 &\LARGE 4 & {\cell {}23{}{}{}{}8{}} & \LARGE 9  & {\cell {}2{}{}{}{}7{}{}} & {\cell {}23{}5{}{}{}{}} & {\cell {}{}3{}{}{}{}{}{}} & {\cell {}{}3{}5678{}} & {\cell {}{}{}{}5{}78{}} \\ \cline{2-10}
 \end{tabular}
 \end{center}
-\caption{An row example of Figure \ref{fig:rccolumn} in rc-view rebuilt in rn-view.}
+\caption{An row rebuilt in rn-view from Figure \ref{fig:rccolumn}.}
 \label{fig:rncolumn}
 \end{figure}
 
 
+To re-build a column of an annotated instance in cn-view from rc-view, we have the analysis in Table \ref{tab:rcandcn}.
+\begin{table}
+\begin{center}
+  \begin{tabular}{|p{7cm}|p{7cm}|}
+    \hline
+    \textbf{c1 in the rc-view} & \textbf{c1 in the cn-view} \\ \hline
+    filled-in value 1 only occur in $(r1,\ c1)$ & $(c1,\ n1)$ contains only r1\\ \hline
+    candidate 2 occur in $(r2,\ c1)$, $(r3,\ c1)$, $(r7,\ c1)$, $(r8,\ c1)$ & $(c1,\ n2)$ contains r2, r3, r7, r8 \\ \hline
+    candidate 3 occur in $(r3,\ c1)$,  $(r4,\ c1)$, and $(r7,\ c1)$ & $(c1,\ n3)$ contains r3, r4, and r7 \\ \hline
+    filled-in value 4 only occur in $(r9,\ c1)$ & $(c1,\ n4)$ contains only r9 \\ \hline
+    candidate 5 occur in $(r3,\ c1)$ and $(r5,\ c1)$ & $(c1,\ n5)$ contains r3, and r5 \\ \hline
+    candidate 6 occur in $(r3,\ c1)$,  $(r4,\ c1)$, $(r5,\ c1)$ and $(r8,\ c1)$ & $(c1,\ n6)$ contains r3, r4 ,r5 and r8 \\ \hline
+    candidate 7 occur in $(r7,\ c1)$ and $(r8,\ c1)$ & $(c1,\ n7)$ contains r7 and r8\\ \hline
+    candidate 8 occur in $(r3,\ c1)$,  $(r4,\ c1)$ and $(r5,\ c1)$ & $(c1,\ n8)$ contains only r3, r4 and r5 \\ \hline
+    filled-in value 9 occur in $(r6,\ c1)$ & $(c1,\ n9)$ contains only r6 \\ \hline
+  \end{tabular}
+\caption{The information of r1 in both rc-view and cn-view}
+\label{tab:rcandcn}
+\end{center}
+\end{table}
 
-
-
-Figure \ref{fig:cnView} is the complete cn-view example which built from rn-view. This gives informations that one specific number with one or more row that it could possible fill in.
-For example, in the Figure \ref{fig:cnView},
+After the analysis from the Table \ref{tab:rcandcn}, we gain the equations for the cells in the c1 in cn-view (see Figure \ref{fig:cncolumn}):
 \begin{itemize}
-\item $(c_{1}, n_{1})$ indicates that row $r_{1}$ could only possible to have number $n_{1}$ filled in
-\item $(c_{1}, n_{2})$ indicates that row $r_{1}$, column $c_{2}$, column $c_{7}$ and column $c_{8}$ are all having possibilities to have number $n_{2}$ filled in
-\item and the rest may be deduced by analogy.
+\item $(c1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(c1,\ n2)\ =\ (\set{2, 3, 7, 8}, \set{1, 4, 5, 6, 9})$
+\item $(c1,\ n3)\ =\ (\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})$
+\item $(c1,\ n4)\ =\ (\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
+\item $(c1,\ n5)\ =\ (\set{3, 5}, \set{1, 2, 4, 6, 7, 8, 9})$
+\item $(c1,\ n6)\ =\ (\set{3, 4, 5, 8}, \set{1, 2, 6, 7, 9})$
+\item $(c1,\ n7)\ =\ (\set{7, 8}, \set{1, 2, 3, 4, 5, 6, 9})$
+\item $(c1,\ n8)\ =\ (\set{3, 4, 5}, \set{1, 2, 6, 7, 8, 9})$
+\item $(c1,\ n9)\ =\ (\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
 \end{itemize}
-
-
-
-
-The coordinate of rc-view is $(r, c)$ indicates the numbers to its position in (row, column) but does not mention anything about which block it locates. In the bn-view, the information it is given is that square could contain which numbers in the block which marked as $[b, n]$. The equation for this change is $(r, c) = n \mapsto [b, n] = s$. The shape of this will be shaped from a block to a row. In block $b_{1}$ (Figure \ref{fig:blockex}), 
-
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{2}
+\renewcommand{\arraystretch}{2} 
 \begin{center}
-\begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
-\multicolumn{1}{c}{} & \multicolumn{1}{c}{$c_{1}$} & \multicolumn{1}{c}{$c_{2}$} & \multicolumn{1}{c}{$c_{3}$}\\ \cline{2-4}
-$r_{1}$ &\LARGE 1 &{\cell {}{}3{}56{}{}{}} & {\cell {}{}3{}{}678{}}\\ \cline{2-4}
-$r_{2}$ &{\cell {}2{}{}{}{}{}8{}}&\LARGE 9 & \LARGE 8\\ \cline{2-4}
-$r_{3}$ &{\cell {}23{}56{}8{}}&\LARGE 4 & {\cell {}{}3{}{}6{}8{}}\\ \cline{2-4}
+\begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
+\multicolumn{1}{c}{} &  \multicolumn{1}{c}{$n_{1}$}  &  \multicolumn{1}{c}{ $n_{2}$} &  \multicolumn{1}{c}{ $n_{3}$} &  \multicolumn{1}{c}{$n_{4}$}  &  \multicolumn{1}{c}{$n_{5}$}  & \multicolumn{1}{c}{$n_{6}$}  &  \multicolumn{1}{c}{ $n_{7}$} &  \multicolumn{1}{c}{$n_{8}$}  &  \multicolumn{1}{c}{$n_{9}$}  \\ \cline{2-10}
+$rc_{1}$ &\LARGE 1 & {\cell {}23{}{}{}78{}} & {\cell {}{}34{}{}7{}{}} & \LARGE 9  & {\cell {}{}3{}5{}{}{}{}} & {\cell {}{}345{}{}8{}} & {\cell {}{}{}{}{}{}78{}} & {\cell {}{}345{}{}{}{}} & \LARGE 4 \\ \cline{2-10}
 \end{tabular}
 \end{center}
-\caption{Block $b_{1}$ from standard instance Figure \ref{fig:rcWhole}}
-\label{fig:blockex}
+\caption{An row rebuilt in cn-view from Figure \ref{fig:rccolumn}.}
+\label{fig:cncolumn}
 \end{figure}
 
+To re-build a block of an annotated instance in bn-view from the block 1 of Figure \ref{fig:rcView} in rc-view, we have the analysis in Table \ref{tab:rcandbn}.
 
+\begin{table}
+\begin{center}
+  \begin{tabular}{|p{7cm}|p{7cm}|}
+    \hline
+    \textbf{b1 in the rc-view} & \textbf{b1 in the bn-view} \\ \hline
+    filled-in value 1 only occur in $(r1,\ c1)$ & $(b1,\ n1)$ contains only s1\\ \hline
+    candidate 2 occur in $(r2,\ c1)$, $(r3,\ c1)$ & $(b1,\ n2)$ contains s4, and s7 \\ \hline
+    candidate 3 occur in $(r1,\ c2)$,  $(r1,\ c3)$, $(r3,\ c1)$ and $(r3,\ c3)$ & $(b1,\ n3)$ contains s2, s3, s7 and s9 \\ \hline
+    filled-in value 4 only occur in $(r3,\ c2)$ & $(b1,\ n4)$ contains only s8 \\ \hline
+    candidate 5 occur in $(r1,\ c2)$ and $(r3,\ c1)$ & $(b1,\ n5)$ contains s2, and s7 \\ \hline
+    candidate 6 occur in $(r1,\ c2)$,  $(r1,\ c3)$, $(r3,\ c1)$ and $(r3,\ c3)$ & $(b1,\ n6)$ contains s2, s3, s7 and s9 \\ \hline
+    candidate 7 occur in $(r1,\ c3)$& $(b1,\ n7)$ contains s3\\ \hline
+    filled-in value 8 only occur in $(r2,\ c3)$ & $(b1,\ n8)$ contains only s6 \\ \hline
+    filled-in value 9 occur in $(r2,\ c2)$ & $(b1,\ n9)$ contains only s5 \\ \hline
+  \end{tabular}
+\caption{The information of b1 in both rc-view and bn-view}
+\label{tab:rcandbn}
+\end{center}
+\end{table}
+
+The equations below are gained from the analysis in the Table \ref{tab:rcandbn}. 
 \begin{itemize}
-\item number $n_{1}$ is in square $s_{1}$, thus $[b_{1},\ n_{1}] = s_{1}$
-\item $n_{2}$ could possibly appeared in square $s_{4}$ and $s_{7}$, thus $[b_{1},\ n_{2}] = s_{4} and s_{7}$
-\item $n_{3}$ could possibly appeared in square $s_{2}$, $s_{3}$,  $s_{7}$ and $s_{9}$, thus $[b_{1},\ n_{3}] = s_{2}, s_{3}, s_{7} and s_{9}$
-\item $n_{4}$ is in square $s_{8}$, thus $[b_{1},\ n_{4}] = s_{8}$
-\item $n_{5}$ could possibly appeared in square $s_{2}$, $s_{}$, thus $[b_{1},\ n_{5}] = s_{2} and s_{7}$
-\item and so on.
+\item $(b1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(b1,\ n2)\ =\ (\set{4, 7}, \set{1, 2, 3, 5, 6, 8, 9})$
+\item $(b1,\ n3)\ =\ (\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
+\item $(b1,\ n4)\ =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$
+\item $(b1,\ n5)\ =\ (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
+\item $(b1,\ n6)\ =\ (\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
+\item $(b1,\ n7)\ =\ (\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
+\item $(b1,\ n8)\ =\ (\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
+\item $(b1,\ n9)\ =\ (\set{5}, \set{1, 2, 3, 4, 6, 7, 8, 9})$
 \end{itemize}
-Thus, now we can have bn-view process generated from the analysis we have done as Figure \ref{fig:bnprocess}. The whole example in bn-view is in Figure \ref{fig:bnView}.
+And these equation could make a row like Figure \ref{fig:bncolumn}.
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
@@ -621,11 +675,11 @@ Thus, now we can have bn-view process generated from the analysis we have done a
 \begin{center}
 \begin{tabular}{ >{\centering\arraybackslash}m{0.2in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }
 \multicolumn{1}{c}{} & \multicolumn{1}{c}{$n_{1}$} & \multicolumn{1}{c}{ $n_{2}$} & \multicolumn{1}{c}{ $n_{3}$} & \multicolumn{1}{c}{$n_{4}$} & \multicolumn{1}{c}{$n_{5}$} & \multicolumn{1}{c}{$n_{6}$} & \multicolumn{1}{c}{ $n_{7}$} & \multicolumn{1}{c}{$n_{8}$} & \multicolumn{1}{c}{$n_{9}$}\\ \cline{2-10}
-$b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8 & {\cell {}2{}{}{}{}7{}{}} & \dots & \dots & \dots & \dots\\ \cline{2-10}
+$b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8 & {\cell {}2{}{}{}{}7{}{}} & {\cell {}23{}{}{}7{}9} &\LARGE 3 &\LARGE 6 & \LARGE 5\\ \cline{2-10}
 \end{tabular}
 \end{center}
-\caption{A row building from rc-view to bn-view.}
-\label{fig:bnprocess}
+\caption{An row rebuilt in bn-view from block 1 of Figure \ref{fig:rcView}}
+\label{fig:bncolumn}
 \end{figure}
 
 
