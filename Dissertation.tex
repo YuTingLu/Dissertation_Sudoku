@@ -845,17 +845,24 @@ Generally, most of the Sudoku instance could simply find a solution by apply nak
 
 Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, naked triplet, hidden triplet, naked quad and hidden quad. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
 
+\section{Basic rules}
+\label{sec:Basicrules}
+The basic rules in ``Candidates Elimination Techniques'' are naked single rule and the hidden single rule.
 
-
-\section{Naked Single}
+\subsection{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is always the first rule to apply at start. The prerequisite of it is ``there is a cell only has only one candidate possibly to be filled in''. And a modification of the instance after we have found a cell which tally with the prerequisite is eliminating candidate in all other cells which shared a unit with the cell. Figure \ref{fig:rcWhole} is an instance which has two cells are obviously matched to the prerequisite. Candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ it the only one possibility to fill into both cells, thus, the this instance will be updated to Figure \ref{fig:nakedsingle}. Candidate 8 has been filled into both cells, and this candidate will cross out from other cells which shared a row, column or block with $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$.
+Naked single is in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
+
+
+When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded from some cells. If any of the cells in a mapped annotated instance $A'$ has an annotation like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a column, or a block with the cell $A'\ (i,j)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+
+And a modification of the instance after we have found a cell which tally with the prerequisite is eliminating candidate in all other cells which shared a unit with the cell. Figure \ref{fig:rcWhole} is an instance which has two cells are obviously matched to the prerequisite. Candidate 8 in $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$ it the only one possibility to fill into both cells, thus, the this instance will be updated to Figure \ref{fig:nakedsingle}. Candidate 8 has been filled into both cells, and this candidate will cross out from other cells which shared a row, column or block with $(r_{1},\ c_{6})$ and $(r_{2},\ c_{3})$.
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{\sout 8}{}}|2|{\cell {}{}{}{}{}6{}{\sout 8}9}|{\textbf 8}|{\cell {}{}{}{}5{}{}{\sout 8}9}|{\cell {}{}3{}{}{}{}{\sout 8}9}|4|.
-|{\cell {}2{}{}{}{}{}{\sout 8}{}}|9|{\textbf 8}|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{\sout 8}{}}|2|{\cell {}{}{}{}{}6{}{\sout 8}9}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}{}{}{}5{}{}{\sout 8}9}|{\cell {}{}3{}{}{}{}{\sout 8}9}|4|.
+|{\cell {}2{}{}{}{}{}{\sout 8}{}}|9|{\cell {}{}{}{}{}{}{}8{}}|5|{\cell {}{}{}4{}{}{}{\sout 8}{}}|3|6| 7|{\cell 12{}{}{}{}{}8{}}|.
 |{\cell {}23{}56{}{\sout 8}{}}|4|{\cell {}{}3{}{}6{}{\sout 8}{}}|{\cell 1{}{}{}{}6{}{\sout 8}9}|7|{\cell 1{}{}{}{}{}{}{\sout 8}{}}|{\cell 12{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
 |{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{\sout 8}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{\sout 8}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
 |{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{\sout 8}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell 1{}{}{}{}678{}}|.
@@ -868,8 +875,9 @@ Naked single is always the first rule to apply at start. The prerequisite of it 
 \label{fig:nakedsingle}
 \end{figure}
 
-\section{Hidden Single}
+\subsection{Hidden Single}
 \label{sec:Hidden Single}
+
 Hidden single is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
@@ -892,9 +900,40 @@ Hidden single is under a situation which has one candidate could only be used in
 
 
 
+\subsection{Intersection Removal}
+\label{sec:Intersection Removal}
+Sometimes, advanced techniques is needed to be used on supporting more difficult puzzle whilst both naked single and hidden single are not able to find out any way out. The intersection removal technique provides an advanced elimination skill to exclude more impossibilities out of the row, or the column which are in one object block. The prerequisites for this techniques to be utilized are, 
+\begin{enumerate}
+\item All the cells in one block holds a specific candidate just right in the same row or column or
+\item All the cells in one row or one column hold a possible specific candidate just right in the same block.
+\end{enumerate}
+If the first prerequisite is tenable, then the specific candidate could be excluded from all other cells in the same row or column. And if the second prerequisite is tenable, the the specific candidate could be excluded from all other cells in the same block. 
+
+\begin{figure}[htbp]
+\begin{sudoku}
+|2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
+|1|4|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}56{}{}9}|2|{\cell {}{}{}{}567{}9}|{\cell {}{}{}{}{}67{}9}|8|3|.
+|{\cell {}{}{}{}{}67{}9}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}4{}6{}{}9}|1|{\cell {}{}{}4{}6789}|5|{\cell {}2{}4{}67{}{}}|{\cell {}2{}{}{}67{}9}|.
+|{\cell {}{}345{}7{}{}}|{\cell 123{}5{}7{}{}}|{\cell {}2{}45{}7{}{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}{}89}|{\cell {}{}{}456{}89}|{\cell {}{}{}4{}6789}|{\cell 12{}4{}67{}{}}|{\cell 12{}{}{}6789}|.
+|{\cell {}{}34{}{}{}{}{}}|{\cell 123{}{}{}{}{}{}}|6|7|{\cell {}{}34{}{}{}89}|{\cell {}{}{}4{}{}{}89}|{\cell {}{}{}4{}{}{}89}|5|{\cell 12{}{}{}{}{}89}|.
+|8|{\cell {}{}{}{}5{}7{}{}}|9|2|{\cell {}{}{}45{}{}{}{}}|1|3|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|.
+|{\cell {}{}{}4567{}9}|{\cell {}{}{}{}56789}|{\cell {}{}{}45{}78{}}|{\cell {}{}{}45{}{}{}9}|{\cell {}{}{}45{}7{}9}|3|2|{\cell 1{}{}{}{}67{}{}}|{\cell 1{}{}{}5678{}}|.
+|{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
+|{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
+\end{sudoku}
+\caption{Example in intersection removal}
+\label{fig:intersectionremoval}
+\end{figure}
+
+For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
 
 
-\section{Naked Pair}
+
+
+\section{Intermediate rules}
+\label{sec:Intermediaterules}
+
+\subsection{Naked Pair}
 \label{sec:Naked Pair}
 
 Naked Pair could hold when any of these three prerequisites hold, which are, 
@@ -939,7 +978,7 @@ The first two prerequisites above could be mixed and matched with the last one, 
 \end{figure}
 
 
-\section{Hidden Pair}
+\subsection{Hidden Pair}
 \label{sec:Hidden Pair}
 The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in a shared unit (a row, a column, or a block). Once the prerequisite is satisfied, all other candidates in these two cells could be excluded surely. 
 For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{5})$ and $(r_{3},\ c_{4})$ do not have only two candidates $n_{6}$ and $n_{9}$ in the cells only, but candidates $n_{6}$ and $n_{9}$ are restricted to these two cells only. Hence, the prerequisite is satisfied, thus all candidates expect $n_{6}$ and $n_{9}$ could all be excluded from these two cells.
@@ -964,7 +1003,7 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 
 
 
-\section{Naked Triplet}
+\subsection{Naked Triplet}
 \label{sec:Naked Triplet}
 
 Naked Triplet could hold when any of these three prerequisites hold, which are, 
@@ -1009,7 +1048,7 @@ In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ 
 \end{figure}
 
 
-\section{Hidden Triplet}
+\subsection{Hidden Triplet}
 \label{sec:Hidden Triplet}
 Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
 In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (in boldface font) are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
@@ -1031,7 +1070,7 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 
 
 
-\section{Naked Quad}
+\subsection{Naked Quad}
 \label{sec:Naked Quad}
 It is in the situation while four cells in a row, a column, or a block are having common four candidate digits left in the cells. If the prerequisite is existed, then it will bring an updated instance which has no these four candidates in other cells which shared a same unit anymore. Figure ~\ref{fig:nakedquad} is an instance which in naked quad situation, in the block $b_{5}$, cell $(r_{5},\ c_{6})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have 4 different candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells. Consequently, candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ in other cells in the block $b_{5}$ will be excluded (Figure because these four candidates will not longer possible to be used in other cells anymore.
 
@@ -1054,7 +1093,7 @@ It is in the situation while four cells in a row, a column, or a block are havin
 
 
 
-\section{Hidden Quad}
+\subsection{Hidden Quad}
 \label{sec:Hidden Quad}
 This is a rare circumstance which has four candidates only found in four cells in a unit and each cell has at least two of these candidates appear in the cell. Then all other candidates in these four cells would be excluded afterwards as soon as the situation is found. 
 In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$, $n_{6}$ and $n_{7}$ (in boldface font) are the only 4 candidates appear in these four cells $(r_{4}, c_{7})$,  $(r_{4}, c_{9})$,  $(r_{6}, c_{7})$ and $(r_{7}, c_{9})$, thus, all other candidates in these four cells will no longer needed.
@@ -1077,10 +1116,11 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 \end{figure}
 
 
+\section{Advanced rules}
+\label{sec:Advancedrules}
 
 
-
-\section{X-wing}
+\subsection{X-wing}
 \label{sec:X-wing}
 An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
 
@@ -1131,7 +1171,7 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 
 
 
-\section{XY-wing}
+\subsection{XY-wing}
 \label{sec:XY-wing}
 That has to be applied when two prerequisites are satisfied:
 \begin{enumerate}
@@ -1166,7 +1206,7 @@ Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ an
 
 
 
-\section{XYZ-wing}
+\subsection{XYZ-wing}
 \label{sec:XYZ-wing}
 
 Which is pretty similar to XY-wing, but the only difference is, there is a cell specially has three candidates. So the conditions to be hold are:
@@ -1208,7 +1248,7 @@ There is a cell  $(r_{6}, c_{5})$ shared a block with both $(r_{4}, c_{5})$ and 
 \end{figure}
 
 
-\section{WXYZ-wing}
+\subsection{WXYZ-wing}
 \label{sec:WXYZ-wing}
 It is an advanced technique rather than the techniques introduced above. The prerequisites of this techniques are:
 \begin{enumerate}
@@ -1247,7 +1287,7 @@ Four cells all hae a common candidate $n_{5}$, and other conditions are all hold
 
 
 
-\section{Swordfish}
+\subsection{Swordfish}
 \label{sec:Swordfish}
 Swordfish is an approach extended from X-wing technique, but rarer to be seen. The concept is, a value in one position will force other positions in the same row or same column not to have the same value filled in and vice versa. It is used when there are (a graphic pattern is in Figure \ref{fig:swordfish}):
 \begin{enumerate}
@@ -1296,32 +1336,7 @@ In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5
 \label{fig:swordfishreal}
 \end{figure}
 
-\section{Intersection Removal}
-\label{sec:Intersection Removal}
-Sometimes, advanced techniques is needed to be used on supporting more difficult puzzle whilst both naked single and hidden single are not able to find out any way out. The intersection removal technique provides an advanced elimination skill to exclude more impossibilities out of the row, or the column which are in one object block. The prerequisites for this techniques to be utilized are, 
-\begin{enumerate}
-\item All the cells in one block holds a specific candidate just right in the same row or column or
-\item All the cells in one row or one column hold a possible specific candidate just right in the same block.
-\end{enumerate}
-If the first prerequisite is tenable, then the specific candidate could be excluded from all other cells in the same row or column. And if the second prerequisite is tenable, the the specific candidate could be excluded from all other cells in the same block. 
 
-\begin{figure}[htbp]
-\begin{sudoku}
-|2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
-|1|4|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}56{}{}9}|2|{\cell {}{}{}{}567{}9}|{\cell {}{}{}{}{}67{}9}|8|3|.
-|{\cell {}{}{}{}{}67{}9}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}4{}6{}{}9}|1|{\cell {}{}{}4{}6789}|5|{\cell {}2{}4{}67{}{}}|{\cell {}2{}{}{}67{}9}|.
-|{\cell {}{}345{}7{}{}}|{\cell 123{}5{}7{}{}}|{\cell {}2{}45{}7{}{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}{}89}|{\cell {}{}{}456{}89}|{\cell {}{}{}4{}6789}|{\cell 12{}4{}67{}{}}|{\cell 12{}{}{}6789}|.
-|{\cell {}{}34{}{}{}{}{}}|{\cell 123{}{}{}{}{}{}}|6|7|{\cell {}{}34{}{}{}89}|{\cell {}{}{}4{}{}{}89}|{\cell {}{}{}4{}{}{}89}|5|{\cell 12{}{}{}{}{}89}|.
-|8|{\cell {}{}{}{}5{}7{}{}}|9|2|{\cell {}{}{}45{}{}{}{}}|1|3|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|.
-|{\cell {}{}{}4567{}9}|{\cell {}{}{}{}56789}|{\cell {}{}{}45{}78{}}|{\cell {}{}{}45{}{}{}9}|{\cell {}{}{}45{}7{}9}|3|2|{\cell 1{}{}{}{}67{}{}}|{\cell 1{}{}{}5678{}}|.
-|{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
-|{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
-\end{sudoku}
-\caption{Example in intersection removal}
-\label{fig:intersectionremoval}
-\end{figure}
-
-For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
 
 
 
