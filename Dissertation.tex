@@ -712,7 +712,7 @@ When a Sudoku rule is successful applied in the rn-view, certain columns must ha
 \item highlight the column $v$ in cell $A'\ (row, number)$.
 \end{itemize} 
 
-From the Figure \ref{fig:rnView}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'\ (1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:rnUpdate}:
+From the Figure \ref{fig:rnView}, we found the annotation for $A'\ (1,7)$ is $A'\ (1,7) =\ (\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'\ (1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:rnUpdate}:
 \begin{itemize}
 \item $A'\ (1,7) =\ (\set{3}, \set{1, \dots, 9} \setminus \set{3}) \Rightarrow v = 3$
 \item Shared a ``row'': $A'\ (1,3)$, $A'\ (1,6)$ and $A'\ (1,8)$ all have column $v$ in the cell and shared a row with cell $A'\ (1,7)$
@@ -866,6 +866,7 @@ In the rc-view, if there is a cell has only one candidate $v$ possible to filled
 \item all the cells shared a block with $A'\ (row, coulmn)$ have candidate $v$ excluded.
 \item highlight the candidate $v$ in cell $A'\ (row, coulmn)$.
 \end{itemize}
+In the Figure \ref{fig:rcWhole}, we find cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
 
 What if a cell has only one column $v$ possible to filled in to the cell $A'\ (row, number,)$, then
 \begin{itemize}
@@ -873,6 +874,7 @@ What if a cell has only one column $v$ possible to filled in to the cell $A'\ (r
 \item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
 \item highlight the column $v$ in cell $A'\ (row, number)$.
 \end{itemize}
+In the Figure \ref{fig:rcView}, we find cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcUpdate}.
 
 What if a cell has only one row $v$ possible to filled in to the cell $A'\ (column, number,)$, then
 
@@ -888,7 +890,8 @@ And what if a cell has only one square $v$ possible to filled in to the cell $A'
 \item highlight the square $v$ in cell $A'\ (block, number)$.
 \end{itemize}
 
-In the Figure \ref{fig:rcWhole}, we find cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
+
+
 
 \subsection{Hidden Single}
 \label{sec:Hidden Single}
