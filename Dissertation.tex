@@ -709,6 +709,7 @@ When a Sudoku rule is successful applied in the rn-view, certain columns must ha
 \begin{itemize}
 \item all the cells shared a row with $A'\ (row, number)$ have column $v$ excluded.
 \item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
+\item highlight the column $v$ in cell $A'\ (row, number)$.
 \end{itemize} 
 
 From the Figure \ref{fig:rnView}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'\ (1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:rnUpdate}:
@@ -754,6 +755,7 @@ When a Sudoku rule is successful applied in the cn-view, certain columns must ha
 \begin{itemize}
 \item all the cells shared a column with $A'\ (column, number)$ have row $v$ excluded.
 \item all the cells shared a number with $A'\ (column, number)$ have row $v$ excluded.
+\item highlight the row $v$ in cell $A'\ (column, number)$.
 \end{itemize} 
 
 From the Figure \ref{fig:cnView}, we found the annotation for $A'\ (8,4)$ is $A'\ (8, 4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'\ (8,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:cnUpdate}:
@@ -796,6 +798,7 @@ A'\ (4,4) =\ (\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\ \Rightarrow A'\ (4,4) =\ (
 When a Sudoku rule is successful applied in the bn-view, certain squares must have excluded from some cells. If any of the cells in a mapped bn-vew annotated instance $A'$ has an annotation like $A'\ (block, number) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a block with the cell $A'\ (block, number)$ will have square $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
 \item all the cells shared a block with $A'\ (block, number)$ have square $v$ excluded.
+\item highlight the square $v$ in cell $A'\ (block, number)$.
 \end{itemize} 
 
 From the Figure \ref{fig:bnView}, we found the annotation for $A'\ (2,4)$ is $A'\ (2, 4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'\ (2,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:bnUpdate}:
