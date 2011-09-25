@@ -693,34 +693,6 @@ $b_{1}$ &\LARGE 1 & {\cell {}{}{}4{}{}7{}{}} & {\cell {}23{}{}{}7{}9} & \LARGE 8
 
 In the subsection \ref{sec:UpdatingtheinstancesI}, we have discussed the update made when a proper Sudoku rule has been applied in an annotated instance. Therefore, that is only about the update in the annotated instance in rc-view. Since we have more different perspectives introduced, we''ll introduce more update effect in the three other views in this section.
 
-When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded from some cells. If any of the cells in a mapped annotated instance $A'$ has an annotation like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a column, or a block with the cell $A'\ (i,j)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
-\begin{itemize}
-\item all the cells shared a row with $A'\ (i,j)$ have candidate $v$ excluded.
-\item all the cells shared a column with $A'\ (i,j)$ have candidate $v$ excluded.
-\item all the cells shared a block with $A'\ (i,j)$ have candidate $v$ excluded.
-\end{itemize} 
-
-From the Figure \ref{fig:rcWholeupdated}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, a column, or a block with $A'\ (1,6)$, that is candidate $v$ has to be excluded from the row, column, and block. The examples are given for each situation:
-\begin{itemize}
-\item $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8}) \Rightarrow v = 8$
-\item Shared a ``row'': $A'\ (1,3)$ has candidate $v$ and shared a row as $A'\ (1,6)$
-\begin{itemize}
-\item $A'\ (1,3) =\ (\set{3, 6, 7, 8}, \set{1, 2, 4, 5, 9})\ \Rightarrow$
-\item  $A'\ (1,3) =\ (\set{3, 6, 7}\setminus \set{8}, \set{1, 2, 4, 5, 8, 9})$.
-\end{itemize}
-\item Shared a ``column'': $A'\ (3,6)$ has candidate $v$ and shared a row as $A'\ (1,6)$
-\begin{itemize}
-\item $A'\ (3,6) =\ (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\ \Rightarrow$
-\item $A'\ (3,6) =\ (\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9})$.
-\end{itemize}
-\item Shared a ``block'': $A'\ (2,5)$ has candidate $v$ and shared a block as $A'\ (1,6)$
-\begin{itemize}
-\item $A'\ (2,5) =\ (\set{4, 8}, \set{1, 2, 3, 5, 6, 7, 9})\ \Rightarrow$
-\item $A'\ (2,5) =\ (\set{4, 8}\setminus \set{8}, \set{1, 2, 3, 5, 6, 7, 8, 9})$.
-\end{itemize}
-\end{itemize}
-
-
 XXX continuation of Subsection \ref{sec:UpdatingtheinstancesI}, but \emph{now} applying the other threes views and explaining them XXX explaining their meaning (again), explaining why it can be done, and what, for the basic rule (``Naked single'' in variation) XXX
 
 XXX also needed: an example that this adds power! XXX
@@ -729,7 +701,27 @@ XXX also needed: an example that this adds power! XXX
 \subsection{Rn-View}
 \label{sec:basicrulern}
 
-If a cell ``(row, number)'' 
+When a Sudoku rule is successful applied in the rn-view, certain columns must have excluded from some cells. If any of the cells in a mapped rn-vew annotated instance $A'$ has an annotation like $A'\ (row, number) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a number with the cell $A'\ (row, number)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+\begin{itemize}
+\item all the cells shared a row with $A'\ (row, number)$ have column $v$ excluded.
+\item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
+\end{itemize} 
+
+From the Figure \ref{fig:rnView}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'\ (1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation:
+\begin{itemize}
+\item $A'\ (1,7) =\ (\set{3}, \set{1, \dots, 9} \setminus \set{3}) \Rightarrow v = 3$
+\item Shared a ``row'': $A'\ (1,3)$, $A'\ (1,6)$ and $A'\ (1,8)$ all have column $v$ in the cell and shared a row with cell $A'\ (1,7)$
+\begin{eqnarray*}
+A'\ (1,3) =\ (\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})\ \Rightarrow A'\ (1,3) =\ (\set{2, 8}\setminus \set{3}, \set{1, 3, 4, 5, 6, 7, 9}).\\
+A'\ (1,6) =\ (\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})\ \Rightarrow A'\ (1,3) =\ (\set{2, 5}\setminus \set{3}, \set{1, 3, 4, 6, 7, 8, 9}).\\
+A'\ (1,8) =\ (\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})\ \Rightarrow A'\ (1,3) =\ (\set{5, 6, 7, 8}\setminus \set{3}, \set{1, 2, 3, 4, 9}).
+\end{eqnarray*}
+\item Shared a ``number'': $A'\ (7,7)$ and $A'\ (9,7)$ has candidate $v$ in the cell and shared a number with cell $A'\ (1,7)$
+\begin{eqnarray*}
+A'\ (7,7) =\ (\set{1, 3, 4, 6, 7, 9}, \set{2, 5, 8})\ \Rightarrow A'\ (7,7) =\ (\set{1, 4, 6, 7, 9}\setminus \set{3}, \set{2, 3, 5, 8}).\\
+A'\ (9,7) =\ (\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})\ \Rightarrow A'\ (9,7) =\ (\set{4, 7}\setminus \set{8}, \set{1, 2, 3, 5, 6, 8, 9}).
+\end{eqnarray*}
+\end{itemize}
 
 \subsection{Cn-View}
 \label{sec:basicrulecn}
