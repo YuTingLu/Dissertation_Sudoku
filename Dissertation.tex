@@ -909,7 +909,6 @@ What if a cell $A'(row, number)$ has only one column $v$ possible to filled into
 Suppose we find a cell $A'(1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
 
 What if a cell $A'(column, number)$ has only one row $v$ possible to filled into the cell $A'(column, number,)$, then
-
 \begin{itemize}
 \item all the cells shared an unit (column, or number) with $A'(column, number)$ have row $v$ excluded.
 \item highlight the row $v$ in cell $A'\ (column, number)$.
@@ -927,17 +926,18 @@ In the Figure \ref{fig:bnView}, we find a cell $A'(2, 4)$ in bn-view is matched 
 \section{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single rule is used in a situation that ``there is a cell $A'(i,j)$ which has more than one candidates in the cell, but one of the possible candidates $v$ is only possible to be appeared in this cell $A'(i,j)$ of an unit''. Thus, the cell A'(i,j) will have its equation re-written to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$.
+Hidden single rule is used in a situation that ``there is a cell $A'(i,j)$ which has more than one candidates in the cell, but one of the possible candidates $v$ is only possible to be appeared in this cell $A'(i,j)$ of an unit''. Thus, re-write the equation of the cell A'(i,j) to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$.
 
-However, as we introduced three different views, rn-view, cn-view, and bn-view in the section \ref{sec:Differentperspectives}, the definition of the rule hidden single has to be more precisely declared.
+In the rc-view, if there is a cell $A'(row, coulmn)$ has more than one candidates and have one candidate $v$ which only fit to this cell in an unit, then
 \begin{itemize}
-\item In the general rc-view, hidden single rule could used in either row (horizontal axis), column (vertical axis), or block.
-\item In the general rn-view, the rule could used in only row (horizontal axis), or number (vertical axis).
-\item In the general cn-view, the rule could used in only column (horizontal axis), or number (vertical axis).
-\item However, in the general bn-view, the rule could used in only block (horizontal axis).
+\item set the equation to $A'(row, coulmn) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$
+\item and exclude candidate $v$ from the rest of units.
 \end{itemize}
-
- which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
+In the Figure \ref{fig:hiddensinglerc}, we find a cell $A'(1, 3)$ in rc-view has matched to the situation of hidden single which has a candidate $7$ only possible to be used in the cell $A'(1, 3)$ of row $1$. Thus, we can now have 
+\begin{itemize}
+\item an new equation $A'(1, 3) =(\set{7}, \set{1,\dots,9} \setminus \set{7})$ for the cell
+\item and exclude candidate $7$ from the rest units (block and column).
+\end{itemize}
 
 \begin{figure}[htbp]
 \begin{sudoku}
@@ -947,12 +947,12 @@ However, as we introduced three different views, rn-view, cn-view, and bn-view i
 |{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
 |{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
 |9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}4{\underline 5}{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}{\sout 7}{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
-|4| {\cell {}23{}{}{}{}{}{}}|{\cell {\underline 1}{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}{\sout 7}{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in hidden single}
-\label{fig:hiddensingle}
+\caption{Example in rc-view for hidden single}
+\label{fig:hiddensinglerc}
 \end{figure}
 
 
