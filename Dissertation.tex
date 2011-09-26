@@ -125,7 +125,7 @@ To study Sudoku, the basic introduction about what is Sudoku and the history of 
 \label{sec:background}
 To get started on Sudoku, the origin and the fundamental mathematics of is have to be studied beforehand. Sudoku is special kind of Latin Square\cite{website:LatinSquare}. Latin square was developed by \textit{Leonhard Euler} in 18th century\footnote{Leonhard Euler, a pioneering Swiss mathematician and physicist. \cite{website:LeonhardEuler}} which is an $N \times N$ matrices which is standard on a principle: ``All the candidates from 1, \dots , 9 can exact appear once in the unit''. It was named Latin square because the Latin characters are used as symbols to fill into the cells\cite{Delahay2006Science} when it has been developed firstly. Nevertheless, integers could also be used to replace Latin characters. Later on, in 19th, there is a magazine company called ``Dell Magazines'' publish a number puzzle ``Number Place'' with a $9 \times 9$ square grid using Euler's perspective. At that time, it was so popular till few years later a Japanese puzzle company Nikoli has introduced this number puzzle as ``Suji wa dokushin ni kagiru'' (means the numbers must occur only once) which can be abbreviated to ``Sudoku'' (Su: number, doku: single)\cite{GarciaPalomino2007SolvingSudoku}. 
 
-Common Sudoku puzzle that we see in the newspaper, magazine or the Internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However, they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n \ (n = \sqrt{N}$) sub-matrices which filled with number $1,\ \dots ,\ 9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block. A formal Sudoku puzzle is a $N \times N$ matrices with some cells have already filled in with number between $1,\ \dots ,\ 9$ and does not have any number duplicated occurs in a unit. When a Sudoku puzzle has been given, then the next step to be done is make it annotated to generate an annotated instance to begin the rules apply.
+Common Sudoku puzzle that we see in the newspaper, magazine or the Internet are usually shaped in $9 \times 9$ cells which is same as Latin square. However, they are slightly different from each other, which Latin square is an $N \times N$ matrices filled with $N$ symbols, but Sudoku is an  $N \times N$ matrices which also tiled by $N$ blocks that each block is an $n \times n$ (with $n = \sqrt{N}$) sub-matrices which filled with number $1,\dots ,9$. Nevertheless, they both have rule that the either symbol or number are all exact appeared once in the same row, same column, or the same block. A formal Sudoku puzzle is a $N \times N$ matrices with some cells have already filled in with number between $1,\dots ,9$ and does not have any number duplicated occurs in a unit. When a Sudoku puzzle has been given, then the next step to be done is make it annotated to generate an annotated instance to begin the rules apply.
 
 The number of valid Sudoku grids has been determined in \cite{FelgenhauerJarvis2006SudokuI} as
 \begin{displaymath}
@@ -237,7 +237,7 @@ XXX
 
 
 \subsection{Outline}
-\label{sec:Outline}
+\label{sec:OUtline}
 
 XXX
 
@@ -369,38 +369,38 @@ Having the notion of annotated instances at hand, we can now say what a ``rule''
 \subsection{Updating the annotated instances I}
 \label{sec:UpdatingtheinstancesI}
 
-When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded from some cells. If any of the cells in a mapped annotated instance $A'$ has an annotation like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a column, or a block with the cell $A'\ (i,j)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+When a proper \textbf{Sudoku rule} (which said in section \ref{sec:naturesudokurules}) has been successful applied, certain candidates must have excluded from some cells. If any of the cells in a mapped annotated instance $A'$ has an annotation like $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a column, or a block with the cell $A'(i,j)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
-\item all the cells shared a row with $A'\ (i,j)$ have candidate $v$ excluded.
-\item all the cells shared a column with $A'\ (i,j)$ have candidate $v$ excluded.
-\item all the cells shared a block with $A'\ (i,j)$ have candidate $v$ excluded.
-\item highlight the candidate $v$ in cell $A'\ (i,j)$.
+\item all the cells shared a row with $A'(i,j)$ have candidate $v$ excluded.
+\item all the cells shared a column with $A'(i,j)$ have candidate $v$ excluded.
+\item all the cells shared a block with $A'(i,j)$ have candidate $v$ excluded.
+\item highlight the candidate $v$ in cell $A'(i,j)$.
 \end{itemize} 
 
-From the Figure \ref{fig:rcWholeupdated}, we found the annotation for $A'\ (1,6)$ is $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, a column, or a block with $A'\ (1,6)$, that is candidate $v$ has to be excluded from the row, column, and block. The examples are given for each situation:
+From the Figure \ref{fig:rcWholeupdated}, we found the annotation for $A'(1,6)$ is $A'(1,6) =(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, a column, or a block with $A'(1,6)$, that is candidate $v$ has to be excluded from the row, column, and block. The examples are given for each situation:
 \begin{itemize}
-\item $A'\ (1,6) =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8}) \Rightarrow v = 8$
-\item Shared a ``row'': $A'\ (1,3)$, $A'\ (1,5)$, $A'\ (1,7)$ and $A'\ (1,8)$ all have candidate $v$ and shared a row as $A'\ (1,6)$
+\item $A'(1,6) =(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9} \setminus \set{8}) \Rightarrow v = 8$
+\item Shared a ``row'': $A'(1,3)$, $A'(1,5)$, $A'(1,7)$ and $A'(1,8)$ all have candidate $v$ and shared a row as $A'(1,6)$
 \begin{eqnarray*}
-A'\ (1,3) =\ (\set{3, 6, 7, 8}, \set{1, 2, 4, 5, 9})\ \Rightarrow A'\ (1,3) =\ (\set{3, 6, 7, 8}\setminus \set{8}, \set{1, 2, 4, 5, 8, 9}).\\
-A'\ (1,5) =\ (\set{6, 8, 9}, \set{1, 2, 3, 4, 5, 7})\ \Rightarrow A'\ (1,5) =\ (\set{6, 8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 5, 7, 8}).\\
-A'\ (1,7) =\ (\set{5, 8, 9}, \set{1, 2, 3, 4, 6, 7})\ \Rightarrow A'\ (1,7) =\ (\set{5, 8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 6, 7, 8}).\\
-A'\ (1,8) =\ (\set{3, 8, 9}, \set{1, 2, 4, 5, 6, 7})\ \Rightarrow A'\ (1,8) =\ (\set{3, 8, 9}\setminus \set{8}, \set{1, 2, 4, 5, 6, 7, 8}).
+A'(1,3) =(\set{3, 6, 7, 8}, \set{1, 2, 4, 5, 9})\Rightarrow A'(1,3) =(\set{3, 6, 7, 8}\setminus \set{8}, \set{1, 2, 4, 5, 8, 9}).\\
+A'(1,5) =(\set{6, 8, 9}, \set{1, 2, 3, 4, 5, 7})\Rightarrow A'(1,5) =(\set{6, 8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 5, 7, 8}).\\
+A'(1,7) =(\set{5, 8, 9}, \set{1, 2, 3, 4, 6, 7})\Rightarrow A'(1,7) =(\set{5, 8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 6, 7, 8}).\\
+A'(1,8) =(\set{3, 8, 9}, \set{1, 2, 4, 5, 6, 7})\Rightarrow A'(1,8) =(\set{3, 8, 9}\setminus \set{8}, \set{1, 2, 4, 5, 6, 7, 8}).
 \end{eqnarray*}
-\item Shared a ``column'': $A'\ (3,6)$, $A'\ (4,6), $A'\ (5,6), $A'\ (6,6) and $A'\ (7,6) all have candidate $v$ and shared a row as $A'\ (1,6)$
+\item Shared a ``column'': $A'(3,6)$, $A'(4,6), $A'(5,6), $A'(6,6) and $A'(7,6) all have candidate $v$ and shared a row as $A'(1,6)$
 \begin{eqnarray*}
-A'\ (3,6) =\ (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\ \Rightarrow A'\ (3,6) =\ (\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9}).\\
-A'\ (4,6) =\ (\set{2, 4, 7, 8}, \set{1, 3, 5, 6, 9})\ \Rightarrow A'\ (4,6) =\ (\set{2, 4, 7, 8}\setminus \set{8}, \set{1, 3, 5, 6, 8, 9}).\\
-A'\ (5,6) =\ (\set{1, 4, 5, 7, 8}, \set{2, 3, 6, 9})\ \Rightarrow A'\ (5,6) =\ (\set{1, 4, 5, 7, 8}\setminus \set{8}, \set{2, 3, 6, 8, 9}).\\
-A'\ (6,6) =\ (\set{1, 4, 5, 8}, \set{2, 3, 6, 7, 9})\ \Rightarrow A'\ (6,6) =\ (\set{1, 4, 5, 8}\setminus \set{8}, \set{2, 3, 6, 7, 8, 9}).\\
-A'\ (7,6) =\ (\set{2, 4, 5, 7, 8}, \set{1, 3, 6, 9})\ \Rightarrow A'\ (7,6) =\ (\set{2, 4, 5, 7, 8}\setminus \set{8}, \set{1, 3, 6, 8, 9}).\\
+A'(3,6) =(\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\Rightarrow A'(3,6) =(\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9}).\\
+A'(4,6) =(\set{2, 4, 7, 8}, \set{1, 3, 5, 6, 9})\Rightarrow A'(4,6) =(\set{2, 4, 7, 8}\setminus \set{8}, \set{1, 3, 5, 6, 8, 9}).\\
+A'(5,6) =(\set{1, 4, 5, 7, 8}, \set{2, 3, 6, 9})\Rightarrow A'(5,6) =(\set{1, 4, 5, 7, 8}\setminus \set{8}, \set{2, 3, 6, 8, 9}).\\
+A'(6,6) =(\set{1, 4, 5, 8}, \set{2, 3, 6, 7, 9})\Rightarrow A'(6,6) =(\set{1, 4, 5, 8}\setminus \set{8}, \set{2, 3, 6, 7, 8, 9}).\\
+A'(7,6) =(\set{2, 4, 5, 7, 8}, \set{1, 3, 6, 9})\Rightarrow A'(7,6) =(\set{2, 4, 5, 7, 8}\setminus \set{8}, \set{1, 3, 6, 8, 9}).\\
 \end{eqnarray*}
-\item Shared a ``block'': $A'\ (1,5)$ $A'\ (2,5)$ $A'\ (3,4)$ and $A'\ (3,6)$ all have candidate $v$ and shared a block as $A'\ (1,6)$
+\item Shared a ``block'': $A'(1,5)$ $A'(2,5)$ $A'(3,4)$ and $A'(3,6)$ all have candidate $v$ and shared a block as $A'(1,6)$
 \begin{eqnarray*}
-A'\ (1,5) =\ (\set{6 ,8, 9}, \set{1, 2, 3, 4, 5, 7})\ \Rightarrow A'\ (1,5) =\ (\set{6 ,8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 5, 7, 8}).\\
-A'\ (2,5) =\ (\set{4, 8}, \set{1, 2, 3, 5, 6, 7, 9})\ \Rightarrow A'\ (2,5) =\ (\set{4, 8}\setminus \set{8}, \set{1, 2, 3, 5, 6, 7, 8, 9}).\\
-A'\ (3,4) =\ (\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})\ \Rightarrow A'\ (3,4) =\ (\set{1, 6, 8, 9}\setminus \set{8}, \set{2, 3, 4, 5, 7, 8}).\\
-A'\ (3,6) =\ (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\ \Rightarrow A'\ (3,6) =\ (\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9}).
+A'(1,5) =(\set{6 ,8, 9}, \set{1, 2, 3, 4, 5, 7})\Rightarrow A'(1,5) =(\set{6 ,8, 9}\setminus \set{8}, \set{1, 2, 3, 4, 5, 7, 8}).\\
+A'(2,5) =(\set{4, 8}, \set{1, 2, 3, 5, 6, 7, 9})\Rightarrow A'(2,5) =(\set{4, 8}\setminus \set{8}, \set{1, 2, 3, 5, 6, 7, 8, 9}).\\
+A'(3,4) =(\set{1, 6, 8, 9}, \set{2, 3, 4, 5, 7})\Rightarrow A'(3,4) =(\set{1, 6, 8, 9}\setminus \set{8}, \set{2, 3, 4, 5, 7, 8}).\\
+A'(3,6) =(\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\Rightarrow A'(3,6) =(\set{1, 8}\setminus \set{8}, \set{2, 3, 4, 5, 6, 7, 8, 9}).
 \end{eqnarray*}
 \end{itemize}
 
@@ -539,28 +539,28 @@ Four different views:
 
 Each view gives different information for the view to provide various point of views. The information given in an rc-view (standard) annotated instance is, possible and excluded candidates for each cell (row, column) which is written as:
 \begin{displaymath}
-A'\ (row,\ column) =\ (\set{{P}ossible\ candidates}, \set{{E}xcluded\ candidates})
+  A'(\text{row},\text{column}) = (\set{\text{Possible candidates}}, \set{\text{Excluded candidates}}).
 \end{displaymath}
 
 
-In an annotated instance in rn-view (see Figure \ref{fig:rnView}), the information contained in each cell $A'\ (row,\ number)$ is, the cell has a number of one row could possibly appeared in such ``possible columns'' and not in the ``excluded columns''. The equation for the cell (row, number) is written as:
+In an annotated instance in rn-view (see Figure \ref{fig:rnView}), the information contained in each cell $A'(\text{row},\text{number})$ is, the cell has a number of one row could possibly appeared in such ``possible columns'' and not in the ``excluded columns''. The equation for the cell (row, number) is written as:
 \begin{displaymath}
-A'\ (row,\ number) =\ (\set{{P}ossible\ columns}, \set{{E}xcluded\ columns})
+A'(\text{row},\text{number}) =(\set{\text{Possible columns}}, \set{\text{Excluded columns}}).
 \end{displaymath}
-Suppose we take a cell $A'\ (7,\ 4)$ in Figure \ref{fig:rnView}, the equation for cell $A'\ (7,\ 4)$ is written as $A'\ (7,\ 4) =\ (\set{4, 6, 7}, \set{1, 2, 3, 5, 8, 9} )$, number $4$ for row $7$ could only occur in possible columns 4, 6, and 7, the rest of columns are excluded from the possibilities.
+Suppose we take a cell $A'(7,4)$ in Figure \ref{fig:rnView}, the equation for cell $A'(7,4)$ is written as $A'(7,4) =(\set{4, 6, 7}, \set{1, 2, 3, 5, 8, 9} )$, number $4$ for row $7$ could only occur in possible columns 4, 6, and 7, the rest of columns are excluded from the possibilities.
 
 
-In an annotated instance in cn-view (see Figure \ref{fig:cnView}), the information contained in each cell $A'\ (column,\ number)$ is, the cell has a number of one column could possibly appeared in such ``possible rows'' and not in the ``excluded rows''. The equation for the cell (column, number) is written as:
+In an annotated instance in cn-view (see Figure \ref{fig:cnView}), the information contained in each cell $A'(\text{column},\text{number})$ is, the cell has a number of one column could possibly appeared in such ``possible rows'' and not in the ``excluded rows''. The equation for the cell (column, number) is written as:
 \begin{displaymath}
-A'\ (column,\ number) =\ (\set{{P}ossible\ rows}, \set{{E}xcluded\ rows})
+A'(\text{column},\text{number}) =(\set{\text{Possible rows}}, \set{\text{Excluded rows}}).
 \end{displaymath}
-Suppose we take a cell $A'\ (5,\ 6)$ in Figure \ref{fig:cnView}, the equation for cell $A'\ (5,\ 6)$ is written as $A'\ (5,\ 6) =\ (\set{1, 4, 5, 6}, \set{2, 3, 7, 8, 9} )$, number $6$ for row $5$ could only occur in possible rows 1, 4, 5, and 6, the rest of rows are excluded from the possibilities.
+Suppose we take a cell $A'(5,6)$ in Figure \ref{fig:cnView}, the equation for cell $A'(5,6)$ is written as $A'(5,6) =(\set{1, 4, 5, 6}, \set{2, 3, 7, 8, 9} )$, number $6$ for row $5$ could only occur in possible rows 1, 4, 5, and 6, the rest of rows are excluded from the possibilities.
 
-And in an annotated instance in bn-view (see Figure \ref{fig:bnView}), the information contained in each cell $A'\ (block,\ number)$ is, the cell has a number of one block could possibly appeared in such ``possible squares of the block'' in an standard instance in rc-view. The equation for the cell (block, number) is written as:
+And in an annotated instance in bn-view (see Figure \ref{fig:bnView}), the information contained in each cell $A'(\text{block},\text{number})$ is, the cell has a number of one block could possibly appeared in such ``possible squares of the block'' in an standard instance in rc-view. The equation for the cell (block, number) is written as:
 \begin{displaymath}
-A'\ (block,\ number) =\ (\set{{P}ossible\ squares\ of\ a\ block}, \set{{E}xcluded\ squares\ of\ a\ block}
+A'(\text{block},\text{number}) =(\set{\text{Possible squares}}, \set{\text{Excluded squares}}).
 \end{displaymath}
-Suppose we take a cell $A'\ (6,\ 6)$ in Figure \ref{fig:bnView}, the equation for cell $A'\ (6,\ 6)$ is written as $A'\ (6,\ 6) =\ (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8} )$, number $9$ for block $6$ could only occur in possible squares 6 and 9 of block $6$ in the standard rc-view instance (see Figure \ref{fig:rcView}), the rest of squares are excluded from the possibilities for block $6$.
+Suppose we take a cell $A'(6,6)$ in Figure \ref{fig:bnView}, the equation for cell $A'(6,6)$ is written as $A'(6,6) =(\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8} )$, number $9$ for block $6$ could only occur in possible squares 6 and 9 of block $6$ in the standard rc-view instance (see Figure \ref{fig:rcView}), the rest of squares are excluded from the possibilities for block $6$.
 
 
 To have an annotated instance built in other views based on an standard annotated instance in rc-view, here are the examples for the process. Figure \ref{fig:rccolumn} is a row taken from the figure \ref{fig:rcView}. In the rc-view (see Figure \ref{fig:rccolumn}), the number in each cel simply represent the known value $v$ or the candidates for the cell. However, in the rn-view (see Figure \ref{fig:rncolumn}), the numbers in each cell will represent the known column or the candidate columns for the cell.
@@ -583,15 +583,15 @@ $r_{1}$ &\LARGE 1 &{\cell {}{}3{}56{}{}{}} & {\cell {}{}3{}{}678{}} & \LARGE 2 &
   \begin{tabular}{|p{7cm}|p{7cm}|}
     \hline
     \textbf{r1 in the rc-view} & \textbf{r1 in the rn-view} \\ \hline
-    filled-in value 1 only occur in $(r1,\ c1)$ & $(r1,\ n1)$ contains only c1\\ \hline
-    filled-in value 2 only occur in $(r1,\ c4)$ & $(r1,\ n2)$ contains only c4 \\ \hline
-    candidate 3 occur in $(r1,\ c2)$,  $(r1,\ c3)$, and $(r1,\ c8)$ & $(r1,\ n3)$ contains c2, c3, and c8 \\ \hline
-    filled-in value 4 only occur in $(r1,\ c9)$ & $(r1,\ n4)$ contains only c9 \\ \hline
-    candidate 5 occur in $(r1,\ c2)$ and $(r1,\ c7)$ & $(r1,\ n5)$ contains c2, and c7 \\ \hline
-    candidate 6 occur in $(r1,\ c2)$,  $(r1,\ c3)$, and $(r1,\ c5)$ & $(r1,\ n6)$ contains c2, c3, and c5 \\ \hline
-    candidate 7 occur in $(r1,\ c3)$ & $(r1,\ n7)$ contains only c3 \\ \hline
-    candidate 8 occur in $(r1,\ c3)$,  $(r1,\ c5)$,  $(r1,\ c6)$,  $(r1,\ c7)$, and $(r1,\ c8)$ & $(r1,\ n8)$ contains only c3, c5, c6, c7 and c8 \\ \hline
-    candidate 9 occur in $(r1,\ c5)$, $(r1,\ c7)$, and  $(r1,\ c8)$ & $(r1,\ n9)$ contains only c5, c7, and c8 \\ \hline
+    filled-in value 1 only occur in $(r1,c1)$ & $(r1,n1)$ contains only c1\\ \hline
+    filled-in value 2 only occur in $(r1,c4)$ & $(r1,n2)$ contains only c4 \\ \hline
+    candidate 3 occur in $(r1,c2)$,  $(r1,c3)$, and $(r1,c8)$ & $(r1,n3)$ contains c2, c3, and c8 \\ \hline
+    filled-in value 4 only occur in $(r1,c9)$ & $(r1,n4)$ contains only c9 \\ \hline
+    candidate 5 occur in $(r1,c2)$ and $(r1,c7)$ & $(r1,n5)$ contains c2, and c7 \\ \hline
+    candidate 6 occur in $(r1,c2)$,  $(r1,c3)$, and $(r1,c5)$ & $(r1,n6)$ contains c2, c3, and c5 \\ \hline
+    candidate 7 occur in $(r1,c3)$ & $(r1,n7)$ contains only c3 \\ \hline
+    candidate 8 occur in $(r1,c3)$,  $(r1,c5)$,  $(r1,c6)$,  $(r1,c7)$, and $(r1,c8)$ & $(r1,n8)$ contains only c3, c5, c6, c7 and c8 \\ \hline
+    candidate 9 occur in $(r1,c5)$, $(r1,c7)$, and  $(r1,c8)$ & $(r1,n9)$ contains only c5, c7, and c8 \\ \hline
   \end{tabular}
 \end{center}
 \caption{The information of r1 in both rc-view and rn-view}
@@ -600,15 +600,15 @@ $r_{1}$ &\LARGE 1 &{\cell {}{}3{}56{}{}{}} & {\cell {}{}3{}{}678{}} & \LARGE 2 &
 
 The Table \ref{tab:rcandrn} is the information analysis from number 1 to 9 of r1 in both rc-view and rn-view. As the analysis from the table, we gain the equations for the cells below to get a row built in rn-view (see Figure \ref{fig:rncolumn}):
 \begin{itemize}
-\item $(r1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
-\item $(r1,\ n2)\ =\ (\set{4}, \set{1, 2, 3, 5, 6, 7, 8, 9})$
-\item $(r1,\ n3)\ =\ (\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})$
-\item $(r1,\ n4)\ =\ (\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
-\item $(r1,\ n5)\ =\ (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
-\item $(r1,\ n6)\ =\ (\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})$
-\item $(r1,\ n7)\ =\ (\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
-\item $(r1,\ n8)\ =\ (\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})$
-\item $(r1,\ n9)\ =\ (\set{5, 7, 8}, \set{1, 2, 3, 4, 6, 9})$
+\item $(r1,n1)=(\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(r1,n2)=(\set{4}, \set{1, 2, 3, 5, 6, 7, 8, 9})$
+\item $(r1,n3)=(\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})$
+\item $(r1,n4)=(\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
+\item $(r1,n5)=(\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
+\item $(r1,n6)=(\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})$
+\item $(r1,n7)=(\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
+\item $(r1,n8)=(\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})$
+\item $(r1,n9)=(\set{5, 7, 8}, \set{1, 2, 3, 4, 6, 9})$
 \end{itemize}
 
 
@@ -632,15 +632,15 @@ To re-build a column of an annotated instance in cn-view from rc-view, we have t
   \begin{tabular}{|p{7cm}|p{7cm}|}
     \hline
     \textbf{c1 in the rc-view} & \textbf{c1 in the cn-view} \\ \hline
-    filled-in value 1 only occur in $(r1,\ c1)$ & $(c1,\ n1)$ contains only r1\\ \hline
-    candidate 2 occur in $(r2,\ c1)$, $(r3,\ c1)$, $(r7,\ c1)$, $(r8,\ c1)$ & $(c1,\ n2)$ contains r2, r3, r7, r8 \\ \hline
-    candidate 3 occur in $(r3,\ c1)$,  $(r4,\ c1)$, and $(r7,\ c1)$ & $(c1,\ n3)$ contains r3, r4, and r7 \\ \hline
-    filled-in value 4 only occur in $(r9,\ c1)$ & $(c1,\ n4)$ contains only r9 \\ \hline
-    candidate 5 occur in $(r3,\ c1)$ and $(r5,\ c1)$ & $(c1,\ n5)$ contains r3, and r5 \\ \hline
-    candidate 6 occur in $(r3,\ c1)$,  $(r4,\ c1)$, $(r5,\ c1)$ and $(r8,\ c1)$ & $(c1,\ n6)$ contains r3, r4 ,r5 and r8 \\ \hline
-    candidate 7 occur in $(r7,\ c1)$ and $(r8,\ c1)$ & $(c1,\ n7)$ contains r7 and r8\\ \hline
-    candidate 8 occur in $(r3,\ c1)$,  $(r4,\ c1)$ and $(r5,\ c1)$ & $(c1,\ n8)$ contains only r3, r4 and r5 \\ \hline
-    filled-in value 9 occur in $(r6,\ c1)$ & $(c1,\ n9)$ contains only r6 \\ \hline
+    filled-in value 1 only occur in $(r1,c1)$ & $(c1,n1)$ contains only r1\\ \hline
+    candidate 2 occur in $(r2,c1)$, $(r3,c1)$, $(r7,c1)$, $(r8,c1)$ & $(c1,n2)$ contains r2, r3, r7, r8 \\ \hline
+    candidate 3 occur in $(r3,c1)$,  $(r4,c1)$, and $(r7,c1)$ & $(c1,n3)$ contains r3, r4, and r7 \\ \hline
+    filled-in value 4 only occur in $(r9,c1)$ & $(c1,n4)$ contains only r9 \\ \hline
+    candidate 5 occur in $(r3,c1)$ and $(r5,c1)$ & $(c1,n5)$ contains r3, and r5 \\ \hline
+    candidate 6 occur in $(r3,c1)$,  $(r4,c1)$, $(r5,c1)$ and $(r8,c1)$ & $(c1,n6)$ contains r3, r4 ,r5 and r8 \\ \hline
+    candidate 7 occur in $(r7,c1)$ and $(r8,c1)$ & $(c1,n7)$ contains r7 and r8\\ \hline
+    candidate 8 occur in $(r3,c1)$,  $(r4,c1)$ and $(r5,c1)$ & $(c1,n8)$ contains only r3, r4 and r5 \\ \hline
+    filled-in value 9 occur in $(r6,c1)$ & $(c1,n9)$ contains only r6 \\ \hline
   \end{tabular}
 \caption{The information of r1 in both rc-view and cn-view}
 \label{tab:rcandcn}
@@ -649,15 +649,15 @@ To re-build a column of an annotated instance in cn-view from rc-view, we have t
 
 After the analysis from the Table \ref{tab:rcandcn}, we gain the equations for the cells in the c1 in cn-view (see Figure \ref{fig:cncolumn}):
 \begin{itemize}
-\item $(c1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
-\item $(c1,\ n2)\ =\ (\set{2, 3, 7, 8}, \set{1, 4, 5, 6, 9})$
-\item $(c1,\ n3)\ =\ (\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})$
-\item $(c1,\ n4)\ =\ (\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
-\item $(c1,\ n5)\ =\ (\set{3, 5}, \set{1, 2, 4, 6, 7, 8, 9})$
-\item $(c1,\ n6)\ =\ (\set{3, 4, 5, 8}, \set{1, 2, 6, 7, 9})$
-\item $(c1,\ n7)\ =\ (\set{7, 8}, \set{1, 2, 3, 4, 5, 6, 9})$
-\item $(c1,\ n8)\ =\ (\set{3, 4, 5}, \set{1, 2, 6, 7, 8, 9})$
-\item $(c1,\ n9)\ =\ (\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
+\item $(c1,n1)=(\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(c1,n2)=(\set{2, 3, 7, 8}, \set{1, 4, 5, 6, 9})$
+\item $(c1,n3)=(\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})$
+\item $(c1,n4)=(\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})$
+\item $(c1,n5)=(\set{3, 5}, \set{1, 2, 4, 6, 7, 8, 9})$
+\item $(c1,n6)=(\set{3, 4, 5, 8}, \set{1, 2, 6, 7, 9})$
+\item $(c1,n7)=(\set{7, 8}, \set{1, 2, 3, 4, 5, 6, 9})$
+\item $(c1,n8)=(\set{3, 4, 5}, \set{1, 2, 6, 7, 8, 9})$
+\item $(c1,n9)=(\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -680,15 +680,15 @@ To re-build a block of an annotated instance in bn-view from the block 1 of Figu
   \begin{tabular}{|p{7cm}|p{7cm}|}
     \hline
     \textbf{b1 in the rc-view} & \textbf{b1 in the bn-view} \\ \hline
-    filled-in value 1 only occur in $(r1,\ c1)$ & $(b1,\ n1)$ contains only s1\\ \hline
-    candidate 2 occur in $(r2,\ c1)$, $(r3,\ c1)$ & $(b1,\ n2)$ contains s4, and s7 \\ \hline
-    candidate 3 occur in $(r1,\ c2)$,  $(r1,\ c3)$, $(r3,\ c1)$ and $(r3,\ c3)$ & $(b1,\ n3)$ contains s2, s3, s7 and s9 \\ \hline
-    filled-in value 4 only occur in $(r3,\ c2)$ & $(b1,\ n4)$ contains only s8 \\ \hline
-    candidate 5 occur in $(r1,\ c2)$ and $(r3,\ c1)$ & $(b1,\ n5)$ contains s2, and s7 \\ \hline
-    candidate 6 occur in $(r1,\ c2)$,  $(r1,\ c3)$, $(r3,\ c1)$ and $(r3,\ c3)$ & $(b1,\ n6)$ contains s2, s3, s7 and s9 \\ \hline
-    candidate 7 occur in $(r1,\ c3)$& $(b1,\ n7)$ contains s3\\ \hline
-    filled-in value 8 only occur in $(r2,\ c3)$ & $(b1,\ n8)$ contains only s6 \\ \hline
-    filled-in value 9 occur in $(r2,\ c2)$ & $(b1,\ n9)$ contains only s5 \\ \hline
+    filled-in value 1 only occur in $(r1,c1)$ & $(b1,n1)$ contains only s1\\ \hline
+    candidate 2 occur in $(r2,c1)$, $(r3,c1)$ & $(b1,n2)$ contains s4, and s7 \\ \hline
+    candidate 3 occur in $(r1,c2)$,  $(r1,c3)$, $(r3,c1)$ and $(r3,c3)$ & $(b1,n3)$ contains s2, s3, s7 and s9 \\ \hline
+    filled-in value 4 only occur in $(r3,c2)$ & $(b1,n4)$ contains only s8 \\ \hline
+    candidate 5 occur in $(r1,c2)$ and $(r3,c1)$ & $(b1,n5)$ contains s2, and s7 \\ \hline
+    candidate 6 occur in $(r1,c2)$,  $(r1,c3)$, $(r3,c1)$ and $(r3,c3)$ & $(b1,n6)$ contains s2, s3, s7 and s9 \\ \hline
+    candidate 7 occur in $(r1,c3)$& $(b1,n7)$ contains s3\\ \hline
+    filled-in value 8 only occur in $(r2,c3)$ & $(b1,n8)$ contains only s6 \\ \hline
+    filled-in value 9 occur in $(r2,c2)$ & $(b1,n9)$ contains only s5 \\ \hline
   \end{tabular}
 \caption{The information of b1 in both rc-view and bn-view}
 \label{tab:rcandbn}
@@ -697,15 +697,15 @@ To re-build a block of an annotated instance in bn-view from the block 1 of Figu
 
 The equations below are gained from the analysis in the Table \ref{tab:rcandbn}. 
 \begin{itemize}
-\item $(b1,\ n1)\ =\ (\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
-\item $(b1,\ n2)\ =\ (\set{4, 7}, \set{1, 2, 3, 5, 6, 8, 9})$
-\item $(b1,\ n3)\ =\ (\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
-\item $(b1,\ n4)\ =\ (\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$
-\item $(b1,\ n5)\ =\ (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
-\item $(b1,\ n6)\ =\ (\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
-\item $(b1,\ n7)\ =\ (\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
-\item $(b1,\ n8)\ =\ (\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
-\item $(b1,\ n9)\ =\ (\set{5}, \set{1, 2, 3, 4, 6, 7, 8, 9})$
+\item $(b1,n1)=(\set{1}, \set{2, 3, 4, 5, 6, 7, 8, 9})$
+\item $(b1,n2)=(\set{4, 7}, \set{1, 2, 3, 5, 6, 8, 9})$
+\item $(b1,n3)=(\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
+\item $(b1,n4)=(\set{8}, \set{1, 2, 3, 4, 5, 6, 7, 9})$
+\item $(b1,n5)=(\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})$
+\item $(b1,n6)=(\set{2, 3, 7, 9}, \set{1, 4, 5, 6, 8})$
+\item $(b1,n7)=(\set{3}, \set{1, 2, 4, 5, 6, 7, 8, 9})$
+\item $(b1,n8)=(\set{6}, \set{1, 2, 3, 4, 5, 7, 8, 9})$
+\item $(b1,n9)=(\set{5}, \set{1, 2, 3, 4, 6, 7, 8, 9})$
 \end{itemize}
 And these equation could now have a row generated like Figure \ref{fig:bncolumn}.
 
@@ -737,26 +737,26 @@ In the subsection \ref{sec:UpdatingtheinstancesI}, we have discussed the update 
 \subsection{Rn-View}
 \label{sec:basicrulern}
 
-When a Sudoku rule is successful applied in the rn-view, certain columns must have excluded from some cells. If any of the cells in a mapped rn-vew annotated instance $A'$ has an annotation like $A'\ (row, number) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a number with the cell $A'\ (row, number)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+When a Sudoku rule is successful applied in the rn-view, certain columns must have excluded from some cells. If any of the cells in a mapped rn-vew annotated instance $A'$ has an annotation like $A'(\text{row}, \text{number}) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a row, a number with the cell $A'(\text{row}, \text{number})$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
-\item all the cells shared a row with $A'\ (row, number)$ have column $v$ excluded.
-\item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
-\item highlight the column $v$ in cell $A'\ (row, number)$.
+\item all the cells shared a row with $A'(\text{row}, \text{number})$ have column $v$ excluded.
+\item all the cells shared a number with $A'(\text{row}, \text{number})$ have column $v$ excluded.
+\item highlight the column $v$ in cell $A'(\text{row}, \text{number})$.
 \end{itemize} 
 
-From the Figure \ref{fig:rnView}, we found the annotation for $A'\ (1,7)$ is $A'\ (1,7) =\ (\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'\ (1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:rnUpdate}:
+From the Figure \ref{fig:rnView}, we found the annotation for $A'(1,7)$ is $A'(1,7) =(\set{8}, \set{1, \dots, 9} \setminus \set{8})$, which is matched the format of an annotation for a cell has one candidate left $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a row, or a number with $A'(1,7)$, that is candidate $v$ has to be excluded from the row, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:rnUpdate}:
 \begin{itemize}
-\item $A'\ (1,7) =\ (\set{3}, \set{1, \dots, 9} \setminus \set{3}) \Rightarrow v = 3$
-\item Shared a ``row'': $A'\ (1,3)$, $A'\ (1,6)$ and $A'\ (1,8)$ all have column $v$ in the cell and shared a row with cell $A'\ (1,7)$
+\item $A'(1,7) =(\set{3}, \set{1, \dots, 9} \setminus \set{3}) \Rightarrow v = 3$
+\item Shared a ``row'': $A'(1,3)$, $A'(1,6)$ and $A'(1,8)$ all have column $v$ in the cell and shared a row with cell $A'(1,7)$
 \begin{eqnarray*}
-A'\ (1,3) =\ (\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})\ \Rightarrow A'\ (1,3) =\ (\set{2, 3, 8}\setminus \set{3}, \set{1, 3, 4, 5, 6, 7, 9}).\\
-A'\ (1,6) =\ (\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})\ \Rightarrow A'\ (1,3) =\ (\set{2, 3, 5}\setminus \set{3}, \set{1, 3, 4, 6, 7, 8, 9}).\\
-A'\ (1,8) =\ (\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})\ \Rightarrow A'\ (1,3) =\ (\set{3, 5, 6, 7, 8}\setminus \set{3}, \set{1, 2, 3, 4, 9}).
+A'(1,3) =(\set{2, 3, 8}, \set{1, 4, 5, 6, 7, 9})\Rightarrow A'(1,3) =(\set{2, 3, 8}\setminus \set{3}, \set{1, 3, 4, 5, 6, 7, 9}).\\
+A'(1,6) =(\set{2, 3, 5}, \set{1, 4, 6, 7, 8, 9})\Rightarrow A'(1,3) =(\set{2, 3, 5}\setminus \set{3}, \set{1, 3, 4, 6, 7, 8, 9}).\\
+A'(1,8) =(\set{3, 5, 6, 7, 8}, \set{1, 2, 4, 9})\Rightarrow A'(1,3) =(\set{3, 5, 6, 7, 8}\setminus \set{3}, \set{1, 2, 3, 4, 9}).
 \end{eqnarray*}
-\item Shared a ``number'': $A'\ (7,7)$ and $A'\ (9,7)$ has column $v$ in the cell and shared a number with cell $A'\ (1,7)$
+\item Shared a ``number'': $A'(7,7)$ and $A'(9,7)$ has column $v$ in the cell and shared a number with cell $A'(1,7)$
 \begin{eqnarray*}
-A'\ (7,7) =\ (\set{1, 3, 4, 6, 7, 9}, \set{2, 5, 8})\ \Rightarrow A'\ (7,7) =\ (\set{1, 3, 4, 6, 7, 9}\setminus \set{3}, \set{2, 3, 5, 8}).\\
-A'\ (9,7) =\ (\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})\ \Rightarrow A'\ (9,7) =\ (\set{3, 4, 7}\setminus \set{3}, \set{1, 2, 3, 5, 6, 8, 9}).
+A'(7,7) =(\set{1, 3, 4, 6, 7, 9}, \set{2, 5, 8})\Rightarrow A'(7,7) =(\set{1, 3, 4, 6, 7, 9}\setminus \set{3}, \set{2, 3, 5, 8}).\\
+A'(9,7) =(\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})\Rightarrow A'(9,7) =(\set{3, 4, 7}\setminus \set{3}, \set{1, 2, 3, 5, 6, 8, 9}).
 \end{eqnarray*}
 \end{itemize}
 
@@ -783,25 +783,25 @@ A'\ (9,7) =\ (\set{3, 4, 7}, \set{1, 2, 5, 6, 8, 9})\ \Rightarrow A'\ (9,7) =\ (
 \subsection{Cn-View}
 \label{sec:basicrulecn}
 
-When a Sudoku rule is successful applied in the cn-view, certain columns must have excluded from some cells. If any of the cells in a mapped cn-vew annotated instance $A'$ has an annotation like $A'\ (column, number) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a column, a number with the cell $A'\ (column, number)$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+When a Sudoku rule is successful applied in the cn-view, certain columns must have excluded from some cells. If any of the cells in a mapped cn-vew annotated instance $A'$ has an annotation like $A'(\text{column}, \text{number}) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a column, a number with the cell $A'(\text{column}, \text{number})$ will have candidate $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
-\item all the cells shared a column with $A'\ (column, number)$ have row $v$ excluded.
-\item all the cells shared a number with $A'\ (column, number)$ have row $v$ excluded.
-\item highlight the row $v$ in cell $A'\ (column, number)$.
+\item all the cells shared a column with $A'(\text{column}, \text{number})$ have row $v$ excluded.
+\item all the cells shared a number with $A'(\text{column}, \text{number})$ have row $v$ excluded.
+\item highlight the row $v$ in cell $A'(\text{column}, \text{number})$.
 \end{itemize} 
 
-From the Figure \ref{fig:cnView}, we found the annotation for $A'\ (8,4)$ is $A'\ (8, 4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'\ (8,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:cnUpdate}:
+From the Figure \ref{fig:cnView}, we found the annotation for $A'(8,4)$ is $A'(8, 4) =(\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'(8,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:cnUpdate}:
 \begin{itemize}
-\item $A'\ (8,4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5}) \Rightarrow v = 5$
-\item Shared a ``column'': $A'\ (8,8)$ has row $v$ in the cell and shared a column with cell $A'\ (8,4)$
+\item $A'(8,4) =(\set{5}, \set{1, \dots, 9} \setminus \set{5}) \Rightarrow v = 5$
+\item Shared a ``column'': $A'(8,8)$ has row $v$ in the cell and shared a column with cell $A'(8,4)$
 \begin{eqnarray*}
-A'\ (8,8) =\ (\set{1, 3, 5, 9}, \set{2, 4, 6, 7, 8, 9})\ \Rightarrow A'\ (8,8) =\ (\set{1, 3, 5, 9}\setminus \set{5}, \set{2, 4, 6, 7, 8, 9}).
+A'(8,8) =(\set{1, 3, 5, 9}, \set{2, 4, 6, 7, 8, 9})\Rightarrow A'(8,8) =(\set{1, 3, 5, 9}\setminus \set{5}, \set{2, 4, 6, 7, 8, 9}).
 \end{eqnarray*}
-\item Shared a ``number'': $A'\ (4,4)$, $A'\ (5,4)$ and $A'\ (6,4)$ has row $v$ in the cell and shared a number with cell $A'\ (8,4)$
+\item Shared a ``number'': $A'(4,4)$, $A'(5,4)$ and $A'(6,4)$ has row $v$ in the cell and shared a number with cell $A'(8,4)$
 \begin{eqnarray*}
-A'\ (4,4) =\ (\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\ \Rightarrow A'\ (4,4) =\ (\set{4, 5, 6, 7}\setminus \set{5}, \set{1, 2, 3, 5, 8, 9}).\\
-A'\ (5,4) =\ (\set{2, 4, 5, 6, 8}, \set{1, 3, 7, 9})\ \Rightarrow A'\ (5,4) =\ (\set{2, 4, 5, 6, 8}\setminus \set{5}, \set{1, 3, 5, 7, 9}).\\
-A'\ (4,4) =\ (\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\ \Rightarrow A'\ (4,4) =\ (\set{4, 5, 6, 7}\setminus \set{5}, \set{1, 2, 3, 5, 8, 9}).
+A'(4,4) =(\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\Rightarrow A'(4,4) =(\set{4, 5, 6, 7}\setminus \set{5}, \set{1, 2, 3, 5, 8, 9}).\\
+A'(5,4) =(\set{2, 4, 5, 6, 8}, \set{1, 3, 7, 9})\Rightarrow A'(5,4) =(\set{2, 4, 5, 6, 8}\setminus \set{5}, \set{1, 3, 5, 7, 9}).\\
+A'(4,4) =(\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\Rightarrow A'(4,4) =(\set{4, 5, 6, 7}\setminus \set{5}, \set{1, 2, 3, 5, 8, 9}).
 \end{eqnarray*}
 \end{itemize}
 
@@ -827,18 +827,18 @@ A'\ (4,4) =\ (\set{4, 5, 6, 7}, \set{1, 2, 3, 8, 9})\ \Rightarrow A'\ (4,4) =\ (
 \subsection{Bn-View}
 \label{sec:basicruleBn}
 
-When a Sudoku rule is successful applied in the bn-view, certain squares must have excluded from some cells. If any of the cells in a mapped bn-vew annotated instance $A'$ has an annotation like $A'\ (block, number) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a block with the cell $A'\ (block, number)$ will have square $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
+When a Sudoku rule is successful applied in the bn-view, certain squares must have excluded from some cells. If any of the cells in a mapped bn-vew annotated instance $A'$ has an annotation like $A'(\text{block}, \text{number}) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then all other cells shared a block with the cell $A'(\text{block}, \text{number})$ will have square $v$, excluded and the annotation updated. The annotation for the cells will be updated as followings:
 \begin{itemize}
-\item all the cells shared a block with $A'\ (block, number)$ have square $v$ excluded.
-\item highlight the square $v$ in cell $A'\ (block, number)$.
+\item all the cells shared a block with $A'(\text{block}, \text{number})$ have square $v$ excluded.
+\item highlight the square $v$ in cell $A'(\text{block}, \text{number})$.
 \end{itemize} 
 
-From the Figure \ref{fig:bnView}, we found the annotation for $A'\ (2,4)$ is $A'\ (2, 4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'\ (2,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:bnUpdate}:
+From the Figure \ref{fig:bnView}, we found the annotation for $A'(2,4)$ is $A'(2, 4) =(\set{5}, \set{1, \dots, 9} \setminus \set{5})$, which is matched the format of an annotation for a cell has one candidate left $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$. Thus the update has to be made for all other cells shared a column, or a number with $A'(2,4)$, that is candidate $v$ has to be excluded from the column, and the number. The examples are given for each situation, and an updated figure for this example is Figure \ref{fig:bnUpdate}:
 \begin{itemize}
-\item $A'\ (2,4) =\ (\set{5}, \set{1, \dots, 9} \setminus \set{5}) \Rightarrow v = 5$
-\item Shared a ``block'': $A'\ (2,8)$ has row $v$ in the cell and shared a block with cell $A'\ (2,4)$
+\item $A'(2,4) =(\set{5}, \set{1, \dots, 9} \setminus \set{5}) \Rightarrow v = 5$
+\item Shared a ``block'': $A'(2,8)$ has row $v$ in the cell and shared a block with cell $A'(2,4)$
 \begin{eqnarray*}
-A'\ (2,8) =\ (\set{2, 3, 5, 8, 9}, \set{1, 4, 6, 7})\ \Rightarrow A'\ (1,8) =\ (\set{2, 3, 5, 8, 9}\setminus \set{5}, \set{1, 4, 6, 7}).
+A'(2,8) =(\set{2, 3, 5, 8, 9}, \set{1, 4, 6, 7})\Rightarrow A'(1,8) =(\set{2, 3, 5, 8, 9}\setminus \set{5}, \set{1, 4, 6, 7}).
 \end{eqnarray*}
 \end{itemize}
 
@@ -879,7 +879,7 @@ Consequently, here comes another technique ``Candidates Elimination Techniques''
 
 Generally, most of the Sudoku instance could simply find a solution by apply naked single and hidden single rules repeatedly. However, there are many Sudoku instances have been designed in different difficulty. Thus other advanced rules are also necessary to support on finding a solution for a Sudoku instance.
 
-Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, X-wing, naked triplet and hidden triplet. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, naked quad, hidden quad, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
+Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, naked triplet, hidden triplet, naked quad and hidden quad. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
 
 \section{Basic rules}
 \label{sec:Basicrules}
@@ -888,10 +888,10 @@ The basic rules in ``Candidates Elimination Techniques'' are naked single rule a
 \subsection{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is used in a situation that ``there is a cell $A'\ (i,j)$ has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
+Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
 However, as we have introduced an Sudoku instance could in the different point of view (See section \ref{sec:Differentperspectives}). We now have more consideration in different view.
 
-In the rc-view, if there is a cell has only one candidate $v$ possible to filled in to the cell $A'\ (row, coulmn)$, then
+In the rc-view, if there is a cell has only one candidate $v$ possible to filled in to the cell $A'(\text{row}, \text{column})$, then
 \begin{itemize}
 \item all the cells shared a row with $A'\ (row, coulmn)$ have candidate $v$ excluded.
 \item all the cells shared a column with $A'\ (row, coulmn)$ have candidate $v$ excluded.
@@ -928,9 +928,7 @@ In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matche
 \subsection{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single rule is used in a situation that ``there is a cell $A'(i, j)$ has more than one possible candidates, but one candidate $v$ for the cell can only be used in a unit''. If there is any cell $A' (i, j)$ matched the situation, the all other cell in a unit can now eliminate the candidate $v$.
-
-For the annotated instance in rc-view, unit means 
+Hidden single is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
@@ -1053,55 +1051,6 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 
 
 
-\subsection{X-wing}
-\label{sec:X-wing}
-An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
-
-\begin{figure}
-\begin{sudoku}
-| |*| | | | | |*| |.
-|*|X|*|*|*|*|*|X|*|.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-|*|X|*|*|*|*|*|X|*|.
-| |*| | | | | |*| |.
-\end{sudoku}
-\caption{Pattern in X-wing}
-\label{fig:xwingmodel}
-\end{figure}
-
-Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situation:
-\begin{enumerate}
-\item Two cells in both two rows and columns
-\item and a matching candidate ``X''  is appeared in all four cells.
-\end{enumerate}
-
-In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
-\begin{enumerate}
-\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
-\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
-\end{enumerate}
-If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
-
-\begin{figure}
-\begin{sudoku}
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|*|*|*|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-\end{sudoku}
-\caption{Example in X-wing}
-\label{fig:xwing}
-\end{figure}
-
 
 
 \subsection{Naked Triplet}
@@ -1171,11 +1120,6 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 
 
 
-
-\section{Advanced rules}
-\label{sec:Advancedrules}
-
-
 \subsection{Naked Quad}
 \label{sec:Naked Quad}
 It is in the situation while four cells in a row, a column, or a block are having common four candidate digits left in the cells. If the prerequisite is existed, then it will bring an updated instance which has no these four candidates in other cells which shared a same unit anymore. Figure ~\ref{fig:nakedquad} is an instance which in naked quad situation, in the block $b_{5}$, cell $(r_{5},\ c_{6})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have 4 different candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells. Consequently, candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ in other cells in the block $b_{5}$ will be excluded (Figure because these four candidates will not longer possible to be used in other cells anymore.
@@ -1219,7 +1163,61 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 \end{sudoku}
 \caption{Example in hidden quad}
 \label{fig:hiddenquad}
-\end{figure}]
+\end{figure}
+
+
+\section{Advanced rules}
+\label{sec:Advancedrules}
+
+
+\subsection{X-wing}
+\label{sec:X-wing}
+An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
+
+\begin{figure}
+\begin{sudoku}
+| |*| | | | | |*| |.
+|*|X|*|*|*|*|*|X|*|.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+|*|X|*|*|*|*|*|X|*|.
+| |*| | | | | |*| |.
+\end{sudoku}
+\caption{Pattern in X-wing}
+\label{fig:xwingmodel}
+\end{figure}
+
+Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situation:
+\begin{enumerate}
+\item Two cells in both two rows and columns
+\item and a matching candidate ``X''  is appeared in all four cells.
+\end{enumerate}
+
+In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
+\begin{enumerate}
+\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
+\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
+\end{enumerate}
+If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
+
+\begin{figure}
+\begin{sudoku}
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|*|*|*|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+\end{sudoku}
+\caption{Example in X-wing}
+\label{fig:xwing}
+\end{figure}
 
 
 
