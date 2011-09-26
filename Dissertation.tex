@@ -237,7 +237,7 @@ XXX
 
 
 \subsection{Outline}
-\label{sec:OUtline}
+\label{sec:Outline}
 
 XXX
 
@@ -879,7 +879,7 @@ Consequently, here comes another technique ``Candidates Elimination Techniques''
 
 Generally, most of the Sudoku instance could simply find a solution by apply naked single and hidden single rules repeatedly. However, there are many Sudoku instances have been designed in different difficulty. Thus other advanced rules are also necessary to support on finding a solution for a Sudoku instance.
 
-Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, naked triplet, hidden triplet, naked quad and hidden quad. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
+Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, X-wing, naked triplet and hidden triplet. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, naked quad, hidden quad, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
 
 \section{Basic rules}
 \label{sec:Basicrules}
@@ -928,7 +928,7 @@ In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matche
 \subsection{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
+Hidden single rule is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
@@ -1051,6 +1051,55 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 
 
 
+\subsection{X-wing}
+\label{sec:X-wing}
+An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
+
+\begin{figure}
+\begin{sudoku}
+| |*| | | | | |*| |.
+|*|X|*|*|*|*|*|X|*|.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+| |*| | | | | |*| |.
+|*|X|*|*|*|*|*|X|*|.
+| |*| | | | | |*| |.
+\end{sudoku}
+\caption{Pattern in X-wing}
+\label{fig:xwingmodel}
+\end{figure}
+
+Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situation:
+\begin{enumerate}
+\item Two cells in both two rows and columns
+\item and a matching candidate ``X''  is appeared in all four cells.
+\end{enumerate}
+
+In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
+\begin{enumerate}
+\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
+\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
+\end{enumerate}
+If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
+
+\begin{figure}
+\begin{sudoku}
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|*|*|*|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
+|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
+\end{sudoku}
+\caption{Example in X-wing}
+\label{fig:xwing}
+\end{figure}
+
 
 
 \subsection{Naked Triplet}
@@ -1120,6 +1169,11 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 
 
 
+
+\section{Advanced rules}
+\label{sec:Advancedrules}
+
+
 \subsection{Naked Quad}
 \label{sec:Naked Quad}
 It is in the situation while four cells in a row, a column, or a block are having common four candidate digits left in the cells. If the prerequisite is existed, then it will bring an updated instance which has no these four candidates in other cells which shared a same unit anymore. Figure ~\ref{fig:nakedquad} is an instance which in naked quad situation, in the block $b_{5}$, cell $(r_{5},\ c_{6})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have 4 different candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells. Consequently, candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ in other cells in the block $b_{5}$ will be excluded (Figure because these four candidates will not longer possible to be used in other cells anymore.
@@ -1163,61 +1217,7 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 \end{sudoku}
 \caption{Example in hidden quad}
 \label{fig:hiddenquad}
-\end{figure}
-
-
-\section{Advanced rules}
-\label{sec:Advancedrules}
-
-
-\subsection{X-wing}
-\label{sec:X-wing}
-An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
-
-\begin{figure}
-\begin{sudoku}
-| |*| | | | | |*| |.
-|*|X|*|*|*|*|*|X|*|.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-| |*| | | | | |*| |.
-|*|X|*|*|*|*|*|X|*|.
-| |*| | | | | |*| |.
-\end{sudoku}
-\caption{Pattern in X-wing}
-\label{fig:xwingmodel}
-\end{figure}
-
-Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situation:
-\begin{enumerate}
-\item Two cells in both two rows and columns
-\item and a matching candidate ``X''  is appeared in all four cells.
-\end{enumerate}
-
-In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
-\begin{enumerate}
-\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
-\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
-\end{enumerate}
-If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
-
-\begin{figure}
-\begin{sudoku}
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|*|*|*|*|{\cell {}{}{}{}{}{6}{}{}{9}}|*|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|*|*|*|*|{\cell {}{}{}{4}{}{6}{}{}{}}|*|.
-|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|*|{\cell {}{}{}{}{}{}{}{}{}}|.
-\end{sudoku}
-\caption{Example in X-wing}
-\label{fig:xwing}
-\end{figure}
+\end{figure}]
 
 
 
