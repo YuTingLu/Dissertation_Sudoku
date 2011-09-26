@@ -890,43 +890,42 @@ However, as we have introduced an Sudoku instance could in the different point o
 
 In the rc-view, if there is a cell has only one candidate $v$ possible to filled in to the cell $A'(\text{row}, \text{column})$, then
 \begin{itemize}
-\item all the cells shared a row with $A'\ (row, coulmn)$ have candidate $v$ excluded.
-\item all the cells shared a column with $A'\ (row, coulmn)$ have candidate $v$ excluded.
-\item all the cells shared a block with $A'\ (row, coulmn)$ have candidate $v$ excluded.
-\item highlight the candidate $v$ in cell $A'\ (row, coulmn)$.
+\item all the cells shared a row with $A'(row, coulmn)$ have candidate $v$ excluded.
+\item all the cells shared a column with $A'(row, coulmn)$ have candidate $v$ excluded.
+\item all the cells shared a block with $A'(row, coulmn)$ have candidate $v$ excluded.
+\item highlight the candidate $v$ in cell $A'(row, coulmn)$.
 \end{itemize}
-In the Figure \ref{fig:rcWhole}, we find a cell $A'\ (1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
+In the Figure \ref{fig:rcWhole}, we find a cell $A'(1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
 
-What if a cell has only one column $v$ possible to filled in to the cell $A'\ (row, number,)$, then
+What if a cell has only one column $v$ possible to filled in to the cell $A'(row, number,)$, then
 \begin{itemize}
-\item all the cells shared a row with $A'\ (row, number)$ have column $v$ excluded.
-\item all the cells shared a number with $A'\ (row, number)$ have column $v$ excluded.
-\item highlight the column $v$ in cell $A'\ (row, number)$.
+\item all the cells shared a row with $A'(row, number)$ have column $v$ excluded.
+\item all the cells shared a number with $A'(row, number)$ have column $v$ excluded.
+\item highlight the column $v$ in cell $A'(row, number)$.
 \end{itemize}
-Suppose we find a cell $A'\ (1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
+Suppose we find a cell $A'(1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
 
-What if a cell has only one row $v$ possible to filled in to the cell $A'\ (column, number,)$, then
+What if a cell has only one row $v$ possible to filled in to the cell $A'(column, number,)$, then
 
 \begin{itemize}
-\item all the cells shared a column with $A'\ (column, number)$ have row $v$ excluded.
+\item all the cells shared a column with $A'(column, number)$ have row $v$ excluded.
 \item all the cells shared a number with $A'\ (column, number)$ have row $v$ excluded.
 \item highlight the row $v$ in cell $A'\ (column, number)$.
 \end{itemize}
-We now find a cell $A'\ (8, 4)$ in cn-view (see Figure \ref{fig:cnView}) is matched to the situation of naked single for cn-view. Thus, we have an updated annotated instance - Figure \ref{fig:cnUpdate}.
+We now find a cell $A'(8, 4)$ in cn-view (see Figure \ref{fig:cnView}) is matched to the situation of naked single for cn-view. Thus, we have an updated annotated instance - Figure \ref{fig:cnUpdate}.
 
-And what if a cell has only one square $v$ possible to filled in to the cell $A'\ (block, number,)$, then
+And what if a cell has only one square $v$ possible to filled in to the cell $A'(block, number,)$, then
 \begin{itemize}
-\item all the cells shared a block with $A'\ (block, number)$ have square $v$ excluded.
-\item highlight the square $v$ in cell $A'\ (block, number)$.
+\item all the cells shared a block with $A'(block, number)$ have square $v$ excluded.
+\item highlight the square $v$ in cell $A'(block, number)$.
 \end{itemize}
-In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matched to the situation of naked single for bn-view. Thus, we have an updated annotated instance - Figure \ref{fig:bnUpdate}.
+In the Figure \ref{fig:bnView}, we find a cell $A'(2, 4)$ in bn-view is matched to the situation of naked single for bn-view. Thus, we have an updated annotated instance - Figure \ref{fig:bnUpdate}.
 
 
 \section{Hidden Single}
 \label{sec:Hidden Single}
 
-
-Hidden single is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
+Hidden single rule is used in a situation that ``there is a cell which has more than one candidates in the cell, but only one candidate $v$ could be could be used in this row, this column, or this block''.  but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
