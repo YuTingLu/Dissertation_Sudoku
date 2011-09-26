@@ -892,36 +892,31 @@ Last but not least, as we have three other different views introduced in Section
 \section{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same unit.
-However, as we have introduced an Sudoku instance could in the different point of view (See section \ref{sec:Differentperspectives}). We now have more consideration in different view.
+Naked single is used in a situation that ``there is a cell $A'(i,j)$ has only one candidate possibly to be filled into this cell, then highlight the equation of the cell to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$ and update the annotated instance''.
 
-In the rc-view, if there is a cell has only one candidate $v$ possible to filled in to the cell $A'(\text{row}, \text{column})$, then
+In the rc-view, if there is a cell $A'(row, coulmn)$ has only one candidate $v$ possible to filled into the cell $A'(\text{row}, \text{column})$, then
 \begin{itemize}
-\item all the cells shared a row with $A'(row, coulmn)$ have candidate $v$ excluded.
-\item all the cells shared a column with $A'(row, coulmn)$ have candidate $v$ excluded.
-\item all the cells shared a block with $A'(row, coulmn)$ have candidate $v$ excluded.
+\item all the cells shared an unit (row, column, or block) with $A'(row, coulmn)$ have candidate $v$ excluded.
 \item highlight the candidate $v$ in cell $A'(row, coulmn)$.
 \end{itemize}
 In the Figure \ref{fig:rcWhole}, we find a cell $A'(1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
 
-What if a cell has only one column $v$ possible to filled in to the cell $A'(row, number,)$, then
+What if a cell $A'(row, number)$ has only one column $v$ possible to filled into the cell $A'(row, number,)$, then
 \begin{itemize}
-\item all the cells shared a row with $A'(row, number)$ have column $v$ excluded.
-\item all the cells shared a number with $A'(row, number)$ have column $v$ excluded.
+\item all the cells shared an unit (row, or number) with $A'(row, number)$ have column $v$ excluded.
 \item highlight the column $v$ in cell $A'(row, number)$.
 \end{itemize}
 Suppose we find a cell $A'(1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
 
-What if a cell has only one row $v$ possible to filled in to the cell $A'(column, number,)$, then
+What if a cell $A'(column, number)$ has only one row $v$ possible to filled into the cell $A'(column, number,)$, then
 
 \begin{itemize}
-\item all the cells shared a column with $A'(column, number)$ have row $v$ excluded.
-\item all the cells shared a number with $A'\ (column, number)$ have row $v$ excluded.
+\item all the cells shared an unit (column, or number) with $A'(column, number)$ have row $v$ excluded.
 \item highlight the row $v$ in cell $A'\ (column, number)$.
 \end{itemize}
 We now find a cell $A'(8, 4)$ in cn-view (see Figure \ref{fig:cnView}) is matched to the situation of naked single for cn-view. Thus, we have an updated annotated instance - Figure \ref{fig:cnUpdate}.
 
-And what if a cell has only one square $v$ possible to filled in to the cell $A'(block, number,)$, then
+And what if a cell $A'(block, number)$ has only one square $v$ possible to filled into the cell $A'(block, number,)$, then
 \begin{itemize}
 \item all the cells shared a block with $A'(block, number)$ have square $v$ excluded.
 \item highlight the square $v$ in cell $A'(block, number)$.
@@ -932,7 +927,7 @@ In the Figure \ref{fig:bnView}, we find a cell $A'(2, 4)$ in bn-view is matched 
 \section{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single rule is used in a situation that ``there is a cell $A'(i,j)$ which has more than one candidates in the cell, but one of the possible candidates $v$ is only possible to be appeared in this cell $A'(i,j)$ of the row $i$, column $j$, or the block''. Thus, the cell A'(i,j) will have its equation re-written to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$.
+Hidden single rule is used in a situation that ``there is a cell $A'(i,j)$ which has more than one candidates in the cell, but one of the possible candidates $v$ is only possible to be appeared in this cell $A'(i,j)$ of an unit''. Thus, the cell A'(i,j) will have its equation re-written to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$.
 
 However, as we introduced three different views, rn-view, cn-view, and bn-view in the section \ref{sec:Differentperspectives}, the definition of the rule hidden single has to be more precisely declared.
 \begin{itemize}
