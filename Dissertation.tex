@@ -879,13 +879,10 @@ Consequently, here comes another technique ``Candidates Elimination Techniques''
 
 Generally, most of the Sudoku instance could simply find a solution by apply naked single and hidden single rules repeatedly. However, there are many Sudoku instances have been designed in different difficulty. Thus other advanced rules are also necessary to support on finding a solution for a Sudoku instance.
 
-Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated, more powerful rules come. More powerful rules are: naked pair, hidden pair, naked triplet, hidden triplet, naked quad and hidden quad. Moreover, if more powerful rules still could not satisfy the annotated instance, we have the advanced rules, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish to solve those difficult Sudoku instance. Nevertheless, advanced rule are rarely used in most of the time unless high difficulty Sudoku instance has appeared.
+Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated by naked single and hidden single, more powerful rules are needed such like naked pair, hidden pair, naked triplet, hidden triplet, naked quad, hidden quad, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish. These rules could help to solve those difficult Sudoku instance more efficiently.
 
-\section{Basic rules}
-\label{sec:Basicrules}
-The basic rules in ``Candidates Elimination Techniques'' are naked single rule and the hidden single rule.
 
-\subsection{Naked Single}
+section{Naked Single}
 \label{sec:Nakedsingle}
 
 Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
@@ -925,8 +922,9 @@ And what if a cell has only one square $v$ possible to filled in to the cell $A'
 In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matched to the situation of naked single for bn-view. Thus, we have an updated annotated instance - Figure \ref{fig:bnUpdate}.
 
 
-\subsection{Hidden Single}
+\section{Hidden Single}
 \label{sec:Hidden Single}
+
 
 Hidden single is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
 
@@ -950,7 +948,7 @@ Hidden single is under a situation which has one candidate could only be used in
 
 
 
-\subsection{Intersection Removal}
+\section{Intersection Removal}
 \label{sec:Intersection Removal}
 Sometimes, advanced techniques is needed to be used on supporting more difficult puzzle whilst both naked single and hidden single are not able to find out any way out. The intersection removal technique provides an advanced elimination skill to exclude more impossibilities out of the row, or the column which are in one object block. The prerequisites for this techniques to be utilized are, 
 \begin{enumerate}
@@ -980,10 +978,7 @@ For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appea
 
 
 
-\section{Intermediate rules}
-\label{sec:Intermediaterules}
-
-\subsection{Naked Pair}
+\section{Naked Pair}
 \label{sec:Naked Pair}
 
 Naked Pair could hold when any of these three prerequisites hold, which are, 
@@ -1028,8 +1023,9 @@ The first two prerequisites above could be mixed and matched with the last one, 
 \end{figure}
 
 
-\subsection{Hidden Pair}
+\section{Hidden Pair}
 \label{sec:Hidden Pair}
+
 The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in a shared unit (a row, a column, or a block). Once the prerequisite is satisfied, all other candidates in these two cells could be excluded surely. 
 For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{5})$ and $(r_{3},\ c_{4})$ do not have only two candidates $n_{6}$ and $n_{9}$ in the cells only, but candidates $n_{6}$ and $n_{9}$ are restricted to these two cells only. Hence, the prerequisite is satisfied, thus all candidates expect $n_{6}$ and $n_{9}$ could all be excluded from these two cells.
 
@@ -1053,7 +1049,7 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 
 
 
-\subsection{Naked Triplet}
+\section{Naked Triplet}
 \label{sec:Naked Triplet}
 
 Naked Triplet could hold when any of these three prerequisites hold, which are, 
@@ -1098,7 +1094,7 @@ In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ 
 \end{figure}
 
 
-\subsection{Hidden Triplet}
+\section{Hidden Triplet}
 \label{sec:Hidden Triplet}
 Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
 In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (in boldface font) are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
@@ -1120,7 +1116,7 @@ In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (
 
 
 
-\subsection{Naked Quad}
+\section{Naked Quad}
 \label{sec:Naked Quad}
 It is in the situation while four cells in a row, a column, or a block are having common four candidate digits left in the cells. If the prerequisite is existed, then it will bring an updated instance which has no these four candidates in other cells which shared a same unit anymore. Figure ~\ref{fig:nakedquad} is an instance which in naked quad situation, in the block $b_{5}$, cell $(r_{5},\ c_{6})$, $(r_{6},\ c_{4})$, $(r_{6},\ c_{5})$, and$(r_{6},\ c_{6})$ have 4 different candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ appear commonly in these four cells. Consequently, candidates $n_{2},\ n_{3},\ n_{5},\ and\ n_{9}$ in other cells in the block $b_{5}$ will be excluded (Figure because these four candidates will not longer possible to be used in other cells anymore.
 
@@ -1143,7 +1139,7 @@ It is in the situation while four cells in a row, a column, or a block are havin
 
 
 
-\subsection{Hidden Quad}
+\section{Hidden Quad}
 \label{sec:Hidden Quad}
 This is a rare circumstance which has four candidates only found in four cells in a unit and each cell has at least two of these candidates appear in the cell. Then all other candidates in these four cells would be excluded afterwards as soon as the situation is found. 
 In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$, $n_{6}$ and $n_{7}$ (in boldface font) are the only 4 candidates appear in these four cells $(r_{4}, c_{7})$,  $(r_{4}, c_{9})$,  $(r_{6}, c_{7})$ and $(r_{7}, c_{9})$, thus, all other candidates in these four cells will no longer needed.
@@ -1166,11 +1162,8 @@ In the block $b_{6}$ of Figure \ref{fig:hiddenquad}, candidates $n_{1}$, $n_{4}$
 \end{figure}
 
 
-\section{Advanced rules}
-\label{sec:Advancedrules}
 
-
-\subsection{X-wing}
+\section{X-wing}
 \label{sec:X-wing}
 An X-Wing technique is rarely used because it only occurs when two rows or two columns (does not apply on blocks) each contain only two cells that have a matching candidate in between. This candidate must appear in both rows and share the same two columns or vice versa. If the condition holds, then this candidate could then be excluded from other cells in both rows and columns.
 
@@ -1221,7 +1214,7 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 
 
 
-\subsection{XY-wing}
+\section{XY-wing}
 \label{sec:XY-wing}
 That has to be applied when two prerequisites are satisfied:
 \begin{enumerate}
@@ -1256,7 +1249,7 @@ Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ an
 
 
 
-\subsection{XYZ-wing}
+\section{XYZ-wing}
 \label{sec:XYZ-wing}
 
 Which is pretty similar to XY-wing, but the only difference is, there is a cell specially has three candidates. So the conditions to be hold are:
@@ -1298,7 +1291,7 @@ There is a cell  $(r_{6}, c_{5})$ shared a block with both $(r_{4}, c_{5})$ and 
 \end{figure}
 
 
-\subsection{WXYZ-wing}
+\section{WXYZ-wing}
 \label{sec:WXYZ-wing}
 It is an advanced technique rather than the techniques introduced above. The prerequisites of this techniques are:
 \begin{enumerate}
@@ -1337,7 +1330,7 @@ Four cells all hae a common candidate $n_{5}$, and other conditions are all hold
 
 
 
-\subsection{Swordfish}
+\section{Swordfish}
 \label{sec:Swordfish}
 Swordfish is an approach extended from X-wing technique, but rarer to be seen. The concept is, a value in one position will force other positions in the same row or same column not to have the same value filled in and vice versa. It is used when there are (a graphic pattern is in Figure \ref{fig:swordfish}):
 \begin{enumerate}
