@@ -1035,22 +1035,29 @@ In the Figure \ref{fig:hiddensinglebn}, we find a cell $A'(1, 8)$ in bn-view has
 \end{figure}
 
 \section{Intersection Removal}
-\label{sec:Intersection Removal}
-Sometimes, advanced techniques is needed to be used on supporting more difficult puzzle whilst both naked single and hidden single are not able to find out any way out. The intersection removal technique provides an advanced elimination skill to exclude more impossibilities out of the row, or the column which are in one object block. The prerequisites for this techniques to be utilized are, 
+\label{sec:IntersectionRemoval}
+Sometimes, an advanced rule is needed to be used on supporting more difficult Sudoku puzzle whilst both naked single and hidden single are not able to find out any way out. The intersection removal rule provides an advanced elimination skill to exclude more impossibilities out of the row, or the column which are in one object block. Notice that this rule is required the block examined with the column or the row, but except in the general rc-view annotated instance, other views does not have block elements involved. Thus, this rule could only applied in an rc-view annotated instance. And the prerequisites for this rule to be examined are, 
 \begin{enumerate}
-\item All the cells in one block holds a specific candidate just right in the same row or column or
-\item All the cells in one row or one column hold a possible specific candidate just right in the same block.
+\item All the cells in one block holds a specific candidate just right in the same row (or column),
+\begin{itemize}
+\item If the prerequisite is true, then the specific candidate could be excluded from all other cells in the same row (or column). 
+\end{itemize}
+\item or all the cells in one column (or one row) hold a possible specific candidate just right in the same block.
+\begin{itemize}
+\item If the prerequisite is true, the the specific candidate could be excluded from all other cells in the same block. 
+\end{itemize}
 \end{enumerate}
-If the first prerequisite is tenable, then the specific candidate could be excluded from all other cells in the same row or column. And if the second prerequisite is tenable, the the specific candidate could be excluded from all other cells in the same block. 
+In the Figure \ref{fig:intersectionremoval}, a case that all the cells in a block holds a candidate $v$ just right in the same column is found. Cell $A'(1,8)$ and cell $A'(3,8)$ in the block $3$ hold candidate $4$ which just right in the same column $8$. Hence, candidate $4$ then could be excluded from all other cells $A'(4,8)$ and $A'(6,8)$ in the same column $8$.
+
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
+|2|{\cell {}{}{}{}56789}|{\cell {}{}{}{}5{}78{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}789}|{\cell {}{}{}456789}|1|{\cell {}{}{}{\fbox{4}}{}67{}{}}|{\cell {}{}{}{}{}67{}9}|.
 |1|4|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}56{}{}9}|2|{\cell {}{}{}{}567{}9}|{\cell {}{}{}{}{}67{}9}|8|3|.
-|{\cell {}{}{}{}{}67{}9}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}4{}6{}{}9}|1|{\cell {}{}{}4{}6789}|5|{\cell {}2{}4{}67{}{}}|{\cell {}2{}{}{}67{}9}|.
-|{\cell {}{}345{}7{}{}}|{\cell 123{}5{}7{}{}}|{\cell {}2{}45{}7{}{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}{}89}|{\cell {}{}{}456{}89}|{\cell {}{}{}4{}6789}|{\cell 12{}4{}67{}{}}|{\cell 12{}{}{}6789}|.
+|{\cell {}{}{}{}{}67{}9}|{\cell {}{}{}{}{}6789}|3|{\cell {}{}{}4{}6{}{}9}|1|{\cell {}{}{}4{}6789}|5|{\cell {}2{}{\fbox{4}}{}67{}{}}|{\cell {}2{}{}{}67{}9}|.
+|{\cell {}{}345{}7{}{}}|{\cell 123{}5{}7{}{}}|{\cell {}2{}45{}7{}{}}|{\cell {}{}3456{}{}9}|{\cell {}{}345{}{}89}|{\cell {}{}{}456{}89}|{\cell {}{}{}4{}6789}|{\cell 12{}{\sout 4}{}67{}{}}|{\cell 12{}{}{}6789}|.
 |{\cell {}{}34{}{}{}{}{}}|{\cell 123{}{}{}{}{}{}}|6|7|{\cell {}{}34{}{}{}89}|{\cell {}{}{}4{}{}{}89}|{\cell {}{}{}4{}{}{}89}|5|{\cell 12{}{}{}{}{}89}|.
-|8|{\cell {}{}{}{}5{}7{}{}}|9|2|{\cell {}{}{}45{}{}{}{}}|1|3|{\cell {}{}{}4{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|.
+|8|{\cell {}{}{}{}5{}7{}{}}|9|2|{\cell {}{}{}45{}{}{}{}}|1|3|{\cell {}{}{}{\sout 4}{}67{}{}}|{\cell {}{}{}{}{}67{}{}}|.
 |{\cell {}{}{}4567{}9}|{\cell {}{}{}{}56789}|{\cell {}{}{}45{}78{}}|{\cell {}{}{}45{}{}{}9}|{\cell {}{}{}45{}7{}9}|3|2|{\cell 1{}{}{}{}67{}{}}|{\cell 1{}{}{}5678{}}|.
 |{\cell {}{}{}4567{}9}|{\cell {}{}{}{}567{}9}|1|8|{\cell {}{}{}45{}7{}9}|2|{\cell {}{}{}{}{}67{}{}}|3|{\cell {}{}{}{}567{}{}}|.
 |{\cell {}{}3{}5{}7{}{}}|{\cell {}23{}5{}78{}}|{\cell {}2{}{}5{}78{}}|1|6|{\cell {}{}{}{}5{}7{}{}}|{\cell {}{}{}{}{}{}78{}}|9|4|.
@@ -1059,7 +1066,6 @@ If the first prerequisite is tenable, then the specific candidate could be exclu
 \label{fig:intersectionremoval}
 \end{figure}
 
-For example, in \ref{fig:intersectionremoval} candidate $n_{4}$ happens to appear in both $(r_{1},\ c_{8})$ and $(r_{3},\ c_{8})$ in block $b_{3}$ which just right in the same column $c_{8}$, hence, this candidate $n_{4}$ then could be excluded from all other cells $(r_{4},\ c_{8})$ and $(r_{6},\ c_{8})$ in the same column $c_{8}$.
 
 
 
