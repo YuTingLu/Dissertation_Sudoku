@@ -881,8 +881,15 @@ Generally, most of the Sudoku instance could simply find a solution by apply nak
 
 Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated by naked single and hidden single, more powerful rules are needed such like naked pair, hidden pair, naked triplet, hidden triplet, naked quad, hidden quad, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish. These rules could help to solve those difficult Sudoku instance more efficiently.
 
+Last but not least, as we have three other different views introduced in Section \ref{sec:Differentperspectives}. Thus, more situations for the rules could be applied in what kind of units (vertical unit, horizontal unit, or block unit) have to be considered.
+\begin{itemize}
+\item For an general rc-view annotated instance, the rules could be used to examine the annotated instance in either row (horizontally), column (vertically), or block.
+\item For an rn-view annotated instance, it could be examined horizontally (use row-axis), or vertically (use number-axis) by the rules.
+\item For an cn-view annotated instance, it could be examined horizontally (use column-axis), or vertically (use number-axis) by the rules.
+\item However, for an bn-view annotated instance, it could only be examined horizontally (use block-axis) by the rules.
+\end{itemize}
 
-section{Naked Single}
+\section{Naked Single}
 \label{sec:Nakedsingle}
 
 Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
@@ -925,7 +932,15 @@ In the Figure \ref{fig:bnView}, we find a cell $A'(2, 4)$ in bn-view is matched 
 \section{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single rule is used in a situation that ``there is a cell which has more than one candidates in the cell, but only one candidate $v$ could be could be used in this row, this column, or this block''.  but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
+Hidden single rule is used in a situation that ``there is a cell $A'(i,j)$ which has more than one candidates in the cell, but one of the possible candidates $v$ is only possible to be appeared in this cell $A'(i,j)$ of the row $i$, column $j$, or the block''. Thus, the cell A'(i,j) will have its equation re-written to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$.
+
+However, as we introduced three different views, rn-view, cn-view, and bn-view in the section \ref{sec:Differentperspectives}, the definition of the rule hidden single has to be more precisely declared.
+\begin{itemize}
+\item In the general rc-view, hidden single rule could used in either row (horizontal axis), column (vertical axis), or block.
+\item In the general rn-view, the rule could used in only row (horizontal axis), or number (vertical axis).
+\item In the general cn-view, the rule could used in only column (horizontal axis), or number (vertical axis).
+\item However, in the general bn-view, the rule could used in only block (horizontal axis).
+\end{itemize}
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
