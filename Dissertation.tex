@@ -888,7 +888,7 @@ The basic rules in ``Candidates Elimination Techniques'' are naked single rule a
 \subsection{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
+Naked single is used in a situation that ``there is a cell $A'\ (i,j)$ has only one candidate possibly to be filled into this cell''. If there is one cell has an equation written like $A'\ (i,j) =\ (\set{v}, \set{1,\dots,N} \setminus \set{v})$, then eliminate candidate $v$ from all other cells in the same row, same column, or same block.
 However, as we have introduced an Sudoku instance could in the different point of view (See section \ref{sec:Differentperspectives}). We now have more consideration in different view.
 
 In the rc-view, if there is a cell has only one candidate $v$ possible to filled in to the cell $A'\ (row, coulmn)$, then
@@ -928,7 +928,9 @@ In the Figure \ref{fig:bnView}, we find a cell $A'\ (2, 4)$ in bn-view is matche
 \subsection{Hidden Single}
 \label{sec:Hidden Single}
 
-Hidden single rule is under a situation which has one candidate could only be used in one of the cells in a row, a column, or a block, but this cell has more than one candidates. However, this technique may sometimes replaced by Cross-Hatching ??? only use defined/explained concepts!!! XXX
+Hidden single rule is used in a situation that ``there is a cell $A'(i, j)$ has more than one possible candidates, but one candidate $v$ for the cell can only be used in a unit''. If there is any cell $A' (i, j)$ matched the situation, the all other cell in a unit can now eliminate the candidate $v$.
+
+For the annotated instance in rc-view, unit means 
 
  which is a technique that simply find a place for a specific candidate by scanning that number vertically and horizontally without an annotated instance needed. In the Figure \ref{fig:hiddensingle}, they are three cells have matched to this rule. In the block $b_{1}$, candidate 7 could only be used in cell $(r_{1}, c_{3})$ even though that the cell has other candidates in. In the block $b_{7}$, candidate 1 could only be used in cell $(r_{9}, c_{3})$ even though that the cell has others, and so the cell $(r_{7}, c_{6})$. As we said before, this cell could actually be solved by Cross-Hatching. For example, assume candidate number 1 is being scanning to fill in in block $b_{5}$, block $b_{1}$ has candidate 1 in $r_{1}$ so the cell $(r_{7}, c_{1})$ and $(r_{8}, c_{1})$ are excluded, $b_{4}$ has it in $r_{2}$ so the cell $(r_{7}, c_{2})$ and $(r_{9}, c_{2})$ are excluded, $b_{8}$ has it in $c_{5}$ so the cell $(r_{7}, c_{3})$ are excluded. All the cells have been excluded expect $(r_{9}, c_{3})$, thus, for block $b_{5}$, we can know $(r_{9}, c_{3})$ is the one for candidate $n_{1}$ in block $b_{5}$.
 
