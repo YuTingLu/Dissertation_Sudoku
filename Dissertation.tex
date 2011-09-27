@@ -1122,27 +1122,23 @@ In the Figure \ref{fig:intersectionremoval}, a case that all the cells in a bloc
 
 \section{Naked Pair}
 \label{sec:Naked Pair}
-Naked pair rule is used in a situation that ``there are two cell $A'(i,j)$ each has exact two \textbf{same} candidates $v1$ and $v2$ in the cell, and happen shared an unit (or probably two units)''. Then, excludes candidates $v1$ and $v2$ from other cells in the same unit(s), and rewrite the equation of the cell.
+Naked pair rule is used in a situation that ``there are two cell each has exact two \textbf{same} candidates in the cell, and happen to appear in an shared unit (or probably in two shared units)''. Then, excludes these two candidates from other cells in the shared unit(s), and rewrite the equation of the cell.
 
-In the rc-view, if there are two cell $A'(i,j)$ each has exact two candidates $v1$ and $v2$ in
+In the rc-view, if there are two cell each has exact two candidates in
 \begin{itemize}
-\item a horizontal unit,
-\item a vertical unit.
-\item a block unit,
-\item a horizontal unit and a block unit at the same time,
-\item or a vertical unit and block unit at the same time.
+\item a row,
+\item a column,
+\item a block,
+\item a row and a block at the same time,
+\item or a column and a block at the same time.
 \end{itemize}
-then all other cells in the same unit could have these two candidates excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpairrc} shown, there are two cells $(7, 2)$ and $(9, 2)$ (shared a column and a block) both have candidates $2$ and $3$ exact two candidates left in the cells. Thus candidates $2$ and $3$ will be excluded from the other cells in the same column $2$ and the block $7$. And the new equation for the cells have candidates eliminated are,
-for the column $2$:
-\begin{displaymath}
-A'(1,2) = (\set{3, 5, 6} \setminus \set{3}, \set{1, 2, 3, 4, 7, 8, 9})\\
-\end{displaymath}
-for the block $7$:
+then all other cells in a same unit could have these two candidates excluded and the equations re-written. For example, in the annotated instance Figure \ref{fig:nakedpairrc} shown, there are two cells $(7,2)$ and $(9,2)$ (shared a column and a block) have exact two candidates $2$ and $3$ left in these two cells. Thus candidates $2$ and $3$ will be excluded from all other cells in the same column $2$ and the block $7$, and the re-written equation for the cells have candidates eliminated.
 \begin{eqnarray*}
-A'(7,1) = (\set{2, 3, 7} \setminus \set{2, 3}, \set{1, 2, 3, 4, 5, 6, 8, 9})\\
-A'(7,3) = (\set{3, 7, 9} \setminus \set{3}, \set{1, 2, 3, 4, 5, 6, 8})\\
-A'(8,1) = (\set{2, 6, 7} \setminus \set{2}, \set{1, 2, 3, 4, 5, 8, 9})\\
-A'(9,3) = (\set{1, 3, 7, 9} \setminus \set{3}, \set{2, 3, 4, 5, 6, 8})\\
+A'(1,2) = (\set{5, 6}, \set{1, 2, 3, 4, 7, 8, 9})\\
+A'(7,1) = (\set{7}, \set{1, 2, 3, 4, 5, 6, 8, 9})\\
+A'(7,3) = (\set{7, 9}, \set{1, 2, 3, 4, 5, 6, 8})\\
+A'(8,1) = (\set{6, 7}, \set{1, 2, 3, 4, 5, 8, 9})\\
+A'(9,3) = (\set{1, 7, 9}, \set{2, 3, 4, 5, 6, 8})\\
 \end{eqnarray*}
 
 \begin{figure}[htbp]
@@ -1161,17 +1157,17 @@ A'(9,3) = (\set{1, 3, 7, 9} \setminus \set{3}, \set{2, 3, 4, 5, 6, 8})\\
 \label{fig:nakedpairrc}
 \end{figure}
 
-In the rn-view, if there are two cell $A'(i,j)$ each has exact two columns $v1$ and $v2$ in
+In the rn-view, if there are two cell each has exact two candidates in
 \begin{itemize}
-\item a horizontal unit,
-\item or a vertical unit.
+\item a row,
+\item a number.
 \end{itemize}
-then all other cells in the same unit could have these two columns excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpairrn} shown, there are two cells $(3, 3)$ and $(9, 3)$ (shared an horizontal unit) both in the number-axis $3$ have exact two columns left in the cells. Thus columns $3$ and $8$ will be excluded from the other cells in the number-axis $3$. And the new equation for the cells that have columns eliminated are,
+then all other cells in a same unit could have these two columns excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpairrn} shown, there are two cells $(3,3)$ and $(9,3)$ shared a number and have exact two columns $3$ and $8$ left in these two cells. Thus columns $3$ and $8$ will be excluded from the other cells in the shared unit, and the re-written equation for the cells have columns eliminated.
 for the number-axis $3$:
 \begin{eqnarray*}
-A'(4,3) = (\set{1, 3, 5} \setminus \set{3}, \set{2, 3, 4, 6, 7, 8, 9})\\
-A'(6,3) = (\set{3, 5} \setminus \set{3}, \set{1, 2, 3, 4, 6, 7, 8 ,9})\\
-A'(7,3) = (\set{1, 2, 3, 9} \setminus \set{3}, \set{3, 4, 5 ,6 ,7, 8})\\
+A'(4,3) = (\set{1, 5}, \set{2, 3, 4, 6, 7, 8, 9})\\
+A'(6,3) = (\set{5}, \set{1, 2, 3, 4, 6, 7, 8 ,9})\\
+A'(7,3) = (\set{1, 2, 9}, \set{3, 4, 5 ,6 ,7, 8})\\
 \end{eqnarray*}
 
 \begin{figure}[htbp]
@@ -1190,15 +1186,15 @@ A'(7,3) = (\set{1, 2, 3, 9} \setminus \set{3}, \set{3, 4, 5 ,6 ,7, 8})\\
 \label{fig:nakedpairrn}
 \end{figure}
 
-In the cn-view, if there are two cell $A'(i,j)$ each has exact two rows $v1$ and $v2$ in
+In the cn-view, if there are two cell each has exact two candidates in
 \begin{itemize}
-\item a horizontal unit,
-\item or a vertical unit.
+\item a column,
+\item a number.
 \end{itemize}
-then all other cells in the same unit could have these two rows excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpaircn} shown, there are two cells $(2, 5)$ and $(2, 6)$ (shared a vertical unit) both in the column-axis $2$ have exact two rows left in the cells. Thus rows $3$ and $8$ will be excluded from the other cells in the column-axis $2$. And the new equation for the cells that have rows eliminated are,
-for the column-axis $2$:
+then all other cells in a same unit could have these two columns excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpaircn} shown, there are two cells $(2,5)$ and $(2,6)$ shared a column and have exact two columns $1$ and $5$ left in these two cells. Thus columns $1$ and $5$ will be excluded from the other cells in the shared unit, and the re-written equation for the cells have rows eliminated.
+for the number-axis $3$:
 \begin{eqnarray*}
-A'(2,3) = (\set{1, 7, 9} \setminus \set{1}, \set{1, 2 ,3 ,4 ,5 ,6, 8})\\
+A'(2,3) = (\set{7, 9}, \set{1, 2 ,3 ,4 ,5 ,6, 8})\\
 \end{eqnarray*}
 
 \begin{figure}[htbp]
@@ -1217,18 +1213,16 @@ A'(2,3) = (\set{1, 7, 9} \setminus \set{1}, \set{1, 2 ,3 ,4 ,5 ,6, 8})\\
 \label{fig:nakedpaircn}
 \end{figure}
 
-
-In the bn-view, if there are two cell $A'(i,j)$ each has exact two squares $v1$ and $v2$ in
+In the bn-view, if there are two cell each has exact two squares in
 \begin{itemize}
-\item a horizontal unit.
+\item a block.
 \end{itemize}
-then all other cells in the same block could have these two rows excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpairbn} shown, there are two cells $(2, 6)$ and $(2, 9)$ (shared a horizontal unit) both in the block-axis $2$ have exact two squares left in the cells. Thus squares $2$ and $7$ will be excluded from the other cells in the block-axis $2$. And the new equation for the cells that have rows eliminated are,
-for the block-axis $2$:
+then all other cells in the same block could have these two rows excluded and its equation re-written. For example, in the annotated instance Figure \ref{fig:nakedpairbn} shown, there are two cells $(2,6)$ and $(2,9)$ shared a block and have exact two squares $2$ and $7$ left in these two cells. Thus squares $2$ and $7$ will be excluded from the other cells in the shared unit, and the re-written equation for the cells have rows eliminated.
+for the number-axis $3$:
 \begin{eqnarray*}
-A'(2,1) = (\set{7, 9} \setminus \set{7}, \set{1, 2, 3, 4, 5, 6, 7, 8})\\
-A'(2,8) = (\set{2, 3, 5, 8, 9} \setminus \set{2}, \set{1, 2 ,4 ,6, 7})\\
+A'(2,1) = (\set{9}, \set{1, 2, 3, 4, 5, 6, 7, 8})\\
+A'(2,8) = (\set{3, 5, 8, 9}, \set{1, 2 ,4 ,6, 7})\\
 \end{eqnarray*}
-
 
 \begin{figure}[htbp]
 \begin{sudoku}
