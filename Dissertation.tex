@@ -1253,19 +1253,38 @@ A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2,
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
 
-Naked Triplet could hold when any of these three prerequisites hold, which are, 
+Naked triplet is a rule in the situation that ``three common candidate $v1$, $v2$ and $v3$ appear at least two candidates per cell in total three cells in a shared unit''. Then in this shared unit, any other cells has these three candidates in could have candidates $v1$, $v2$ and $v3$ excluded and rewrite the equation.
+A shared unit is varied depend on which view the annotated instance in.
 \begin{itemize}
-\item in a row: three cells happen to shared a row and have common three candidate left in the cells.
-\item in a column: three cells happen to shared a column and have common three candidate left in the cells.
-\item or in a block: three cells happen to shared a row and have common three candidate left in the cells.
+\item If it is an rc-view annotated instance. 
+\begin{itemize}
+\item shared unit could be row, column , or block.
 \end{itemize}
-By this technique, other cells in the same row, column, or the same block could safely have these three candidates excluded expect three cells which have these candidates. 
+\item If it is an rn-view annotated instance.
+\begin{itemize}
+\item shared unit could be row (column-axis), and column (number-axis).
+\end{itemize}
+\item If it is an cn-view annotated instance.
+\begin{itemize}
+\item shared unit could be row (column-axis), and column (number-axis).
+\end{itemize}
+\item If it is an bn-view annotated instance.
+\begin{itemize}
+\item shared unit could only be row (block-axis).
+\end{itemize}
+\end{itemize}
+
+In the annotated instance in rc-view (see Figure \ref{fig:nakedtripletrc}), candidates $3$, $5$ and $6$ are the common three number which appears in the cells $(1,2)$, $(3,1)$, and $(3,3)$ which has shared an unit (block) here. Hence, all other cells which also have candidate $3$, $5$ and $6$ in a shared block $1$ could have these three candidates excluded, because these candidates are not longer possible to be the solution for other cells. And also, the new equation for those affected cells are:
+\begin{eqnarray*}
+A'(7,2) = (\set{1, 2, 4, 8}, \set{3, 5, 6, 7, 9}) \Rightarrow A'(7,2) = (\set{2, 8}, \set{1, 3, 4, 5, 6, 7, 9})\\
+A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2, 8}, \set{1, 3, 4, 5, 6, 7, 9})\\
+\end{eqnarray*}
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|1|{\cell {}{}{\textbf 3}{}{\textbf 5}{\textbf 6}{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|1|{\cell {}{}{\fbox {3}}{}{\fbox {5}}{\fbox {6}}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
-|{\cell {}{}{\textbf 3}{}{\textbf{5}}{\textbf 6}{}{}{}}|4|{\cell {}{}{\textbf 3}{}{}{\textbf 6}{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}{\fbox {3}}{}{\fbox {5}}{\fbox {6}}{}{}{}}|4|{\cell {}{}{\fbox {3}}{}{}{\fbox {6}}{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
 |{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
 |{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
 |9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
@@ -1273,25 +1292,8 @@ By this technique, other cells in the same row, column, or the same block could 
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in naked triplet - before}
-\label{fig:nakedtripletb4}
-\end{figure}
-In the Figure \ref{fig:nakedtripletb4}, candidates $n_{3}$, $n_{5}$ and $n_{6}$ are the common three number which appears in the cells $(r_{1},\ c_{2})$, $(r_{3},\ c_{1})$, and $(r_{3},\ c_{3})$ which has shared the a unit (column) here. Hence, all other cells which also have candidate $n_{3}$, $n_{5}$ and $n_{6}$ in a shared unit (block $b_{1}$) could have these three candidates excluded, because these candidates are not longer possible to be the solution for them. The Figure{fig:nakedtripletaf} is the updated instance after the exclusion has been made.
-
-\begin{figure}[htbp]
-\begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}{\sout 3}{}{}{\sout 6}7{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
-|2|9|8|5|4|3|6| 7|1|.
-|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
-|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
-|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
-|9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}78{}}|1|{\cell {}2{}45{}7{}{}}|{\cell {}2{}4{}{}789}|6|{\cell {}23{}{}{}78{}}|.
-|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
-|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
-\end{sudoku}
-\caption{Example in naked triplet - after}
-\label{fig:nakedtripletaf}
+\caption{Example in rc-view for naked triplet.}
+\label{fig:nakedtripletrc}
 \end{figure}
 
 
