@@ -192,10 +192,9 @@ No matter in either way, a loop will keep running to find the most suitable rule
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
     text width=10em, text centered, rounded corners, minimum height=2em]
 \tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
-    minimum height=2em]
-    
+\begin{center}   
 \begin{tikzpicture}[node distance = 2cm, auto]
+
     % Place nodes
     \node [block] (init) {A Sudoku instance};
     \node [block, below of=init] (annotated) {An annotated Sudoku instance};
@@ -212,22 +211,26 @@ No matter in either way, a loop will keep running to find the most suitable rule
     \path [line] (found) -- node {yes}(update);
     \path [line] (update) -- (highlight);
     \path [line] (highlight) -- node {yes}(stop);
+
 \end{tikzpicture}
+\end{center}
 
+There are many rules exist to be applied flexibly to solve the Sudoku puzzle among its difficulty. Generally, it classify into the two types of the rules, one is ``Direct Elimination Techniques'' and another one is ``Candidates Elimination Techniques''. Direct elimination techniques, is a method that does not have to pencil-mark all the possible candidates in the empty cells no matter the difficulty of the puzzle, and it could solve most or the problems but might not be the most efficient way to do. The requirement of this is just a pen with logical thinking brain. Candidates elimination techniques are the approach we will discuss in the  Chapter \ref{cha:Techniques}, it provides different rules that could be utilised in different situation by considering one candidate, a pair candidates, triplet candidates, or quad candidates differently.
 
-There are many rules exist to be applied flexibly to solve the Sudoku puzzle among its difficulty. To classify the rules, firstly there are divided in to two, which are ``Direct Elimination Techniques'' and ``Candidates Elimination Techniques''. Direct elimination techniques, is a method that does not have to pencil-mark all the possible candidates in the empty cells no matter the difficulty of the puzzle. All it required is a pen with logical thinking brain. It could solve most problem but might not be the most efficient way to do. In candidates elimination techniques, it provides different techniques that could be utilised in considering one candidate, a pair candidates, triplet candidates, or quad candidates differently. (\emph{Michael Mepham} has published an introductory guide teaching people how to solve a Sudoku puzzle. \cite{Mepham2005Solving})
+\emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). Each representation are based on the standard Sudoku in the rc-view.
 
-\emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). No matter which representation (expect block-number view is slightly different) that the Sudoku puzzle is displayed in, the information given is always same among three factors: row, column, and candidate (number). In fact, three representations which mixed and matched by the factors are compressed from six mix-match as Figure \ref{fig:mixmatch}.
+xxx keep writing. xxx
+Figure \ref{fig:mixmatch}.
 
 \begin{figure}[htbp]
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{2}
 \begin{center}
-\begin{tabular}{ >{\centering\arraybackslash}m{0.6in}|| >{\centering\arraybackslash}m{1.2in}|| >{\centering\arraybackslash}m{1.2in}|| >{\centering\arraybackslash}m{1.2in}||}
-\multicolumn{1}{c}{} & \multicolumn{1}{c}{row} & \multicolumn{1}{c}{column} & \multicolumn{1}{c}{number}\\ \cline{2-4}
-row & X & row-column & row-number\\ \cline{2-4}
-column & column-row \cellcolor[gray]{.8}& X& column- number\\ \cline{2-4}
-number & number-row \cellcolor[gray]{.8}& number-column \cellcolor[gray]{.8}& X\\ \cline{2-4}
+\begin{tabular}{ >{\centering\arraybackslash}m{0.6in}| >{\centering\arraybackslash}m{1.1in}| >{\centering\arraybackslash}m{1.1in}|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{column} & \multicolumn{1}{c}{number}\\ \cline{2-3}
+row & \textbf{row-column} & row-number\\ \cline{2-3}
+column & X& column-number\\ \cline{2-3}
+block & X & block-number \\ \cline{2-3}
 \end{tabular}
 \end{center}
 \caption{Mix-match among row, column, and number}
