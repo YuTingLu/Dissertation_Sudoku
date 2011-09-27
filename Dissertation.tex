@@ -1317,22 +1317,40 @@ In the annotated instance in cn-view (see Figure \ref{fig:nakedtripletcn}), rows
 
 \section{Hidden Triplet}
 \label{sec:Hidden Triplet}
-Which is a situation evolved from hidden single and hidden pair. The prerequisite of this technique is three of the possible candidates are only happened in only three cells in one unit (either row, column, or block).
-In the Figure \ref{fig:hiddentriplet}, candidate $n_{2}$, $n_{5}$, and $n_{7}$ (in boldface font) are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
+Hidden triplet rule is used in a situation that ``three of the all the possible candidates are only happened in only three cells in a shared unit''. Then once the condition is satisfied, then other candidates could be removed from these three cells. However, a shared unit is varied depend on which view the annotated instance in.
+\begin{itemize}
+\item If it is an rc-view annotated instance. 
+\begin{itemize}
+\item shared unit could be row, column , or block.
+\end{itemize}
+\item If it is an rn-view annotated instance.
+\begin{itemize}
+\item shared unit could be row (column-axis), and column (number-axis).
+\end{itemize}
+\item If it is an cn-view annotated instance.
+\begin{itemize}
+\item shared unit could be row (column-axis), and column (number-axis).
+\end{itemize}
+\item If it is an bn-view annotated instance.
+\begin{itemize}
+\item shared unit could only be row (block-axis).
+\end{itemize}
+\end{itemize}
+
+In the Figure \ref{fig:hiddentripletrc}, candidate $2$, $5$, and $7$ are only appeared in $c_{4}$, $c_{5}$, and $c_{7}$. Hence, all the candidates apart from $n_{2}$, $n_{5}$, and $n_{7}$ could then be excluded from these three cells.
 
 \begin{figure}[htbp]
-\setlength{\tabcolsep}{2.5pt}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.6}
-\hspace{1em}
+\hspace{0.8em}
 \begin{center}
-\begin{tabular}{{|>{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| >{\centering\arraybackslash}m{0.3in}| }}
-\hline
-{\cell {}{}{}{}{}6{}{}9} &{\cell {}{}{}{}{}6{}8{}} & \LARGE 1 &{\cell {}{\textbf 2}{}{}{\textbf 5}6{}8{}}  & {\cell {}{\textbf 2}{}{}{\textbf 5}{}{\textbf 7}89} & \LARGE 3 & {\cell {}{}{}{}{\textbf 5}{}{\textbf 7}{}9} & \LARGE 4 & {\cell {}{}{}{}{}6{}{}9} \\
-\hline
+\begin{tabular}{{>{\centering\arraybackslash}m{0.2in}>{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} }}
+   & c1 & c2 & c3 & c4 & c5 & c6 & c7 & c8 & c9\\ \cline{2-10}
+r1& \multicolumn{1}{|c|}{{\cell {}{}{}{}{}6{}{}9}} & \multicolumn{1}{c|}{{\cell {}{}{}{}{}6{}8{}}} & \multicolumn{1}{c|}{\LARGE 1} &\multicolumn{1}{c|}{{\cell {}{\fbox{2}}{}{}{\fbox{5}}{\sout 6}{}{\sout 8}{}} } & \multicolumn{1}{c|}{{\cell {}{\fbox{2}}{}{}{\fbox{5}}{}{\fbox{7}}{\sout 8}{\sout 9}}} & \multicolumn{1}{c|}{\LARGE 3} & \multicolumn{1}{c|}{{\cell {}{}{}{}{\fbox{5}}{}{\fbox{7}}{}{\sout 9}}} & \multicolumn{1}{c|}{\LARGE 4} & \multicolumn{1}{c|}{{\cell {}{}{}{}{}6{}{}9}}\\ \cline{2-10}
 \end{tabular}
 \end{center}
 \caption{Example in hidden triplet}
-\label{fig:hiddentriplet}
+\label{fig:hiddentripletrc}
 \end{figure}
 
 
