@@ -1305,24 +1305,24 @@ A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2,
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
 
-Naked triplet is a rule in the situation that ``three common candidate $v1$, $v2$ and $v3$ appear at least two candidates per cell in total three cells in a shared unit''. Then in this shared unit, any other cells has these three candidates in could have candidates $v1$, $v2$ and $v3$ excluded and rewrite the equation.
+Naked triplet is a rule in the situation that ``three common candidate appear at least two candidates per cell in total three cells in a shared unit''. Then in this shared unit, any other cells has these three candidates in could have these three candidates excluded and rewrite the equation.
 A shared unit is varied depend on which view the annotated instance in.
 \begin{itemize}
 \item If it is an rc-view annotated instance. 
 \begin{itemize}
-\item shared unit could be row, column , or block.
+\item shared unit could be a row (x-axis), a column (y-axis), or a block.
 \end{itemize}
 \item If it is an rn-view annotated instance.
 \begin{itemize}
-\item shared unit could be row (column-axis), and column (number-axis).
+\item shared unit could be a row (x-axis), and a number (y-axis).
 \end{itemize}
 \item If it is an cn-view annotated instance.
 \begin{itemize}
-\item shared unit could be row (column-axis), and column (number-axis).
+\item shared unit could be a column (x-axis), and a number (y-axis).
 \end{itemize}
 \item If it is an bn-view annotated instance.
 \begin{itemize}
-\item shared unit could only be row (block-axis).
+\item shared unit could only be a block(x-axis).
 \end{itemize}
 \end{itemize}
 
@@ -1348,7 +1348,7 @@ A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2,
 \label{fig:nakedtripletrc}
 \end{figure}
 
-In the annotated instance in cn-view (see Figure \ref{fig:nakedtripletcn}), rows $1$, $3$ and $9$ are the common three rows which appears in the cells $(8,3)$, $(8,8)$, and $(8,9)$ which has shared an unit (column-axis) here. Hence, all other cells which also have rows $1$, $3$ and $9$ in a shared column $8$ could have these three rows excluded, because these rows are not longer possible to be the solution for other cells. However, there is no equation has to be re-written because in this unit all other cells are already have the row highlighted.
+In the annotated instance in cn-view (see Figure \ref{fig:nakedtripletcn}), rows $1$, $3$ and $9$ are the common three rows which appears in the cells $(8,3)$, $(8,8)$, and $(8,9)$ which has shared an unit column (x-axis) here. Hence, all other cells which also have rows $1$, $3$ and $9$ in a shared column $8$ could have these three rows excluded, because these rows are not longer possible to be the solution for other cells. However, there is no equation has to be re-written because in this unit all other cells are already have the row highlighted.
 
 \begin{figure}[htbp]
 \begin{sudoku}
