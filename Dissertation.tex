@@ -1192,7 +1192,7 @@ A'(2,8) = (\set{2, 3, 5, 8, 9} \setminus \set{2}, \set{1, 2 ,4 ,6, 7})\\
 |{\makebox[0pt]{\hspace{-2.5em}\large b8}2}|{\cell {}{}3{}5{}{}8{}}|4|{\cell 1{}3{}5{}{}{}{}}|{\cell {}{}3{}{}{}{}{}{}}|9|{\cell 1{}3{}{}{}7{}{}}|{\cell 1{}3{}{}{}78{}}|6|.
 |{\makebox[0pt]{\hspace{-2.5em}\large b9}5}|{\cell 1{}34{}67{}{}}|{\cell {}{}3{}{}{}{}8{}}|{\cell 1{}{}4{}{}{}{}{}}|9|2|{\cell 1{}34{}67{}{}}|{\cell 1{}3{}{}{}78{}}|{\cell 1{}{}{}{}{}78{}}.
 \end{sudoku}
-\caption{Example in bn-view for naked pair..}
+\caption{Example in bn-view for naked pair.}
 \label{fig:nakedpairbn}
 \end{figure}
 
@@ -1201,14 +1201,21 @@ A'(2,8) = (\set{2, 3, 5, 8, 9} \setminus \set{2}, \set{1, 2 ,4 ,6, 7})\\
 \section{Hidden Pair}
 \label{sec:Hidden Pair}
 
-The prerequisite for Hidden Pair is, that two of all the possible candidates are only appeared in two cells in a shared unit (a row, a column, or a block). Once the prerequisite is satisfied, all other candidates in these two cells could be excluded surely. 
-For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{5})$ and $(r_{3},\ c_{4})$ do not have only two candidates $n_{6}$ and $n_{9}$ in the cells only, but candidates $n_{6}$ and $n_{9}$ are restricted to these two cells only. Hence, the prerequisite is satisfied, thus all candidates expect $n_{6}$ and $n_{9}$ could all be excluded from these two cells.
+Hidden pair rule is used in a situation that ``two of all the possible candidates are only appeared in exact two cells in a shared unit''. As soon as the prerequisite is satisfied, all other candidates in these two cells could be excluded immediately, and the equation for these two cell will be re-written.
+
+In the rc-view, a shared unit could be a vertical unit, a horizontal unit, or a block. But in the rn-view or cn-view, a shared unit could only be a vertical unit, a horizontal unit. Moreover, in the bn-view a shared unit could only be a horizontal unit.
+
+For the annotated instance in rc-view, in the block $2$ of Figure \ref{fig:hiddenpairrc}. Cell $(1,5)$ and $(3,4)$ have more than one candidates for the cell but two candidates $6$ and $9$ only appear in these two cells only. Hence, the prerequisite is satisfied. Thus, all candidates expect $6$ and $9$ could all be excluded from these two cells and equations rewritten.
+\begin{eqnarray*}
+A'(1,5) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8}) \Rightarrow A'(1,5) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8})\\
+A'(3,4) = (\set{1, 6, 9}, \set{2, 3, 4, 5, 7, 8}) \Rightarrow A'(3,4) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8})\\
+\end{eqnarray*}
 
 \begin{figure}[htbp]
 \begin{sudoku}
-|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
+|1|{\cell {}{}3{}56{}{}{}}|{\cell {}{}3{}{}67{}{}}|2|{\cell {}{}{}{}{}{\fbox {6}}{}{}{\fbox {9}}}|8|{\cell {}{}{}{}5{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|4|.
 |2|9|8|5|4|3|6| 7|1|.
-|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell 1{}{}{}{}6{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
+|{\cell {}{}3{}56{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell {\sout 1}{}{}{}{}{\fbox{6}}{}{}{\fbox{9}}}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}2{}{}5{}{}89}|{\cell {}{}3{}{}{}{}89}|{\cell 123{}{}{}{}8{}}|.
 |{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}4{}678{}}|{\cell {}234{}6{}8{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
 |{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}4{}6789}|{\cell {}{}{}456{}89}|{\cell 1{}{}45{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
 |9|7|{\cell {}{}34{}6{}{}{}}|{\cell 1{}{}4{}6{}8{}}|{\cell {}{}3456{}8{}}|{\cell 1{}{}45{}{}{}{}}|{\cell 1{}{}4{}{}{}8{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
@@ -1216,12 +1223,31 @@ For instance, in the block $b_{2}$ of Figure \ref{fig:hiddenPair}. $(r_{1},\ c_{
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}4{}{}{}{}{}}|9| {\cell {}2{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}23{}{}{}{}{}{}}|{\cell {\underline 1}{}3{}{}{}7{}9}|{\cell {}{}{}{}{}{}78{}}|{\cell {}2{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}789}|{\cell {}{}3{}{}{}{}89}| 5|.
 \end{sudoku}
-\caption{Example in hidden pair}
-\label{fig:hiddenPair}
+\caption{Example in rc-view for hidden pair}
+\label{fig:hiddenpairrc}
 \end{figure}
 
+For an annotated instance in bn-view, in the block-axis $7$, cell $A'(7,2)$ $A'(7,3)$ both have more than one squares $v$, but squares $2$ and $8$ are only appear in these two cells. Thus we can have other squares $v$ eliminated from the cell, and re-write the equation,
+\begin{eqnarray*}
+A'(7,2) = (\set{1, 2, 4, 8}, \set{3, 5, 6, 7, 9}) \Rightarrow A'(7,2) = (\set{2, 8}, \set{1, 3, 4, 5, 6, 7, 9})\\
+A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2, 8}, \set{1, 3, 4, 5, 6, 7, 9})\\
+\end{eqnarray*}
 
-
+\begin{figure}[htbp]
+\begin{sudoku}
+|{\makebox[0pt]{\hspace{-1em}\large b1\raisebox{5ex}[0ex]{\hspace{2em}\large n1}}1}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n2}}{\cell {}{}{}4{}{}7{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n3}}{\cell {}23{}{}{}7{}9}}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n4}}8}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n5}}{\cell {}2{}{}{}{}7{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n6}}{\cell {}23{}{}{}7{}9}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n7}}{\cell {}{}3{}{}{}{}{}{}}}|{\makebox[0pt]{\raisebox{2ex}[1ex]{\hspace{1em}\large n8}}{\cell {}{}34{}{\underline 6}7{}9}}|{\makebox[0pt]{\raisebox{2.5ex}[1ex]{\hspace{0.5em}\large n9}}5}|.
+|{\makebox[0pt]{\hspace{-2.1em}\large b2}{\cell {}{}{}{}{}{}7{}9}}|1|6|{\cell {}{}{}{}5{}{}{}{}}|4|{\cell {}2{}{}{}{}7{}{}}|8|{\cell {}23{}5{}{}89}|{\cell {}2{}{}{}{}7{}{}}|.
+|{\makebox[0pt]{\hspace{-2em}\large b3}{\cell {}{}{}{}{}67{}9}}|{\cell {}{}{}{}{}67{}9}|{\cell {}2{}{}{}{}{}89}|3|{\cell 1{}{}{}{}{}7{}{}}|4|5|{\cell 12{}{}{}6789}|{\cell 12{}{}{}{}78{}}|.
+|{\makebox[0pt]{\hspace{-2.5em}\large b4}2}|6|{\cell 1{}3{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}|{\cell {}{}{}45{}{}{}{}}|{\cell 1{}345{}{}{}9}|8|{\cell 1{}34{}{}{}{}9}|7|.
+|{\makebox[0pt]{\hspace{-2em}\large b5}{\cell {}{}{}4{}67{}9}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}2{}{}{}{}{}8{}}|{\cell 123456789}|{\cell {}{}{}{}56{}89}|{\cell 12{}45{}78{}}|{\cell 1{}34{}6{}{}{}}|{\cell 123456789}|{\cell {}{}{}45{}{}{}{}}|.
+|{\makebox[0pt]{\hspace{-2em}\large b6}{\cell {}{}{}{}{}67{}9}}|8|4|{\cell 1{}{}{}5{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}9}|{\cell 1{}{}{}{}6{}{}{}}|{\cell 1{}{}{}567{}9}|3|.
+|{\makebox[0pt]{\hspace{-2.5em}\large b7}{\cell {}{}{}{}{}{}{}{}9}}|{\cell {\sout 1}{\fbox{2}}{}{\sout 4}{}{}{}{\fbox{8}}{}}|{\cell {\sout 1}{\fbox{2}}{\sout 3}{}{}{}{}{\fbox{8}}{\sout 9}}|7|6|{\cell {}{}{}4{}{}{}{}{}}|{\cell 1{}34{}{}{}{}9}|5|{\cell {}{}3{}{}{}{}{}9}|.
+|{\makebox[0pt]{\hspace{-2.5em}\large b8}2}|{\cell {}{}3{}5{}{}8{}}|4|{\cell 1{}3{}5{}{}{}{}}|{\cell {}{}3{}{}{}{}{}{}}|9|{\cell 1{}3{}{}{}7{}{}}|{\cell 1{}3{}{}{}78{}}|6|.
+|{\makebox[0pt]{\hspace{-2.5em}\large b9}5}|{\cell 1{}34{}67{}{}}|{\cell {}{}3{}{}{}{}8{}}|{\cell 1{}{}4{}{}{}{}{}}|9|2|{\cell 1{}34{}67{}{}}|{\cell 1{}3{}{}{}78{}}|{\cell 1{}{}{}{}{}78{}}.
+\end{sudoku}
+\caption{Example in bn-view for hidden pair.}
+\label{fig:hiddenpairbn}
+\end{figure}
 
 
 \section{Naked Triplet}
