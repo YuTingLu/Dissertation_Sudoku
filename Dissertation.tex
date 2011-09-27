@@ -912,12 +912,24 @@ Generally, most of the Sudoku instance could simply find a solution by apply nak
 
 Naked single and hidden single rules are usually the most basic rules of Candidates Elimination Techniques to begin the game. When the annotated instance is not able to get any more candidates eliminated by naked single and hidden single, more powerful rules are needed such like naked pair, hidden pair, naked triplet, hidden triplet, naked quad, hidden quad, X-wing, XY-wing, XYZ-wing, WXYZ-wing, and Swordfish. These rules could help to solve those difficult Sudoku instance more efficiently.
 
-Last but not least, as we have three other different views introduced in Section \ref{sec:Differentperspectives}. Thus, more situations for the rules could be applied in what kind of units (vertical unit, horizontal unit, or block unit) have to be considered.
+Last but not least, as we have three other different views introduced in Section \ref{sec:Differentperspectives}. Thus, more situations for the rules could be applied in what kind of units have to be considered.
 \begin{itemize}
-\item For an general rc-view annotated instance, the rules could be used to examine the annotated instance in either row (horizontally), column (vertically), or block.
-\item For an rn-view annotated instance, it could be examined horizontally (use row-axis), or vertically (use number-axis) by the rules.
-\item For an cn-view annotated instance, it could be examined horizontally (use column-axis), or vertically (use number-axis) by the rules.
-\item However, for an bn-view annotated instance, it could only be examined horizontally (use block-axis) by the rules.
+\item In an rc-view annotated instance, the rules could be applied in a shared unit which could be
+\begin{itemize}
+\item a row (x-axis), a column (y-axis), or a block.
+\end{itemize}
+\item In an rn-view annotated instance, the rules could be applied in a shared unit which could be
+\begin{itemize}
+\item shared unit could be a row (x-axis), and a number (y-axis).
+\end{itemize}
+\item In an cn-view annotated instance, the rules could be applied in a shared unit which could be
+\begin{itemize}
+\item shared unit could be a column (x-axis), and a number (y-axis).
+\end{itemize}
+\item In an bn-view annotated instance, the rules could be applied in a shared unit which could be
+\begin{itemize}
+\item shared unit could only be a block(x-axis).
+\end{itemize}
 \end{itemize}
 
 \section{Naked Single}
@@ -1234,7 +1246,7 @@ A'(2,8) = (\set{2, 3, 5, 8, 9} \setminus \set{2}, \set{1, 2 ,4 ,6, 7})\\
 \section{Hidden Pair}
 \label{sec:Hidden Pair}
 
-Hidden pair rule is used in a situation that ``two of all the possible candidates are only appeared in exact two cells in a shared unit''. As soon as the prerequisite is satisfied, all other candidates in these two cells could be excluded immediately, and the equation for these two cell will be re-written.
+Hidden pair rule is used in a situation that ``two of all the possible candidates are only appeared in exact two cells in a shared unit''. As soon as the prerequisite is satisfied, all other candidates in these two cells could be excluded immediately, and the equation for these two cell will be re-written. 
 
 In the rc-view, a shared unit could be a vertical unit, a horizontal unit, or a block. But in the rn-view or cn-view, a shared unit could only be a vertical unit, a horizontal unit. Moreover, in the bn-view a shared unit could only be a horizontal unit.
 
@@ -1306,25 +1318,6 @@ A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2,
 \label{sec:Naked Triplet}
 
 Naked triplet is a rule in the situation that ``three common candidate appear at least two candidates per cell in total three cells in a shared unit''. Then in this shared unit, any other cells has these three candidates in could have these three candidates excluded and rewrite the equation.
-A shared unit is varied depend on which view the annotated instance in.
-\begin{itemize}
-\item If it is an rc-view annotated instance. 
-\begin{itemize}
-\item shared unit could be a row (x-axis), a column (y-axis), or a block.
-\end{itemize}
-\item If it is an rn-view annotated instance.
-\begin{itemize}
-\item shared unit could be a row (x-axis), and a number (y-axis).
-\end{itemize}
-\item If it is an cn-view annotated instance.
-\begin{itemize}
-\item shared unit could be a column (x-axis), and a number (y-axis).
-\end{itemize}
-\item If it is an bn-view annotated instance.
-\begin{itemize}
-\item shared unit could only be a block(x-axis).
-\end{itemize}
-\end{itemize}
 
 In the annotated instance in rc-view (see Figure \ref{fig:nakedtripletrc}), candidates $3$, $5$ and $6$ are the common three number which appears in the cells $(1,2)$, $(3,1)$, and $(3,3)$ which has shared an unit (block) here. Hence, all other cells which also have candidate $3$, $5$ and $6$ in a shared block $1$ could have these three candidates excluded, because these candidates are not longer possible to be the solution for other cells. And also, the new equation for those affected cells are:
 \begin{eqnarray*}
