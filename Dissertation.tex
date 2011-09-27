@@ -935,33 +935,33 @@ Last but not least, as we have three other different views introduced in Section
 \section{Naked Single}
 \label{sec:Nakedsingle}
 
-Naked single is used in a situation that ``there is a cell $A'(i,j)$ has only one candidate possibly to be filled into this cell, then highlight the equation of the cell to $A'(i,j) =(\set{v}, \set{1,\dots,N} \setminus \set{v})$ and update the annotated instance''.
+Naked single is used in a situation that ``there is a cell has only one candidate possibly to be filled into this cell''. If the condition is satisfied, then re-write the equation of the cell and exclude this candidate from other cells which in the same unit.
 
-In the rc-view, if there is a cell $A'(row, coulmn)$ has only one candidate $v$ possible to filled into the cell $A'(\text{row}, \text{column})$, then
+In the rc-view, if there is a cell $A'(i,j)$ has only one candidate $v$ possible to filled into the cell $A'(i,j)$, then,
 \begin{itemize}
-\item all the cells shared an unit (row, column, or block) with $A'(row, coulmn)$ have candidate $v$ excluded.
-\item highlight the candidate $v$ in cell $A'(row, coulmn)$.
+\item all the cells shared an unit (row, column, or block) with $A'(i,j)$ have candidate $v$ excluded,
+\item rewrite the equation for the cell $A'(i,j)$, and all other cells which have candidate $v$ excluded.
 \end{itemize}
 In the Figure \ref{fig:rcWhole}, we find a cell $A'(1, 6)$ in rc-view is matched to the situation of naked single for rc-view. Thus, we have an updated annotated instance - Figure \ref{fig:rcWholeupdated}.
 
-What if a cell $A'(row, number)$ has only one column $v$ possible to filled into the cell $A'(row, number,)$, then
+What if in the rn-view, a cell $A'(i,j)$ has only one column $v$ possible to filled into the cell $A'(i,j)$, then,
 \begin{itemize}
-\item all the cells shared an unit (row, or number) with $A'(row, number)$ have column $v$ excluded.
-\item highlight the column $v$ in cell $A'(row, number)$.
+\item all the cells shared an unit (row, or number) with $A'(i,j)$  have column $v$ excluded,
+\item rewrite the equation for the cell $A'(i,j)$, and all other cells which have column $v$ excluded.
 \end{itemize}
 Suppose we find a cell $A'(1, 7)$ in rn-view (see Figure \ref{fig:rnView}) is matched to the situation of naked single for rn-view. Thus, we have an updated annotated instance - Figure \ref{fig:rnUpdate}.
 
-What if a cell $A'(column, number)$ has only one row $v$ possible to filled into the cell $A'(column, number,)$, then
+What if in the cn-view, a cell $A'(i,j)$ has only one row $v$ possible to filled into the cell $A'(i,j)$, then,
 \begin{itemize}
-\item all the cells shared an unit (column, or number) with $A'(column, number)$ have row $v$ excluded.
-\item highlight the row $v$ in cell $A'\ (column, number)$.
+\item all the cells shared an unit (column, or number) with $A'(i,j)$ have row $v$ excluded.
+\item rewrite the equation for the cell $A'(i,j)$, and all other cells which have row $v$ excluded.
 \end{itemize}
 We now find a cell $A'(8, 4)$ in cn-view (see Figure \ref{fig:cnView}) is matched to the situation of naked single for cn-view. Thus, we have an updated annotated instance - Figure \ref{fig:cnUpdate}.
 
-And what if a cell $A'(block, number)$ has only one square $v$ possible to filled into the cell $A'(block, number,)$, then
+And what if in a bn-view, a cell $A'(i,j)$ has only one square $v$ possible to filled into the cell $A'(i,j)$, then,
 \begin{itemize}
-\item all the cells shared a block with $A'(block, number)$ have square $v$ excluded.
-\item highlight the square $v$ in cell $A'(block, number)$.
+\item all the cells shared a block with $A'(i,j)$ have square $v$ excluded.
+\item rewrite the equation for the cell $A'(i,j)$, and all other cells which have square $v$ excluded.
 \end{itemize}
 In the Figure \ref{fig:bnView}, we find a cell $A'(2, 4)$ in bn-view is matched to the situation of naked single for bn-view. Thus, we have an updated annotated instance - Figure \ref{fig:bnUpdate}.
 
