@@ -4,7 +4,7 @@
 
 \usepackage{hyperref}
 \usepackage{a4}
-
+\usepackage{subfigure}
 \usepackage{sudoku}
 \usepackage{amsmath}
 \usepackage{colortbl}
@@ -1768,14 +1768,39 @@ In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5
 For the project, two softwares are used to help, one is Git and another one is Latex. Git is a software provide people an efficient way to record every single change in the project. And Latex is a software known used on writing up the document, and referencing the related sources. 
 \section{Git}
 \label{sec:git}GitInit
-Git is ``a free and open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'' Also, the benefit of it is, by using Git, the project does not have to be on a specific server. It gives convenience for people to work on their own computer, and just fetch and merge if they commit the change made from others. Beside, it also provide a platform, Github for users to manage and share the project.
+Git is ``a free and open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'' Also, the benefit of it is, by using Git, the project does not have to be on a specific server. It gives convenience for people to work on their own computer, and just fetch and merge if they commit the change made from others. Beside, it also provide a platform, Github for users to manage and share the project
+
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.40]{GitInit.jpg}
-\caption{An initial status.}
+\subfigure[An initial status.]{
+\includegraphics[scale=0.10]{GitInit.jpg}
 \label{gitinitial}
+}
+\subfigure[Scan the change.]{
+\includegraphics[scale=0.10]{GitScan.jpg}
+\label{gitscan}
+}
+\subfigure[Write a command for the change.]{
+\includegraphics[scale=0.10]{GitCommand.jpg}
+\label{gitcommand}
+}
+\subfigure[Stage changed.]{
+\includegraphics[scale=0.10]{GitStage.jpg}
+\label{gitstage}
+}
+\subfigure[Admit the commitment.]{
+\includegraphics[scale=0.10]{GitCommit.jpg}
+\label{gitcommit}
+}
+
+
 \end{center}
 \end{figure}
+
+\includegraphics[scale=0.40]{GitCommit.jpg}
+\label{gitcommit}
+
+
 \begin{verbatim}
 git push
 git pull git@github.com:YuTingLu/Dissertation_Sudoku.git
