@@ -1330,7 +1330,7 @@ A'(7,3) = (\set{1, 2, 3, 8, 9}, \set{4, 5, 6, 7}) \Rightarrow A'(7,3) = (\set{2,
 \section{Naked Triplet}
 \label{sec:Naked Triplet}
 
-Naked triplet is a rule in the situation that ``three common candidate appear at least two candidates per cell in total three cells in a shared unit''. Then in this shared unit, any other cells has these three candidates in could have these three candidates excluded and rewrite the equation.
+Naked triplet is a rule in the situation that ``three common candidate appear at least two candidates per cell in total three cells in a shared unit''. Then in the shared unit, any other cells has these three candidates in could have these three candidates excluded and rewrite the equation.
 
 In the annotated instance in rc-view (see Figure \ref{fig:nakedtripletrc}), candidates $3$, $5$ and $6$ are the common three number which appears in the cells $(1,2)$, $(3,1)$, and $(3,3)$ which has shared an unit (block) here. Hence, all other cells which also have candidate $3$, $5$ and $6$ in a shared block $1$ could have these three candidates excluded, because these candidates are not longer possible to be the solution for other cells. And also, the new equation for those affected cells are:
 \begin{eqnarray*}
@@ -1401,23 +1401,25 @@ In the rc-view, if there are two cells both have more than one candidates in the
 \item the equation for three cells will be re-written.
 \end{itemize}
 
-In the Figure \ref{fig:hiddentripletrc}, candidate $2$, $5$, and $7$ are only appeared in $A'(1,4)$, $A'(1,5)$ and $A'(1,7)$. Hence, all the candidates apart from $2$, $5$, and $7$ could now be excluded from these three cells, and have its equation re-written as:
+In the Figure \ref{fig:hiddentripletrc}, candidate $4$, $7$, and $8$ are only appeared in $A'(4,7)$, $A'(7,7)$ and $A'(8,7)$. Hence, all the candidates apart from $4$, $7$, and $8$ could now be excluded from these three cells, and have its equation re-written as:
 \begin{eqnarray*}
-A'(1,4) = = (\set{2, 5}, \set{1, 3, 4, 6, 7, 8, 9})\\
-A'(1,5) = = (\set{2, 5, 7}, \set{1, 3, 4, 6, 8, 9})\\
-A'(1,7) = = (\set{5, 7}, \set{1, 2, 3, 4, 6, 8, 9})\\
+A'(4,7) = (\set{4, 7, 8}, \set{1, 2, 3, 5, 6, 9})\\
+A'(7,7) = (\set{4, 7, 8}, \set{1, 2, 3, 5, 6, 9})\\
+A'(8,7) = (\set{4, 7}, \set{1, 2, 3, 5, 6, 8, 9})\\
 \end{eqnarray*}
 
 \begin{figure}[htbp]
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.6}
-\hspace{0.8em}
-\begin{center}
-\begin{tabular}{{>{\centering\arraybackslash}m{0.2in}>{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} >{\centering\arraybackslash}m{0.3in} }}
-   & c1 & c2 & c3 & c4 & c5 & c6 & c7 & c8 & c9\\ \cline{2-10}
-r1& \multicolumn{1}{|c|}{{\cell {}{}{}{}{}6{}{}9}} & \multicolumn{1}{c|}{{\cell {}{}{}{}{}6{}8{}}} & \multicolumn{1}{c|}{\LARGE 1} &\multicolumn{1}{c|}{{\cell {}{\underline 2}{}{}{\underline 5}{\xout 6}{}{\xout 8}{}} } & \multicolumn{1}{c|}{{\cell {}{\underline 2}{}{}{\underline 5}{}{\underline 7}{\xout 8}{\xout 9}}} & \multicolumn{1}{c|}{\LARGE 3} & \multicolumn{1}{c|}{{\cell {}{}{}{}{\underline 5}{}{\underline 7}{}{\xout 9}}} & \multicolumn{1}{c|}{\LARGE 4} & \multicolumn{1}{c|}{{\cell {}{}{}{}{}6{}{}9}}\\ \cline{2-10}
-\end{tabular}
-\end{center}
+\begin{sudoku}
+|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}{}}|8|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}{}}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}{}6{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}{}{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}678{}}|{\cell {}{}34{}6{}{}{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}{\underline 4}{}{}{\underline 7}{\underline 8}{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}{}4{}{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}6{}8{}}|{\cell {}{}3456{}{}{}}|{\cell {}{}{}4{}{}{}{}{}}|{\cell 1{}{}{}{}{}{}{}{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}3{}{}{}7{}9}|{\cell {}{}{}4{}{}{}{}{}}|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{\xout 2}{}{\underline 4}{}{}{\underline 7}{\underline 8}{\xout 9}}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}{}{}{}{}{}{}}|9| {\cell {}{\xout 2}{}{\underline 4}{}{}{\underline 7}{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}23{}{}{}{}{}{}}|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|{\cell {}{}{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}9}| 5|.
+\end{sudoku}
 \caption{Example in rc-view for hidden triplet.}
 \label{fig:hiddentripletrc}
 \end{figure}
