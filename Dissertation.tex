@@ -33,29 +33,21 @@
 \begin{document}
 \begin{center}
 \begin{titlepage}
+\LARGE SWANSEA UNIVERSITY\\ \vspace{40pt}
+\includegraphics[width=0.3\textwidth]{./logo}\\ \vspace{50pt}
 
-\includegraphics[width=0.8\textwidth]{./logo}\\ \vspace{15pt}
-
-\Huge \textbf{Sudoku Patterns}\\ \bigskip
+\Huge \textbf{Sudoku Patterns}\\ \vspace{70pt}
+\Large Project Dissertation submitted to the Swansea University\\ \vspace{6pt}
+in Partial Fulfilment for the Degree of Master of Science\\ \vspace{6pt}
+\large in\\ \vspace{12pt}
+Computing Science\\ \vspace{60pt}
 
 \large by\\ \bigskip
-
-461467 Yu-Ting Lu\\ \vspace{20pt}
-
-Supervise by\\\vspace{6pt}
-Dr. Oliver Kullmann\\ \vspace{20pt}
-Project Dissertation\\ \vspace{6pt}
-submitted to the Swansea University\\ \vspace{6pt}
-in Partial Fulfilment for the\\ \vspace{6pt}
-\Large Degree of Master of Science\\ \vspace{6pt}
-\large in\\ \vspace{12pt}
-Computing and Software Technology\\ \vspace{60pt}
+Yu-Ting Lu\\ \vspace{6pt}
+461467 \\ \vspace{30pt}
 
 
-
-Swansea, United Kingdom, 2011\\ \vspace{12pt}
-
-\small \copyright Yu-Ting Lu 2011
+September, 2011\\ \vspace{12pt}
 \end{titlepage}
 
 \end{center}
@@ -1766,42 +1758,54 @@ In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5
 \chapter{Environment}
 \label{cha:Environment}
 For the project, two softwares are used to help, one is Git and another one is Latex. Git is a software provide people an efficient way to record every single change in the project. And Latex is a software known used on writing up the document, and referencing the related sources. 
+
+For the environment setting, firstly install Git and Latex. 
+
+
 \section{Git}
 \label{sec:git}GitInit
-Git is ``a free and open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.'' Also, the benefit of it is, by using Git, the project does not have to be on a specific server. It gives convenience for people to work on their own computer, and just fetch and merge if they commit the change made from others. Beside, it also provide a platform, Github for users to manage and share the project
+Git is ``a free and open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.\footnote{Git, \url{http://git-scm.com/}}'' Usually a server is required for controlling a project which might have different versions during development. However, a server is not required in Git. Git allows users to simply create a repository for project through Github\footnote{GitHub, a web-based hosting service for software development projects that use the Git revision control system.[Wikipedia]}that user can fetch and merge at anytime to instead of to have a server existed. By using Git, users can have a better way to manage the project during developing and have every single change recorded for anytime users want to look into a specific change. To install Git, a free version could be downloaded from \url{http://git-scm.com/}.
+
+
+\subsection{Command for using Git}
+\label{sec:setup}
+List the command we have used for the project. 
+
+Viewing project history at any point you can view the history of your changes using
+\begin{verbatim}
+git log
+\end{verbatim}
+
+Update remote reference along with associated objects.
+\begin{verbatim}
+git push
+\end{verbatim}
+
+Fetch from and merge with another repository or a local branch
+\begin{verbatim}
+git pull git@github.com:YuTingLu/Dissertation_Sudoku.git
+\end{verbatim}
+
 
 \begin{figure}[htbp]
 \begin{center}
-\subfigure[An initial status.]{
-\includegraphics[scale=0.20]{GitInit.jpg}
-\label{gitinitial}
-}
 \subfigure[Scan the change.]{
-\includegraphics[scale=0.20]{GitScan.jpg}
-\label{gitscan}
-}
+\includegraphics[scale=0.60]{GitScan.jpg}
+\label{fig:gitscan}}
 \subfigure[Write a command for the change.]{
-\includegraphics[scale=0.20]{GitCommand.jpg}
-\label{gitcommand}
-}
+\includegraphics[scale=0.60]{GitCommand.jpg}
+\label{fig:gitcommand}}
 \subfigure[Stage changed.]{
-\includegraphics[scale=0.20]{GitStage.jpg}
-\label{gitstage}
-}
+\includegraphics[scale=0.60]{GitStage.jpg}
+\label{fig:gitstage}}
 \subfigure[Admit the commitment.]{
-\includegraphics[scale=0.20]{GitCommit.jpg}
-\label{gitcommit}
-}
-
-
+\includegraphics[scale=0.60]{GitCommit.jpg}
+\label{fig:gitcommit}}
 \end{center}
 \end{figure}
 
 
-\begin{verbatim}
-git push
-git pull git@github.com:YuTingLu/Dissertation_Sudoku.git
-\end{verbatim}
+
 \section{LaTex}
 \label{sec:latex}
 LaTeX is a document preparation system for high-quality typesetting. It is most often used for medium-to-large technical or scientific documents but it can be used for almost any form of publishing.
