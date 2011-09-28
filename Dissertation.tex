@@ -1757,49 +1757,62 @@ In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5
 
 \chapter{Environment}
 \label{cha:Environment}
-For the project, two softwares are used to help, one is Git and another one is Latex. Git is a software provide people an efficient way to record every single change in the project. And Latex is a software known used on writing up the document, and referencing the related sources. 
-
-For the environment setting, firstly install Git and Latex. 
+For the project, two softwares are used to help, one is Git and another one is Latex. Git is a software which used because it provide an efficient way to record every single change in the project for managing a project during development. And Latex is a document editor which is used on writing up the documentation in a logical structure, and referencing the related sources.
 
 
 \section{Git}
-\label{sec:git}GitInit
+\label{sec:git}
 Git is ``a free and open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.\footnote{Git, \url{http://git-scm.com/}}'' Usually a server is required for controlling a project which might have different versions during development. However, a server is not required in Git. Git allows users to simply create a repository for project through Github\footnote{GitHub, a web-based hosting service for software development projects that use the Git revision control system.[Wikipedia]}that user can fetch and merge at anytime to instead of to have a server existed. By using Git, users can have a better way to manage the project during developing and have every single change recorded for anytime users want to look into a specific change. To install Git, a free version could be downloaded from \url{http://git-scm.com/}.
 
 
 \subsection{Command for using Git}
-\label{sec:setup}
-List the command we have used for the project. 
+\label{sec:command}
+Here are the commands used in the command line for supporting the project.\\
 
-Viewing project history at any point you can view the history of your changes using
+\textbf{Push} Push the project to a remote repository.
 \begin{verbatim}
-git log
+git push [alias] [branch]
 \end{verbatim}
 
-Update remote reference along with associated objects.
+\textbf{Fetch} Download the project from a remote repository.
 \begin{verbatim}
-git push
+git fetch [alias]
 \end{verbatim}
 
-Fetch from and merge with another repository or a local branch
+\textbf{Remote} List, add and delete a remote repository aliases. If the command run with ``-v'' option, all the aliases will list with its actual URL.
 \begin{verbatim}
-git pull git@github.com:YuTingLu/Dissertation_Sudoku.git
+git remote [option]
+git remote add [alias] [branch]
+git remote rm [alias]
+\end{verbatim}
+
+\textbf{Pull} Fetch and merge from a remote repository into current branch.
+\begin{verbatim}
+git pull <repository>
+\end{verbatim}
+
+\textbf{GUI} Open a portable graphical interface to Git. (see Subsection \ref{sec:gui})
+\begin{verbatim}
+git gui &
 \end{verbatim}
 
 
-\begin{figure}[htbp]
+\subsection{Git GUI}
+\label{sec:gui}
+When a change has been done, then go to git GUI, firstly scan the change (see Figure \ref{fig:gitscan}), write a command to describe the change (see Figure \ref{fig:gitcommand}, and stage the change (see Figure \ref{fig:gitstage}), then commit the change (see Figure \ref{fig:gitcommit}) in the end to record a change.
+\begin{figure}[h]
 \begin{center}
 \subfigure[Scan the change.]{
-\includegraphics[scale=0.60]{GitScan.jpg}
+\includegraphics[scale=0.28]{GitScan.jpg}
 \label{fig:gitscan}}
 \subfigure[Write a command for the change.]{
-\includegraphics[scale=0.60]{GitCommand.jpg}
+\includegraphics[scale=0.28]{GitCommand.jpg}
 \label{fig:gitcommand}}
 \subfigure[Stage changed.]{
-\includegraphics[scale=0.60]{GitStage.jpg}
+\includegraphics[scale=0.28]{GitStage.jpg}
 \label{fig:gitstage}}
 \subfigure[Admit the commitment.]{
-\includegraphics[scale=0.60]{GitCommit.jpg}
+\includegraphics[scale=0.28]{GitCommit.jpg}
 \label{fig:gitcommit}}
 \end{center}
 \end{figure}
@@ -1809,6 +1822,100 @@ git pull git@github.com:YuTingLu/Dissertation_Sudoku.git
 \section{LaTex}
 \label{sec:latex}
 LaTeX is a document preparation system for high-quality typesetting. It is most often used for medium-to-large technical or scientific documents but it can be used for almost any form of publishing.
+
+\subsection{Package usage}
+\label{sec:packageusage}
+\textbf{Usepackage} Use a package or a style.
+\begin{verbatim}
+\usepackage{package_name}
+\end{verbatim}
+
+\subsection{Sectioning}
+\label{sec:sectioning}
+Latex allows user to structure their document in order by chapters, sections, subsections and paragraphs. Here, we use chapters, sections, and subsections only by the commands:
+
+\begin{verbatim}
+\chapter{chapter}
+\section{section}
+\subsetion{subsection}
+\end{verbatim}
+
+\subsection{Figures, tables and pictures}
+\label{sec:figurestablesandpictures}
+\textbf{Pictures} Insert a picture into the document and specify the width.
+\begin{verbatim}
+\begin{figure}[location]
+\includegraphics[width]{source}
+\end{figure}
+\end{verbatim}
+
+\textbf{Sudoku} Which is import from a package ``Sudoku'' to generate a Sudoku matrix.
+\begin{verbatim}
+\begin{figure}[location]
+\begin{sudoku}
+\end{sudoku}
+\end{figure}
+\end{verbatim}
+
+\subsection{Referencing and bibliography}
+\label{sec:referencingandbibliography}
+
+\textbf{Label} Give a mark to an object you want to reference.\\
+\textbf{Ref} Reference the object you have previously marked.
+\begin{verbatim}
+\label{marker}
+\ref{marker}
+\end{verbatim}
+
+\textbf{Footnote} providing extra information to the reader.
+\begin{verbatim}
+\footnote[num]{text}
+\end{verbatim}
+
+\textbf{Cite} Cite one of the references on your bibliography list. This can be done and providing the corresponding keyword that has already been assigned to an item in the bib file[\cite{Lamport1994LATEX}, 156].
+\begin{verbatim}
+\cite[page number]{item}
+\end{verbatim}
+
+A bib file provides many different entries to list referencing sources which is used to support the report. But in this report, we have only three type of entries used in the bib file, they are: three different source, book, journal, and website.
+
+\textbf{Book} A book source which with an explicit publisher. Required fields: author, title, publisher, year. Optional fields: volume or number, series, address, edition, month, note. Here is an example:
+\begin{verbatim}
+@Book{Berthier2007Sudoku,
+  author =	{Denis Berthier},
+  title =	{The Hidden Logic of Sudoku},
+  publisher =	{Lulu.com},
+  year =	{2007},
+  edition =	{Second},
+  note =	{ISBN 978-1-84799-214-7},
+}
+\end{verbatim}
+\textbf{Article} A article from a journal or magazine. Required fields: author, title, journal, year. Optional fields: volume, number, pages, month, note. Here is an example:
+\begin{verbatim}
+@Article{FelgenhauerJarvis2006SudokuI,
+  author = 	 {Bertam Felgenhauer and Frazer Jarvis},
+  title = 	 {Mathematics of {S}udoku {I}},
+  journal = 	 {Mathematical Spectrum},
+  year = 	 {2006},
+  volume =	 {39},
+  number =	 {1},
+  pages =	 {15-22},
+  month =	 {September},
+  note =	 {Available at \url{http://www.afjarvis.staff.shef.ac.uk/maths/}}
+}
+\end{verbatim}
+\textbf{Misc} Use this type when nothing else fits. Required fields: none. Optional fields: author, title, howpublished, month, year, note.Here is an example:
+To add a website source to bibliographies:
+\begin{verbatim}
+@Misc{website:LeonhardEuler,
+   author =	{Wikipedia},
+   title =	{{Leonhard Euler --- Wikipedia{,} The Free Encyclopedia}},
+   year =	{2011},
+   url =		{http://en.wikipedia.org/wiki/Leonhard\_Euler},
+   annote =	{Online; accessed 16-September-2011}
+ }
+\end{verbatim}
+
 
 \chapter{Conclusion}
 \label{cha:Conclusion}
