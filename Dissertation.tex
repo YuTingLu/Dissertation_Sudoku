@@ -1859,28 +1859,37 @@ A'(8,8) = (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\\
 \section{XYZ-wing}
 \label{sec:XYZ-wing}
 
-Which is pretty similar to XY-wing, but the only difference is, there is a cell specially has three candidates. So the conditions to be hold are:
-\begin{enumerate}
-\item three different cells not all in a same unit ,
-\item and two consecutive cells shared a unit (row, column, or block),
-\item the cell which share two different units with another cell must have all three candidates XYZ in the cell,
-\item two cells have different combination XY(for the cell in the same column or row with the cell has XYZ), and YZ(for the cell in the same block with the cell has XYZ) from candidates  X,Y, and Z (Y is the candidate that three cells all have).
-\end{enumerate}
-If all the conditions above are satisfied, then the cell
-\begin{enumerate}
-\item which shared a block with two consecutive cells that one has candidate XYZ, and another has candidate YZ,
-\item and also in the same column or row with two consecutive cells that one has candidate XYZ, and another has candidate XY
-\end{enumerate}
-could than have candidate Y removed from the cell.
-
-In the Figure \ref{fig:xyzwing}, assume:
+XYZ-wing rule is pretty similar to XY-wing rule, but the difference in between is xyz-wing has a cell specially has all three candidates. So the conditions needed to be satisfied are:
 \begin{itemize}
-\item $X = n_{9},\ Y = n_{6},\ and\ Z = n_{7}$,
-\item $(r_{2}, c_{5})$ has XY (candidate $n_{9}$ and $n_{6}$),
-\item $(r_{4}, c_{5})$ has XYZ (candidate $n_{9}$,  $n_{6}$ and $n_{7}$),
-\item $(r_{2}, c_{6})$ has YZ (candidate $n_{6}$ and $n_{7}$).
+\item three different cells not all in the same unit,
+\item two cells are consecutive and shared a unit (row, column, or block),
+\item a cell is shared by two different units must have all three candidates XYZ in the cell,
+\item two other cells which only in an unit, one has a combination XY (for the cell in the same column or row with the cell has XYZ), and another one has YZ(for the cell in the same block with the cell has XYZ).
 \end{itemize}
-There is a cell  $(r_{6}, c_{5})$ shared a block with both $(r_{4}, c_{5})$ and $(r_{2}, c_{6})$, and also shared a column with both $(r_{4}, c_{5})$ and $(r_{2}, c_{5})$ has the same candidate Y = $n_{6}$) with all of these three cells could now have Y removed from it.
+
+If all the conditions above are satisfied then,
+\begin{itemize}
+\item which has simultaneously in a block and another unit named its candidates as XYZ,
+\item the cell named its candidates as YZ if it shared a block with the cell who has candidates XYZ,
+\item last cell named its candidates as XY,
+\item exclude candidate Y from all cells in a same column or row.
+\end{itemize}
+In an annotated instance in rc-view (see Figure \ref{fig:xyzwing}), if the conditions are satisfied, then,
+\begin{eqnarray*}
+A'(2,5) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8})\\
+A'(4,5) = (\set{6, 7, 9}, \set{1, 2, 3, 4, 5, 8})\\
+A'(4,6) = (\set{6, 7}, \set{1, 2, 3, 4, 5, 8, 9})\\
+\end{eqnarray*}
+Thus, we can assume,
+\begin{displaymath}
+X = 9, Y = 6, Z = 7
+\end{displaymath}
+
+$A'(6,5)$ is a cell shared a block with both $A'(4,5)$ and $A'(4,6)$, and also shared a column with both $A'(4,5)$ and $A'(2,5)$. In the cell we know one  of its possible candidate is  6, which is candidate Y in the three cells $A'(2,5)$, $A'(4,5)$ and $A'(4,6)$. Thus, candidate Y could now eliminated from the cell $A'(6,5)$ and has a new equation.
+\begin{displaymath}
+A'(6,5) = (\set{4,7}, \set{1, 2, 3, 5, 6, 8, 9})\\
+\end{displaymath}
+
 \begin{figure}[htbp]
 \begin{sudoku}
 |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|.
