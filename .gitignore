@@ -18,5 +18,3 @@ sudoku-package
 subfig
 *.gz
 .directory
-*.jpg
-demo.tex
