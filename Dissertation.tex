@@ -1759,24 +1759,34 @@ Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situ
 \item and a matching candidate ``X''  is appeared in all four cells.
 \end{enumerate}
 
-In the figure \ref{fig:xwing}, candidate $n_{6}$ is the matching candidate in between $(r_{2}, c_{2})$, $(r_{2}, c_{8})$, $(r_{8}, c_{2})$, and $(r_{8}, c_{8})$ which fits the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $n_{6}$, hence, candidate $n_{6}$ is no longer able to existed in other cells in both rows $r_{2}$ and $r_{2}$ and both columns $c_{2}$ and $c_{8}$. And there are only two solutions to sort these four cells out,
+In the figure \ref{fig:xwing}, candidate $9$ is the matching candidate ``X'' in between $A'(7,3)$, $A'(7,7)$, $A'(9,3)$, and $A'(9,7)$ which satisfy the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $9$, hence, candidate $9$ is no longer able to filled in any other cells in both rows $3$ and $7$ and both columns $7$ and $9$. Thus, the equations of two solutions carry out for these four cells are.
+
 \begin{enumerate}
-\item candidate $n_{6}$ in $(r_{2}, c_{2})$ and $(r_{8}, c_{8})$,
-\item or candidate $n_{6}$ in $(r_{2}, c_{8})$, and $(r_{8}, c_{2})$.
+\item $A'(7,3)$ and $A'(9,7)$ have candidate $9$,
+\item or $A'(9,3)$ and $A'(7,7)$ have candidate $9$.
 \end{enumerate}
-If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 filled in, and cell$(r_{8}, c_{2})$ will have candidate 4 filled in. On the contrary, if the second one is chosen, then the solution for celll$(r_{2}, c_{2})$ will be 9 and for cell$(r_{8}, c_{8})$ will be 4. However, none of them could be decided. the only thing could be done is to eliminate candidate 6 in any other cells which in the same row and column.
+
+If the first solution is taken, then cell $A'(7,3)$ and cell $A'(9,7)$ will have candidate $9$ filled in, cell $A'(7,7)$ will have candidate $8$ and cell $A'(9,3)$ will have candidate $1$ filled in. On the contrary, if the second one is chosen, then the solution for cell $A'(9,3)$ and$A'(7,7)$ is candidate $9$ filled in and for candidate $7$ for cell $A'(7,3)$. However, in this case, candidate $1$ is matched the hidden single rule for column $3$. Thus, the equations will be written as:
+
+\begin{eqnarray*}
+A'(7,3) = (\set{9}, \set{1, \dots, 9} \ {9})\\
+A'(9,7) = (\set{8}, \set{1, \dots, 9} \ {8})\\
+A'(9,3) = (\set{1}, \set{1, \dots, 9} \ {1})\\
+A'(7,7) = (\set{2, 9}, \set{1, 3, 4, 5, 6, 7, 8})\\
+\end{eqnarray*}
+
 
 \begin{figure}
 \begin{sudoku}
-|{\cell {}{}{}{}{}{}{}{}{}}| |{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}| |{\cell {}{}{}{}{}{}{}{}{}}|.
-||{\cell {}{}{}{}{}{\underline 6}{}{}{9}}||||||{\cell {}{}{}{}{}{\underline 6}{}{}{9}}||.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
-||{\cell {}{}{}{4}{}{\underline 6}{}{}{}}||||||{\cell {}{}{}{4}{}{\underline 6}{}{}{}}||.
-|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}{}}||{\cell {}{}{}{}{}{}{}{}{}}|.
+|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}{}}|8|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}{}}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}{}6{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}{}{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}678{}}|{\cell {}{}34{}6{}{}{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}{}4{}{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}6{}8{}}|{\cell {}{}3456{}{}{}}|{\cell {}{}{}4{}{}{}{}{}}|{\cell 1{}{}{}{}{}{}{}{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{\underline 7}{}{\underline 9}}|{\cell {}{}{}4{}{}{}{}{}}|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}{\underline 8}{\underline 9}}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}{}{}{}{}{}{}}|9| {\cell {}{}{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}2{}{}{}{}{}{}{}}|{\cell {\underline 1}{}{}{}{}{}{}{}{\underline 9}}|{\cell {}{}{}{}{}{}7{}{}}|{\cell {}{}{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}{}{\underline 8}{\underline 9}}|{\cell {}{}3{}{}{}{}{}9}| 5|.
 \end{sudoku}
 \caption{Example in X-wing}
 \label{fig:xwing}
