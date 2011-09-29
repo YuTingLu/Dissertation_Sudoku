@@ -1775,40 +1775,63 @@ Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situ
 \label{fig:xwing}
 \end{figure}
 
-In the figure \ref{fig:xwing}, candidate $9$ is the matching candidate ``X'' in between $A'(7,3)$, $A'(7,7)$, $A'(9,3)$, and $A'(9,7)$ which satisfy the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $9$, hence, candidate $9$ is no longer able to filled in any other cells in both rows $3$ and $7$ and both columns $7$ and $9$. Thus, the equations of two solutions carry out for these four cells are.
+In the figure \ref{fig:xwing}, candidate $9$ is the matching candidate ``X'' in between $A'(7,3)$, $A'(7,7)$, $A'(9,3)$, and $A'(9,7)$ which satisfy the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $9$, hence, candidate $9$ is no longer able to filled in any other cells in both rows $3$ and $7$ and both columns $7$ and $9$. Thus, the equations of two solutions carry out for these four cells are,
 
 \begin{enumerate}
 \item $A'(7,3)$ and $A'(9,7)$ have candidate $9$,
 \item or $A'(9,3)$ and $A'(7,7)$ have candidate $9$.
 \end{enumerate}
 
-If the first solution is taken, then cell $A'(7,3)$ and cell $A'(9,7)$ will have candidate $9$ filled in, cell $A'(7,7)$ will have candidate $8$ and cell $A'(9,3)$ will have candidate $1$ filled in. On the contrary, if the second one is chosen, then the solution for cell $A'(9,3)$ and$A'(7,7)$ is candidate $9$ filled in and for candidate $7$ for cell $A'(7,3)$. However, in this case, candidate $1$ is matched the hidden single rule for column $3$. Thus, the equations will be written as:
+If the first solution is taken, then cell $A'(7,3)$ and cell $A'(9,7)$ will have candidate $9$ filled in, cell $A'(7,7)$ will have candidate $8$ and cell $A'(9,3)$ will have candidate $1$ filled in. On the contrary, if the second one is chosen, then the solution for cell $A'(9,3)$ and$A'(7,7)$ is candidate $9$ filled in and for candidate $7$ for cell $A'(7,3)$. However, in this case, candidate $1$ is matched the hidden single rule for column $3$. Thus, the equations will be written as,
 
 \begin{eqnarray*}
-A'(7,3) = (\set{9}, \set{1, \dots, 9} \ {9})\\
-A'(9,7) = (\set{8}, \set{1, \dots, 9} \ {8})\\
-A'(9,3) = (\set{1}, \set{1, \dots, 9} \ {1})\\
+A'(7,3) = (\set{9}, \set{1, \dots, 9} \setminus \set{9})\\
+A'(9,7) = (\set{8}, \set{1, \dots, 9} \setminus \set{8})\\
+A'(9,3) = (\set{1}, \set{1, \dots, 9} \setminus \set{1})\\
 A'(7,7) = (\set{2, 9}, \set{1, 3, 4, 5, 6, 7, 8})\\
 \end{eqnarray*}
 
-
-
+Have one more example for an annotated instance in cn-view, here we have Figure \ref{fig:xwingcn}.
 
 \begin{figure}
 \begin{sudoku}
 |{\makebox[0pt]{\hspace{-1em}\large c1\raisebox{5ex}[0ex]{\hspace{2em}\large n1}}1}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n2}}2}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n3}}3}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n4}}9}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n5}}5}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n6}}8}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n7}}7}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n8}}4}|{\makebox[0pt]{\raisebox{2.6ex}[1ex]{\hspace{0.5em}\large n9}}6}|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c2}4}|{\cell {}{}{}{}{}{}7{}9}|{\cell {}{}{}{}{}{}7{}9}|3|1|5|6|8|2|.
-|{\makebox[0pt]{\hspace{-2.5em}\large c3}9}|5|{\cell {}{}3{}{}6{}{}{}}|4|8|{\cell {}{}3{}{}6{}{}{}}|1|2|7|.
+|{\makebox[0pt]{\hspace{-2.5em}\large c3}9}|5|{\cell {}{}{\underline 3}{}{}6{}{}{}}|4|8|{\cell {}{}{\underline 3}{}{}6{}{}{}}|1|2|7|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c4}5}|1|8|7|2|4|9|6|3|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c5}7}|8|4|2|6|1|3|9|5|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c6}3}|4|2|6|7|9|5|1|8|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c7}6}|{\cell {}{}3{}{}{}7{}9}|5|8|3|2|4|7|1|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c8}8}|6|1|5|4|7|2|3|9|.
-|{\makebox[0pt]{\hspace{-2.5em}\large c9}2}|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}3{}{}{}7{}{}}|1|9|{\cell {}{}{}3{}{}6{}{}{}}|8|5|4|.
+|{\makebox[0pt]{\hspace{-2.5em}\large c9}2}|{\cell {}{}{\xout 3}{}{}{}7{}{}}|{\cell {}{}{\underline 3}{}{}{}7{}{}}|1|9|{\cell {}{}{}{\underline 3}{}{}6{}{}{}}|8|5|4|.
 \end{sudoku}
 \caption{Example in cn-view for X-wing.}
 \label{fig:xwingcn}
 \end{figure}
+
+
+In the figure \ref{fig:xwingcn}, row $3$ is the matching row ``X'' in between $A'(3,3)$, $A'(3,6)$, $A'(9,3)$, and $A'(9,6)$ which satisfy the prerequisite that two consecutive cells in both two columns and numbers. The prerequisite is satisfied by these four cells and the row $3$. Hence, row $3$ is no longer able to filled in any other cells in both column $3$ and $9$ and both number (vertical line) $3$ and $6$. Thus, the equations of two solutions carry out for these four cells are,
+
+\begin{enumerate}
+\item $A'(3,3)$ and $A'(9,6)$ have candidate $3$,
+\item or $A'(3,6)$ and $A'(9,3)$ have candidate $3$.
+\end{enumerate}
+
+If the first solution is taken, then cell $A'(3,3)$ and cell $A'(9,6)$ will have row $3$ filled in, cell $A'(3,6)$ will have row $7$ and cell $A'(3,6)$ will have row $6$ filled in. On the contrary, if the second one is chosen, then the solution for cell $A'(9,3)$ and $A'(3,6)$ is row $3$ filled in, row $6$ in for cell $A'(3,3)$ and fill row $6$ in for $A'(9,6)$. However, the case here, in column $9$, row $3$ could only filled in either number $3$ or $6$. Thus, we can firstly have row $3$ excluded in $A'(9,2)$. So the equations for rest cells are,
+
+\begin{eqnarray*}
+A'(2,2) = (\set{9}, \set{1, \dots, 9} \setminus \set{9})\\
+A'(2,3) = (\set{7}, \set{1, \dots, 9} \setminus \set{7})\\
+A'(3,3) = (\set{6}, \set{1, \dots, 9} \setminus \set{6})\\
+A'(3,6) = (\set{3}, \set{1, \dots, 9} \setminus \set{3})\\
+A'(7,2) = (\set{3}, \set{1, \dots, 9} \setminus \set{3})\\
+A'(9,2) = (\set{7}, \set{1, \dots, 9} \setminus \set{7})\\
+A'(9,3) = (\set{3}, \set{1, \dots, 9} \setminus \set{3})\\
+A'(9,6) = (\set{6}, \set{1, \dots, 9} \setminus \set{6})\\
+\end{eqnarray*}
+
+\textbf{The solution for the annotated instance in cn-view is found!.}
+
 
 
 \section{XY-wing}
