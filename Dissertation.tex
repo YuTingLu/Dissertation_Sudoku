@@ -34,26 +34,28 @@
 
 \begin{titlepage}
 \centering
-\LARGE SWANSEA UNIVERSITY\\ \vspace{40pt}
-\includegraphics[width=0.3\textwidth]{./logo}\\ \vspace{50pt}
+\includegraphics[width=0.6\textwidth]{./logo}\\ \vspace{50pt}
 
-\Huge \textbf{Sudoku Patterns}\\ \vspace{70pt}
-\Large Project Dissertation submitted to the Swansea University\\ \vspace{6pt}
-in Partial Fulfilment for the Degree of Master of Science\\ \vspace{6pt}
-\large in\\ \vspace{12pt}
-Computing Science\\ \vspace{60pt}
-\large by\\ \bigskip
+\Large \textbf{Sudoku Patterns}\\ \vspace{20pt}
+Project Dissertation submitted to Swansea University\\ \vspace{6pt}
+in Partial Fulfilment for the Degree of Master of Science  in\\ \vspace{12pt}
+ \textbf{Computing and Software Technology}\\ \vspace{30pt}
+\large \textbf{Submitted by:}\\ \vspace{6pt}
 Yu-Ting Lu\\ \vspace{6pt}
 461467 \\ \vspace{30pt}
+\textbf{Under the Supervision of:}\\ \vspace{6pt}
+Dr. Oliver Kullman\\ \vspace{30pt}
+\textbf{Project Conducted at:}\\ \vspace{6pt}
+Department of computer Science, Swansea University\\ \vspace{6pt}
+Singleton Park, Swanse SA2 8PP, Wales, UK\\ \vspace{6pt}
 September, 2011\\ \vspace{12pt}
 \end{titlepage}
 
 
 \begin{abstract}
-  XXX 2 paragraphs XXX
-In the The concept of this dissertation is to understand all the Candidate Elimination Techniques for solving harder Sudoku problems and evaluate the efficiency. In the report, special techniques will be explained in detail and give an example.
-Firstly, the briefly introduction of Sudoku puzzle will be given. Then the detail of special techniques for solving Sudoku will be discussed secondly with the theoretical examples.
-Subsequently, the implementation in all the special techniques will be practiced in coding to evaluate the applicability.
+Many rules for solving a Sudoku instance have been introduced for a standard instance in a row-column view. In this report, we have ``square'' and original elements (row, column, block, number) involved to get three additional extended view generated from the standard one in different dimensions instead of having a Sudoku instance only in a standard row-column view. Three other views are, row-number view, column-number view, and block-number view.
+
+During finding a solution by matching all the rules with the annotated instance, have four different views for an annotated instance could make it use the simple rule as far as possible. It could cut down the time consuming on the rule matching, and also carry out a solution for the annotated instance as soon as it can.
 \end{abstract}
 
 I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
@@ -1799,7 +1801,7 @@ If the first solution is taken, then cell$(r_{2}, c_{8})$ will have candidate 9 
 
 \section{XY-wing}
 \label{sec:XY-wing}
-That has to be applied when two prerequisites are satisfied:
+XY-wing rule is applied when two prerequisites are satisfied:
 \begin{enumerate}
 \item three different cells not in a same unit has different combination from two of three candidates  X, Y, and Z,
 \item and two consecutive cells shared a unit (row, column, or block).
