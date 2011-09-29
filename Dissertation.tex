@@ -1759,6 +1759,22 @@ Figure \ref{fig:xwingmodel} is the pattern look which is satisfied a x-wing situ
 \item and a matching candidate ``X''  is appeared in all four cells.
 \end{enumerate}
 
+\begin{figure}
+\begin{sudoku}
+|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}{}}|8|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}{}}|4|.
+|2|9|8|5|4|3|6| 7|1|.
+|{\cell {}{}3{}{}6{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}{}{}}|.
+|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}678{}}|{\cell {}{}34{}6{}{}{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
+|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}{}4{}{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
+|9|7|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}6{}8{}}|{\cell {}{}3456{}{}{}}|{\cell {}{}{}4{}{}{}{}{}}|{\cell 1{}{}{}{}{}{}{}{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
+|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{\underline 7}{}{\underline 9}}|{\cell {}{}{}4{}{}{}{}{}}|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}{\underline 8}{\underline 9}}|6|{\cell {}23{}{}{}78{}}|.
+|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}{}{}{}{}{}{}}|9| {\cell {}{}{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
+|4| {\cell {}2{}{}{}{}{}{}{}}|{\cell {\underline 1}{}{}{}{}{}{}{}{\underline 9}}|{\cell {}{}{}{}{}{}7{}{}}|{\cell {}{}{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}{}{\underline 8}{\underline 9}}|{\cell {}{}3{}{}{}{}{}9}| 5|.
+\end{sudoku}
+\caption{Example in rc-view for X-wing.}
+\label{fig:xwing}
+\end{figure}
+
 In the figure \ref{fig:xwing}, candidate $9$ is the matching candidate ``X'' in between $A'(7,3)$, $A'(7,7)$, $A'(9,3)$, and $A'(9,7)$ which satisfy the prerequisite that two consecutive cells in both two rows and columns. The prerequisite is satisfied by these four cells and the candidate $9$, hence, candidate $9$ is no longer able to filled in any other cells in both rows $3$ and $7$ and both columns $7$ and $9$. Thus, the equations of two solutions carry out for these four cells are.
 
 \begin{enumerate}
@@ -1776,21 +1792,7 @@ A'(7,7) = (\set{2, 9}, \set{1, 3, 4, 5, 6, 7, 8})\\
 \end{eqnarray*}
 
 
-\begin{figure}
-\begin{sudoku}
-|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}7{}{}}|2|{\cell {}{}{}{}{}6{}{}{}}|8|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}3{}{}{}{}{}{}}|4|.
-|2|9|8|5|4|3|6| 7|1|.
-|{\cell {}{}3{}{}6{}{}{}}|4|{\cell {}{}3{}{}6{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|7|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}8{}}|{\cell {}2{}{}{}{}{}{}{}}|.
-|{\cell {}{}3{}{}6{}8{}}|1|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}678{}}|{\cell {}{}34{}6{}{}{}}|{\cell {}2{}4{}{}7{}{}}|{\cell {}{}{}4{}{}78{}}|5|9|.
-|{\cell {}{}{}{}56{}8{}}|{\cell {}{}{}{}56{}{}{}}|2|{\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|{\cell {}{}{}4{}{}7{}{}}|3|{\cell {}{}{}4{}{}{}8{}}|{\cell {}{}{}{}{}678{}}|.
-|9|7|{\cell {}{}34{}6{}{}{}}|{\cell {}{}{}{}{}6{}8{}}|{\cell {}{}3456{}{}{}}|{\cell {}{}{}4{}{}{}{}{}}|{\cell 1{}{}{}{}{}{}{}{}}|2|{\cell {}{}{}{}{}6{}8{}}|.
-|{\cell {}{}3{}{}{}7{}{}}|{\cell {}23{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{\underline 7}{}{\underline 9}}|{\cell {}{}{}4{}{}{}{}{}}|1|{\cell {}{}{}{}5{}{}{}{}}|{\cell {}{}{}{}{}{}{}{\underline 8}{\underline 9}}|6|{\cell {}23{}{}{}78{}}|.
-|{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}{}{}{}{}{}{}}|9| {\cell {}{}{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
-|4| {\cell {}2{}{}{}{}{}{}{}}|{\cell {\underline 1}{}{}{}{}{}{}{}{\underline 9}}|{\cell {}{}{}{}{}{}7{}{}}|{\cell {}{}{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}{}{\underline 8}{\underline 9}}|{\cell {}{}3{}{}{}{}{}9}| 5|.
-\end{sudoku}
-\caption{Example in rc-view for X-wing.}
-\label{fig:xwing}
-\end{figure}
+
 
 \begin{figure}
 \begin{sudoku}
@@ -1820,23 +1822,6 @@ XY-wing is the rule which applied when two prerequisites are satisfied:
 \end{itemize}
 
 If the conditions are all satisfied, then the cell at the intersect point between two of these three different cells which could have the candidate that two cells both have eliminated.
-In the figure \ref{fig:xywing} (which is an annotated instance in rc-view), in the cell $A'(1,1)$, $A'(1,8)$ and $A'(8,1)$, candidates $2$, $3$ and $7$ occur in these three cells and each has a combination different from others. Here we have three cells with its equation:
-\begin{eqnarray*}
-A'(1,1) = (\set{2, 3}, \set{1, 4, 5, 6, 7, 8, 9})\\
-A'(1,8) = (\set{3, 7}, \set{1, 2, 4, 5, 6, 8, 9})\\
-A'(8,1) = (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})\\
-\end{eqnarray*}
-Thus, we can assume,
-\begin{displaymath}
-X = 2, Y = 3, Z = 7
-\end{displaymath}
-
-Cell $A'(8,8)$ is at the intersect point between cell $A'(1,8)$ and $A'(8,1)$ which both have candidate $7$. Thus, if cell $A'(8,8)$ also have the same candidate, it could have candidate $7$ excluded and have a new equation.
-\begin{displaymath}
-A'(8,8) = (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\\
-\end{displaymath}
-
-
 
 \begin{figure}[htbp]
 \begin{sudoku}
@@ -1853,6 +1838,23 @@ A'(8,8) = (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\\
 \caption{Example in rc-view for XY-wing}
 \label{fig:xywing}
 \end{figure}
+
+
+In the figure \ref{fig:xywing} (which is an annotated instance in rc-view), in the cell $A'(1,1)$, $A'(1,8)$ and $A'(8,1)$, candidates $2$, $3$ and $7$ occur in these three cells and each has a combination different from others. Here we have three cells with its equation:
+\begin{eqnarray*}
+A'(1,1) = (\set{2, 3}, \set{1, 4, 5, 6, 7, 8, 9})\\
+A'(1,8) = (\set{3, 7}, \set{1, 2, 4, 5, 6, 8, 9})\\
+A'(8,1) = (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})\\
+\end{eqnarray*}
+Thus, we can assume,
+\begin{displaymath}
+X = 2, Y = 3, Z = 7
+\end{displaymath}
+
+Cell $A'(8,8)$ is at the intersect point between cell $A'(1,8)$ and $A'(8,1)$ which both have candidate $7$. Thus, if cell $A'(8,8)$ also have the same candidate, it could have candidate $7$ excluded and have a new equation.
+\begin{displaymath}
+A'(8,8) = (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\\
+\end{displaymath}
 
 
 
@@ -1874,21 +1876,7 @@ If all the conditions above are satisfied then,
 \item last cell named its candidates as XY,
 \item exclude candidate Y from all cells in a same column or row.
 \end{itemize}
-In an annotated instance in rc-view (see Figure \ref{fig:xyzwing}), if the conditions are satisfied, then,
-\begin{eqnarray*}
-A'(2,5) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8})\\
-A'(4,5) = (\set{6, 7, 9}, \set{1, 2, 3, 4, 5, 8})\\
-A'(4,6) = (\set{6, 7}, \set{1, 2, 3, 4, 5, 8, 9})\\
-\end{eqnarray*}
-Thus, we can assume,
-\begin{displaymath}
-X = 9, Y = 6, Z = 7
-\end{displaymath}
 
-$A'(6,5)$ is a cell shared a block with both $A'(4,5)$ and $A'(4,6)$, and also shared a column with both $A'(4,5)$ and $A'(2,5)$. In the cell we know one  of its possible candidate is  6, which is candidate Y in the three cells $A'(2,5)$, $A'(4,5)$ and $A'(4,6)$. Thus, candidate Y could now eliminated from the cell $A'(6,5)$ and has a new equation.
-\begin{displaymath}
-A'(6,5) = (\set{4,7}, \set{1, 2, 3, 5, 6, 8, 9})\\
-\end{displaymath}
 
 \begin{figure}[htbp]
 \begin{sudoku}
@@ -1905,6 +1893,25 @@ A'(6,5) = (\set{4,7}, \set{1, 2, 3, 5, 6, 8, 9})\\
 \caption{Example in rc-view for XYZ-wing}
 \label{fig:xyzwing}
 \end{figure}
+
+
+In an annotated instance in rc-view (see Figure \ref{fig:xyzwing}), if the conditions are satisfied, then,
+\begin{eqnarray*}
+A'(2,5) = (\set{6, 9}, \set{1, 2, 3, 4, 5, 7, 8})\\
+A'(4,5) = (\set{6, 7, 9}, \set{1, 2, 3, 4, 5, 8})\\
+A'(4,6) = (\set{6, 7}, \set{1, 2, 3, 4, 5, 8, 9})\\
+\end{eqnarray*}
+Thus, we can assume,
+\begin{displaymath}
+X = 9, Y = 6, Z = 7
+\end{displaymath}
+
+$A'(6,5)$ is a cell shared a block with both $A'(4,5)$ and $A'(4,6)$, and also shared a column with both $A'(4,5)$ and $A'(2,5)$. In the cell we know one  of its possible candidate is  6, which is candidate Y in the three cells $A'(2,5)$, $A'(4,5)$ and $A'(4,6)$. Thus, candidate Y could now eliminated from the cell $A'(6,5)$ and has a new equation.
+\begin{displaymath}
+A'(6,5) = (\set{4,7}, \set{1, 2, 3, 5, 6, 8, 9})\\
+\end{displaymath}
+
+
 
 
 \section{WXYZ-wing}
