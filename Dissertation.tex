@@ -1788,7 +1788,7 @@ A'(7,7) = (\set{2, 9}, \set{1, 3, 4, 5, 6, 7, 8})\\
 |{\cell {}{}{}{}{}67{}{}}|8|5|3| {\cell {}2{}{}{}{}{}{}{}}|9| {\cell {}{}{}4{}{}7{}{}}|1| {\cell {}2{}{}{}{}7{}{}}|.
 |4| {\cell {}2{}{}{}{}{}{}{}}|{\cell {\underline 1}{}{}{}{}{}{}{}{\underline 9}}|{\cell {}{}{}{}{}{}7{}{}}|{\cell {}{}{}{}{}{}{}8{}}|6|{\cell {}2{}{}{}{}{}{\underline 8}{\underline 9}}|{\cell {}{}3{}{}{}{}{}9}| 5|.
 \end{sudoku}
-\caption{Example in X-wing}
+\caption{Example in rc-view for X-wing.}
 \label{fig:xwing}
 \end{figure}
 
@@ -1804,27 +1804,39 @@ A'(7,7) = (\set{2, 9}, \set{1, 3, 4, 5, 6, 7, 8})\\
 |{\makebox[0pt]{\hspace{-2.5em}\large c8}8}|6|1|5|4|7|2|3|9|.
 |{\makebox[0pt]{\hspace{-2.5em}\large c9}2}|{\cell {}{}3{}{}{}7{}{}}|{\cell {}{}3{}{}{}7{}{}}|1|9|{\cell {}{}{}3{}{}6{}{}{}}|8|5|4|.
 \end{sudoku}
-\caption{Example in cn-view for X-wing}
+\caption{Example in cn-view for X-wing.}
 \label{fig:xwingcn}
 \end{figure}
 
 
 \section{XY-wing}
 \label{sec:XY-wing}
-XY-wing rule is applied when two prerequisites are satisfied:
-\begin{enumerate}
-\item three different cells not in a same unit has different combination from two of three candidates  X, Y, and Z,
-\item and two consecutive cells shared a unit (row, column, or block).
-\end{enumerate}
-If the condition is satisfied, then the cell at the intersect point between two of these three different cells which could have the candidate that two cells both have eliminated.
-In the figure \ref{fig:xywing}, in the cell $(r_{1}, c_{1})$, $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$, they are happened to have three candidates $n_{2}$, $n_{3}$ and $n_{7}$ only and a different combination in each. Thus, assume:
+XY-wing is the rule which applied when two prerequisites are satisfied:
+
 \begin{itemize}
-\item $X = n_{2},\ Y = n_{3},\ and\ Z = n_{7}$,
-\item $(r_{1}, c_{1})$ has XY (candidate $n_{2}$ and $n_{3}$),
-\item $(r_{1}, c_{8})$ has YZ (candidate $n_{3}$ and $n_{7}$),
-\item $(r_{8}, c_{1})$ has XZ (candidate $n_{2}$ and $n_{7}$).
+\item three different cells not in a same unit,
+\item three different combination, XY, YZ, and XZ for each cell,
+\item and two consecutive cells shared a unit (row, column, block or number).
 \end{itemize}
-Cell $(r_{8}, c_{8})$ is at the intersect point between cell $(r_{1}, c_{8})$ and $(r_{8}, c_{1})$ which both have candidate $n_{7}$. Thus, if cell $(r_{8}, c_{8})$ also have the same candidate, it could have this removed then.
+
+If the conditions are all satisfied, then the cell at the intersect point between two of these three different cells which could have the candidate that two cells both have eliminated.
+In the figure \ref{fig:xywing} (which is an annotated instance in rc-view), in the cell $A'(1,1)$, $A'(1,8)$ and $A'(8,1)$, candidates $2$, $3$ and $7$ occur in these three cells and each has a combination different from others. Here we have three cells with its equation:
+\begin{eqnarray*}
+A'(1,1) = (\set{2, 3}, \set{1, 4, 5, 6, 7, 8, 9})\\
+A'(1,8) = (\set{3, 7}, \set{1, 2, 4, 5, 6, 8, 9})\\
+A'(8,1) = (\set{2, 7}, \set{1, 3, 4, 5, 6, 8, 9})\\
+\end{eqnarray*}
+Thus, we can assume,
+\begin{displaymath}
+X = 2, Y = 3, Z = 7
+\end{displaymath}
+
+Cell $A'(8,8)$ is at the intersect point between cell $A'(1,8)$ and $A'(8,1)$ which both have candidate $7$. Thus, if cell $A'(8,8)$ also have the same candidate, it could have candidate $7$ excluded and have a new equation.
+\begin{displaymath}
+A'(8,8) = (\set{1, 8}, \set{2, 3, 4, 5, 6, 7, 9})\\
+\end{displaymath}
+
+
 
 \begin{figure}[htbp]
 \begin{sudoku}
