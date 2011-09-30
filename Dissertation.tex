@@ -2,7 +2,6 @@
 
 \documentclass[11pt]{report}
 
-
 \usepackage{hyperref}
 \usepackage{a4}
 \usepackage{subfigure}
@@ -151,24 +150,21 @@ The number of valid Sudoku grids has been determined in \cite{FelgenhauerJarvis2
 \begin{displaymath}
   6670903752021072936960 \approx 6.671 \times 10^{21}
 \end{displaymath}
-(while the number of Latin squares is $5524751496156892842531225600 \approx 5.525 \times 10^{27}$, see  \cite{FelgenhauerJarvis2006SudokuI}). And in \cite{FelgenhauerJarvis2006SudokuII} the number of \emph{essentially different} Sudoku grids (XXX to be explained!) has been determined as $5472730538$.
+(while the number of Latin squares is $5524751496156892842531225600 \approx 5.525 \times 10^{27}$, see  \cite{FelgenhauerJarvis2006SudokuI}). And in \cite{FelgenhauerJarvis2006SudokuII} the number of \emph{essentially different} Sudoku grids (XXX to be explained!) has been determined as $5472730538$. The number $5472730538$ is given by taking the average over $3359232$ group elements. The elements are permuted by elements: block, stack, band, three columns within a stack, three rows within a band and any reflection and rotation.
 
+In the paper\cite{ArnoldLucasTaalman2009BasisRepresentations}, it discuss about Gr\"{o}bner base which is an alternative approach used on counting the variety of the Sudoku problems.
 
-
-\subsection{How to generate a Sudoku puzzle?}
-\label{sec:gensudoku}
-
-XXX
 
 
 
 \subsection{Solving Sudoku}
 \label{sec:solvingsudoku}
 
-To puzzle a Sudoku problem, that ``How many solutions are there for a Sudoku puzzle?'' has to be discussed firstly. Some experts, such as \emph{Tom Sheldon} says that ``A properly-formed Sudoku puzzle must have only one solution.'' in \cite{Sheldon2006Sudoku}. However, in fact, \emph{Thomas Snyder} of the USA, who won the 2007 World Sudoku Championship proved that a puzzle could have two solutions (of course that every solution). Therefore, the point of view is still not universal, thus in this report, the solution of Sudoku puzzle is assumed to be ``Unique'' .
+To puzzle a Sudoku problem, that ``How many solutions are there for a Sudoku puzzle?'' has to be discussed. Some experts, such as \emph{Tom Sheldon} says that ``A properly-formed Sudoku puzzle must have only one solution.'' in \cite{Sheldon2006Sudoku}. However, in fact, \emph{Thomas Snyder} of the USA, who won the 2007 World Sudoku Championship proved that a puzzle could have two solutions (of course that every solution). A Sudoku puzzle which has two solutions are prove in \cite{Murty2007Sudoku} by \emph{Agnes M. Herzberg} and \emph{M. Ram Murty}. Therefore, the point of view is somehow still not universal, thus in this report, we define a ``proper'' Sudoku puzzle has an ``Unique'' solution.
 
-In the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}'', \emph{Denis Berthier} expounds a set of resolution of solving Sudoku puzzle that were already distributed, and the terms to utilise them. All these rules are used when the situation is matched to the prerequisite of the rule. For each cell, the rules will be run one by one until there is one can be applied on, and this procedure will keep running until a final solution has found. To list all the steps could be in listing way or in a systematic procedure,
-the listing of the steps to solve the puzzle (by \emph{J. F. Crook} from \cite{Crook2009Algorithm}, Page 467 ):
+Moreover, we have another question ``How to solve a Sudoku puzzle?''. Many techniques (we say ``rules'' here) have been introduced on solving a Sudoku puzzle. Many people have spending time on researching about the efficiency of the rules. \emph{J. F. Crook} has introduced visualisation rules in the book \cite{Colloby2007Sudoku}. The book not only cover the general rules for Sudoku solving but more focus on visualisation rules. However, in this report, we are focusing on the concept which is mentioned in the book ``The Hidden Logic of Sudoku\cite{Berthier2007Sudoku}'' by \emph{Denis Berthier} who expounds a set of resolution of solving Sudoku puzzle in the different perspectives, and the terms to utilise them. All these rules are used when the situation is matched to the prerequisite for a point of view. Generally, the rules will be run one by one for each cell until there is one have found to match the rules. The procedure for finding a solution by applying rules will be run until a final solution is carried out. The steps of the procedure could be shown in a list or in a systematic pseudo code:
+
+A list for the steps to solve the puzzle (from \cite{Crook2009Algorithm}, Page 467 ):
 \begin{enumerate}
 \item find all possible candidates in the cell
 \item make up an annotated instance
@@ -179,7 +175,9 @@ the listing of the steps to solve the puzzle (by \emph{J. F. Crook} from \cite{C
 \end{enumerate}
 \item if the puzzle has not finished yet, then go back to step 3.
 \end{enumerate}
-in the systematic procedure way is (from \cite{Berthier2007Sudoku}, Page 24):
+
+
+The pseudo code for the systematic procedure way is (from \cite{Berthier2007Sudoku}, Page 24):
 \begin{quote}
 \begin{tabbing}
 Loop \=Until  a solution is found (or until it is proven there can be no solution)\\
@@ -193,82 +191,32 @@ Loop \=Until  a solution is found (or until it is proven there can be no solutio
 End loop\\
 \end{tabbing}
 \end{quote}
-No matter in either way, a loop will keep running to find the most suitable rule which could match the mapping of the cells left, and apply the rule to either get one or more candidate asserted or eliminated till the whole Sudoku puzzle has solved or the puzzle has proven that it has no solution.
+
+No matter the procedure shows in a list or in pseudo code style. It both says the loop will keep running on finding the an applicable rule which could match the mapping of the cells, and apply the rule to have candidates excluded and the annotated instance updated till the a complete solution has found for the annotated instance.
+
+There are many rules exist to be flexible applied for solving an Sudoku instance depends on the mapping of the annotated instance (defined in \ref{sec:Annotatedinstances}. Generally, rules are seperated into the two types, one is ``Direct Elimination Techniques'' and another one is ``Candidates Elimination Techniques''. Direct elimination techniques, is a method that does not have to pencil-mark all the possible candidates in the empty cells no matter the difficulty of the puzzle, and it could solve most or the problems but might not be the most efficient way to do. The requirement of this is just a pen with logical thinking brain. Candidates elimination techniques are the approach we will discuss in the Chapter \ref{cha:Techniques}, it provides different rules that could be utilised in different situation by considering one candidate, a pair candidates, triplet candidates, or quad candidates differently.
 
 
-% Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-    text width=10em, text centered, rounded corners, minimum height=2em]
-\tikzstyle{line} = [draw, -latex']
-\begin{center}   
-\begin{tikzpicture}[node distance = 2cm, auto]
-
-    % Place nodes
-    \node [block] (init) {A Sudoku instance};
-    \node [block, below of=init] (annotated) {An annotated Sudoku instance};
-    \node [block, below of=annotated] (find) {Find a rule};
-    \node [decision, below of=find] (found) {Found one?};
-    \node [block, below of=found] (update) {Updating};
-    \node [decision, below of=update] (highlight) {Every cell has been highlighted?};
-    \node [block, below of=highlight] (stop) {A solution has found};
-    % Draw edges
-    \path [line] (init) -- (annotated);
-    \path [line] (annotated) -- (find);
-    \path [line] (find) -- (found);
-    \path[line,rounded corners] (found) |- ($(found.south)$ to[out=-90,in=0] ((find);
-    \path [line] (found) -- node {yes}(update);
-    \path [line] (update) -- (highlight);
-    \path [line] (highlight) -- node {yes}(stop);
-
-\end{tikzpicture}
-\end{center}
-
-There are many rules exist to be applied flexibly to solve the Sudoku puzzle among its difficulty. Generally, it classify into the two types of the rules, one is ``Direct Elimination Techniques'' and another one is ``Candidates Elimination Techniques''. Direct elimination techniques, is a method that does not have to pencil-mark all the possible candidates in the empty cells no matter the difficulty of the puzzle, and it could solve most or the problems but might not be the most efficient way to do. The requirement of this is just a pen with logical thinking brain. Candidates elimination techniques are the approach we will discuss in the  Chapter \ref{cha:Techniques}, it provides different rules that could be utilised in different situation by considering one candidate, a pair candidates, triplet candidates, or quad candidates differently.
-
-\emph{Berthier} also issues a concept of providing information in the different representation of Sudoku puzzle. Three other perspectives, row-number, column-number, and block-number are firstly introduced in the book (\cite{Berthier2007Sudoku}, Chapter II). Each representation are based on the standard Sudoku in the rc-view.
-
-xxx keep writing. xxx
-Figure \ref{fig:mixmatch}.
-
-\begin{figure}[htbp]
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{2}
-\begin{center}
-\begin{tabular}{ >{\centering\arraybackslash}m{0.6in}| >{\centering\arraybackslash}m{1.1in}| >{\centering\arraybackslash}m{1.1in}|}
-\multicolumn{1}{c}{} & \multicolumn{1}{c}{column} & \multicolumn{1}{c}{number}\\ \cline{2-3}
-row & \textbf{row-column} & row-number\\ \cline{2-3}
-column & X& column-number\\ \cline{2-3}
-block & X & block-number \\ \cline{2-3}
-\end{tabular}
-\end{center}
-\caption{Mix-match among row, column, and number}
-\label{fig:mixmatch}
-\end{figure}
 
 
 \section{Overview on the dissertation}
 \label{sec:overview}
 
+By following the concept that \emph{Berthier} has issued in the book (\cite{Berthier2007Sudoku}, Chapter II), having different representation of an annotated Sudoku instance. Three extended from an standard Sudoku instance in the standard rc-view (see \ref{sec:Differentperspectives}). The extended perspectives are, row-number view, column-number view, and block-number view.
+
+The time spending on a solution finding could have reduced since we have four views for an annotated instance. In the following chapters, we will have the detail discussed about all perspectives and the examples applied with the rules.
 
 \subsection{What has been achieved}
 \label{sec:whatachieved}
 
-XXX
+In this report, from the examples applied with the rules in different view. We found, a solution will be carried out quickly if we have four views existed synchronously. Have four of them simultaneously could make the hidden information of an standard annotated instance visible in the other views. It helps more and more when more difficult rules are trying to applied with an annotated instance. For example, a hidden candidate in a row of an annotated Sudoku instance in the standard rc-view will become visible in the rn-view. Or an naked pair mapping in the rc-veiw could become match the mapping of the rule x-wing in rn-view. Different views are helping each other to have more candidates excluded as quick as it can to carry out a solution.
 
 
 
 \subsection{Outline}
 \label{sec:Outline}
 
-In the Chapter \ref{cha:basicnotnotat} will explain the basic notions and notations of this report.
-
-Chapter \ref{cha:exploitingsymm} discuss the symmetries concept by using different views.
-
-And the rule to apply on solving Sudoku will be introduced in Chapter \ref{cha:Techniques}
-
-Chapter \ref{cha:Environment} is talking about the environment for writing this technical report.
+A brief introduction is given for Sudoku in the Chapter \ref{cha:Introduction}. Then define the notion and notation in the Chapter \ref{cha:basicnotnotat}. In the chapter, it explains the procedure of a Sudoku instances becomes to an annotated instance. In addition, also have the nature defined for a Sudoku rule with how it updates. In the Chapter \ref{cha:exploitingsymm}, discuss the symmetries by using different views. Also more explanation given for updating an annotated instance in the three extended views. The conditions and examples for when and how to apply a Sudoku rule on solving Sudoku are given in each view in the Chapter \ref{cha:Techniques}. Chapter \ref{cha:Environment} is a manual for the tools and commands used for this report.
 
 
 
@@ -1465,8 +1413,8 @@ A'(4,7) = (\set{4, 6}, \set{1, 2, 3, 5, 7, 8, 9})\\
 |{\makebox[0pt]{\hspace{-2.5em}\large r8}8}|{\cell {}{}{}{}5{}{}{}{}}|4| {\cell {}{}{}{}{}{}7{}{}}|3| {\cell 1{}{}{}{}{}{}{}{}}|{\cell {}{}{}{}{}{}{}{}9}|2|6|.
 |{\makebox[0pt]{\hspace{-2.3em}\large r9}{\cell {}{}3{}{}{}{}{}{}}}| {\cell {}2{}{}5{}7{}{}}|{\cell {}2{}{}{}{}{}8{}}|1|9|6|{\cell {}{}{}4{}{}7{}{}}| {\cell {}{}{}45{}78{}}|{\cell {}{}{}{}{}{}78{}}|.
 \end{sudoku}
-\caption{Example in rn-view for naked triplet.}
-\label{fig:nakedtripletrn}
+\caption{Example in rn-view for hidden triplet.}
+\label{fig:hiddentripletrn}
 \end{figure}
 
 In the cn-view, if there are three cells have more than one rows in the cell, but only three of the rows are only appeared in these three cell of the unit, then
@@ -2031,7 +1979,7 @@ If there is one candidate in three rows only appears in particular three columns
 \label{fig:swordfish}
 \end{figure}
 
-In the Figure \ref{fig:swordfishreal}, candidate $n_{6}$ appear in $(r_{3}, c_{5})$, $(r_{3}, c_{7})$, $r_{6}, c_{})$, $r_{6}, c_{5})$, $r_{8}, c_{5})$, $r_{8}, c_{7})$ and $r_{8}, c_{8})$, it satisfied the the conditions of Swordfish, and also match the rule ``one candidate in three rows only appears in particular three columns'', thus an exclusion will be made to kick candidate $n_{6}$ out from other cells in the  $r_{3},\ r_{6}\, and\ r_{8}$.
+In the Figure \ref{fig:swordfishrealrc}, candidate $n_{6}$ appear in $(r_{3}, c_{5})$, $(r_{3}, c_{7})$, $r_{6}, c_{})$, $r_{6}, c_{5})$, $r_{8}, c_{5})$, $r_{8}, c_{7})$ and $r_{8}, c_{8})$, it satisfied the the conditions of Swordfish, and also match the rule ``one candidate in three rows only appears in particular three columns'', thus an exclusion will be made to kick candidate $n_{6}$ out from other cells in the  $r_{3},\ r_{6}\, and\ r_{8}$.
 
 \begin{figure}[htbp]
 \begin{sudoku}
